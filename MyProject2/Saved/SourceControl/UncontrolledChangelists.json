@@ -6,7 +6,9 @@
 			"description": "Default Uncontrolled Changelist",
 			"files": [
 				"C:/Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
-				"C:/Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset"
+				"C:/Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset",
+				"C:/Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Input/Actions/IA_Dash.uasset",
+				"C:/Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Input/IMC_Default.uasset"
 			]
 		}
 	]

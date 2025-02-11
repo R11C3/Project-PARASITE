@@ -1755,3 +1755,312 @@ LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
 [2025.02.11-03.19.47:863][947]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
 [2025.02.11-03.19.49:757][175]LogContentBrowser: Attempting asset rename: NewFolder -> Roll
 [2025.02.11-03.19.49:757][175]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-03.29.10:343][118]LogSlate: Took 0.000181 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2025.02.11-03.29.10:363][118]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.22:332][118]LogSlate: Window 'Pick Skeleton' being destroyed
+[2025.02.11-03.29.22:342][118]LogContentBrowser: Deferred new asset file creation: NewAnimMontage
+[2025.02.11-03.29.22:348][118]LogContentBrowser: Creating deferred item: NewAnimMontage
+[2025.02.11-03.29.22:367][120]LogContentBrowser: Renaming the item being created (Deferred Item: NewAnimMontage).
+[2025.02.11-03.29.23:878][298]LogContentBrowser: Attempting asset rename: NewAnimMontage -> NewAnimMontage
+[2025.02.11-03.29.23:879][298]LogContentBrowser: End creating deferred item NewAnimMontage
+[2025.02.11-03.29.23:927][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_UELogo_Mask.T_UELogo_Mask (TFO_AutoDXT, 512x512 x1x1x1) (Required Memory Estimate: 45.145823 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:927][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_ML_Aluminum01_N.T_ML_Aluminum01_N (TFO_BC5, 512x512 x1x1x1) (Required Memory Estimate: 81.562488 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:928][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_ML_Rubber_Blue_01_D.T_ML_Rubber_Blue_01_D (TFO_AutoDXT, 512x512 x1x1x1) (Required Memory Estimate: 45.145823 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:929][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_ML_Rubber_Blue_01_N.T_ML_Rubber_Blue_01_N (TFO_BC5, 512x512 x1x1x1) (Required Memory Estimate: 81.562488 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:930][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_ML_Aluminum01.T_ML_Aluminum01 (TFO_AutoDXT, 512x512 x1x1x1) (Required Memory Estimate: 45.145823 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:935][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_UE4_Mannequin_MAT_MASKA.T_UE4_Mannequin_MAT_MASKA (TFO_AutoDXT, 1024x1024 x1x1x1) (Required Memory Estimate: 124.145823 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:950][298]LogSkeletalMesh: Building Skeletal Mesh SK_Mannequin...
+[2025.02.11-03.29.23:950][298]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_UELogo_N_TGA.T_UELogo_N_TGA (TFO_BC5, 512x512 x1x1x1) (Required Memory Estimate: 81.562488 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.23:969][298]LogSkeletalMesh: Display: Waiting for skinned assets to be ready 0/1 (SK_Mannequin) ...
+[2025.02.11-03.29.24:010][298]LogSkeletalMesh: Built Skeletal Mesh [0.06s] /Game/Characters/Mannequin_UE4/Meshes/SK_Mannequin.SK_Mannequin
+[2025.02.11-03.29.24:015][299]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.24:036][300]LogTexture: Display: Building textures: /Game/Characters/Mannequin_UE4/Textures/T_UE4_Mannequin__normals.T_UE4_Mannequin__normals (TFO_BC5, 2048x2048 x1x1x1) (Required Memory Estimate: 381.562488 MB), EncodeSpeed: Fast
+[2025.02.11-03.29.24:506][331]LogAssetEditorSubsystem: Opening Asset editor for AnimMontage /Game/CU_Animations/Character/Roll/NewAnimMontage.NewAnimMontage
+[2025.02.11-03.29.24:529][331]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.24:529][331]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-03.29.24:577][331]LogActorComponent: RegisterComponentWithWorld: (/Engine/Transient.World_8:PersistentLevel.AnimationEditorPreviewActor_0.DebugSkelMeshComponent_0) Already registered. Aborting.
+[2025.02.11-03.29.25:033][331]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.25:033][331]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: ================================================
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: Total job queries 14, among them cache hits 0 (0.00%)
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: Tracking 2 distinct input hashes that result in 2 distinct outputs (100.00%)
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: RAM used: 27.39 KiB of 1.60 GiB budget. Usage: 0.00%
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: Shaders Compiled: 2
+[2025.02.11-03.29.25:036][331]LogShaderCompilers: Display: Jobs assigned 10, completed 2 (20.00%)
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Average time worker was idle: 0.00 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Time job spent in pending queue: average 0.21 s, longest 0.82 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Job execution time: average 0.77 s, max 0.77 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Job life time (pending + execution): average 0.83 s, max 0.83
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Shader code size: average 21.514 KiB, min 8.73 KiB, max 34.297 KiB
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.83 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Jobs were issued in 10 batches (only local compilation was used), average 1.00 jobs/batch
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Average processing rate: 2.40 jobs/sec
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Total thread time: 0.694 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Total thread preprocess time: 0.106 s
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Percentage time preprocessing: 15.29%
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Effective parallelization: 0.83 (times faster than compiling all shaders on one thread). Compare with number of workers: 8
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Top 1 most expensive shader types by average time:
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display:              TShadowDepthPSPixelShadowDepth_VirtualShadowMap (compiled    2 times, average 0.35 sec, max 0.36 sec, min 0.33 sec)
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: Top 1 shader types by total compile time:
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display:              TShadowDepthPSPixelShadowDepth_VirtualShadowMap - 100.00% of total time (compiled    2 times, average 0.35 sec, max 0.36 sec, min 0.33 sec)
+[2025.02.11-03.29.25:037][331]LogShaderCompilers: Display: ================================================
+[2025.02.11-03.29.25:194][331]LogSlate: Took 0.007265 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2025.02.11-03.29.25:218][331]LogViewport: Scene viewport resized to 988x460, mode Windowed.
+[2025.02.11-03.29.25:490][337]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.25:513][338]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.29.29:660][632]LogSlate: Window 'NewAnimMontage' being destroyed
+[2025.02.11-03.29.29:665][632]LogSlate: Window 'NewAnimMontage' being destroyed
+[2025.02.11-03.29.29:679][632]LogWorld: UWorld::CleanupWorld for World_8, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-03.29.29:679][632]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-03.29.29:720][632]LogWorld: UWorld::CleanupWorld for World_9, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-03.29.29:720][632]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-03.29.32:539][941]LogUObjectHash: Compacting FUObjectHashTables data took   1.53ms
+[2025.02.11-03.29.35:455][941]LogSlate: Window 'Delete Assets' being destroyed
+[2025.02.11-03.29.35:465][941]LogUObjectGlobals: Force Deleting 1 Package(s):
+	Asset Name: /Game/CU_Animations/Character/Roll/NewAnimMontage.NewAnimMontage
+	Asset Type: AnimMontage
+[2025.02.11-03.29.35:752][941]LogUObjectHash: Compacting FUObjectHashTables data took   1.16ms
+[2025.02.11-03.29.35:767][941]LogUObjectHash: Compacting FUObjectHashTables data took   1.15ms
+[2025.02.11-03.29.35:778][941]LogUObjectHash: Compacting FUObjectHashTables data took   0.61ms
+[2025.02.11-04.15.13:443][287]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.084 and deleted 0 files with total size 0 MiB and 3 empty folders. Scanned 468 files in 855 folders with total size 20 MiB.
+[2025.02.11-05.15.13:432][248]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.072 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-06.15.13:436][225]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.076 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-07.15.14:931][188]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.078 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-08.15.14:925][161]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.071 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-09.15.14:930][137]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.076 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-10.15.14:927][110]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.072 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-11.15.14:928][ 76]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.073 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-12.15.14:929][ 55]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.073 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-13.15.14:928][ 30]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.072 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-14.15.14:933][  4]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.076 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-15.15.14:932][885]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.074 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-16.15.16:393][862]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.078 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-17.15.16:385][834]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.069 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-18.15.16:390][810]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.074 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-19.15.16:391][786]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.074 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-20.15.16:390][749]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.073 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-21.15.16:392][717]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.074 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-22.15.16:394][682]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.076 and deleted 0 files with total size 0 MiB and 0 empty folders. Scanned 468 files in 852 folders with total size 20 MiB.
+[2025.02.11-22.45.58:726][193]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.45.58:796][195]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.46.05:890][960]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.46.05:891][960]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.46.05:891][960]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-22.46.35:342][919]LogSlate: External Image Picker: DecompressImage failed
+[2025.02.11-22.47.35:494][139]LogSlate: Window 'Project Settings' being destroyed
+[2025.02.11-22.47.35:499][139]LogSlate: Window 'Project Settings' being destroyed
+[2025.02.11-22.47.47:536][108]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-22.47.47:549][108]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-22.47.47:564][109]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-22.47.50:158][325]LogContentBrowser: Attempting asset rename: NewFolder -> Input
+[2025.02.11-22.47.50:159][325]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-22.47.54:092][654]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-22.47.54:101][654]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-22.47.54:164][656]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-22.47.56:195][827]LogContentBrowser: Attempting asset rename: NewFolder -> Action
+[2025.02.11-22.47.56:195][827]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-22.48.06:981][799]LogContentBrowser: Deferred new asset file creation: NewInputAction
+[2025.02.11-22.48.06:990][799]LogContentBrowser: Creating deferred item: NewInputAction
+[2025.02.11-22.48.07:054][801]LogContentBrowser: Renaming the item being created (Deferred Item: NewInputAction).
+[2025.02.11-22.48.20:511][953]LogContentBrowser: Attempting asset rename: NewInputAction -> IA_Dash
+[2025.02.11-22.48.20:512][953]LogContentBrowser: End creating deferred item NewInputAction
+[2025.02.11-22.48.39:987][679]LogAssetEditorSubsystem: Opening Asset editor for InputAction /Game/Input/Action/IA_Dash.IA_Dash
+[2025.02.11-22.49.23:454][865]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.49.23:483][865]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Input/Actions/IA_Dash
+[2025.02.11-22.49.23:483][865]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/IA_DashE29DD8954756F9099CCD0CAFEEBE73DF.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Input/Actions/IA_Dash.uasset'
+[2025.02.11-22.49.23:490][865]LogFileHelpers: InternalPromptForCheckoutAndSave took 35 ms (total: 884 ms)
+[2025.02.11-22.49.23:520][865]LogUObjectHash: Compacting FUObjectHashTables data took   1.68ms
+[2025.02.11-22.49.23:540][865]LogUObjectHash: Compacting FUObjectHashTables data took   1.26ms
+[2025.02.11-22.49.23:555][865]LogUObjectHash: Compacting FUObjectHashTables data took   0.65ms
+[2025.02.11-22.49.23:568][865]AssetCheck: New page: Asset Save: IA_Dash
+[2025.02.11-22.49.23:568][865]LogContentValidation: Display: Validating /Script/EnhancedInput.InputAction /Game/ThirdPerson/Input/Actions/IA_Dash.IA_Dash
+[2025.02.11-22.49.33:382][873]LogSlate: Window 'IA_Dash' being destroyed
+[2025.02.11-22.49.33:387][873]LogSlate: Window 'IA_Dash' being destroyed
+[2025.02.11-22.49.33:390][873]LogWorld: UWorld::CleanupWorld for World_14, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-22.49.33:390][873]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-22.49.34:185][954]LogAssetEditorSubsystem: Opening Asset editor for InputMappingContext /Game/ThirdPerson/Input/IMC_Default.IMC_Default
+[2025.02.11-22.50.10:878][873]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.50.10:917][873]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/ThirdPerson/Input/IMC_Default" FILE="../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Input/IMC_Default.uasset" SILENT=true
+[2025.02.11-22.50.10:919][873]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Input/IMC_Default
+[2025.02.11-22.50.10:920][873]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/IMC_DefaultD991B59648F676CA389D8EA4B6A3C7F8.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Input/IMC_Default.uasset'
+[2025.02.11-22.50.10:926][873]LogFileHelpers: InternalPromptForCheckoutAndSave took 49 ms (total: 933 ms)
+[2025.02.11-22.50.10:930][873]AssetCheck: New page: Asset Save: IMC_Default
+[2025.02.11-22.50.10:931][873]LogContentValidation: Display: Validating /Script/EnhancedInput.InputMappingContext /Game/ThirdPerson/Input/IMC_Default.IMC_Default
+[2025.02.11-22.50.11:726][957]LogSlate: Window 'IMC_Default' being destroyed
+[2025.02.11-22.50.11:731][957]LogSlate: Window 'IMC_Default' being destroyed
+[2025.02.11-22.50.16:296][464]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.50.16:296][464]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.50.16:296][464]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-22.51.28:202][ 34]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.51.28:258][ 34]LogUObjectHash: Compacting FUObjectHashTables data took   1.53ms
+[2025.02.11-22.52.46:685][127]LogEditorTransaction: Undo Move Node
+[2025.02.11-22.54.17:098][940]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.54.17:167][940]LogUObjectHash: Compacting FUObjectHashTables data took   1.87ms
+[2025.02.11-22.54.17:542][955]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.54.17:627][955]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter
+[2025.02.11-22.54.17:627][955]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacterD24ED9E24C8B0EA992F21D94685321C5.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset'
+[2025.02.11-22.54.17:635][955]LogFileHelpers: InternalPromptForCheckoutAndSave took 92 ms (total: 1.02 sec)
+[2025.02.11-22.54.17:637][955]AssetCheck: New page: Asset Save: BP_ThirdPersonCharacter
+[2025.02.11-22.54.17:637][955]LogContentValidation: Display: Validating /Script/Engine.Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.54.19:901][181]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2025.02.11-22.54.19:906][181]LogContentBundle: [ThirdPersonMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2025.02.11-22.54.19:906][181]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' started...
+[2025.02.11-22.54.19:908][181]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' took 1 ms (total: 6 ms)
+[2025.02.11-22.54.19:908][181]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2025.02.11-22.54.19:908][181]PIE: New page: PIE session: ThirdPersonMap (Feb 11, 2025, 8:54:19 AM)
+[2025.02.11-22.54.19:908][181]LogPlayLevel: Creating play world package: /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-22.54.19:912][181]LogPlayLevel: PIE: StaticDuplicateObject took: (0.003328s)
+[2025.02.11-22.54.19:912][181]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap to /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap (0.003356s)
+[2025.02.11-22.54.19:927][181]LogUObjectHash: Compacting FUObjectHashTables data took   1.36ms
+[2025.02.11-22.54.19:934][181]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.54.19:934][181]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-22.54.19:935][181]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2025.02.11-22.54.19:935][181]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2025.02.11-22.54.19:935][181]LogWorldPartition: Display: WorldPartition initialize started...
+[2025.02.11-22.54.19:935][181]LogWorldPartition: UWorldPartition::Initialize : World = ThirdPersonMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2025.02.11-22.54.19:935][181]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2025.02.11-22.54.19:936][181]LogContentBundle: [ThirdPersonMap(Standalone)] Creating new contrainer.
+[2025.02.11-22.54.19:936][181]LogWorldPartition: Display: WorldPartition initialize took 1 ms (total: 67 ms)
+[2025.02.11-22.54.19:936][181]LogPlayLevel: PIE: World Init took: (0.002279s)
+[2025.02.11-22.54.19:936][181]LogAudio: Display: Creating Audio Device:                 Id: 4, Scope: Unique, Realtime: True
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2025.02.11-22.54.19:936][181]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2025.02.11-22.54.19:936][181]LogAudio: Display: AudioDevice MaxSources: 32
+[2025.02.11-22.54.19:937][181]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2025.02.11-22.54.19:937][181]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2025.02.11-22.54.19:937][181]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2025.02.11-22.54.19:939][181]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2025.02.11-22.54.19:960][181]LogAudioMixer: Display: Using Audio Hardware Device Headphones (Oculus Virtual Audio Device)
+[2025.02.11-22.54.19:960][181]LogAudioMixer: Display: Initializing Sound Submixes...
+[2025.02.11-22.54.19:960][181]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2025.02.11-22.54.19:960][181]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2025.02.11-22.54.19:961][181]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=4
+[2025.02.11-22.54.19:961][181]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=4
+[2025.02.11-22.54.19:962][181]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=4
+[2025.02.11-22.54.19:962][181]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=4
+[2025.02.11-22.54.19:962][181]LogInit: FAudioDevice initialized with ID 4.
+[2025.02.11-22.54.19:962][181]LogAudio: Display: Audio Device (ID: 4) registered with world 'ThirdPersonMap'.
+[2025.02.11-22.54.19:962][181]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 4
+[2025.02.11-22.54.19:967][181]LogLoad: Game class is 'BP_ThirdPersonGameMode_C'
+[2025.02.11-22.54.19:969][181]LogWorld: Bringing World /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap up for play (max tick rate 0) at 2025.02.11-15.54.19
+[2025.02.11-22.54.19:969][181]LogWorld: Bringing up level for play took: 0.001850
+[2025.02.11-22.54.19:971][181]LogOnline: OSS: Created online subsystem instance for: :Context_19
+[2025.02.11-22.54.19:974][181]PIE: Server logged in
+[2025.02.11-22.54.19:975][181]PIE: Play in editor total start time 0.07 seconds.
+[2025.02.11-22.54.51:690][821]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-22.54.51:690][821]LogWorld: BeginTearingDown for /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-22.54.51:690][821]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-22.54.51:691][821]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-22.54.51:691][821]LogContentBundle: [ThirdPersonMap(Standalone)] Deleting container.
+[2025.02.11-22.54.51:696][821]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2025.02.11-22.54.51:701][821]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-22.54.51:718][821]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2025.02.11-22.54.51:718][821]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 4
+[2025.02.11-22.54.51:718][821]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=4
+[2025.02.11-22.54.51:720][821]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=4
+[2025.02.11-22.54.51:723][821]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-22.54.51:726][821]LogUObjectHash: Compacting FUObjectHashTables data took   1.29ms
+[2025.02.11-22.54.51:760][822]LogPlayLevel: Display: Destroying online subsystem :Context_19
+[2025.02.11-22.55.44:252][502]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.55.44:306][502]LogUObjectHash: Compacting FUObjectHashTables data took   1.29ms
+[2025.02.11-22.55.48:973][834]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.55.49:027][834]LogUObjectHash: Compacting FUObjectHashTables data took   1.33ms
+[2025.02.11-22.55.49:471][857]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.55.49:552][857]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter
+[2025.02.11-22.55.49:553][857]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacter2B94A7C14DACD7D6ED504EB113D8ECEB.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset'
+[2025.02.11-22.55.49:560][857]LogFileHelpers: InternalPromptForCheckoutAndSave took 88 ms (total: 1.11 sec)
+[2025.02.11-22.55.49:564][857]AssetCheck: New page: Asset Save: BP_ThirdPersonCharacter
+[2025.02.11-22.55.49:564][857]LogContentValidation: Display: Validating /Script/Engine.Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.55.58:148][498]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.55.58:202][498]LogUObjectHash: Compacting FUObjectHashTables data took   1.33ms
+[2025.02.11-22.55.58:527][516]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.55.58:604][516]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter
+[2025.02.11-22.55.58:605][516]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacterEB96A03A4F878C13E0893795CB237115.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset'
+[2025.02.11-22.55.58:612][516]LogFileHelpers: InternalPromptForCheckoutAndSave took 85 ms (total: 1.19 sec)
+[2025.02.11-22.55.58:616][516]AssetCheck: New page: Asset Save: BP_ThirdPersonCharacter
+[2025.02.11-22.55.58:616][516]LogContentValidation: Display: Validating /Script/Engine.Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.56.03:795][921]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-22.56.03:848][921]LogUObjectHash: Compacting FUObjectHashTables data took   1.28ms
+[2025.02.11-22.56.04:295][946]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-22.56.04:377][946]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter
+[2025.02.11-22.56.04:377][946]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacter8A62237F4845E886751981931B7023BD.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset'
+[2025.02.11-22.56.04:385][946]LogFileHelpers: InternalPromptForCheckoutAndSave took 90 ms (total: 1.28 sec)
+[2025.02.11-22.56.04:392][946]AssetCheck: New page: Asset Save: BP_ThirdPersonCharacter
+[2025.02.11-22.56.04:392][946]LogContentValidation: Display: Validating /Script/Engine.Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-22.56.05:922][ 89]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2025.02.11-22.56.05:927][ 89]LogContentBundle: [ThirdPersonMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2025.02.11-22.56.05:927][ 89]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' started...
+[2025.02.11-22.56.05:929][ 89]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' took 2 ms (total: 8 ms)
+[2025.02.11-22.56.05:929][ 89]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2025.02.11-22.56.05:929][ 89]PIE: New page: PIE session: ThirdPersonMap (Feb 11, 2025, 8:56:05 AM)
+[2025.02.11-22.56.05:960][ 89]LogPlayLevel: Creating play world package: /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-22.56.05:963][ 89]LogPlayLevel: PIE: StaticDuplicateObject took: (0.003370s)
+[2025.02.11-22.56.05:963][ 89]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap to /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap (0.003412s)
+[2025.02.11-22.56.05:979][ 89]LogUObjectHash: Compacting FUObjectHashTables data took   1.13ms
+[2025.02.11-22.56.05:984][ 89]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-22.56.05:984][ 89]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-22.56.05:985][ 89]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2025.02.11-22.56.05:985][ 89]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2025.02.11-22.56.05:985][ 89]LogWorldPartition: Display: WorldPartition initialize started...
+[2025.02.11-22.56.05:985][ 89]LogWorldPartition: UWorldPartition::Initialize : World = ThirdPersonMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2025.02.11-22.56.05:985][ 89]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2025.02.11-22.56.05:986][ 89]LogContentBundle: [ThirdPersonMap(Standalone)] Creating new contrainer.
+[2025.02.11-22.56.05:986][ 89]LogWorldPartition: Display: WorldPartition initialize took 979 us (total: 68 ms)
+[2025.02.11-22.56.05:986][ 89]LogPlayLevel: PIE: World Init took: (0.002108s)
+[2025.02.11-22.56.05:986][ 89]LogAudio: Display: Creating Audio Device:                 Id: 5, Scope: Unique, Realtime: True
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2025.02.11-22.56.05:986][ 89]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2025.02.11-22.56.05:987][ 89]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2025.02.11-22.56.05:987][ 89]LogAudio: Display: AudioDevice MaxSources: 32
+[2025.02.11-22.56.05:987][ 89]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2025.02.11-22.56.05:987][ 89]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2025.02.11-22.56.05:987][ 89]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2025.02.11-22.56.05:989][ 89]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2025.02.11-22.56.06:008][ 89]LogAudioMixer: Display: Using Audio Hardware Device Headphones (Oculus Virtual Audio Device)
+[2025.02.11-22.56.06:008][ 89]LogAudioMixer: Display: Initializing Sound Submixes...
+[2025.02.11-22.56.06:008][ 89]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2025.02.11-22.56.06:008][ 89]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2025.02.11-22.56.06:010][ 89]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=5
+[2025.02.11-22.56.06:010][ 89]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=5
+[2025.02.11-22.56.06:011][ 89]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=5
+[2025.02.11-22.56.06:011][ 89]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=5
+[2025.02.11-22.56.06:011][ 89]LogInit: FAudioDevice initialized with ID 5.
+[2025.02.11-22.56.06:011][ 89]LogAudio: Display: Audio Device (ID: 5) registered with world 'ThirdPersonMap'.
+[2025.02.11-22.56.06:011][ 89]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 5
+[2025.02.11-22.56.06:014][ 89]LogLoad: Game class is 'BP_ThirdPersonGameMode_C'
+[2025.02.11-22.56.06:016][ 89]LogWorld: Bringing World /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap up for play (max tick rate 0) at 2025.02.11-15.56.06
+[2025.02.11-22.56.06:016][ 89]LogWorld: Bringing up level for play took: 0.001530
+[2025.02.11-22.56.06:017][ 89]LogOnline: OSS: Created online subsystem instance for: :Context_20
+[2025.02.11-22.56.06:021][ 89]PIE: Server logged in
+[2025.02.11-22.56.06:022][ 89]PIE: Play in editor total start time 0.095 seconds.
+[2025.02.11-22.56.15:101][129]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-22.56.15:101][129]LogWorld: BeginTearingDown for /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-22.56.15:101][129]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-22.56.15:101][129]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-22.56.15:101][129]LogContentBundle: [ThirdPersonMap(Standalone)] Deleting container.
+[2025.02.11-22.56.15:104][129]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2025.02.11-22.56.15:108][129]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-22.56.15:123][129]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2025.02.11-22.56.15:123][129]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 5
+[2025.02.11-22.56.15:123][129]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=5
+[2025.02.11-22.56.15:125][129]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=5
+[2025.02.11-22.56.15:128][129]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-22.56.15:132][129]LogUObjectHash: Compacting FUObjectHashTables data took   1.25ms
+[2025.02.11-22.56.15:206][131]LogPlayLevel: Display: Destroying online subsystem :Context_20
+[2025.02.11-22.56.18:404][502]LogSlate: Window 'Content Browser' being destroyed
+[2025.02.11-22.56.18:407][502]LogSlate: Window 'Content Browser' being destroyed
+[2025.02.11-22.56.25:802][870]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-22.56.25:807][870]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-22.56.25:810][870]LogWorld: UWorld::CleanupWorld for World_15, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-22.56.25:810][870]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
