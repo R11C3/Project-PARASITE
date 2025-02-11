@@ -1507,3 +1507,251 @@ LogConfig: Set CVar [[r.Shadow.DetectVertexShaderLayerAtRuntime:1]]
 [2025.02.11-02.13.25:827][  1]LogAssetRegistry: AssetRegistryGather time 5.0726s: AssetDataDiscovery 0.0520s, AssetDataGather 4.9746s, StoreResults 0.0460s.
 [2025.02.11-02.13.25:846][  1]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000004 seconds (updated 0 objects)
 [2025.02.11-02.13.25:898][  1]LogD3D12RHI: Cannot end block when stack is empty
+[2025.02.11-02.15.16:815][434]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:03.456 and deleted 1876 files with total size 41 MiB and 1867 empty folders. Scanned 2266 files in 3046 folders with total size 54 MiB.
+[2025.02.11-02.54.39:318][  3]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2025.02.11-02.54.39:323][  3]LogContentBundle: [ThirdPersonMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2025.02.11-02.54.39:324][  3]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' started...
+[2025.02.11-02.54.39:327][  3]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' took 3 ms
+[2025.02.11-02.54.39:332][  3]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2025.02.11-02.54.39:335][  3]PIE: New page: PIE session: ThirdPersonMap (Feb 10, 2025, 12:54:39 PM)
+[2025.02.11-02.54.39:339][  3]LogOnline: OSS: Created online subsystem instance for: NULL
+[2025.02.11-02.54.39:340][  3]LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for type [NULL]
+[2025.02.11-02.54.39:341][  3]LogPlayLevel: Creating play world package: /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-02.54.39:348][  3]LogPlayLevel: PIE: StaticDuplicateObject took: (0.007059s)
+[2025.02.11-02.54.39:348][  3]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap to /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap (0.007098s)
+[2025.02.11-02.54.39:353][  3]LogUObjectHash: Compacting FUObjectHashTables data took   0.61ms
+[2025.02.11-02.54.39:355][  3]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-02.54.39:355][  3]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-02.54.39:356][  3]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2025.02.11-02.54.39:357][  3]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2025.02.11-02.54.39:357][  3]LogWorldPartition: Display: WorldPartition initialize started...
+[2025.02.11-02.54.39:357][  3]LogWorldPartition: UWorldPartition::Initialize : World = ThirdPersonMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2025.02.11-02.54.39:358][  3]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2025.02.11-02.54.39:359][  3]LogContentBundle: [ThirdPersonMap(Standalone)] Creating new contrainer.
+[2025.02.11-02.54.39:359][  3]LogWorldPartition: Display: WorldPartition initialize took 1 ms (total: 65 ms)
+[2025.02.11-02.54.39:359][  3]LogPlayLevel: PIE: World Init took: (0.004663s)
+[2025.02.11-02.54.39:361][  3]LogAudio: Display: Creating Audio Device:                 Id: 2, Scope: Unique, Realtime: True
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2025.02.11-02.54.39:361][  3]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2025.02.11-02.54.39:361][  3]LogAudio: Display: AudioDevice MaxSources: 32
+[2025.02.11-02.54.39:361][  3]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2025.02.11-02.54.39:361][  3]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2025.02.11-02.54.39:361][  3]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2025.02.11-02.54.39:362][  3]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2025.02.11-02.54.39:381][  3]LogAudioMixer: Display: Using Audio Hardware Device Headphones (Oculus Virtual Audio Device)
+[2025.02.11-02.54.39:381][  3]LogAudioMixer: Display: Initializing Sound Submixes...
+[2025.02.11-02.54.39:381][  3]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2025.02.11-02.54.39:381][  3]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2025.02.11-02.54.39:382][  3]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=2
+[2025.02.11-02.54.39:382][  3]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=2
+[2025.02.11-02.54.39:383][  3]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=2
+[2025.02.11-02.54.39:383][  3]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=2
+[2025.02.11-02.54.39:383][  3]LogInit: FAudioDevice initialized with ID 2.
+[2025.02.11-02.54.39:383][  3]LogAudio: Display: Audio Device (ID: 2) registered with world 'ThirdPersonMap'.
+[2025.02.11-02.54.39:383][  3]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 2
+[2025.02.11-02.54.39:392][  3]LogLoad: Game class is 'BP_ThirdPersonGameMode_C'
+[2025.02.11-02.54.39:394][  3]LogWorld: Bringing World /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap up for play (max tick rate 0) at 2025.02.10-19.54.39
+[2025.02.11-02.54.39:397][  3]LogWorld: Bringing up level for play took: 0.003753
+[2025.02.11-02.54.39:399][  3]LogOnline: OSS: Created online subsystem instance for: :Context_1
+[2025.02.11-02.54.39:470][  3]PIE: Server logged in
+[2025.02.11-02.54.39:471][  3]PIE: Play in editor total start time 0.15 seconds.
+[2025.02.11-02.54.45:297][575]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-02.54.45:297][575]LogWorld: BeginTearingDown for /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-02.54.45:298][575]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-02.54.45:300][575]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-02.54.45:300][575]LogContentBundle: [ThirdPersonMap(Standalone)] Deleting container.
+[2025.02.11-02.54.45:305][575]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2025.02.11-02.54.45:307][575]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-02.54.45:311][575]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2025.02.11-02.54.45:311][575]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 2
+[2025.02.11-02.54.45:311][575]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2025.02.11-02.54.45:312][575]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=2
+[2025.02.11-02.54.45:316][575]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-02.54.45:321][575]LogUObjectHash: Compacting FUObjectHashTables data took   0.55ms
+[2025.02.11-02.54.45:383][577]LogPlayLevel: Display: Destroying online subsystem :Context_1
+[2025.02.11-02.54.50:380][ 74]LogStatusBar: Looking status bar with open content browser drawer...
+[2025.02.11-02.54.50:380][ 74]LogStatusBar: Using status bar: LevelEditor.StatusBar to dock content browser
+[2025.02.11-02.54.54:263][351]LogSlate: Window 'Content Browser 2' being destroyed
+[2025.02.11-02.54.54:283][351]LogViewport: Scene viewport resized to 2038x623, mode Windowed.
+[2025.02.11-02.54.55:437][482]LogViewport: Scene viewport resized to 2038x625, mode Windowed.
+[2025.02.11-02.54.55:454][483]LogViewport: Scene viewport resized to 2038x632, mode Windowed.
+[2025.02.11-02.54.55:480][484]LogViewport: Scene viewport resized to 2038x645, mode Windowed.
+[2025.02.11-02.54.55:506][485]LogViewport: Scene viewport resized to 2038x665, mode Windowed.
+[2025.02.11-02.54.55:535][486]LogViewport: Scene viewport resized to 2038x704, mode Windowed.
+[2025.02.11-02.54.55:561][487]LogViewport: Scene viewport resized to 2038x741, mode Windowed.
+[2025.02.11-02.54.55:588][488]LogViewport: Scene viewport resized to 2038x777, mode Windowed.
+[2025.02.11-02.54.55:614][489]LogViewport: Scene viewport resized to 2038x806, mode Windowed.
+[2025.02.11-02.54.55:642][490]LogViewport: Scene viewport resized to 2038x842, mode Windowed.
+[2025.02.11-02.54.55:667][491]LogViewport: Scene viewport resized to 2038x871, mode Windowed.
+[2025.02.11-02.54.55:696][492]LogViewport: Scene viewport resized to 2038x906, mode Windowed.
+[2025.02.11-02.54.55:722][493]LogViewport: Scene viewport resized to 2038x935, mode Windowed.
+[2025.02.11-02.54.55:747][494]LogViewport: Scene viewport resized to 2038x960, mode Windowed.
+[2025.02.11-02.54.55:775][495]LogViewport: Scene viewport resized to 2038x982, mode Windowed.
+[2025.02.11-02.54.55:802][496]LogViewport: Scene viewport resized to 2038x1003, mode Windowed.
+[2025.02.11-02.54.55:828][497]LogViewport: Scene viewport resized to 2038x1022, mode Windowed.
+[2025.02.11-02.54.55:854][498]LogViewport: Scene viewport resized to 2038x1035, mode Windowed.
+[2025.02.11-02.54.55:879][499]LogViewport: Scene viewport resized to 2038x1041, mode Windowed.
+[2025.02.11-02.54.55:907][500]LogViewport: Scene viewport resized to 2038x1047, mode Windowed.
+[2025.02.11-02.54.55:932][501]LogViewport: Scene viewport resized to 2038x1049, mode Windowed.
+[2025.02.11-02.54.55:958][502]LogViewport: Scene viewport resized to 2038x1055, mode Windowed.
+[2025.02.11-02.54.55:984][503]LogViewport: Scene viewport resized to 2038x1063, mode Windowed.
+[2025.02.11-02.54.56:009][504]LogViewport: Scene viewport resized to 2038x1070, mode Windowed.
+[2025.02.11-02.54.56:034][505]LogViewport: Scene viewport resized to 2038x1072, mode Windowed.
+[2025.02.11-02.54.56:060][506]LogViewport: Scene viewport resized to 2038x1076, mode Windowed.
+[2025.02.11-02.54.56:081][507]LogViewport: Scene viewport resized to 2038x1077, mode Windowed.
+[2025.02.11-02.54.56:234][523]LogViewport: Scene viewport resized to 2038x1075, mode Windowed.
+[2025.02.11-02.54.56:262][524]LogViewport: Scene viewport resized to 2038x1064, mode Windowed.
+[2025.02.11-02.54.56:285][525]LogViewport: Scene viewport resized to 2038x1051, mode Windowed.
+[2025.02.11-02.54.56:311][526]LogViewport: Scene viewport resized to 2038x1037, mode Windowed.
+[2025.02.11-02.54.56:337][527]LogViewport: Scene viewport resized to 2038x1021, mode Windowed.
+[2025.02.11-02.54.56:365][528]LogViewport: Scene viewport resized to 2038x997, mode Windowed.
+[2025.02.11-02.54.56:390][529]LogViewport: Scene viewport resized to 2038x980, mode Windowed.
+[2025.02.11-02.54.56:416][530]LogViewport: Scene viewport resized to 2038x969, mode Windowed.
+[2025.02.11-02.54.56:442][531]LogViewport: Scene viewport resized to 2038x956, mode Windowed.
+[2025.02.11-02.54.56:467][532]LogViewport: Scene viewport resized to 2038x940, mode Windowed.
+[2025.02.11-02.54.56:493][533]LogViewport: Scene viewport resized to 2038x927, mode Windowed.
+[2025.02.11-02.54.56:520][534]LogViewport: Scene viewport resized to 2038x915, mode Windowed.
+[2025.02.11-02.54.56:548][535]LogViewport: Scene viewport resized to 2038x906, mode Windowed.
+[2025.02.11-02.54.56:575][536]LogViewport: Scene viewport resized to 2038x902, mode Windowed.
+[2025.02.11-02.54.56:601][537]LogViewport: Scene viewport resized to 2038x895, mode Windowed.
+[2025.02.11-02.54.56:627][538]LogViewport: Scene viewport resized to 2038x884, mode Windowed.
+[2025.02.11-02.54.56:652][539]LogViewport: Scene viewport resized to 2038x881, mode Windowed.
+[2025.02.11-02.54.56:677][540]LogViewport: Scene viewport resized to 2038x880, mode Windowed.
+[2025.02.11-02.54.56:703][541]LogViewport: Scene viewport resized to 2038x878, mode Windowed.
+[2025.02.11-02.54.57:061][582]LogViewport: Scene viewport resized to 2038x879, mode Windowed.
+[2025.02.11-02.54.57:078][583]LogViewport: Scene viewport resized to 2038x880, mode Windowed.
+[2025.02.11-02.54.57:102][584]LogViewport: Scene viewport resized to 2038x883, mode Windowed.
+[2025.02.11-02.54.57:123][585]LogViewport: Scene viewport resized to 2038x884, mode Windowed.
+[2025.02.11-02.54.57:148][586]LogViewport: Scene viewport resized to 2038x886, mode Windowed.
+[2025.02.11-02.54.57:169][587]LogViewport: Scene viewport resized to 2038x887, mode Windowed.
+[2025.02.11-02.54.57:193][588]LogViewport: Scene viewport resized to 2038x889, mode Windowed.
+[2025.02.11-02.57.19:442][623]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2025.02.11-02.57.19:447][623]LogContentBundle: [ThirdPersonMap(Standalone)] Generating Streaming for 0 Content Bundles.
+[2025.02.11-02.57.19:447][623]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' started...
+[2025.02.11-02.57.19:449][623]LogWorldPartition: Display: GenerateStreaming for 'ThirdPersonMap' took 1 ms (total: 4 ms)
+[2025.02.11-02.57.19:449][623]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2025.02.11-02.57.19:449][623]PIE: New page: PIE session: ThirdPersonMap (Feb 10, 2025, 12:57:19 PM)
+[2025.02.11-02.57.19:472][623]LogPlayLevel: Creating play world package: /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-02.57.19:475][623]LogPlayLevel: PIE: StaticDuplicateObject took: (0.003234s)
+[2025.02.11-02.57.19:475][623]LogPlayLevel: PIE: Created PIE world by copying editor world from /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap to /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap (0.003270s)
+[2025.02.11-02.57.19:479][623]LogUObjectHash: Compacting FUObjectHashTables data took   0.46ms
+[2025.02.11-02.57.19:480][623]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-02.57.19:480][623]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-02.57.19:480][623]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2025.02.11-02.57.19:481][623]LogWorldPartition: ULevel::OnLevelLoaded(ThirdPersonMap)(bIsOwningWorldGameWorld=1, bIsOwningWorldPartitioned=1, InitializeForMainWorld=1, InitializeForEditor=0, InitializeForGame=1)
+[2025.02.11-02.57.19:481][623]LogWorldPartition: Display: WorldPartition initialize started...
+[2025.02.11-02.57.19:481][623]LogWorldPartition: UWorldPartition::Initialize : World = ThirdPersonMap, World Type = PIE, IsMainWorldPartition = 1, Location = V(0), Rotation = R(0), IsEditor = 0, IsGame = 0, IsPIEWorldTravel = 0, IsCooking = 0
+[2025.02.11-02.57.19:481][623]LogWorldPartition: UWorldPartition::Initialize Context : World NetMode = Standalone, IsServer = 0, IsDedicatedServer = 0, IsServerStreamingEnabled = 0, IsServerStreamingOutEnabled = 0, IsUsingMakingVisibleTransaction = 0, IsUsingMakingInvisibleTransaction = 0
+[2025.02.11-02.57.19:482][623]LogContentBundle: [ThirdPersonMap(Standalone)] Creating new contrainer.
+[2025.02.11-02.57.19:482][623]LogWorldPartition: Display: WorldPartition initialize took 816 us (total: 66 ms)
+[2025.02.11-02.57.19:482][623]LogPlayLevel: PIE: World Init took: (0.001875s)
+[2025.02.11-02.57.19:482][623]LogAudio: Display: Creating Audio Device:                 Id: 3, Scope: Unique, Realtime: True
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Number of buffers to queue:			  1
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Max Channels (voices):				  32
+[2025.02.11-02.57.19:482][623]LogAudioMixer: Display: 	Number of Async Source Workers:		  4
+[2025.02.11-02.57.19:482][623]LogAudio: Display: AudioDevice MaxSources: 32
+[2025.02.11-02.57.19:482][623]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2025.02.11-02.57.19:482][623]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2025.02.11-02.57.19:482][623]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2025.02.11-02.57.19:484][623]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2025.02.11-02.57.19:503][623]LogAudioMixer: Display: Using Audio Hardware Device Headphones (Oculus Virtual Audio Device)
+[2025.02.11-02.57.19:503][623]LogAudioMixer: Display: Initializing Sound Submixes...
+[2025.02.11-02.57.19:503][623]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2025.02.11-02.57.19:503][623]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2025.02.11-02.57.19:505][623]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=3
+[2025.02.11-02.57.19:505][623]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=3
+[2025.02.11-02.57.19:506][623]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=3
+[2025.02.11-02.57.19:506][623]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=3
+[2025.02.11-02.57.19:506][623]LogInit: FAudioDevice initialized with ID 3.
+[2025.02.11-02.57.19:506][623]LogAudio: Display: Audio Device (ID: 3) registered with world 'ThirdPersonMap'.
+[2025.02.11-02.57.19:506][623]LogAudioMixer: Initializing Audio Bus Subsystem for audio device with ID 3
+[2025.02.11-02.57.19:509][623]LogLoad: Game class is 'BP_ThirdPersonGameMode_C'
+[2025.02.11-02.57.19:511][623]LogWorld: Bringing World /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap.ThirdPersonMap up for play (max tick rate 0) at 2025.02.10-19.57.19
+[2025.02.11-02.57.19:512][623]LogWorld: Bringing up level for play took: 0.001566
+[2025.02.11-02.57.19:514][623]LogOnline: OSS: Created online subsystem instance for: :Context_2
+[2025.02.11-02.57.19:517][623]PIE: Server logged in
+[2025.02.11-02.57.19:518][623]PIE: Play in editor total start time 0.071 seconds.
+[2025.02.11-02.57.25:462][288]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-02.57.25:462][288]LogWorld: BeginTearingDown for /Game/ThirdPerson/Maps/UEDPIE_0_ThirdPersonMap
+[2025.02.11-02.57.25:462][288]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-02.57.25:463][288]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-02.57.25:463][288]LogContentBundle: [ThirdPersonMap(Standalone)] Deleting container.
+[2025.02.11-02.57.25:465][288]LogPlayLevel: Display: Shutting down PIE online subsystems
+[2025.02.11-02.57.25:467][288]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-02.57.25:471][288]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2025.02.11-02.57.25:471][288]LogAudioMixer: Deinitializing Audio Bus Subsystem for audio device with ID 3
+[2025.02.11-02.57.25:471][288]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=3
+[2025.02.11-02.57.25:472][288]LogAudioMixer: FMixerPlatformXAudio2::StopAudioStream() called. InstanceID=3
+[2025.02.11-02.57.25:477][288]LogUObjectHash: Compacting FUObjectHashTables data took   0.48ms
+[2025.02.11-02.57.25:533][292]LogPlayLevel: Display: Destroying online subsystem :Context_2
+[2025.02.11-02.57.27:719][545]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-02.57.29:904][751]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-02.57.29:907][751]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-02.57.29:907][751]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-02.57.29:921][751]LogSlate: Warning: The command 'BlueprintEditorSpawnNodes.AddActorRefAction->CommandInfo' has the same default chord as 'BlueprintEditorSpawnNodes.(Class=/Script/BlueprintGraph.K2Node_Knot Key=R Shift=false Ctrl=false Alt=false)' [R]
+[2025.02.11-02.57.30:715][751]LogSlate: Took 0.000275 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2025.02.11-02.57.31:087][752]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-02.57.31:173][753]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.08.17:121][508]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-03.08.17:126][508]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-03.08.17:131][508]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-03.08.17:131][508]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-03.08.22:053][ 31]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-03.08.22:063][ 31]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-03.08.22:072][ 32]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-03.08.32:204][237]LogContentBrowser: Attempting asset rename: NewFolder -> Character
+[2025.02.11-03.08.32:205][237]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-03.08.47:137][829]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-03.08.47:137][829]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.08.47:137][829]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2025.02.11-03.11.27:403][710]LogUObjectHash: Compacting FUObjectHashTables data took   1.23ms
+[2025.02.11-03.11.27:405][710]LogFileHelpers: Editor autosave (incl. external actors) for '/Game/ThirdPerson/Maps/ThirdPersonMap' took 0.025
+[2025.02.11-03.11.27:407][710]OBJ SavePackage: Generating thumbnails for [2] asset(s) in package [/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter] ([2] browsable assets)...
+[2025.02.11-03.11.27:408][710]LogWorldSubsystemInput: UEnhancedInputDeveloperSettings::bEnableWorldSubsystem is false, the world subsystem will not be created!
+[2025.02.11-03.11.27:485][710]OBJ SavePackage:     Rendered thumbnail for [BlueprintGeneratedClass /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter_C]
+[2025.02.11-03.11.27:490][710]OBJ SavePackage:     Rendered thumbnail for [Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter]
+[2025.02.11-03.11.27:490][710]OBJ SavePackage: Finished generating thumbnails for package [/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter]
+[2025.02.11-03.11.27:506][710]LogSavePackage: Moving output files for package: /Temp/Autosaves/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter_Auto1
+[2025.02.11-03.11.27:506][710]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacter_Auto1E09E3265441AC05D9483E38B5E7F670A.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/Autosaves/Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter_Auto1.uasset'
+[2025.02.11-03.11.27:507][710]LogFileHelpers: Auto-saving content packages took 0.101
+[2025.02.11-03.13.18:165][158]LogSlate: Took 0.006462 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensedItalic.ttf' (160K)
+[2025.02.11-03.14.25:312][202]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-03.14.25:380][202]LogUObjectHash: Compacting FUObjectHashTables data took   1.64ms
+[2025.02.11-03.15.13:504][850]LogDerivedDataCache: C:/Users/Sharp/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.145 and deleted 0 files with total size 0 MiB and 465 empty folders. Scanned 394 files in 1183 folders with total size 12 MiB.
+[2025.02.11-03.17.45:474][108]BlueprintLog: New page: Compile BP_ThirdPersonCharacter
+[2025.02.11-03.17.45:524][108]LogUObjectHash: Compacting FUObjectHashTables data took   1.19ms
+[2025.02.11-03.17.47:696][320]LogFileHelpers: InternalPromptForCheckoutAndSave started...
+[2025.02.11-03.17.47:774][320]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter
+[2025.02.11-03.17.47:775][320]LogSavePackage: Moving '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Saved/BP_ThirdPersonCharacter5FF08088414B13EDBFB1D1AC6EED13EA.tmp' to '../../../../../../Users/Sharp/Documents/GitHub/Ortho-Factory/MyProject2/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset'
+[2025.02.11-03.17.47:783][320]LogFileHelpers: InternalPromptForCheckoutAndSave took 86 ms (total: 848 ms)
+[2025.02.11-03.17.47:784][320]AssetCheck: New page: Asset Save: BP_ThirdPersonCharacter
+[2025.02.11-03.17.47:784][320]LogContentValidation: Display: Validating /Script/Engine.Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2025.02.11-03.17.49:240][464]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-03.17.49:246][464]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2025.02.11-03.17.49:249][464]LogWorld: UWorld::CleanupWorld for World_4, bSessionEnded=true, bCleanupResources=true
+[2025.02.11-03.17.49:249][464]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2025.02.11-03.18.01:753][873]LogSlate: Warning: Unable to rasterize '../../../Engine/Content/Editor/Slate/Starship/AssetIcons/SpecularProfile_64.svg'. File could not be found
+[2025.02.11-03.18.03:458][ 62]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-03.18.03:466][ 62]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-03.18.03:475][ 63]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-03.18.12:371][126]LogContentBrowser: Attempting asset rename: NewFolder -> CU_Animations
+[2025.02.11-03.18.12:371][126]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-03.18.15:884][514]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-03.18.15:893][514]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-03.18.15:952][516]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-03.18.19:330][922]LogContentBrowser: Attempting asset rename: NewFolder -> Character
+[2025.02.11-03.18.19:330][922]LogContentBrowser: End creating deferred item NewFolder
+[2025.02.11-03.19.47:795][945]LogContentBrowser: Deferred new asset folder creation: NewFolder
+[2025.02.11-03.19.47:805][945]LogContentBrowser: Creating deferred item: NewFolder
+[2025.02.11-03.19.47:863][947]LogContentBrowser: Renaming the item being created (Deferred Item: NewFolder).
+[2025.02.11-03.19.49:757][175]LogContentBrowser: Attempting asset rename: NewFolder -> Roll
+[2025.02.11-03.19.49:757][175]LogContentBrowser: End creating deferred item NewFolder
