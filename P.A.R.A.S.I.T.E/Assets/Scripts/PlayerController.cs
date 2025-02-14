@@ -6,19 +6,23 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float runSpeed = 2.0f;
-    [SerializeField] private float rotationFactorPerFrame = 15.0f;
+    [SerializeField] private float _speed = 5.0f;
+    [SerializeField] private float _dashDistance = 2.0f;
+    [SerializeField] private float _dashDelay = 1.0f;
+    [SerializeField] private float _rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
     private CharacterController characterController;
-    Animator animator;
+    private Animator animator;
 
-    private Vector2 currentMovementInput;
-    private Vector3 currentMovement;
-    private Vector3 currentRunMovement;
-    private bool isMovementPressed;
-    private bool isRunPressed;
+    private int isWalkingHash;
 
+    private Vector2 _currentMovementInput;
+    private Vector3 _currentMovement;
+    private Vector3 _dashDirection;
+
+    private bool _isMovementPressed;
+    private bool _isDashPressed;
+    private bool _canDash = true;
 
     void Awake()
     {
@@ -26,56 +30,73 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
+        isWalkingHash = Animator.StringToHash("isWalking");
+
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
         playerInput.CharacterControls.Move.performed += onMovementInput;
-        playerInput.CharacterControls.Run.started += onRun;
-        playerInput.CharacterControls.Run.canceled += onRun;
+        playerInput.CharacterControls.Dash.started += onDash;
+        playerInput.CharacterControls.Dash.canceled += onDash;
     }
 
     void onMovementInput (InputAction.CallbackContext context)
     {
-        currentMovementInput = context.ReadValue<Vector2>();
-        currentMovement.x = currentMovementInput.x;
-        currentMovement.z = currentMovementInput.y;
-        currentRunMovement.x = currentMovementInput.x * runSpeed;
-        currentRunMovement.z = currentMovementInput.y * runSpeed;
-        isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
+        _currentMovementInput = context.ReadValue<Vector2>();
+        _currentMovement.x = _currentMovementInput.x;
+        _currentMovement.z = _currentMovementInput.y;
+        _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
-    void onRun(InputAction.CallbackContext context)
+    void onDash (InputAction.CallbackContext context)
     {
-        isRunPressed = context.ReadValueAsButton(); 
+        _isDashPressed = context.ReadValueAsButton();
+    }
+
+    void handleMovement()
+    {
+        characterController.Move(_currentMovement * _speed * Time.deltaTime);
+    }
+
+    void handleDash()
+    {
+        if (_isDashPressed && _canDash)
+        {
+            _canDash = false;
+            _dashDirection.x = _currentMovement.x;
+            _dashDirection.z = _currentMovement.z;
+            characterController.Move(_dashDirection * _dashDistance * Time.deltaTime);
+            StartCoroutine(dashDelay());
+        }
     }
 
     void handleRotation()
     {
-        Vector3 positionToLookAt;
+        Vector3 _positionToLookAt;
 
-        positionToLookAt.x = currentMovement.x;
-        positionToLookAt.y = 0.0f;
-        positionToLookAt.z = currentMovement.z;
+        _positionToLookAt.x = _currentMovement.x;
+        _positionToLookAt.y = 0.0f;
+        _positionToLookAt.z = _currentMovement.z;
 
-        Quaternion currentRotation = currentRotation = transform.rotation;;
+        Quaternion _currentRotation = _currentRotation = transform.rotation;;
 
-        if (isMovementPressed)
+        if (_isMovementPressed)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(positionToLookAt);
-            transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, rotationFactorPerFrame * Time.deltaTime);
+            Quaternion _targetRotation = Quaternion.LookRotation(_positionToLookAt);
+            transform.rotation = Quaternion.Slerp(_currentRotation, _targetRotation, _rotationFactorPerFrame * Time.deltaTime);
         }
     }
 
     void handleAnimation()
     {
-        bool isWalking = animator.GetBool("isWalking");
+        bool _isWalking = animator.GetBool(isWalkingHash);
 
-        if (isMovementPressed && !isWalking)
+        if (_isMovementPressed && !_isWalking)
         {
-            animator.SetBool("isWalking", true);
+            animator.SetBool(isWalkingHash, true);
         }
-        else if (!isMovementPressed && isWalking)
+        else if (!_isMovementPressed && _isWalking)
         {
-            animator.SetBool("isWalking", false);
+            animator.SetBool(isWalkingHash, false);
         }
     }
 
@@ -83,13 +104,13 @@ public class PlayerController : MonoBehaviour
     {
         if (characterController.isGrounded)
         {
-            float groundedGravity = -0.5f;
-            currentMovement.y = groundedGravity;
+            float _groundedGravity = -0.5f;
+            _currentMovement.y = _groundedGravity;
         }
         else
         {
-            float gravity = -9.8f;
-            currentMovement.y = gravity;
+            float _gravity = -9.8f;
+            _currentMovement.y = _gravity;
         }
     }
 
@@ -98,15 +119,8 @@ public class PlayerController : MonoBehaviour
         handleRotation();
         handleAnimation();
         handleGravity();
-        if (isRunPressed)
-        {
-            characterController.Move(currentRunMovement * speed * Time.deltaTime);
-        }
-        else
-        {
-        characterController.Move(currentMovement * speed * Time.deltaTime);
-        }
-        
+        handleDash();
+        handleMovement();
     }
 
     void OnEnable()
@@ -117,6 +131,12 @@ public class PlayerController : MonoBehaviour
     void OnDisable()
     {
         playerInput.CharacterControls.Disable();
+    }
+
+    IEnumerator dashDelay()
+    {
+        yield return new WaitForSeconds(_dashDelay);
+        _canDash = true;
     }
 
 }
