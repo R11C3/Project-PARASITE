@@ -452,9 +452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d5a2f62744e6743b14f153698650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  dashDistance: 2
-  rotationFactorPerFrame: 15
+  _speed: 5
+  _dashDistance: 2
+  _dashDelay: 1
+  _rotationFactorPerFrame: 15
 --- !u!4 &1108765160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6e71c874eb843244a848fd668dddbe94,
