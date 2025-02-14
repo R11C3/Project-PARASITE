@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float runSpeed = 5.0f;
-    [SerializeField] private float rotationFactorPerFrame = 1.0f;
+    [SerializeField] private float runSpeed = 2.0f;
+    [SerializeField] private float rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
     private CharacterController characterController;
+    Animator animator;
 
     private Vector2 currentMovementInput;
     private Vector3 currentMovement;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
 
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
@@ -63,9 +65,39 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void handleAnimation()
+    {
+        bool isWalking = animator.GetBool("isWalking");
+
+        if (isMovementPressed && !isWalking)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else if (!isMovementPressed && isWalking)
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
+
+    void handleGravity()
+    {
+        if (characterController.isGrounded)
+        {
+            float groundedGravity = -0.5f;
+            currentMovement.y = groundedGravity;
+        }
+        else
+        {
+            float gravity = -9.8f;
+            currentMovement.y = gravity;
+        }
+    }
+
     void Update()
     {
         handleRotation();
+        handleAnimation();
+        handleGravity();
         if (isRunPressed)
         {
             characterController.Move(currentRunMovement * speed * Time.deltaTime);
