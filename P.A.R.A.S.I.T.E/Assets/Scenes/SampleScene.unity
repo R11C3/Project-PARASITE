@@ -512,10 +512,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d5a2f62744e6743b14f153698650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _rollSpeed: 10
+  _speed: 2
+  _rollSpeed: 15
   _rollTime: 0.5
-  _rollDelay: 3
+  _rollDelay: 2
   _rotationFactorPerFrame: 30
 --- !u!4 &1108765160 stripped
 Transform:
@@ -842,6 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750266668}
+  - component: {fileID: 1750266669}
   m_Layer: 0
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -865,6 +866,21 @@ Transform:
   - {fileID: 1295231838}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!114 &1750266669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750266667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0b7734e6c0f3d469c3300e5fb0a57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1108765160}
+  offset: {x: 0, y: 0, z: 0}
+  smoothSpeed: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -159,7 +159,6 @@ public class PlayerController : MonoBehaviour
         if (_rolling && !_isRolling)
         {
             animator.SetBool(isRollingHash, true);
-            Debug.Log("Rolling");
         }
         else if (!_rolling && _isRolling)
         {
