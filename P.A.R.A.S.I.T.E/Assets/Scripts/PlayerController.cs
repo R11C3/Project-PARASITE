@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,22 +7,24 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float _speed = 5.0f;
-    [SerializeField] private float _dashDistance = 1000.0f;
-    [SerializeField] private float _dashDelay = 1.0f;
+    [SerializeField] private float _rollSpeed = 20.0f;
+    [SerializeField] private float _rollTime = 1.667f;
+    [SerializeField] private float _rollDelay = 1.0f;
     [SerializeField] private float _rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Animator animator;
 
     private int isWalkingHash;
+    private int isRollingHash;
 
     private Vector2 _currentMovementInput;
     private Vector3 _currentMovement;
-    private Vector3 _dashDirection;
 
     private bool _isMovementPressed;
-    private bool _isDashPressed;
-    private bool _canDash = true;
+    private bool _isRollPressed;
+    private bool _canRoll = true;
+    private bool _rolling = false;
 
     void Awake()
     {
@@ -31,12 +33,13 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
+        isRollingHash = Animator.StringToHash("isRolling");
 
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
         playerInput.CharacterControls.Move.performed += onMovementInput;
-        playerInput.CharacterControls.Dash.started += onDash;
-        playerInput.CharacterControls.Dash.canceled += onDash;
+        playerInput.CharacterControls.Roll.started += onRoll;
+        playerInput.CharacterControls.Roll.canceled += onRoll;
     }
 
     void onMovementInput (InputAction.CallbackContext context)
@@ -47,27 +50,52 @@ public class PlayerController : MonoBehaviour
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
-    void onDash (InputAction.CallbackContext context)
+    void onRoll (InputAction.CallbackContext context)
     {
-        _isDashPressed = context.ReadValueAsButton();
+        _isRollPressed = context.ReadValueAsButton();
     }
 
     void handleMovement()
     {
-        characterController.Move(_currentMovement * _speed * Time.deltaTime);
+        if(!_rolling)
+            characterController.Move(_currentMovement * _speed * Time.deltaTime);
     }
 
-    void handleDash()
+    void handleRoll()
     {
-        if (_isDashPressed && _canDash)
+        if(_canRoll && _isRollPressed)
         {
-            _canDash = false;
-            _dashDirection.x = _currentMovementInput.x;
-            _dashDirection.z = _currentMovementInput.y;
-            Debug.Log(_currentMovementInput);
-            characterController.Move(_dashDirection * _dashDistance * Time.deltaTime);
-            StartCoroutine(dashDelay());
+            StartCoroutine(roll());
         }
+    }
+
+    public IEnumerator roll()
+    {
+        _canRoll = false;
+        _rolling = true;
+        float elapsedTime = 0.0f;
+
+        Vector3 _rollMovement = _currentMovement;
+        if(_rollMovement.x == 0 && _rollMovement.z == 0)
+        {
+            _rollMovement.x = 1;
+        }
+
+        StartCoroutine(rollDelay());
+
+        while (elapsedTime < _rollTime)
+        {
+            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        _rolling = false;
+    }
+
+    public IEnumerator rollDelay()
+    {
+        yield return new WaitForSecondsRealtime(_rollDelay);
+        _canRoll = true;
     }
 
     void handleRotation()
@@ -90,6 +118,7 @@ public class PlayerController : MonoBehaviour
     void handleAnimation()
     {
         bool _isWalking = animator.GetBool(isWalkingHash);
+        bool _isRolling = animator.GetBool(isRollingHash);
 
         if (_isMovementPressed && !_isWalking)
         {
@@ -98,6 +127,15 @@ public class PlayerController : MonoBehaviour
         else if (!_isMovementPressed && _isWalking)
         {
             animator.SetBool(isWalkingHash, false);
+        }
+        if (_rolling && !_isRolling)
+        {
+            animator.SetBool(isRollingHash, true);
+            Debug.Log("Rolling");
+        }
+        else if (!_rolling && _isRolling)
+        {
+            animator.SetBool(isRollingHash, false);
         }
     }
 
@@ -120,7 +158,7 @@ public class PlayerController : MonoBehaviour
         handleRotation();
         handleAnimation();
         handleGravity();
-        handleDash();
+        handleRoll();
         handleMovement();
     }
 
@@ -132,12 +170,6 @@ public class PlayerController : MonoBehaviour
     void OnDisable()
     {
         playerInput.CharacterControls.Disable();
-    }
-
-    IEnumerator dashDelay()
-    {
-        yield return new WaitForSeconds(_dashDelay);
-        _canDash = true;
     }
 
 }

@@ -513,8 +513,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _dashDistance: 1000
-  _dashDelay: 1
+  _rollSpeed: 10
+  _rollTime: 0.5
+  _rollDelay: 3
   _rotationFactorPerFrame: 30
 --- !u!4 &1108765160 stripped
 Transform:

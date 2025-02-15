@@ -37,7 +37,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Dash"",
+                    ""name"": ""Roll"",
                     ""type"": ""Button"",
                     ""id"": ""62c85fa1-4667-4c73-bc1d-9c33ceca0bd1"",
                     ""expectedControlType"": ""Button"",
@@ -120,7 +120,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -131,7 +131,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dash"",
+                    ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -143,7 +143,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // CharacterControls
         m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
-        m_CharacterControls_Dash = m_CharacterControls.FindAction("Dash", throwIfNotFound: true);
+        m_CharacterControls_Roll = m_CharacterControls.FindAction("Roll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -206,13 +206,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CharacterControls;
     private List<ICharacterControlsActions> m_CharacterControlsActionsCallbackInterfaces = new List<ICharacterControlsActions>();
     private readonly InputAction m_CharacterControls_Move;
-    private readonly InputAction m_CharacterControls_Dash;
+    private readonly InputAction m_CharacterControls_Roll;
     public struct CharacterControlsActions
     {
         private @PlayerInput m_Wrapper;
         public CharacterControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
-        public InputAction @Dash => m_Wrapper.m_CharacterControls_Dash;
+        public InputAction @Roll => m_Wrapper.m_CharacterControls_Roll;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -225,9 +225,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
+            @Roll.started += instance.OnRoll;
+            @Roll.performed += instance.OnRoll;
+            @Roll.canceled += instance.OnRoll;
         }
 
         private void UnregisterCallbacks(ICharacterControlsActions instance)
@@ -235,9 +235,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
+            @Roll.started -= instance.OnRoll;
+            @Roll.performed -= instance.OnRoll;
+            @Roll.canceled -= instance.OnRoll;
         }
 
         public void RemoveCallbacks(ICharacterControlsActions instance)
@@ -258,6 +258,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface ICharacterControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
+        void OnRoll(InputAction.CallbackContext context);
     }
 }
