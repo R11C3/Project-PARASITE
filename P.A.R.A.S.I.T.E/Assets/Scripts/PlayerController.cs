@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float _speed = 5.0f;
-    [SerializeField] private float _dashDistance = 2.0f;
+    [SerializeField] private float _dashDistance = 1000.0f;
     [SerializeField] private float _dashDelay = 1.0f;
     [SerializeField] private float _rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
@@ -62,8 +62,9 @@ public class PlayerController : MonoBehaviour
         if (_isDashPressed && _canDash)
         {
             _canDash = false;
-            _dashDirection.x = _currentMovement.x;
-            _dashDirection.z = _currentMovement.z;
+            _dashDirection.x = _currentMovementInput.x;
+            _dashDirection.z = _currentMovementInput.y;
+            Debug.Log(_currentMovementInput);
             characterController.Move(_dashDirection * _dashDistance * Time.deltaTime);
             StartCoroutine(dashDelay());
         }
