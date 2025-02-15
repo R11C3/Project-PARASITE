@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
+        animator.SetFloat("rollSpeed", 1/_rollTime);
 
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
@@ -63,9 +64,13 @@ public class PlayerController : MonoBehaviour
 
     void handleRoll()
     {
-        if(_canRoll && _isRollPressed)
+        if(_canRoll && _isRollPressed && _isMovementPressed)
         {
             StartCoroutine(roll());
+        }
+        else if (_canRoll && _isRollPressed)
+        {
+            StartCoroutine(standingRoll());
         }
     }
 
@@ -76,10 +81,6 @@ public class PlayerController : MonoBehaviour
         float elapsedTime = 0.0f;
 
         Vector3 _rollMovement = _currentMovement;
-        if(_rollMovement.x == 0 && _rollMovement.z == 0)
-        {
-            _rollMovement.x = 1;
-        }
 
         StartCoroutine(rollDelay());
 
@@ -89,6 +90,33 @@ public class PlayerController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        _rolling = false;
+    }
+
+    public IEnumerator standingRoll()
+    {
+        _canRoll = false;
+        _rolling = true;
+        float elapsedTime = 0.0f;
+
+        if(_currentMovement.x == 0 && _currentMovement.z == 0)
+        {
+            _currentMovement.z = 1;
+        }
+
+        Vector3 _rollMovement = _currentMovement;
+
+        StartCoroutine(rollDelay());
+
+        while (elapsedTime < _rollTime)
+        {
+            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        _currentMovement.z = 0;
         _rolling = false;
     }
 
