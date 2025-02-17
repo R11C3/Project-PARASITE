@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Animator animator;
-    private Camera camera;
+    private Camera mainCamera;
 
     private int isWalkingHash;
     private int isRollingHash;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
-        camera = Camera.main;
+        mainCamera = Camera.main;
 
         //Animation
         isWalkingHash = Animator.StringToHash("isWalking");
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         playerInput.CharacterControls.Roll.canceled += onRoll;
 
         //Direction relative movement vectors
-        _forward = camera.transform.forward;
+        _forward = mainCamera.transform.forward;
         _forward.y = 0;
         _forward = Vector3.Normalize(_forward);
         _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
