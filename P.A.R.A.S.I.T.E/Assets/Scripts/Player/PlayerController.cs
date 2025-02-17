@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,12 +13,13 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Animator animator;
+    private Camera camera;
 
     private int isWalkingHash;
     private int isRollingHash;
 
     private Vector2 _currentMovementInput;
-    private Vector3 _currentMovement;
+    private Vector3 _currentMovement, _forward, _right, _forwardMovement, _rightMovement;
 
     private bool _isMovementPressed;
     private bool _isRollPressed;
@@ -31,24 +31,34 @@ public class PlayerController : MonoBehaviour
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        camera = Camera.main;
 
+        //Animation
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
         animator.SetFloat("rollSpeed", 1/_rollTime);
         animator.SetFloat("walkingSpeed", _speed - 1);
 
+        //Binding inputs to actions
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
         playerInput.CharacterControls.Move.performed += onMovementInput;
         playerInput.CharacterControls.Roll.started += onRoll;
         playerInput.CharacterControls.Roll.canceled += onRoll;
+
+        //Direction relative movement vectors
+        _forward = camera.transform.forward;
+        _forward.y = 0;
+        _forward = Vector3.Normalize(_forward);
+        _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
     }
 
     void onMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
-        _currentMovement.x = _currentMovementInput.x;
-        _currentMovement.z = _currentMovementInput.y;
+        _rightMovement = _right * _currentMovementInput.x;
+        _forwardMovement = _forward * _currentMovementInput.y;
+        _currentMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
