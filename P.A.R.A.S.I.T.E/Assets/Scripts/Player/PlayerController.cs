@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
         animator.SetFloat("rollSpeed", 1/_rollTime);
+        animator.SetFloat("walkingSpeed", _speed - 1);
 
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
