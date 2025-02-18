@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _currentMovementInput;
     private Vector3 _currentMovement, _forward, _right, _forwardMovement, _rightMovement;
+    Quaternion _currentRotation;
 
     private bool _isMovementPressed;
     private bool _isRollPressed;
@@ -111,12 +112,10 @@ public class PlayerController : MonoBehaviour
         _rolling = true;
         float elapsedTime = 0.0f;
 
-        if(_currentMovement.x == 0 && _currentMovement.z == 0)
-        {
-            _currentMovement.z = 1;
-        }
+        Vector3 _rollMovement;
 
-        Vector3 _rollMovement = _currentMovement;
+        Vector3 flat = new Vector3(0.0f,0.0f,1.0f);
+        _rollMovement = _currentRotation * flat;
 
         StartCoroutine(rollDelay());
 
@@ -145,7 +144,7 @@ public class PlayerController : MonoBehaviour
         _positionToLookAt.y = 0.0f;
         _positionToLookAt.z = _currentMovement.z;
 
-        Quaternion _currentRotation = _currentRotation = transform.rotation;;
+        _currentRotation = transform.rotation;;
 
         if (_isMovementPressed)
         {
