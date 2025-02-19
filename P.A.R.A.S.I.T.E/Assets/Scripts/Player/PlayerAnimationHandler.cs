@@ -9,6 +9,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private CharacterController characterController;
     private Quaternion _currentRotation;
     private PlayerController playerController;
+    private PlayerRoll playerRoll;
 
     private int isWalkingHash;
     private int isRollingHash;
@@ -24,6 +25,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
+        playerRoll = GetComponent<PlayerRoll>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
@@ -42,12 +44,12 @@ public class PlayerAnimationHandler : MonoBehaviour
         _isWalking = animator.GetBool(isWalkingHash);
         _isRolling = animator.GetBool(isRollingHash);
         _isMovementPressed = playerController._isMovementPressed;
-        _rolling = playerController._rolling;
+        _rolling = playerRoll._rolling;
     }
 
     void AnimationSpeeds()
     {
-        animator.SetFloat("rollSpeed", 1/ playerController._rollTime);
+        animator.SetFloat("rollSpeed", 1/ playerRoll._rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
     }
 

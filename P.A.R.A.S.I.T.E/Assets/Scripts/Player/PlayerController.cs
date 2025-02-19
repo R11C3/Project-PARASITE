@@ -6,13 +6,11 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] public float _speed = 5.0f;
-    [SerializeField] private float _rollSpeed = 20.0f;
-    [SerializeField] public float _rollTime = 1.667f;
-    [SerializeField] private float _rollDelay = 1.0f;
     [SerializeField] private float _rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Camera mainCamera;
+    private PlayerRoll playerRoll;
 
     public Vector3 _currentMovement;
     private Vector2 _currentMovementInput;
@@ -20,22 +18,20 @@ public class PlayerController : MonoBehaviour
     public Quaternion _currentRotation;
 
     public bool _isMovementPressed;
-    public bool _isRollPressed;
-    public bool _rolling = false;
-    private bool _canRoll = true;
+    private bool _isRollPressed;
+    private bool _rolling;
 
     void Awake()
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+        playerRoll = GetComponent<PlayerRoll>();
         mainCamera = Camera.main;
 
         //Binding inputs to actions
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
         playerInput.CharacterControls.Move.performed += onMovementInput;
-        playerInput.CharacterControls.Roll.started += onRoll;
-        playerInput.CharacterControls.Roll.canceled += onRoll;
 
         //Direction relative movement vectors
         _forward = mainCamera.transform.forward;
@@ -53,77 +49,16 @@ public class PlayerController : MonoBehaviour
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
-    void onRoll (InputAction.CallbackContext context)
+    void UpdateValues()
     {
-        _isRollPressed = context.ReadValueAsButton();
+        _rolling = playerRoll._rolling;
+        _isRollPressed = playerRoll._isRollPressed;
     }
 
     void handleMovement()
     {
         if(!_rolling)
             characterController.Move(_currentMovement * _speed * Time.deltaTime);
-    }
-
-    void handleRoll()
-    {
-        if(_canRoll && _isRollPressed && _isMovementPressed)
-        {
-            StartCoroutine(roll());
-        }
-        else if (_canRoll && _isRollPressed)
-        {
-            StartCoroutine(standingRoll());
-        }
-    }
-
-    public IEnumerator roll()
-    {
-        _canRoll = false;
-        _rolling = true;
-        float elapsedTime = 0.0f;
-
-        Vector3 _rollMovement = _currentMovement;
-
-        StartCoroutine(rollDelay());
-
-        while (elapsedTime < _rollTime)
-        {
-            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        _rolling = false;
-    }
-
-    public IEnumerator standingRoll()
-    {
-        _canRoll = false;
-        _rolling = true;
-        float elapsedTime = 0.0f;
-
-        Vector3 _rollMovement;
-
-        Vector3 flat = new Vector3(0.0f,0.0f,1.0f);
-        _rollMovement = _currentRotation * flat;
-
-        StartCoroutine(rollDelay());
-
-        while (elapsedTime < _rollTime)
-        {
-            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        _currentMovement.z = 0;
-        _rolling = false;
-    }
-
-    public IEnumerator rollDelay()
-    {
-        yield return new WaitForSecondsRealtime(_rollDelay);
-        _canRoll = true;
     }
 
     void handleRotation()
@@ -159,9 +94,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        UpdateValues();
         handleRotation();
         handleGravity();
-        handleRoll();
         handleMovement();
     }
 
