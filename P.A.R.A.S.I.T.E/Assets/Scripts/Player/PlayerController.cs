@@ -5,40 +5,30 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float _speed = 5.0f;
+    [SerializeField] public float _speed = 5.0f;
     [SerializeField] private float _rollSpeed = 20.0f;
-    [SerializeField] private float _rollTime = 1.667f;
+    [SerializeField] public float _rollTime = 1.667f;
     [SerializeField] private float _rollDelay = 1.0f;
     [SerializeField] private float _rotationFactorPerFrame = 15.0f;
     private PlayerInput playerInput;
     private CharacterController characterController;
-    private Animator animator;
     private Camera mainCamera;
 
-    private int isWalkingHash;
-    private int isRollingHash;
-
+    public Vector3 _currentMovement;
     private Vector2 _currentMovementInput;
-    private Vector3 _currentMovement, _forward, _right, _forwardMovement, _rightMovement;
-    Quaternion _currentRotation;
+    private Vector3 _forward, _right, _forwardMovement, _rightMovement;
+    public Quaternion _currentRotation;
 
-    private bool _isMovementPressed;
-    private bool _isRollPressed;
+    public bool _isMovementPressed;
+    public bool _isRollPressed;
+    public bool _rolling = false;
     private bool _canRoll = true;
-    private bool _rolling = false;
 
     void Awake()
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
         mainCamera = Camera.main;
-
-        //Animation
-        isWalkingHash = Animator.StringToHash("isWalking");
-        isRollingHash = Animator.StringToHash("isRolling");
-        animator.SetFloat("rollSpeed", 1/_rollTime);
-        animator.SetFloat("walkingSpeed", _speed - 1);
 
         //Binding inputs to actions
         playerInput.CharacterControls.Move.started += onMovementInput;
@@ -153,29 +143,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void handleAnimation()
-    {
-        bool _isWalking = animator.GetBool(isWalkingHash);
-        bool _isRolling = animator.GetBool(isRollingHash);
-
-        if (_isMovementPressed && !_isWalking)
-        {
-            animator.SetBool(isWalkingHash, true);
-        }
-        else if (!_isMovementPressed && _isWalking)
-        {
-            animator.SetBool(isWalkingHash, false);
-        }
-        if (_rolling && !_isRolling)
-        {
-            animator.SetBool(isRollingHash, true);
-        }
-        else if (!_rolling && _isRolling)
-        {
-            animator.SetBool(isRollingHash, false);
-        }
-    }
-
     void handleGravity()
     {
         if (characterController.isGrounded)
@@ -193,7 +160,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         handleRotation();
-        handleAnimation();
         handleGravity();
         handleRoll();
         handleMovement();
