@@ -7,9 +7,11 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private Animator animator;
     private CharacterController characterController;
+    private Transform characterTransform;
     private Quaternion _currentRotation;
     private PlayerController playerController;
     private PlayerRoll playerRoll;
+    private Vector3 _currentVelocity;
 
     private int isWalkingHash;
     private int isRollingHash;
@@ -24,6 +26,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        characterTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         playerRoll = GetComponent<PlayerRoll>();
 
@@ -45,6 +48,12 @@ public class PlayerAnimationHandler : MonoBehaviour
         _isRolling = animator.GetBool(isRollingHash);
         _isMovementPressed = playerController._isMovementPressed;
         _rolling = playerRoll._rolling;
+    }
+
+    void UpdateValues()
+    {
+        _currentRotation = characterTransform.rotation;
+        _currentVelocity = characterController.velocity;
     }
 
     void AnimationSpeeds()
