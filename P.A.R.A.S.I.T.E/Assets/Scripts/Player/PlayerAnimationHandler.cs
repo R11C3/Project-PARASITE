@@ -18,18 +18,15 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private int isWalkingHash;
     private int isRollingHash;
-    private int isLeftStrafing;
-    private int isRightStrafing;
-    private int isWalkingBackwards;
-    private int animationIsMovementPressed;
 
     private bool _isWalking;
-    private bool _isLeftStrafing;
-    private bool _isRightStrafing;
-    private bool _isWalkingBackwards;
     private bool _isRolling;
     private bool _rolling;
     private bool _isMovementPressed;
+
+    private float _MovementAngle;
+    private float _linearSpeed;
+    private Vector3 _currentMovement;
 
     public enum Direction
     {
@@ -50,10 +47,6 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
-        isLeftStrafing = Animator.StringToHash("isLeftStrafing");
-        isRightStrafing = Animator.StringToHash("isRightStrafing");
-        isWalkingBackwards = Animator.StringToHash("isWalkingBackwards");
-        animationIsMovementPressed = Animator.StringToHash("isMovementPressed");
     }
 
     // Update is called once per frame
@@ -69,25 +62,23 @@ public class PlayerAnimationHandler : MonoBehaviour
     void UpdateBools()
     {
         _isWalking = animator.GetBool(isWalkingHash);
-        _isLeftStrafing = animator.GetBool(isLeftStrafing);
-        _isRightStrafing = animator.GetBool(isRightStrafing);
-        _isWalkingBackwards = animator.GetBool(isWalkingBackwards);
         _isRolling = animator.GetBool(isRollingHash);
         _isMovementPressed = playerController._isMovementPressed;
         _rolling = playerRoll._rolling;
-        animator.SetBool(animationIsMovementPressed, true);
     }
 
     void UpdateValues()
     {
         _currentRotation = characterTransform.rotation;
         _currentVelocity = characterController.velocity;
+        _currentMovement = playerController._currentMovementNonNormalized;
+        _linearSpeed = playerController._currentMovementNonNormalized.magnitude;
     }
 
     void GetDirection()
     {
-        float _MovementAngle = Mathf.Atan2(_currentVelocity.x, _currentVelocity.z) * Mathf.Rad2Deg;
         float _LookAngle = _currentRotation.eulerAngles.y;
+        _MovementAngle = Mathf.Atan2(_currentVelocity.x, _currentVelocity.z) * Mathf.Rad2Deg;
 
         _MovementAngle = (_MovementAngle - _LookAngle + 360)%360;
         
@@ -105,44 +96,21 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator.SetFloat("rollSpeed", 1/ playerRoll._rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
+        animator.SetFloat("Angle", _MovementAngle);
+        animator.SetFloat("velocityX", _currentMovement.x);
+        animator.SetFloat("velocityZ", _currentMovement.z);
+        animator.SetFloat("linearSpeed", _linearSpeed * 10);
     }
 
     void HandleAnimation()
     {
-        if (_isMovementPressed && !_isWalking && _Direction == Direction.FORWARDS)
+        if (_isMovementPressed && !_isWalking)
         {
             animator.SetBool(isWalkingHash, true);
-            animator.SetBool(isLeftStrafing, false);
-            animator.SetBool(isRightStrafing, false);
-            animator.SetBool(isWalkingBackwards, false);
         }
-        else if (_isMovementPressed && _Direction == Direction.LEFT)
+        else if (!_isMovementPressed && _isWalking)
         {
             animator.SetBool(isWalkingHash, false);
-            animator.SetBool(isLeftStrafing, true);
-            animator.SetBool(isRightStrafing, false);
-            animator.SetBool(isWalkingBackwards, false);
-        }
-        else if (_isMovementPressed && _Direction == Direction.RIGHT)
-        {
-            animator.SetBool(isWalkingHash, false);
-            animator.SetBool(isLeftStrafing, false);
-            animator.SetBool(isRightStrafing, true);
-            animator.SetBool(isWalkingBackwards, false);
-        }
-        else if (_isMovementPressed && _Direction == Direction.BACKWARDS)
-        {
-            animator.SetBool(isWalkingHash, false);
-            animator.SetBool(isLeftStrafing, false);
-            animator.SetBool(isRightStrafing, false);
-            animator.SetBool(isWalkingBackwards, true);
-        }
-        else if (!_isMovementPressed && (_isWalking || _isLeftStrafing || _isRightStrafing || _isWalkingBackwards))
-        {
-            animator.SetBool(isWalkingHash, false);
-            animator.SetBool(isLeftStrafing, false);
-            animator.SetBool(isRightStrafing, false);
-            animator.SetBool(isWalkingBackwards, false);
         }
         if (_rolling && !_isRolling)
         {

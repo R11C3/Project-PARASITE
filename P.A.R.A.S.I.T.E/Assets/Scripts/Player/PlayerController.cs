@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private PlayerRoll playerRoll;
 
     public Vector3 _currentMovement;
+    public Vector3 _currentVelocity;
+    public Vector3 _currentMovementNonNormalized;
     private Vector2 _currentMovementInput;
     private Vector3 _forward, _right, _forwardMovement, _rightMovement;
     public Quaternion _currentRotation;
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
     void onMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
+        _currentMovementNonNormalized.x = _currentMovementInput.x;
+        _currentMovementNonNormalized.z = _currentMovementInput.y;
         _rightMovement = _right * _currentMovementInput.x;
         _forwardMovement = _forward * _currentMovementInput.y;
         _currentMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
@@ -95,9 +99,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateValues();
-        handleRotation();
+        // handleRotation();
         handleGravity();
         handleMovement();
+        _currentVelocity = characterController.velocity;
     }
 
     void OnEnable()
