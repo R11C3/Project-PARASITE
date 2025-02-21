@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
 
     public Transform target;
     private Transform cameraTransform;
+    private CharacterController characterController;
 
     [SerializeField] private Vector3 offset;
     [SerializeField] private Quaternion rotation;
@@ -17,6 +18,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         cameraTransform = GetComponent<Transform>();
+        characterController = GetComponent<CharacterController>();
+        cameraTransform.rotation = rotation;
     }
 
     // Update is called once per frame
