@@ -7,20 +7,23 @@ public class CameraController : MonoBehaviour
 {
 
     public Transform target;
+    private Transform cameraTransform;
 
     [SerializeField] private Vector3 offset;
+    [SerializeField] private Quaternion rotation;
 
     [SerializeField] private float smoothSpeed = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
         SmoothFollow();
+        LookAt();
     }
 
     public void SmoothFollow()
@@ -29,6 +32,10 @@ public class CameraController : MonoBehaviour
         Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
 
         transform.position = smoothFollow;
-        // transform.LookAt(target);
+    }
+
+    public void LookAt()
+    {
+        cameraTransform.LookAt(target);
     }
 }

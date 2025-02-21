@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [HideInInspector] public float _speed = 0.0f;
+    public float dampening = 5.0f;
     [SerializeField] public float _maxWalkSpeed = 2.0f;
     [SerializeField] private float _acceleration = 6.0f;
     [SerializeField] private float _deceleration = 13.0f;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Camera mainCamera;
     private PlayerRoll playerRoll;
 
-    [HideInInspector] public Vector3 _currentMovement, _currentVelocity, _lastMovement;
+    [HideInInspector] public Vector3 _currentMovement, _currentVelocity, _lastMovement, _initialMovement;
     [HideInInspector] public Vector3 _currentMovementNonNormalized;
     [HideInInspector] public Vector2 _currentMovementInput;
     [HideInInspector] public Vector3 _forward, _right, _forwardMovement, _rightMovement;
@@ -58,7 +59,8 @@ public class PlayerController : MonoBehaviour
         _currentMovementNonNormalized.z = _currentMovementInput.y;
         _rightMovement = _right * _currentMovementInput.x;
         _forwardMovement = _forward * _currentMovementInput.y;
-        _currentMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
+        _initialMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
+        _currentMovement = Vector3.Lerp(_currentMovement, _initialMovement, dampening);
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
@@ -105,6 +107,12 @@ public class PlayerController : MonoBehaviour
         }
 
         _currentVelocity = characterController.velocity;
+    }
+
+    private IEnumerator lastMovement()
+    {
+        _lastMovement = _currentMovement;
+        yield return new WaitForSecondsRealtime(0.05f);
     }
 
     void handleSprint()
