@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1231,15 +1231,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e71c874eb843244a848fd668dddbe94,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1108765162}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e71c874eb843244a848fd668dddbe94,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1108765165}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e71c874eb843244a848fd668dddbe94,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1108765164}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6e71c874eb843244a848fd668dddbe94,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1108765162}
   m_SourcePrefab: {fileID: 100100000, guid: 6e71c874eb843244a848fd668dddbe94, type: 3}
 --- !u!1 &972815014
 GameObject:
@@ -1555,13 +1555,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d5a2f62744e6743b14f153698650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 0
+  _maxWalkSpeed: 2
   _rotationFactorPerFrame: 30
+  _acceleration: 6
+  _deceleration: 13
+  _maxSprintSpeed: 6.5
+  _sprintAcceleration: 13
+  _sprintDeceleration: 6.5
   _currentMovement: {x: 0, y: 0, z: 0}
   _currentVelocity: {x: 0, y: 0, z: 0}
+  _lastMovement: {x: 0, y: 0, z: 0}
   _currentMovementNonNormalized: {x: 0, y: 0, z: 0}
   _currentRotation: {x: 0, y: 0, z: 0, w: 0}
   _isMovementPressed: 0
+  _isSprintPressed: 0
 --- !u!4 &1108765160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6e71c874eb843244a848fd668dddbe94,

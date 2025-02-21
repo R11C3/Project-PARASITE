@@ -54,7 +54,6 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         UpdateValues();
         UpdateBools();
-        GetDirection();
         AnimationSpeeds();
         HandleAnimation();
     }
@@ -70,26 +69,13 @@ public class PlayerAnimationHandler : MonoBehaviour
     void UpdateValues()
     {
         _currentRotation = characterTransform.rotation;
-        _currentVelocity = characterController.velocity;
         _currentMovement = playerController._currentMovementNonNormalized;
-        _linearSpeed = playerController._currentMovementNonNormalized.magnitude;
-    }
+        _linearSpeed = playerController._speed;
+        _currentVelocity = playerController._currentVelocity;
 
-    void GetDirection()
-    {
         float _LookAngle = _currentRotation.eulerAngles.y;
         _MovementAngle = Mathf.Atan2(_currentVelocity.x, _currentVelocity.z) * Mathf.Rad2Deg;
-
-        _MovementAngle = (_MovementAngle - _LookAngle + 360)%360;
-        
-        if (_MovementAngle > 30 && _MovementAngle < 150)
-            _Direction = Direction.RIGHT;
-        else if (_MovementAngle >= 150 && _MovementAngle <= 210)
-            _Direction = Direction.BACKWARDS;
-        else if (_MovementAngle > 210 && _MovementAngle < 330)
-            _Direction = Direction.LEFT;
-        else
-            _Direction = Direction.FORWARDS;
+        _MovementAngle = (_MovementAngle - _LookAngle + 360) % 360;
     }
 
     void AnimationSpeeds()
@@ -97,8 +83,6 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator.SetFloat("rollSpeed", 1/ playerRoll._rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
-        animator.SetFloat("velocityX", _currentMovement.x);
-        animator.SetFloat("velocityZ", _currentMovement.z);
         animator.SetFloat("linearSpeed", _linearSpeed * 10);
     }
 

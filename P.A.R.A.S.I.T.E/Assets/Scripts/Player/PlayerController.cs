@@ -5,21 +5,29 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] public float _speed = 5.0f;
-    [SerializeField] private float _rotationFactorPerFrame = 15.0f;
+    [HideInInspector] public float _speed = 0.0f;
+    [SerializeField] public float _maxWalkSpeed = 2.0f;
+    [SerializeField] private float _rotationFactorPerFrame = 30.0f;
+    [SerializeField] private float _acceleration = 4.0f;
+    [SerializeField] private float _deceleration = 2.0f;
+    [SerializeField] private float _maxSprintSpeed = 6.5f;
+    [SerializeField] private float _sprintAcceleration = 13f;
+    [SerializeField] private float _sprintDeceleration = 6.5f;
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Camera mainCamera;
     private PlayerRoll playerRoll;
 
-    public Vector3 _currentMovement;
-    public Vector3 _currentVelocity;
-    public Vector3 _currentMovementNonNormalized;
+    [HideInInspector] public Vector3 _currentMovement, _currentVelocity, _lastMovement;
+    [HideInInspector] public Vector3 _currentMovementNonNormalized;
     private Vector2 _currentMovementInput;
+    private Vector3 _averager = new Vector3(0.0f, 0.0f, 0.0f);
+    private int avgCount = 0;
     private Vector3 _forward, _right, _forwardMovement, _rightMovement;
-    public Quaternion _currentRotation;
+    [HideInInspector] public Quaternion _currentRotation;
 
     public bool _isMovementPressed;
+    public bool _isSprintPressed;
     private bool _isRollPressed;
     private bool _rolling;
 
@@ -34,12 +42,16 @@ public class PlayerController : MonoBehaviour
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;
         playerInput.CharacterControls.Move.performed += onMovementInput;
+        playerInput.CharacterControls.Sprint.started += onSprintInput;
+        playerInput.CharacterControls.Sprint.canceled += onSprintInput;
 
         //Direction relative movement vectors
         _forward = mainCamera.transform.forward;
         _forward.y = 0;
         _forward = Vector3.Normalize(_forward);
         _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
+
+        _lastMovement = new Vector3(0.0f, -9.8f, 0.0f);
     }
 
     void onMovementInput (InputAction.CallbackContext context)
@@ -53,6 +65,11 @@ public class PlayerController : MonoBehaviour
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
+    void onSprintInput (InputAction.CallbackContext context)
+    {
+        _isSprintPressed = context.ReadValueAsButton();
+    }
+
     void UpdateValues()
     {
         _rolling = playerRoll._rolling;
@@ -61,8 +78,59 @@ public class PlayerController : MonoBehaviour
 
     void handleMovement()
     {
-        if(!_rolling)
-            characterController.Move(_currentMovement * _speed * Time.deltaTime);
+
+        if(_isMovementPressed && _speed <= _maxWalkSpeed)
+        {
+            _speed += _acceleration * Time.deltaTime;
+        }
+
+        if(!_isMovementPressed && _speed > 0.0f)
+        {
+            _speed -= _deceleration * Time.deltaTime;
+        }
+
+        if(_speed < 0.0f)
+        {
+            _speed = 0.0f;
+        }
+
+        if (!_isMovementPressed)
+        {
+            _currentMovement = _lastMovement;
+            characterController.Move(new Vector3(_currentMovement.x * _speed * Time.deltaTime, _currentMovement.y * Time.deltaTime, _currentMovement.z * _speed * Time.deltaTime));
+        }
+
+        if (!_rolling && _isMovementPressed)
+        {
+            characterController.Move(new Vector3(_currentMovement.x * _speed * Time.deltaTime, _currentMovement.y * Time.deltaTime, _currentMovement.z * _speed * Time.deltaTime));
+
+            _averager += _currentMovement;
+            avgCount++;
+            
+            if(avgCount >= 100)
+            {
+                _averager.x /= avgCount;
+                _averager.y /= avgCount;
+                _averager.z /= avgCount;
+                _lastMovement = _averager;
+                avgCount = 0;
+            }
+        }
+
+        _currentVelocity = characterController.velocity;
+    }
+
+    void handleSprint()
+    {
+        if(_isSprintPressed && _isMovementPressed && _speed <= _maxSprintSpeed)
+        {
+            _speed += _sprintAcceleration * Time.deltaTime;
+        }
+
+        if (!_isSprintPressed && _speed >= _maxWalkSpeed)
+        {
+            _speed -= _sprintDeceleration * Time.deltaTime;
+        }
     }
 
     void handleRotation()
@@ -99,10 +167,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateValues();
-        // handleRotation();
+        //handleRotation();
         handleGravity();
+        handleSprint();
         handleMovement();
-        _currentVelocity = characterController.velocity;
     }
 
     void OnEnable()
