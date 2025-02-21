@@ -7,9 +7,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public float _speed = 0.0f;
     [SerializeField] public float _maxWalkSpeed = 2.0f;
-    [SerializeField] private float _rotationFactorPerFrame = 30.0f;
-    [SerializeField] private float _acceleration = 4.0f;
-    [SerializeField] private float _deceleration = 2.0f;
+    [SerializeField] private float _acceleration = 6.0f;
+    [SerializeField] private float _deceleration = 13.0f;
     [SerializeField] private float _maxSprintSpeed = 6.5f;
     [SerializeField] private float _sprintAcceleration = 13f;
     [SerializeField] private float _sprintDeceleration = 6.5f;
@@ -20,10 +19,8 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public Vector3 _currentMovement, _currentVelocity, _lastMovement;
     [HideInInspector] public Vector3 _currentMovementNonNormalized;
-    private Vector2 _currentMovementInput;
-    private Vector3 _averager = new Vector3(0.0f, 0.0f, 0.0f);
-    private int avgCount = 0;
-    private Vector3 _forward, _right, _forwardMovement, _rightMovement;
+    [HideInInspector] public Vector2 _currentMovementInput;
+    [HideInInspector] public Vector3 _forward, _right, _forwardMovement, _rightMovement;
     [HideInInspector] public Quaternion _currentRotation;
 
     public bool _isMovementPressed;
@@ -104,17 +101,7 @@ public class PlayerController : MonoBehaviour
         {
             characterController.Move(new Vector3(_currentMovement.x * _speed * Time.deltaTime, _currentMovement.y * Time.deltaTime, _currentMovement.z * _speed * Time.deltaTime));
 
-            _averager += _currentMovement;
-            avgCount++;
-            
-            if(avgCount >= 100)
-            {
-                _averager.x /= avgCount;
-                _averager.y /= avgCount;
-                _averager.z /= avgCount;
-                _lastMovement = _averager;
-                avgCount = 0;
-            }
+            _lastMovement = _currentMovement;
         }
 
         _currentVelocity = characterController.velocity;
@@ -130,23 +117,6 @@ public class PlayerController : MonoBehaviour
         if (!_isSprintPressed && _speed >= _maxWalkSpeed)
         {
             _speed -= _sprintDeceleration * Time.deltaTime;
-        }
-    }
-
-    void handleRotation()
-    {
-        Vector3 _positionToLookAt;
-
-        _positionToLookAt.x = _currentMovement.x;
-        _positionToLookAt.y = 0.0f;
-        _positionToLookAt.z = _currentMovement.z;
-
-        _currentRotation = transform.rotation;;
-
-        if (_isMovementPressed)
-        {
-            Quaternion _targetRotation = Quaternion.LookRotation(_positionToLookAt);
-            transform.rotation = Quaternion.Slerp(_currentRotation, _targetRotation, _rotationFactorPerFrame * Time.deltaTime);
         }
     }
 
@@ -167,7 +137,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateValues();
-        //handleRotation();
         handleGravity();
         handleSprint();
         handleMovement();

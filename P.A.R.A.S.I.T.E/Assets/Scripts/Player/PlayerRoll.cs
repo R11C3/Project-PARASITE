@@ -14,8 +14,10 @@ public class PlayerRoll : MonoBehaviour
     private PlayerInput playerInput;
     private CharacterController characterController;
     private PlayerController playerController;
+    private Transform characterTransform;
+    private PlayerAim playerAim;
 
-    private Vector3 _currentMovement;
+    public Vector3 _currentMovement;
     private Quaternion _currentRotation;
 
     public bool _isMovementPressed;
@@ -29,6 +31,8 @@ public class PlayerRoll : MonoBehaviour
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
+        playerAim = GetComponent<PlayerAim>();
+        characterTransform = GetComponent<Transform>();
 
         playerInput.CharacterControls.Roll.started += OnRoll;
         playerInput.CharacterControls.Roll.canceled += OnRoll;
@@ -51,6 +55,17 @@ public class PlayerRoll : MonoBehaviour
         _isMovementPressed = playerController._isMovementPressed;
         _currentMovement = playerController._currentMovement;
         _currentRotation = playerController._currentRotation;
+    }
+
+    void GetCurrentFacing()
+    {
+        Vector3 _forward = characterTransform.forward;
+        _forward.y = 0;
+        _forward = Vector3.Normalize(_forward);
+        Vector3 _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
+
+        _currentMovement = Vector3.Normalize(_forward + _right);
+        _currentMovement = Quaternion.Euler(0, -45, 0) * _currentMovement;
     }
 
     void handleRoll()
@@ -79,6 +94,7 @@ public class PlayerRoll : MonoBehaviour
         {
             characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
+            
             yield return null;
         }
 
@@ -91,10 +107,9 @@ public class PlayerRoll : MonoBehaviour
         _rolling = true;
         float elapsedTime = 0.0f;
 
-        Vector3 _rollMovement;
+        GetCurrentFacing();
 
-        Vector3 flat = new Vector3(0.0f,0.0f,1.0f);
-        _rollMovement = _currentRotation * flat;
+        Vector3 _rollMovement = _currentMovement;
 
         StartCoroutine(rollDelay());
 
