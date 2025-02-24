@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Vector3 offset;
     [SerializeField] private Quaternion rotation;
-    [Range(-10.0f, 2f)][SerializeField] private float zoom = 0.0f;
+    [Range(-6.0f, 2f)][SerializeField] private float zoom = 0.0f;
     [SerializeField] private float smoothSpeed = 0.1f;
 
     [SerializeField] private Vector3 targetPos;

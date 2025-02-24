@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxSprintSpeed = 6.5f;
     [SerializeField] private float _sprintAcceleration = 13f;
     [SerializeField] private float _sprintDeceleration = 6.5f;
+
     private PlayerInput playerInput;
     private CharacterController characterController;
     private Camera mainCamera;
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
     {
         _rolling = playerRoll._rolling;
         _isRollPressed = playerRoll._isRollPressed;
+        // _speed = playerSprint._speed;
     }
 
     void handleMovement()
@@ -107,12 +109,6 @@ public class PlayerController : MonoBehaviour
         }
 
         _currentVelocity = characterController.velocity;
-    }
-
-    private IEnumerator lastMovement()
-    {
-        _lastMovement = _currentMovement;
-        yield return new WaitForSecondsRealtime(0.05f);
     }
 
     void handleSprint()

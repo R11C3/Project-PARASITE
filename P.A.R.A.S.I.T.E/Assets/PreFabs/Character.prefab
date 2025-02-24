@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2088024352508404084}
   - component: {fileID: 2265281970600638555}
   - component: {fileID: 626067927282075221}
-  - component: {fileID: 1894313975261837876}
   - component: {fileID: 3303645817523886302}
+  - component: {fileID: 1894313975261837876}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -60,7 +60,7 @@ CharacterController:
   m_Height: 1.8
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
+  dampening: 5
   _maxWalkSpeed: 2
   _acceleration: 6
   _deceleration: 13
@@ -107,6 +108,7 @@ MonoBehaviour:
   _currentMovement: {x: 0, y: 0, z: 0}
   _currentVelocity: {x: 0, y: 0, z: 0}
   _lastMovement: {x: 0, y: 0, z: 0}
+  _initialMovement: {x: 0, y: 0, z: 0}
   _currentMovementNonNormalized: {x: 0, y: 0, z: 0}
   _currentMovementInput: {x: 0, y: 0}
   _forward: {x: 0, y: 0, z: 0}
@@ -135,19 +137,6 @@ MonoBehaviour:
   _isMovementPressed: 0
   _isRollPressed: 0
   _rolling: 0
---- !u!114 &1894313975261837876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6171112215918811310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783d763f9860c5f4ab856f47a939cc17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Direction: 0
 --- !u!114 &3303645817523886302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +152,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &1894313975261837876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171112215918811310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 783d763f9860c5f4ab856f47a939cc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Direction: 0
 --- !u!1001 &1370767704805750077
 PrefabInstance:
   m_ObjectHideFlags: 0
