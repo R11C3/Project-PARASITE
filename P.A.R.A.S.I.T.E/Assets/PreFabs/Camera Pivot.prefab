@@ -219,8 +219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  offset: {x: -5, y: 5, z: -5}
+  offset: {x: -10, y: 10, z: -10}
   rotation: {x: 0, y: 0, z: 0, w: 1}
+  zoom: 0
   smoothSpeed: 0.01
 --- !u!114 &3024132544737413717
 MonoBehaviour:

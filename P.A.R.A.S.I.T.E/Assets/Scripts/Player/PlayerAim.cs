@@ -43,8 +43,10 @@ public class PlayerAim : MonoBehaviour
         Vector3 direction = position - characterTransform.position;
 
         direction.y = 0;
-
-        characterTransform.forward = direction;
+        if(direction.sqrMagnitude != 0.0f)
+        {
+            characterTransform.forward = direction;
+        }
     }
 
     public void LookTo(Vector3 goal)
