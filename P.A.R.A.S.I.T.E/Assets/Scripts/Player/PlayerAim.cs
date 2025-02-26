@@ -19,7 +19,7 @@ public class PlayerAim : MonoBehaviour
         lineRendererObject = GameObject.Find("Line Renderer");
         lineRenderer = lineRendererObject.GetComponent<LineRenderer>();
 
-        lineRenderer.positionCount = 2;
+        lineRenderer.positionCount = 3;
     }
 
     // Update is called once per frame
@@ -56,10 +56,11 @@ public class PlayerAim : MonoBehaviour
         }
 
         Vector3 lineRenderGoal = position;
-        lineRenderGoal.y += 1.8f;
+        lineRenderGoal.y += 1.2f;
         Vector3 lineRenderStart = characterTransform.position;
-        lineRenderStart.y += 1.8f;
+        lineRenderStart.y += 1.2f;
 
+        lineRenderer.SetPosition(2, position);
         lineRenderer.SetPosition(1, lineRenderGoal);
         lineRenderer.SetPosition(0, lineRenderStart);
     }
