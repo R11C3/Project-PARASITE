@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAim : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerAim : MonoBehaviour
     private GameObject gun;
     private GameObject gunB;
     private Transform gunBarrel;
+    public Vector3 mousePosition;
 
     void Awake()
     {
@@ -31,26 +33,27 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetMousePosition();
         Aim();
     }
 
-    private Vector3 GetMousePosition() 
+    private void GetMousePosition() 
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundLayer))
         {
-            return hitInfo.point;
+            mousePosition = hitInfo.point;
         }
         else
         {
-            return Vector3.zero;
+            mousePosition = Vector3.zero;
         }
     }
 
     private void Aim()
     {
-        Vector3 position = GetMousePosition();
+        Vector3 position = mousePosition;
 
         Vector3 direction = position - characterTransform.position;
 
