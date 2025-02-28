@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 2088024352508404084}
   - component: {fileID: 2265281970600638555}
   - component: {fileID: 626067927282075221}
+  - component: {fileID: 383721553149792766}
   - component: {fileID: 3303645817523886302}
   - component: {fileID: 1894313975261837876}
   - component: {fileID: 8929286593971735354}
@@ -384,26 +385,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  dampening: 5
   _maxWalkSpeed: 2
   _acceleration: 6
   _deceleration: 13
   _maxSprintSpeed: 6.5
   _sprintAcceleration: 13
   _sprintDeceleration: 6.5
-  _currentMovement: {x: 0, y: 0, z: 0}
-  _currentVelocity: {x: 0, y: 0, z: 0}
+  input: {fileID: 4739235210510491639}
   _lastMovement: {x: 0, y: 0, z: 0}
-  _initialMovement: {x: 0, y: 0, z: 0}
-  _currentMovementNonNormalized: {x: 0, y: 0, z: 0}
-  _currentMovementInput: {x: 0, y: 0}
-  _forward: {x: 0, y: 0, z: 0}
-  _right: {x: 0, y: 0, z: 0}
-  _forwardMovement: {x: 0, y: 0, z: 0}
-  _rightMovement: {x: 0, y: 0, z: 0}
+  _currentVelocity: {x: 0, y: 0, z: 0}
   _currentRotation: {x: 0, y: 0, z: 0, w: 0}
-  _isMovementPressed: 0
-  _isSprintPressed: 0
 --- !u!114 &626067927282075221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,10 +410,27 @@ MonoBehaviour:
   _rollSpeed: 15
   _rollTime: 0.5
   _rollDelay: 2
+  input: {fileID: 4739235210510491639}
   _currentMovement: {x: 0, y: 0, z: 0}
-  _isMovementPressed: 0
-  _isRollPressed: 0
   _rolling: 0
+--- !u!114 &383721553149792766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171112215918811310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14188ee13cc66594788cc0b188b6d0ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSprintSpeed: 6.5
+  _sprintAcceleration: 13
+  _sprintDeceleration: 6.5
+  input: {fileID: 4739235210510491639}
+  characterController: {fileID: 2619370453875854529}
+  playerController: {fileID: 2265281970600638555}
 --- !u!114 &3303645817523886302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Direction: 0
+  input: {fileID: 4739235210510491639}
 --- !u!114 &8929286593971735354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +483,6 @@ MonoBehaviour:
   characterTransform: {fileID: 2463469622432052872}
   speed: 100
   input: {fileID: 4739235210510491639}
-  _isFirePressed: 0
 --- !u!114 &4739235210510491639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +495,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d9fd91ebc8af44891c6c9fb2975281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  _currentMovementInput: {x: 0, y: 0}
+  _forward: {x: 0, y: 0, z: 0}
+  _right: {x: 0, y: 0, z: 0}
+  _forwardMovement: {x: 0, y: 0, z: 0}
+  _rightMovement: {x: 0, y: 0, z: 0}
+  _initialMovement: {x: 0, y: 0, z: 0}
+  _currentMovement: {x: 0, y: 0, z: 0}
+  dampening: 5
+  _isMovementPressed: 0
   _isSprintPressed: 0
   _isRollPressed: 0
   _isFirePressed: 0

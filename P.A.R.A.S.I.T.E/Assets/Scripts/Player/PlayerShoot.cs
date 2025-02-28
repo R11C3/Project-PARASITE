@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
@@ -24,30 +23,19 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private InputHandler input;
 
-    private PlayerInput playerInput;
-    
-    public bool _isFirePressed;
     // Start is called before the first frame update
     void Awake()
     {
-        playerInput = new PlayerInput();
 
-        playerInput.CharacterControls.Fire.started += onFireInput;
-        playerInput.CharacterControls.Fire.canceled += onFireInput;
-    }
-
-    void onFireInput (InputAction.CallbackContext context)
-    {
-        _isFirePressed = context.ReadValueAsButton();
     }
 
     // Update is called once per frame
     void Update()
     {
         EndOfBarrel = gunBarrel.transform.position;
-        if(_isFirePressed == true)
+        if(input._isFirePressed == true)
         {
-            _isFirePressed = false;
+            input._isFirePressed = false;
 
             Vector3 target = playerAim.GetMousePosition();
 
@@ -93,15 +81,5 @@ public class PlayerShoot : MonoBehaviour
         }
 
         Destroy(trail.gameObject, trail.time);
-    }
-
-    void OnEnable()
-    {
-        playerInput.CharacterControls.Enable();
-    }
-
-    void OnDisable()
-    {
-        playerInput.CharacterControls.Disable();
     }
 }

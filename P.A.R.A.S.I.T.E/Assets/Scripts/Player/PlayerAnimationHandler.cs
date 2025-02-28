@@ -9,9 +9,10 @@ public class PlayerAnimationHandler : MonoBehaviour
     public Direction _Direction;
 
     private Animator animator;
-    private CharacterController characterController;
     private Transform characterTransform;
     private Quaternion _currentRotation;
+    [SerializeField]
+    private InputHandler input;
     private PlayerController playerController;
     private PlayerRoll playerRoll;
     private Vector3 _currentVelocity;
@@ -26,8 +27,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private float _MovementAngle;
     private float _linearSpeed;
-    private Vector3 _currentMovement;
-
+    
     public enum Direction
     {
         FORWARDS,
@@ -40,7 +40,6 @@ public class PlayerAnimationHandler : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
         characterTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         playerRoll = GetComponent<PlayerRoll>();
@@ -62,14 +61,13 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         _isWalking = animator.GetBool(isWalkingHash);
         _isRolling = animator.GetBool(isRollingHash);
-        _isMovementPressed = playerController._isMovementPressed;
+        _isMovementPressed = input._isMovementPressed;
         _rolling = playerRoll._rolling;
     }
 
     void UpdateValues()
     {
         _currentRotation = characterTransform.rotation;
-        _currentMovement = playerController._currentMovementNonNormalized;
         _linearSpeed = playerController._speed;
         _currentVelocity = playerController._currentVelocity;
 

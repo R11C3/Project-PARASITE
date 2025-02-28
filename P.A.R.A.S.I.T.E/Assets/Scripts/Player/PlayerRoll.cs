@@ -11,7 +11,8 @@ public class PlayerRoll : MonoBehaviour
     [SerializeField] public float _rollTime = 0.5f;
     [SerializeField] private float _rollDelay = 2.0f;
 
-    private PlayerInput playerInput;
+    [SerializeField]
+    private InputHandler input;
     private CharacterController characterController;
     private PlayerController playerController;
     private Transform characterTransform;
@@ -20,27 +21,16 @@ public class PlayerRoll : MonoBehaviour
     public Vector3 _currentMovement;
     private Quaternion _currentRotation;
 
-    public bool _isMovementPressed;
-    public bool _isRollPressed;
     public bool _rolling = false;
     private bool _canRoll = true;
 
     // Start is called before the first frame update
     void Awake()
     {
-        playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
         playerAim = GetComponent<PlayerAim>();
         characterTransform = GetComponent<Transform>();
-
-        playerInput.CharacterControls.Roll.started += OnRoll;
-        playerInput.CharacterControls.Roll.canceled += OnRoll;
-    }
-
-    void OnRoll(InputAction.CallbackContext context)
-    {
-        _isRollPressed = context.ReadValueAsButton();
     }
 
     // Update is called once per frame
@@ -52,8 +42,7 @@ public class PlayerRoll : MonoBehaviour
 
     void UpdateValues()
     {
-        _isMovementPressed = playerController._isMovementPressed;
-        _currentMovement = playerController._currentMovement;
+        _currentMovement = input._currentMovement;
         _currentRotation = playerController._currentRotation;
     }
 
@@ -70,11 +59,11 @@ public class PlayerRoll : MonoBehaviour
 
     void handleRoll()
     {
-        if(_canRoll && _isRollPressed && _isMovementPressed)
+        if(_canRoll && input._isRollPressed && input._isMovementPressed)
         {
             StartCoroutine(roll());
         }
-        else if (_canRoll && _isRollPressed)
+        else if (_canRoll && input._isRollPressed)
         {
             StartCoroutine(standingRoll());
         }
@@ -128,15 +117,5 @@ public class PlayerRoll : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(_rollDelay);
         _canRoll = true;
-    }
-
-    void OnEnable()
-    {
-        playerInput.CharacterControls.Enable();
-    }
-
-    void OnDisable()
-    {
-        playerInput.CharacterControls.Disable();
     }
 }
