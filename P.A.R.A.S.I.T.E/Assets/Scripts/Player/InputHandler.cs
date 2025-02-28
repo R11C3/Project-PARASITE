@@ -8,7 +8,6 @@ public class InputHandler : MonoBehaviour
 {
 
     private PlayerInput playerInput;
-    [SerializeField]
     private Camera mainCamera;
 
     public Vector2 _currentMovementInput;
@@ -23,6 +22,7 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         playerInput = new PlayerInput();
+        mainCamera = Camera.main;
 
         playerInput.CharacterControls.Move.started += onMovementInput;
         playerInput.CharacterControls.Move.canceled += onMovementInput;

@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerAim : MonoBehaviour
 {
 
-    [SerializeField] public LayerMask groundLayer;
+    [SerializeField] public LayerMask mask;
     [SerializeField] private bool renderLine;
 
     private GameObject lineRendererObject;
@@ -42,7 +42,7 @@ public class PlayerAim : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, mask))
         {
             return hitInfo.point;
         }

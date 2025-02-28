@@ -47,8 +47,6 @@ public class PlayerShoot : MonoBehaviour
 
             if (Physics.Raycast(EndOfBarrel, direction, out RaycastHit hit, float.MaxValue, mask))
             {
-                // Debug.Log("pew");
-
                 StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
             }
             else
