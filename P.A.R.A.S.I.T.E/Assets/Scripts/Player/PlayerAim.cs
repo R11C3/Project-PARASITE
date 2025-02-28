@@ -7,6 +7,7 @@ public class PlayerAim : MonoBehaviour
 {
 
     [SerializeField] public LayerMask groundLayer;
+    [SerializeField] private bool renderLine;
 
     private GameObject lineRendererObject;
     private Transform characterTransform;
@@ -37,23 +38,23 @@ public class PlayerAim : MonoBehaviour
         Aim();
     }
 
-    private void GetMousePosition() 
+    public Vector3 GetMousePosition() 
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, groundLayer))
         {
-            mousePosition = hitInfo.point;
+            return hitInfo.point;
         }
         else
         {
-            mousePosition = Vector3.zero;
+            return Vector3.zero;
         }
     }
 
     private void Aim()
     {
-        Vector3 position = mousePosition;
+        Vector3 position = GetMousePosition();
 
         Vector3 direction = position - characterTransform.position;
 
@@ -69,9 +70,12 @@ public class PlayerAim : MonoBehaviour
         Vector3 lineRenderStart = gunBarrel.position;
         //lineRenderStart.y += 1.2f;
 
-        lineRenderer.SetPosition(2, position);
-        lineRenderer.SetPosition(1, lineRenderGoal);
-        lineRenderer.SetPosition(0, lineRenderStart);
+        if (renderLine)
+        {
+            lineRenderer.SetPosition(2, position);
+            lineRenderer.SetPosition(1, lineRenderGoal);
+            lineRenderer.SetPosition(0, lineRenderStart);
+        }
     }
 
     public void LookTo(Vector3 goal)

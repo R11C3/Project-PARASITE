@@ -438,6 +438,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  renderLine: 0
   mousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1894313975261837876
 MonoBehaviour:
@@ -469,8 +470,11 @@ MonoBehaviour:
   trail: {fileID: 8145007681342344517}
   mask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
+  characterTransform: {fileID: 2463469622432052872}
+  speed: 100
   input: {fileID: 4739235210510491639}
+  _isFirePressed: 0
 --- !u!114 &4739235210510491639
 MonoBehaviour:
   m_ObjectHideFlags: 0

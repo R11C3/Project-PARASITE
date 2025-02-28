@@ -16,6 +16,10 @@ public class PlayerShoot : MonoBehaviour
     private TrailRenderer trail;
     [SerializeField]
     private LayerMask mask;
+    [SerializeField]
+    private Transform characterTransform;
+    [SerializeField]
+    private float speed = 100.0f;
 
     [SerializeField]
     private InputHandler input;
@@ -24,7 +28,7 @@ public class PlayerShoot : MonoBehaviour
     
     public bool _isFirePressed;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerInput = new PlayerInput();
 
@@ -45,32 +49,59 @@ public class PlayerShoot : MonoBehaviour
         {
             _isFirePressed = false;
 
-            Vector3 target = playerAim.mousePosition;
+            Vector3 target = playerAim.GetMousePosition();
 
-            if (Physics.Raycast(EndOfBarrel, target, out RaycastHit hit, float.MaxValue, mask))
+            Vector3 direction = target - characterTransform.position;
+
+            direction.y = 0;
+
+            TrailRenderer tempTrail = Instantiate(trail, EndOfBarrel, Quaternion.identity);
+
+            if (Physics.Raycast(EndOfBarrel, direction, out RaycastHit hit, float.MaxValue, mask))
             {
-                trail = Instantiate(trail, EndOfBarrel, Quaternion.identity);
+                // Debug.Log("pew");
 
-                Debug.Log("pew");
-
-                StartCoroutine(SpawnTrail(trail, hit));
+                StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
+            }
+            else
+            {
+                StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
             }
         }
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer trail, RaycastHit hit)
+    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hit, bool impact)
     {
-        float time = 0;
+        float distance = Vector3.Distance(trail.transform.position, hit);
+        float startingDistance = distance;
         Vector3 startPosition = trail.transform.position;
 
-        while (time < 1)
+        while (distance > 0)
         {
-            trail.transform.position = Vector3.Lerp(startPosition, hit.point, time);
-            time += Time.deltaTime / trail.time;
+            trail.transform.position = Vector3.Lerp(startPosition, hit, 1 - (distance / startingDistance));
+            distance -= Time.deltaTime * speed;
 
             yield return null;
         }
 
+        trail.transform.position = hit;
+
+        if (impact)
+        {
+            //play particle system
+            //Instantiate(ImpactParticleSystem, hit, Quaternion.LookRotation(hitNormal))
+        }
+
         Destroy(trail.gameObject, trail.time);
+    }
+
+    void OnEnable()
+    {
+        playerInput.CharacterControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerInput.CharacterControls.Disable();
     }
 }

@@ -40,4 +40,14 @@ public class InputHandler : MonoBehaviour
     {
         _isFirePressed = context.ReadValueAsButton();
     }
+
+    void OnEnable()
+    {
+        playerInput.CharacterControls.Enable();
+    }
+
+    void OnDisable()
+    {
+        playerInput.CharacterControls.Disable();
+    }
 }
