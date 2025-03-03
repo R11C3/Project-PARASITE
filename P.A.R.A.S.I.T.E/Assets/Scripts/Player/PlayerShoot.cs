@@ -14,11 +14,20 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private TrailRenderer trail;
     [SerializeField]
+    private ParticleSystem shootingSystem;
+    [SerializeField]
+    private ParticleSystem impactSystem;
+    [SerializeField]
     private LayerMask mask;
     [SerializeField]
     private Transform characterTransform;
     [SerializeField]
     private float speed = 100.0f;
+    [SerializeField]
+    private float shootDelay = 0.5f;
+    private float lastShootTime;
+    [SerializeField]
+    private bool canShoot = true;
 
     [SerializeField]
     private InputHandler input;
@@ -33,9 +42,15 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         EndOfBarrel = gunBarrel.transform.position;
-        if(input._isFirePressed == true)
+        shootingSystem.transform.position = gunBarrel.transform.position;
+        if(lastShootTime + shootDelay < Time.time)
         {
-            input._isFirePressed = false;
+            canShoot = true;
+        }
+        if(input._isFirePressed == true && canShoot)
+        {
+            shootingSystem.Play();
+            canShoot = false;
 
             Vector3 target = playerAim.GetMousePosition();
 
@@ -53,6 +68,7 @@ public class PlayerShoot : MonoBehaviour
             {
                 StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
             }
+            lastShootTime = Time.time;
         }
     }
 
@@ -74,8 +90,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (impact)
         {
-            //play particle system
-            //Instantiate(ImpactParticleSystem, hit, Quaternion.LookRotation(hitNormal))
+            // Instantiate(impactSystem, hit, Quaternion.LookRotation(hit.normalized));
         }
 
         Destroy(trail.gameObject, trail.time);
