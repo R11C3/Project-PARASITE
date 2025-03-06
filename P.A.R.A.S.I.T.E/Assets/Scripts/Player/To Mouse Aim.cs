@@ -18,6 +18,7 @@ public class ToMouseAim : MonoBehaviour
     void Update()
     {
         Vector3 position = playerAim.GetMousePosition();
+        position.y += 1.5f;
         aimTransform.position = position;
     }
 }

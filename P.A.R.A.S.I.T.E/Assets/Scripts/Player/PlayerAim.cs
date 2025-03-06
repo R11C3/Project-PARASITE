@@ -13,9 +13,6 @@ public class PlayerAim : MonoBehaviour
     private Transform characterTransform;
     private Camera mainCamera;
     private LineRenderer lineRenderer;
-    private GameObject gun;
-    private GameObject gunB;
-    private Transform gunBarrel;
     public Vector3 mousePosition;
 
     void Awake()
@@ -24,9 +21,6 @@ public class PlayerAim : MonoBehaviour
         characterTransform = GetComponent<Transform>();
         lineRendererObject = GameObject.Find("Line Renderer");
         lineRenderer = lineRendererObject.GetComponent<LineRenderer>();
-        // gun = GameObject.Find("Test Gun");
-        // gunB = GameObject.Find("End Of Barrel");
-        // gunBarrel = gunB.GetComponent<Transform>();
 
         lineRenderer.positionCount = 3;
     }
@@ -64,18 +58,6 @@ public class PlayerAim : MonoBehaviour
         {
             characterTransform.forward = direction;
         }
-
-        // Vector3 lineRenderGoal = position;
-        // lineRenderGoal.y += 1.2f;
-        // Vector3 lineRenderStart = gunBarrel.position;
-        // //lineRenderStart.y += 1.2f;
-
-        // if (renderLine)
-        // {
-        //     lineRenderer.SetPosition(2, position);
-        //     lineRenderer.SetPosition(1, lineRenderGoal);
-        //     lineRenderer.SetPosition(0, lineRenderStart);
-        // }
     }
 
     public void LookTo(Vector3 goal)

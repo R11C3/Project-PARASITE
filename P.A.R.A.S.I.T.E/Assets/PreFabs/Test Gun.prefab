@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7500272577715689914}
+  - component: {fileID: -2740379308328956768}
   m_Layer: 0
   m_Name: Test Gun
   m_TagString: Untagged
@@ -34,6 +35,30 @@ Transform:
   - {fileID: 2963611270293668284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2740379308328956768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6501947389377760399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b018b185b8371146ba7ff3652a6c4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunBarrel: {fileID: 0}
+  playerAim: {fileID: 0}
+  trail: {fileID: 0}
+  shootingSystem: {fileID: 0}
+  impactSystem: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  characterTransform: {fileID: 0}
+  speed: 100
+  shootDelay: 0.5
+  canShoot: 1
 --- !u!1 &6886173382361309949
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +118,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -198,6 +226,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

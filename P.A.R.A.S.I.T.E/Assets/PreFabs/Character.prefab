@@ -1045,19 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b9d504afb138049a84fc7343beb04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunBarrel: {fileID: 2386124268967479205}
-  playerAim: {fileID: 4965131758044466079}
-  trail: {fileID: 4727607999235322121}
-  shootingSystem: {fileID: 994490737402809884}
-  impactSystem: {fileID: 0}
-  mask:
-    serializedVersion: 2
-    m_Bits: 8
-  characterTransform: {fileID: 2941337171247925528}
-  speed: 100
-  shootDelay: 0.5
-  canShoot: 1
   input: {fileID: 3915581735004455225}
+  ballisticGun: {fileID: 982729128132690804}
 --- !u!114 &3915581735004455225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,7 +1094,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8667823253887843557}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
   m_Name: 
@@ -1282,6 +1271,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8177075934520244335}
     m_Modifications:
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 4727607999235322121}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: gunBarrel
+      value: 
+      objectReference: {fileID: 2386124268967479205}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: playerAim
+      value: 
+      objectReference: {fileID: 4965131758044466079}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: shootingSystem
+      value: 
+      objectReference: {fileID: 994490737402809884}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: characterTransform
+      value: 
+      objectReference: {fileID: 2941337171247925528}
     - target: {fileID: 6501947389377760399, guid: ba0ffb28b4334e04982ba8f04050e343,
         type: 3}
       propertyPath: m_Name
@@ -1370,6 +1389,18 @@ PrefabInstance:
       addedObject: {fileID: 4085859328534680492}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba0ffb28b4334e04982ba8f04050e343, type: 3}
+--- !u!114 &982729128132690804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+    type: 3}
+  m_PrefabInstance: {fileID: 6078572410041241556}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b018b185b8371146ba7ff3652a6c4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2386124268967479205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8450540740546742385, guid: ba0ffb28b4334e04982ba8f04050e343,
