@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        
+        ballisticGun.Reload();
     }
 
     // Update is called once per frame
@@ -22,6 +22,10 @@ public class PlayerShoot : MonoBehaviour
         if(input._isFirePressed)
         {
             ballisticGun.Shoot();
+        }
+        if(input._isReloadPressed)
+        {
+            ballisticGun.Reload();
         }
     }
 }

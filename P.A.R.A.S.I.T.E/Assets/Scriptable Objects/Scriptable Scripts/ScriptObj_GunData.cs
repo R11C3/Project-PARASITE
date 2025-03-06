@@ -8,6 +8,10 @@ public class ScriptObj_GunData : ScriptableObject
     [SerializeField]
     public float fireSpeed;
     [SerializeField]
+    public int maxAmmo;
+    [SerializeField]
+    public int reloadTime;
+    [SerializeField]
     public bool automatic;
     [SerializeField]
     public ParticleSystem firingParticle;

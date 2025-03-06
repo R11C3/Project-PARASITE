@@ -16,6 +16,7 @@ public class InputHandler : MonoBehaviour
     public bool _isSprintPressed;
     public bool _isRollPressed;
     public bool _isFirePressed;
+    public bool _isReloadPressed;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,15 +24,17 @@ public class InputHandler : MonoBehaviour
         playerInput = new PlayerInput();
         mainCamera = Camera.main;
 
-        playerInput.CharacterControls.Move.started += onMovementInput;
-        playerInput.CharacterControls.Move.canceled += onMovementInput;
-        playerInput.CharacterControls.Move.performed += onMovementInput;
-        playerInput.CharacterControls.Sprint.started += onSprintInput;
-        playerInput.CharacterControls.Sprint.canceled += onSprintInput;
-        playerInput.CharacterControls.Roll.started += onRollInput;
-        playerInput.CharacterControls.Roll.canceled += onRollInput;
-        playerInput.CharacterControls.Fire.started += onFireInput;
-        playerInput.CharacterControls.Fire.canceled += onFireInput;
+        playerInput.CharacterControls.Move.started += OnMovementInput;
+        playerInput.CharacterControls.Move.canceled += OnMovementInput;
+        playerInput.CharacterControls.Move.performed += OnMovementInput;
+        playerInput.CharacterControls.Sprint.started += OnSprintInput;
+        playerInput.CharacterControls.Sprint.canceled += OnSprintInput;
+        playerInput.CharacterControls.Roll.started += OnRollInput;
+        playerInput.CharacterControls.Roll.canceled += OnRollInput;
+        playerInput.CharacterControls.Fire.started += OnFireInput;
+        playerInput.CharacterControls.Fire.canceled += OnFireInput;
+        playerInput.CharacterControls.Reload.started += OnReloadInput;
+        playerInput.CharacterControls.Reload.canceled += OnReloadInput;
 
         _forward = mainCamera.transform.forward;
         _forward.y = 0;
@@ -39,7 +42,7 @@ public class InputHandler : MonoBehaviour
         _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
     }
 
-    void onMovementInput (InputAction.CallbackContext context)
+    void OnMovementInput (InputAction.CallbackContext context)
     {
         _currentMovementInput = context.ReadValue<Vector2>();
         _rightMovement = _right * _currentMovementInput.x;
@@ -49,19 +52,24 @@ public class InputHandler : MonoBehaviour
         _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
     }
 
-    void onSprintInput (InputAction.CallbackContext context)
+    void OnSprintInput (InputAction.CallbackContext context)
     {
         _isSprintPressed = context.ReadValueAsButton();
     }
 
-    void onRollInput (InputAction.CallbackContext context)
+    void OnRollInput (InputAction.CallbackContext context)
     {
         _isRollPressed = context.ReadValueAsButton();
     }
 
-    void onFireInput (InputAction.CallbackContext context)
+    void OnFireInput (InputAction.CallbackContext context)
     {
         _isFirePressed = context.ReadValueAsButton();
+    }
+
+    void OnReloadInput (InputAction.CallbackContext context)
+    {
+        _isReloadPressed = context.ReadValueAsButton();
     }
 
     void OnEnable()

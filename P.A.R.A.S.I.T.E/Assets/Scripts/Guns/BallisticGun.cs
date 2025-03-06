@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BallisticGun : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class BallisticGun : MonoBehaviour
     private float damage;
     private float firingSpeed;
     private Vector3 accuracy;
+    private int maxAmmo;
+    public int currentAmmo;
+    private float reloadTime;
 
     [SerializeField]
     private GameObject gunBarrel;
@@ -31,12 +35,28 @@ public class BallisticGun : MonoBehaviour
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
+    private bool reloading = false;
 
     private void UpdateStats()
     {
         damage = gunData.damage;
         firingSpeed = gunData.fireSpeed;
         accuracy = gunData.accuracy;
+        maxAmmo = gunData.maxAmmo;
+        reloadTime = gunData.reloadTime;
+    }
+
+    public void Reload()
+    {
+        reloading = true;
+        currentAmmo = maxAmmo;
+        StartCoroutine(ReloadDelay());
+    }
+
+    private IEnumerator ReloadDelay()
+    {
+        yield return new WaitForSecondsRealtime(reloadTime);
+        reloading = false;
     }
 
     public void Shoot()
@@ -49,7 +69,7 @@ public class BallisticGun : MonoBehaviour
         {
             canShoot = true;
         }
-        if(canShoot)
+        if(canShoot && currentAmmo > 0 && !reloading)
         {
             shootingSystem.Play();
             canShoot = false;
@@ -67,6 +87,7 @@ public class BallisticGun : MonoBehaviour
                 StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
             }
             lastShootTime = Time.time;
+            currentAmmo--;
         }
     }
 
