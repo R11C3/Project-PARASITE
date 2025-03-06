@@ -4,17 +4,17 @@ using UnityEngine;
 public class ScriptObj_GunData : ScriptableObject
 {
     [SerializeField]
-    private float damage;
+    public float damage;
     [SerializeField]
-    private float fireSpeed;
+    public float fireSpeed;
     [SerializeField]
-    private bool automatic;
+    public bool automatic;
     [SerializeField]
-    private ParticleSystem firingParticle;
+    public ParticleSystem firingParticle;
     [SerializeField]
-    private ParticleSystem impactParticle;
+    public ParticleSystem impactParticle;
     [SerializeField]
-    private Vector3 accuracy;
+    public Vector3 accuracy;
     [SerializeField]
-    private bool shotgun;
+    public bool shotgun;
 }

@@ -5,6 +5,13 @@ public class BallisticGun : MonoBehaviour
 {
 
     [SerializeField]
+    private ScriptObj_GunData gunData;
+
+    private float damage;
+    private float firingSpeed;
+    private Vector3 accuracy;
+
+    [SerializeField]
     private GameObject gunBarrel;
     private Vector3 EndOfBarrel;
     [SerializeField]
@@ -21,17 +28,24 @@ public class BallisticGun : MonoBehaviour
     private Transform characterTransform;
     [SerializeField]
     private float speed = 100.0f;
-    [SerializeField]
-    private float shootDelay = 0.5f;
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
 
+    private void UpdateStats()
+    {
+        damage = gunData.damage;
+        firingSpeed = gunData.fireSpeed;
+        accuracy = gunData.accuracy;
+    }
+
     public void Shoot()
     {
+        UpdateStats();
+
         EndOfBarrel = gunBarrel.transform.position;
         shootingSystem.transform.position = gunBarrel.transform.position;
-        if(lastShootTime + shootDelay < Time.time)
+        if(lastShootTime + firingSpeed < Time.time)
         {
             canShoot = true;
         }
@@ -40,11 +54,7 @@ public class BallisticGun : MonoBehaviour
             shootingSystem.Play();
             canShoot = false;
 
-            Vector3 target = playerAim.GetMousePosition();
-
-            Vector3 direction = target - characterTransform.position;
-
-            direction.y = 0;
+            Vector3 direction = AccuracyVariation();
 
             TrailRenderer tempTrail = Instantiate(trail, EndOfBarrel, Quaternion.identity);
 
@@ -58,6 +68,21 @@ public class BallisticGun : MonoBehaviour
             }
             lastShootTime = Time.time;
         }
+    }
+
+    private Vector3 AccuracyVariation()
+    {
+        Vector3 direction = playerAim.GetMousePosition();
+        Vector3 target = direction - characterTransform.position;
+
+        target += new Vector3(
+        Random.Range(-accuracy.x, accuracy.x),
+        Random.Range(-accuracy.y, accuracy.y),
+        Random.Range(-accuracy.z, accuracy.z));
+
+        target.Normalize();
+
+        return target;
     }
 
     private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hit, bool impact)

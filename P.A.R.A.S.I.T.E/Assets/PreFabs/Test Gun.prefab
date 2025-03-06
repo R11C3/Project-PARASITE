@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b018b185b8371146ba7ff3652a6c4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunData: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
   gunBarrel: {fileID: 0}
   playerAim: {fileID: 0}
   trail: {fileID: 0}

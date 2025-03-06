@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Automatic Rifle PlaceHolder
   m_EditorClassIdentifier: 
   damage: 20
-  fireSpeed: 0.1
+  fireSpeed: 0.15
   automatic: 1
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
-  accuracy: {x: 0, y: 0, z: 0}
+  accuracy: {x: 0.5, y: 0.5, z: 0.5}
   shotgun: 0
