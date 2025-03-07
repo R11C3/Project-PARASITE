@@ -7,11 +7,13 @@ public class ToMouseAim : MonoBehaviour
     private PlayerAim playerAim;
     [SerializeField]
     private Transform aimTransform;
+    [SerializeField]
+    private Renderer rendererComponent;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rendererComponent.enabled = false;
     }
 
     // Update is called once per frame

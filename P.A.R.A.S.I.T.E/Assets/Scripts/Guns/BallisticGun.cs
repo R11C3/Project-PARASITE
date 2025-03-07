@@ -11,7 +11,7 @@ public class BallisticGun : MonoBehaviour
     private float damage;
     private float firingSpeed;
     private Vector3 accuracy;
-    private int maxAmmo;
+    public int maxAmmo;
     public int currentAmmo;
     private float reloadTime;
 
@@ -49,13 +49,13 @@ public class BallisticGun : MonoBehaviour
     public void Reload()
     {
         reloading = true;
-        currentAmmo = maxAmmo;
         StartCoroutine(ReloadDelay());
     }
 
     private IEnumerator ReloadDelay()
     {
         yield return new WaitForSecondsRealtime(reloadTime);
+        currentAmmo = maxAmmo;
         reloading = false;
     }
 
