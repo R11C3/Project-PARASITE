@@ -6,13 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerRoll : MonoBehaviour
 {
-
-    [SerializeField] private float _rollSpeed = 15.0f;
-    [SerializeField] public float _rollTime = 0.5f;
-    [SerializeField] private float _rollDelay = 2.0f;
-
     [SerializeField]
     private InputHandler input;
+    [SerializeField]
+    private PlayerStats playerStats;
     private CharacterController characterController;
     private PlayerController playerController;
     private Transform characterTransform;
@@ -79,9 +76,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < _rollTime)
+        while (elapsedTime < playerStats.rollTime)
         {
-            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * playerStats.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             
             yield return null;
@@ -102,9 +99,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < _rollTime)
+        while (elapsedTime < playerStats.rollTime)
         {
-            characterController.Move(_rollMovement * _rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * playerStats.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -115,7 +112,7 @@ public class PlayerRoll : MonoBehaviour
 
     public IEnumerator rollDelay()
     {
-        yield return new WaitForSecondsRealtime(_rollDelay);
+        yield return new WaitForSecondsRealtime(playerStats.rollDelay);
         _canRoll = true;
     }
 }

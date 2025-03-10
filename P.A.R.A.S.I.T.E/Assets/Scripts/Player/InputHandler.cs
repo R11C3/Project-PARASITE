@@ -14,6 +14,7 @@ public class InputHandler : MonoBehaviour
     public float dampening = 5.0f;
     public bool _isMovementPressed;
     public bool _isSprintPressed;
+    public bool _isCrouchPressed;
     public bool _isRollPressed;
     public bool _isFirePressed;
     public bool _isReloadPressed;
@@ -29,6 +30,8 @@ public class InputHandler : MonoBehaviour
         playerInput.CharacterControls.Move.performed += OnMovementInput;
         playerInput.CharacterControls.Sprint.started += OnSprintInput;
         playerInput.CharacterControls.Sprint.canceled += OnSprintInput;
+        playerInput.CharacterControls.Crouch.started += OnCrouchInput;
+        playerInput.CharacterControls.Crouch.canceled += OnCrouchInput;
         playerInput.CharacterControls.Roll.started += OnRollInput;
         playerInput.CharacterControls.Roll.canceled += OnRollInput;
         playerInput.CharacterControls.Fire.started += OnFireInput;
@@ -55,6 +58,11 @@ public class InputHandler : MonoBehaviour
     void OnSprintInput (InputAction.CallbackContext context)
     {
         _isSprintPressed = context.ReadValueAsButton();
+    }
+
+    void OnCrouchInput (InputAction.CallbackContext context)
+    {
+        _isCrouchPressed = context.ReadValueAsButton();
     }
 
     void OnRollInput (InputAction.CallbackContext context)

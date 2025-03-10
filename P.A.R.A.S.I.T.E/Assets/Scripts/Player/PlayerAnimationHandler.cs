@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
@@ -13,14 +14,18 @@ public class PlayerAnimationHandler : MonoBehaviour
     private Quaternion _currentRotation;
     [SerializeField]
     private InputHandler input;
+    [SerializeField]
+    private PlayerStats playerStats;
     private PlayerController playerController;
     private PlayerRoll playerRoll;
     private Vector3 _currentVelocity;
 
     private int isWalkingHash;
     private int isRollingHash;
+    private int isCrouchingHash;
 
     private bool _isWalking;
+    private bool _isCrouching;
     private bool _isRolling;
     private bool _rolling;
     private bool _isMovementPressed;
@@ -46,6 +51,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");
+        isCrouchingHash = Animator.StringToHash("isCrouching");
     }
 
     // Update is called once per frame
@@ -61,7 +67,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         _isWalking = animator.GetBool(isWalkingHash);
         _isRolling = animator.GetBool(isRollingHash);
-        _isMovementPressed = input._isMovementPressed;
+        _isCrouching = animator.GetBool(isCrouchingHash);
         _rolling = playerRoll._rolling;
     }
 
@@ -78,19 +84,20 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void AnimationSpeeds()
     {
-        animator.SetFloat("rollSpeed", 1/ playerRoll._rollTime);
+        animator.SetFloat("rollSpeed", 1/ playerStats.rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
         animator.SetFloat("linearSpeed", _linearSpeed * 10);
+        animator.SetFloat("crouchingSpeed", _linearSpeed * 50);
     }
 
     void HandleAnimation()
     {
-        if (_isMovementPressed && !_isWalking)
+        if (input._isMovementPressed && !_isWalking)
         {
             animator.SetBool(isWalkingHash, true);
         }
-        else if (!_isMovementPressed && _isWalking)
+        else if (!input._isMovementPressed && _isWalking)
         {
             animator.SetBool(isWalkingHash, false);
         }
@@ -101,6 +108,14 @@ public class PlayerAnimationHandler : MonoBehaviour
         else if (!_rolling && _isRolling)
         {
             animator.SetBool(isRollingHash, false);
+        }
+        if(input._isCrouchPressed && !_isCrouching)
+        {
+            animator.SetBool(isCrouchingHash, true);
+        }
+        else if(!input._isCrouchPressed && _isCrouching)
+        {
+            animator.SetBool(isCrouchingHash, false);
         }
     }
 }

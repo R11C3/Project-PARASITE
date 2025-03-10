@@ -5,17 +5,12 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
-    [HideInInspector]
     public float _speed = 0.0f;
-    [SerializeField]
-    public float _maxWalkSpeed = 2.0f;
-    [SerializeField]
-    private float _acceleration = 6.0f;
-    [SerializeField]
-    private float _deceleration = 13.0f;
 
     [SerializeField]
     private InputHandler input;
+    [SerializeField]
+    private PlayerStats playerStats;
     private CharacterController characterController;
     private PlayerRoll playerRoll;
 
@@ -41,14 +36,14 @@ public class PlayerController : MonoBehaviour
 
     void handleMovement()
     {
-        if(input._isMovementPressed && _speed <= _maxWalkSpeed)
+        if(input._isMovementPressed && _speed <= playerStats.speed)
         {
-            _speed += _acceleration * Time.deltaTime;
+            _speed += playerStats.acceleration * Time.deltaTime;
         }
 
         if(!input._isMovementPressed && _speed > 0.0f)
         {
-            _speed -= _deceleration * Time.deltaTime;
+            _speed -= playerStats.deceleration * Time.deltaTime;
         }
 
         if(_speed < 0.0f)

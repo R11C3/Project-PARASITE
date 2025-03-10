@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  damage: 0
-  fireSpeed: 0
-  maxAmmo: 0
-  reloadTime: 0
+  damage: 5
+  fireSpeed: 0.6
+  maxAmmo: 12
+  reloadTime: 1
   automatic: 0
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
-  accuracy: {x: 0, y: 0, z: 0}
+  accuracy: {x: 0.7, y: 0.7, z: 0.7}
   shotgun: 0

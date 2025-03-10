@@ -895,6 +895,7 @@ GameObject:
   - component: {fileID: 2941337171247925528}
   - component: {fileID: 7086505844144453374}
   - component: {fileID: 6329113388683329203}
+  - component: {fileID: 3515050039642512570}
   - component: {fileID: 3154710176588290544}
   - component: {fileID: 1102376081572940936}
   - component: {fileID: 727631580183289083}
@@ -979,6 +980,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3515050039642512570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667823253887843557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cfc1e6b27e51147a1c4f22ef92cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  acceleration: 6
+  deceleration: 13
+  sprintSpeed: 16
+  sprintAcceleration: 16
+  sprintDeceleration: 16
+  rollSpeed: 15
+  rollTime: 0.5
+  rollDelay: 2
+  input: {fileID: 3915581735004455225}
 --- !u!114 &3154710176588290544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,10 +1015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _maxWalkSpeed: 2
-  _acceleration: 6
-  _deceleration: 13
   input: {fileID: 3915581735004455225}
+  playerStats: {fileID: 3515050039642512570}
   _lastMovement: {x: 0, y: 0, z: 0}
   _currentVelocity: {x: 0, y: 0, z: 0}
   _currentRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -1011,10 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c125c90effabe2b4ab77bd53af81d211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rollSpeed: 15
-  _rollTime: 0.5
-  _rollDelay: 2
   input: {fileID: 3915581735004455225}
+  playerStats: {fileID: 0}
   _currentMovement: {x: 0, y: 0, z: 0}
   _rolling: 0
 --- !u!114 &727631580183289083
@@ -1029,10 +1048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14188ee13cc66594788cc0b188b6d0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSprintSpeed: 6.5
-  _sprintAcceleration: 13
-  _sprintDeceleration: 6.5
   input: {fileID: 3915581735004455225}
+  playerStats: {fileID: 3515050039642512570}
   characterController: {fileID: 7086505844144453374}
   playerController: {fileID: 3154710176588290544}
 --- !u!114 &4965131758044466079
@@ -1066,6 +1083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Direction: 0
   input: {fileID: 3915581735004455225}
+  playerStats: {fileID: 3515050039642512570}
 --- !u!114 &7788661217132101810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,6 +1120,7 @@ MonoBehaviour:
   dampening: 5
   _isMovementPressed: 0
   _isSprintPressed: 0
+  _isCrouchPressed: 0
   _isRollPressed: 0
   _isFirePressed: 0
   _isReloadPressed: 0
@@ -1384,6 +1403,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8177075934520244335}
     m_Modifications:
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 4727607999235322121}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: playerAim
+      value: 
+      objectReference: {fileID: 4965131758044466079}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: currentAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: mask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: shootingSystem
+      value: 
+      objectReference: {fileID: 994490737402809884}
+    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
+        type: 3}
+      propertyPath: characterTransform
+      value: 
+      objectReference: {fileID: 2941337171247925528}
     - target: {fileID: 100000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
       propertyPath: m_Name
       value: AK74
@@ -1444,36 +1493,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: trail
-      value: 
-      objectReference: {fileID: 4727607999235322121}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: playerAim
-      value: 
-      objectReference: {fileID: 4965131758044466079}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: currentAmmo
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: mask.m_Bits
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: shootingSystem
-      value: 
-      objectReference: {fileID: 994490737402809884}
-    - target: {fileID: -2740379308328956768, guid: ba0ffb28b4334e04982ba8f04050e343,
-        type: 3}
-      propertyPath: characterTransform
-      value: 
-      objectReference: {fileID: 2941337171247925528}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
