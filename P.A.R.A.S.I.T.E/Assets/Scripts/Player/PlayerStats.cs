@@ -1,3 +1,4 @@
+using System.Dynamic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -12,11 +13,20 @@ public class PlayerStats : MonoBehaviour
     public float rollTime = 0.5f;
     public float rollDelay = 2.0f;
 
-    public ScriptObj_GunData[] weapons = new ScriptObj_GunData[2];
-    public int[] weaponsAmmo = {0,0};
+    //will be moved to weapons class
+    [SerializeField]
+    private ScriptObj_GunData[] weapons = new ScriptObj_GunData[2];
+
+    public ScriptObj_GunData[] playerWeapons = new ScriptObj_GunData[2];
 
     [SerializeField]
     private InputHandler input;
+
+    void Awake()
+    {
+        playerWeapons[0] = Instantiate(weapons[0]);
+        playerWeapons[1] = Instantiate(weapons[1]);
+    }
 
     // Update is called once per frame
     void Update()

@@ -42,21 +42,21 @@ public class PlayerShoot : MonoBehaviour
         if(input._isOnePressed)
         {
             ActiveSlot = 0;
-            ballisticGun.currentAmmo = stats.weaponsAmmo[0];
-            ballisticGun.gunData = stats.weapons[0];
+            ballisticGun.currentAmmo = stats.playerWeapons[0].currentAmmo;
+            ballisticGun.gunData = stats.playerWeapons[0];
             ballisticGun.LoadStats();
         }
         if(input._isTwoPressed)
         {
             ActiveSlot = 1;
-            ballisticGun.currentAmmo = stats.weaponsAmmo[1];
-            ballisticGun.gunData = stats.weapons[1];
+            ballisticGun.currentAmmo = stats.playerWeapons[1].currentAmmo;
+            ballisticGun.gunData = stats.playerWeapons[1];
             ballisticGun.LoadStats();
         }
     }
 
     void TrackAmmo()
     {
-        stats.weaponsAmmo[ActiveSlot] = ballisticGun.currentAmmo;
+        stats.playerWeapons[ActiveSlot].currentAmmo = ballisticGun.currentAmmo;
     }
 }

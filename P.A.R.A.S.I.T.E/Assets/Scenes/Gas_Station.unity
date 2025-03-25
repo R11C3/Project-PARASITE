@@ -1693,6 +1693,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: 'weapons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de,
+        type: 2}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: 'weapons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1,
+        type: 2}
     - target: {fileID: 8660370789467819582, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_Enabled

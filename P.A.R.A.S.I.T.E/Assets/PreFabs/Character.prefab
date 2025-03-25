@@ -1122,6 +1122,9 @@ MonoBehaviour:
   weapons:
   - {fileID: 0}
   - {fileID: 0}
+  playerWeapons:
+  - {fileID: 0}
+  - {fileID: 0}
   input: {fileID: 3915581735004455225}
 --- !u!114 &3154710176588290544
 MonoBehaviour:
@@ -1459,6 +1462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5405931722239036809, guid: 3ba3fc880099f664583b92ed12fb9c82,
+        type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 7734437731834019194}
     - target: {fileID: 8108322700373494377, guid: 3ba3fc880099f664583b92ed12fb9c82,
         type: 3}
       propertyPath: m_LocalPosition.x
