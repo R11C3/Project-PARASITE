@@ -16,8 +16,8 @@ public class BallisticGun : MonoBehaviour
     private float reloadTime;
 
     [SerializeField]
-    private GameObject gunBarrel;
-    private Vector3 EndOfBarrel;
+    private GameObject barrel;
+    private Vector3 endOfBarrel;
     [SerializeField]
     private PlayerAim playerAim;
     [SerializeField]
@@ -37,6 +37,11 @@ public class BallisticGun : MonoBehaviour
     private bool canShoot = true;
     private bool reloading = false;
 
+    public void LoadStats()
+    {
+        GetComponent<MeshFilter>().mesh = gunData.model;
+        barrel.GetComponent<Transform>().localPosition = gunData.endOfBarrel;
+    }
     private void UpdateStats()
     {
         damage = gunData.damage;
@@ -44,6 +49,7 @@ public class BallisticGun : MonoBehaviour
         accuracy = gunData.accuracy;
         maxAmmo = gunData.maxAmmo;
         reloadTime = gunData.reloadTime;
+        endOfBarrel = barrel.transform.position;
     }
 
     public void Reload()
@@ -63,8 +69,7 @@ public class BallisticGun : MonoBehaviour
     {
         UpdateStats();
 
-        EndOfBarrel = gunBarrel.transform.position;
-        shootingSystem.transform.position = gunBarrel.transform.position;
+        shootingSystem.transform.position = endOfBarrel;
         if(lastShootTime + firingSpeed < Time.time)
         {
             canShoot = true;
@@ -76,9 +81,9 @@ public class BallisticGun : MonoBehaviour
 
             Vector3 direction = AccuracyVariation();
 
-            TrailRenderer tempTrail = Instantiate(trail, EndOfBarrel, Quaternion.identity);
+            TrailRenderer tempTrail = Instantiate(trail, endOfBarrel, Quaternion.identity);
 
-            if (Physics.Raycast(EndOfBarrel, direction, out RaycastHit hit, float.MaxValue, mask))
+            if (Physics.Raycast(endOfBarrel, direction, out RaycastHit hit, float.MaxValue, mask))
             {
                 StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
             }

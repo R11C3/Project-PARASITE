@@ -14,6 +14,7 @@ public class PlayerShoot : MonoBehaviour
     void Awake()
     {
         ballisticGun.Reload();
+        ballisticGun.LoadStats();
     }
 
     // Update is called once per frame

@@ -4,6 +4,10 @@ using UnityEngine;
 public class ScriptObj_GunData : ScriptableObject
 {
     [SerializeField]
+    public Mesh model;
+    [SerializeField]
+    public Vector3 endOfBarrel;
+    [SerializeField]
     public float damage;
     [SerializeField]
     public float fireSpeed;
@@ -14,9 +18,9 @@ public class ScriptObj_GunData : ScriptableObject
     [SerializeField]
     public bool automatic;
     [SerializeField]
-    public ParticleSystem firingParticle;
+    public GameObject firingParticle;
     [SerializeField]
-    public ParticleSystem impactParticle;
+    public GameObject impactParticle;
     [SerializeField]
     public Vector3 accuracy;
     [SerializeField]
