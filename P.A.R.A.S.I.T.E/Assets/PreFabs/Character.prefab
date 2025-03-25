@@ -124,6 +124,37 @@ MonoBehaviour:
   playerAim: {fileID: 4965131758044466079}
   aimTransform: {fileID: 8517534150930227605}
   rendererComponent: {fileID: 5737872963719314855}
+--- !u!1 &2021857801228630654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6755661854196501702}
+  m_Layer: 0
+  m_Name: EndOfBarrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6755661854196501702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021857801228630654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2105450253186194608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099834967676915777
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,13 +535,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5465968348282686102}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.227}
+  m_LocalRotation: {x: -0.260577, y: 0.63630396, z: -0.6598778, w: 0.3029493}
+  m_LocalPosition: {x: -0.0015, y: -0.042, z: -0.0073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2105450253186194608}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 42.991, y: 85.732, z: -90.523}
 --- !u!1 &5832478638441420471
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +662,7 @@ Transform:
   m_Children:
   - {fileID: 145542394462457198}
   - {fileID: 4085859328534680492}
+  - {fileID: 6755661854196501702}
   m_Father: {fileID: 8177075934520244335}
   m_LocalEulerAnglesHint: {x: 79.41, y: 92.6, z: 0}
 --- !u!114 &7734437731834019194
@@ -648,6 +680,7 @@ MonoBehaviour:
   gunData: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
   maxAmmo: 0
   currentAmmo: 0
+  barrel: {fileID: 2021857801228630654}
   playerAim: {fileID: 4965131758044466079}
   trail: {fileID: 4727607999235322121}
   shootingSystem: {fileID: 994490737402809884}
@@ -961,7 +994,7 @@ Transform:
   m_GameObject: {fileID: 8274015339391233643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.108, y: 0, z: -0.04}
+  m_LocalPosition: {x: 0.138, y: -0.058, z: 0.177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
