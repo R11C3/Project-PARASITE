@@ -12,6 +12,9 @@ public class PlayerStats : MonoBehaviour
     public float rollTime = 0.5f;
     public float rollDelay = 2.0f;
 
+    public ScriptObj_GunData[] weapons = new ScriptObj_GunData[2];
+    public int[] weaponsAmmo = {0,0};
+
     [SerializeField]
     private InputHandler input;
 

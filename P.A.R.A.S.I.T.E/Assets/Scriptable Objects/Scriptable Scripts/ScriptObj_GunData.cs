@@ -6,7 +6,14 @@ public class ScriptObj_GunData : ScriptableObject
     [SerializeField]
     public Mesh model;
     [SerializeField]
+    public Vector3 offset;
+    public Quaternion offsetRotation;
     public Vector3 endOfBarrel;
+    public Vector3 leftHandPosition;
+    public Quaternion leftHandRotation;
+    public Vector3 leftHandHintPosition;
+    public Quaternion leftHandHintRotation;
+
     [SerializeField]
     public float damage;
     [SerializeField]

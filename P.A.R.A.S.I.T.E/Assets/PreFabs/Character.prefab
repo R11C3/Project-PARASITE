@@ -681,6 +681,8 @@ MonoBehaviour:
   maxAmmo: 0
   currentAmmo: 0
   barrel: {fileID: 2021857801228630654}
+  leftHand: {fileID: 5465968348282686102}
+  leftHandHint: {fileID: 8274015339391233643}
   playerAim: {fileID: 4965131758044466079}
   trail: {fileID: 4727607999235322121}
   shootingSystem: {fileID: 994490737402809884}
@@ -1117,6 +1119,9 @@ MonoBehaviour:
   rollSpeed: 15
   rollTime: 0.5
   rollDelay: 2
+  weapons:
+  - {fileID: 0}
+  - {fileID: 0}
   input: {fileID: 3915581735004455225}
 --- !u!114 &3154710176588290544
 MonoBehaviour:
@@ -1213,7 +1218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 3915581735004455225}
-  ballisticGun: {fileID: 0}
+  ballisticGun: {fileID: 7734437731834019194}
+  stats: {fileID: 3515050039642512570}
 --- !u!114 &3915581735004455225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1240,6 +1246,8 @@ MonoBehaviour:
   _isRollPressed: 0
   _isFirePressed: 0
   _isReloadPressed: 0
+  _isOnePressed: 0
+  _isTwoPressed: 0
 --- !u!114 &8660370789467819582
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class BallisticGun : MonoBehaviour
 {
 
     [SerializeField]
-    private ScriptObj_GunData gunData;
+    public ScriptObj_GunData gunData;
 
     private float damage;
     private float firingSpeed;
@@ -17,6 +17,10 @@ public class BallisticGun : MonoBehaviour
 
     [SerializeField]
     private GameObject barrel;
+    [SerializeField]
+    private GameObject leftHand;
+    [SerializeField]
+    private GameObject leftHandHint;
     private Vector3 endOfBarrel;
     [SerializeField]
     private PlayerAim playerAim;
@@ -40,9 +44,15 @@ public class BallisticGun : MonoBehaviour
     public void LoadStats()
     {
         GetComponent<MeshFilter>().mesh = gunData.model;
+        transform.localPosition = gunData.offset;
+        transform.localRotation = gunData.offsetRotation;
         barrel.GetComponent<Transform>().localPosition = gunData.endOfBarrel;
+        leftHand.GetComponent<Transform>().localPosition = gunData.leftHandPosition;
+        leftHand.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
+        leftHandHint.GetComponent<Transform>().localPosition = gunData.leftHandHintPosition;
+        leftHandHint.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
     }
-    private void UpdateStats()
+    public void UpdateStats()
     {
         damage = gunData.damage;
         firingSpeed = gunData.fireSpeed;
@@ -67,8 +77,6 @@ public class BallisticGun : MonoBehaviour
 
     public void Shoot()
     {
-        UpdateStats();
-
         shootingSystem.transform.position = endOfBarrel;
         if(lastShootTime + firingSpeed < Time.time)
         {

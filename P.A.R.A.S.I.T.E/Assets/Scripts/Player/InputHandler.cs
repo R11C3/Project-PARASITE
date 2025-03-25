@@ -18,6 +18,8 @@ public class InputHandler : MonoBehaviour
     public bool _isRollPressed;
     public bool _isFirePressed;
     public bool _isReloadPressed;
+    public bool _isOnePressed;
+    public bool _isTwoPressed;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +40,10 @@ public class InputHandler : MonoBehaviour
         playerInput.CharacterControls.Fire.canceled += OnFireInput;
         playerInput.CharacterControls.Reload.started += OnReloadInput;
         playerInput.CharacterControls.Reload.canceled += OnReloadInput;
+        playerInput.CharacterControls.WeaponSlotOne.started += OnWeaponSlotOneInput;
+        playerInput.CharacterControls.WeaponSlotOne.canceled += OnWeaponSlotOneInput;
+        playerInput.CharacterControls.WeaponSlotTwo.started += OnWeaponSlotTwoInput;
+        playerInput.CharacterControls.WeaponSlotTwo.canceled += OnWeaponSlotTwoInput;
 
         _forward = mainCamera.transform.forward;
         _forward.y = 0;
@@ -78,6 +84,16 @@ public class InputHandler : MonoBehaviour
     void OnReloadInput (InputAction.CallbackContext context)
     {
         _isReloadPressed = context.ReadValueAsButton();
+    }
+
+    void OnWeaponSlotOneInput(InputAction.CallbackContext context)
+    {
+        _isOnePressed = context.ReadValueAsButton();
+    }
+
+    void OnWeaponSlotTwoInput(InputAction.CallbackContext context)
+    {
+        _isTwoPressed = context.ReadValueAsButton();
     }
 
     void OnEnable()
