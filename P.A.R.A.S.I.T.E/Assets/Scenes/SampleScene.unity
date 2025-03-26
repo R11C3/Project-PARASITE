@@ -369,6 +369,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Range Target
       objectReference: {fileID: 0}
+    - target: {fileID: 5269361814116188113, guid: 117bec83dccc78f47a855ba035edbf07,
+        type: 3}
+      propertyPath: statsTemplate
+      value: 
+      objectReference: {fileID: 11400000, guid: 65062a504947aa6409fb68a9c8798b35,
+        type: 2}
     - target: {fileID: 8944824394388140960, guid: 117bec83dccc78f47a855ba035edbf07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -826,8 +832,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: rollTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: rollDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: rollSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
       propertyPath: sprintSpeed
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: acceleration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: deceleration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: statsTemplate
+      value: 
+      objectReference: {fileID: 11400000, guid: 37c5dc3530c9cd549a7552bc228031ad,
+        type: 2}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: sprintAcceleration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: sprintDeceleration
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}

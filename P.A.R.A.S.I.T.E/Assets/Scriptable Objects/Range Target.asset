@@ -19,4 +19,5 @@ MonoBehaviour:
   rollSpeed: 0
   rollTime: 0
   rollDelay: 0
-  health: 0
+  health: 100
+  damageable: 0
