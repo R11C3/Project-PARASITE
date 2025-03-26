@@ -94,6 +94,10 @@ public class BallisticGun : MonoBehaviour
             if (Physics.Raycast(endOfBarrel, direction, out RaycastHit hit, float.MaxValue, mask))
             {
                 StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
+
+                Enemy target;
+                hit.transform.gameObject.TryGetComponent<Enemy>(out target);
+                target.DoDamage(gunData.damage);
             }
             else
             {
@@ -110,8 +114,7 @@ public class BallisticGun : MonoBehaviour
         Vector3 target = direction - characterTransform.position;
 
         target += new Vector3(
-        Random.Range(-accuracy.x, accuracy.x),
-        Random.Range(-accuracy.y, accuracy.y),
+        Random.Range(-accuracy.x, accuracy.x),0,
         Random.Range(-accuracy.z, accuracy.z));
 
         target.Normalize();

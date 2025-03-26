@@ -29,5 +29,6 @@ MonoBehaviour:
     type: 3}
   impactParticle: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
     type: 3}
-  accuracy: {x: 0.5, y: 0.5, z: 0.5}
+  accuracy: {x: 0.5, y: 0, z: 0.5}
   shotgun: 0
+  currentAmmo: 0

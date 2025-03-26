@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public float speed = 2.0f;
-    public float acceleration = 16.0f;
-    public float deceleration = 16.0f;
-    public float sprintSpeed = 5.0f;
-    public float sprintAcceleration = 16.0f;
-    public float sprintDeceleration = 16.0f;
-    public float rollSpeed = 15.0f;
-    public float rollTime = 0.5f;
-    public float rollDelay = 2.0f;
+    public float speed;
+    public float acceleration;
+    public float deceleration;
+    public float sprintSpeed;
+    public float sprintAcceleration;
+    public float sprintDeceleration;
+    public float rollSpeed;
+    public float rollTime;
+    public float rollDelay;
 
     //will be moved to weapons class
     [SerializeField]
@@ -21,11 +21,16 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField]
     private InputHandler input;
+    [SerializeField]
+    private ScriptObj_Mob statsTemplate;
+    private ScriptObj_Mob stats;
 
     void Awake()
     {
         playerWeapons[0] = Instantiate(weapons[0]);
         playerWeapons[1] = Instantiate(weapons[1]);
+        stats = Instantiate(statsTemplate);
+        InitialStats();
     }
 
     // Update is called once per frame
@@ -35,6 +40,19 @@ public class PlayerStats : MonoBehaviour
             MovementPressed();
         if(input._isCrouchPressed)
             CrouchPressed();
+    }
+
+    void InitialStats()
+    {
+        speed = stats.speed;
+        acceleration = stats.acceleration;
+        deceleration = stats.deceleration;
+        sprintSpeed = stats.sprintSpeed;
+        sprintAcceleration = stats.acceleration;
+        sprintDeceleration = stats.deceleration;
+        rollSpeed = stats.rollSpeed;
+        rollTime = stats.rollTime;
+        rollDelay = stats.rollDelay;
     }
 
     void MovementPressed()
