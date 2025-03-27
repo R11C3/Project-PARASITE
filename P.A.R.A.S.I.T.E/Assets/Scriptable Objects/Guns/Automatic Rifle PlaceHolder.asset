@@ -32,4 +32,4 @@ MonoBehaviour:
     type: 3}
   accuracy: {x: 0.5, y: 0, z: 0.5}
   shotgun: 0
-  currentAmmo: 0
+  currentAmmo: 4

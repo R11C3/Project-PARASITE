@@ -32,8 +32,7 @@ public class Enemy : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-        if(stats.damageable)
-            health -= damage;
+        stats.DoDamage(damage);
 
         Debug.Log(gameObject + " damaged\nHealth remaining: " + health);
 

@@ -17,12 +17,11 @@ MonoBehaviour:
   deceleration: 16
   sprintSpeed: 6
   rollSpeed: 15
-  rollTime: 0.2
+  rollTime: 0.5
   rollDelay: 1
   maxHealth: 0
   health: 100
   damageable: 1
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
   weaponInventory:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
+  - {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1, type: 2}
