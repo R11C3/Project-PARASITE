@@ -13,9 +13,9 @@ public class PlayerAnimationHandler : MonoBehaviour
     private Transform characterTransform;
     private Quaternion _currentRotation;
     [SerializeField]
-    private InputHandler input;
+    private SO_Player _player;
     [SerializeField]
-    private PlayerStats playerStats;
+    private SO_Input _input;
     private PlayerController playerController;
     private PlayerRoll playerRoll;
     private Vector3 _currentVelocity;
@@ -84,7 +84,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void AnimationSpeeds()
     {
-        animator.SetFloat("rollSpeed", 1/ playerStats.rollTime);
+        animator.SetFloat("rollSpeed", 1/ _player.rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
         animator.SetFloat("linearSpeed", _linearSpeed * 10);
@@ -93,11 +93,11 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void HandleAnimation()
     {
-        if (input._isMovementPressed && !_isWalking)
+        if (_input._isMovementPressed && !_isWalking)
         {
             animator.SetBool(isWalkingHash, true);
         }
-        else if (!input._isMovementPressed && _isWalking)
+        else if (!_input._isMovementPressed && _isWalking)
         {
             animator.SetBool(isWalkingHash, false);
         }
@@ -109,11 +109,11 @@ public class PlayerAnimationHandler : MonoBehaviour
         {
             animator.SetBool(isRollingHash, false);
         }
-        if(input._isCrouchPressed && !_isCrouching)
+        if(_input._isCrouchPressed && !_isCrouching)
         {
             animator.SetBool(isCrouchingHash, true);
         }
-        else if(!input._isCrouchPressed && _isCrouching)
+        else if(!_input._isCrouchPressed && _isCrouching)
         {
             animator.SetBool(isCrouchingHash, false);
         }

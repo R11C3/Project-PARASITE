@@ -5,8 +5,8 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField]
-    private ScriptObj_Mob statsTemplate;
-    private ScriptObj_Mob stats;
+    private SO_Mob statsTemplate;
+    private SO_Mob stats;
 
     float health;
     bool damageable;

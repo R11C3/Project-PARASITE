@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b018b185b8371146ba7ff3652a6c4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
+  gunData: {fileID: 0}
   maxAmmo: 0
   currentAmmo: 0
   barrel: {fileID: 2021857801228630654}
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 4965131758044466079}
   - component: {fileID: 5697971344168195618}
   - component: {fileID: 7788661217132101810}
-  - component: {fileID: 3915581735004455225}
+  - component: {fileID: 2782775683567601179}
   - component: {fileID: 8660370789467819582}
   - component: {fileID: 3474404575052133563}
   m_Layer: 0
@@ -1110,22 +1110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4cfc1e6b27e51147a1c4f22ef92cff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  acceleration: 6
-  deceleration: 13
-  sprintSpeed: 6.5
-  sprintAcceleration: 16
-  sprintDeceleration: 16
-  rollSpeed: 15
-  rollTime: 0.5
-  rollDelay: 2
-  weapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  playerWeapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  input: {fileID: 3915581735004455225}
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
 --- !u!114 &3154710176588290544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,11 +1125,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  input: {fileID: 3915581735004455225}
-  playerStats: {fileID: 3515050039642512570}
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
   _lastMovement: {x: 0, y: 0, z: 0}
   _currentVelocity: {x: 0, y: 0, z: 0}
   _currentRotation: {x: 0, y: 0, z: 0, w: 0}
+  _forward: {x: 0, y: 0, z: 0}
+  _right: {x: 0, y: 0, z: 0}
+  _forwardMovement: {x: 0, y: 0, z: 0}
+  _rightMovement: {x: 0, y: 0, z: 0}
+  _initialMovement: {x: 0, y: 0, z: 0}
+  dampening: 5
 --- !u!114 &1102376081572940936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1156,8 +1148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c125c90effabe2b4ab77bd53af81d211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 3915581735004455225}
-  playerStats: {fileID: 3515050039642512570}
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
   _currentMovement: {x: 0, y: 0, z: 0}
   _rolling: 0
 --- !u!114 &727631580183289083
@@ -1172,8 +1164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14188ee13cc66594788cc0b188b6d0ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 3915581735004455225}
-  playerStats: {fileID: 3515050039642512570}
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
   characterController: {fileID: 7086505844144453374}
   playerController: {fileID: 3154710176588290544}
 --- !u!114 &4965131758044466079
@@ -1206,8 +1198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Direction: 0
-  input: {fileID: 3915581735004455225}
-  playerStats: {fileID: 3515050039642512570}
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
 --- !u!114 &7788661217132101810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,10 +1212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8b9d504afb138049a84fc7343beb04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 3915581735004455225}
   ballisticGun: {fileID: 7734437731834019194}
-  stats: {fileID: 3515050039642512570}
---- !u!114 &3915581735004455225
+  _player: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+--- !u!114 &2782775683567601179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1235,22 +1227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d9fd91ebc8af44891c6c9fb2975281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMovementInput: {x: 0, y: 0}
-  _forward: {x: 0, y: 0, z: 0}
-  _right: {x: 0, y: 0, z: 0}
-  _forwardMovement: {x: 0, y: 0, z: 0}
-  _rightMovement: {x: 0, y: 0, z: 0}
-  _initialMovement: {x: 0, y: 0, z: 0}
-  _currentMovement: {x: 0, y: 0, z: 0}
-  dampening: 5
-  _isMovementPressed: 0
-  _isSprintPressed: 0
-  _isCrouchPressed: 0
-  _isRollPressed: 0
-  _isFirePressed: 0
-  _isReloadPressed: 0
-  _isOnePressed: 0
-  _isTwoPressed: 0
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
 --- !u!114 &8660370789467819582
 MonoBehaviour:
   m_ObjectHideFlags: 0

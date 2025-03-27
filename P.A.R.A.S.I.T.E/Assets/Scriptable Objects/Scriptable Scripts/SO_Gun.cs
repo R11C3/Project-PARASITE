@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ScriptObj_GunData", menuName = "Scriptable Objects/GunData")]
-public class ScriptObj_GunData : ScriptableObject
+[CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/GunData")]
+public class SO_Gun : SO_Item
 {
     [Header("Mesh for Gun")]
     public Mesh model;
@@ -24,7 +24,7 @@ public class ScriptObj_GunData : ScriptableObject
     public GameObject impactParticle;
     public Vector3 accuracy;
     public bool shotgun;
-
-    [Header("Instance Data (DO NOT TOUCH)")]
     public int currentAmmo;
+
+    // Methods
 }

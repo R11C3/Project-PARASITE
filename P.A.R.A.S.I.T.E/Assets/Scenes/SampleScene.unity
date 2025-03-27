@@ -373,7 +373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: statsTemplate
       value: 
-      objectReference: {fileID: 11400000, guid: 65062a504947aa6409fb68a9c8798b35,
+      objectReference: {fileID: 11400000, guid: f32ecdf5ad1463a4f87295cb9f287810,
         type: 2}
     - target: {fileID: 8944824394388140960, guid: 117bec83dccc78f47a855ba035edbf07,
         type: 3}
@@ -727,9 +727,21 @@ PrefabInstance:
       objectReference: {fileID: 290060618}
     - target: {fileID: 727631580183289083, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
+    - target: {fileID: 727631580183289083, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1102376081572940936, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
     - target: {fileID: 2105450253186194608, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -825,6 +837,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3154710176588290544, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
     - target: {fileID: 3474404575052133563, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_Enabled
@@ -835,6 +853,12 @@ PrefabInstance:
       propertyPath: speed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
     - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: rollTime
@@ -923,6 +947,12 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+    - target: {fileID: 5697971344168195618, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
     - target: {fileID: 7734437731834019194, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: trail
@@ -948,6 +978,12 @@ PrefabInstance:
       propertyPath: characterTransform
       value: 
       objectReference: {fileID: 2463469621687058325}
+    - target: {fileID: 7788661217132101810, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: _input
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32,
+        type: 2}
     - target: {fileID: 7788661217132101810, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: ballisticGun

@@ -5,104 +5,123 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-
-    private PlayerInput playerInput;
-    private Camera mainCamera;
-
-    public Vector2 _currentMovementInput;
-    [HideInInspector] public Vector3 _forward, _right, _forwardMovement, _rightMovement, _initialMovement, _currentMovement;
-    public float dampening = 5.0f;
-    public bool _isMovementPressed;
-    public bool _isSprintPressed;
-    public bool _isCrouchPressed;
-    public bool _isRollPressed;
-    public bool _isFirePressed;
-    public bool _isReloadPressed;
-    public bool _isOnePressed;
-    public bool _isTwoPressed;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        playerInput = new PlayerInput();
-        mainCamera = Camera.main;
-
-        playerInput.CharacterControls.Move.started += OnMovementInput;
-        playerInput.CharacterControls.Move.canceled += OnMovementInput;
-        playerInput.CharacterControls.Move.performed += OnMovementInput;
-        playerInput.CharacterControls.Sprint.started += OnSprintInput;
-        playerInput.CharacterControls.Sprint.canceled += OnSprintInput;
-        playerInput.CharacterControls.Crouch.started += OnCrouchInput;
-        playerInput.CharacterControls.Crouch.canceled += OnCrouchInput;
-        playerInput.CharacterControls.Roll.started += OnRollInput;
-        playerInput.CharacterControls.Roll.canceled += OnRollInput;
-        playerInput.CharacterControls.Fire.started += OnFireInput;
-        playerInput.CharacterControls.Fire.canceled += OnFireInput;
-        playerInput.CharacterControls.Reload.started += OnReloadInput;
-        playerInput.CharacterControls.Reload.canceled += OnReloadInput;
-        playerInput.CharacterControls.WeaponSlotOne.started += OnWeaponSlotOneInput;
-        playerInput.CharacterControls.WeaponSlotOne.canceled += OnWeaponSlotOneInput;
-        playerInput.CharacterControls.WeaponSlotTwo.started += OnWeaponSlotTwoInput;
-        playerInput.CharacterControls.WeaponSlotTwo.canceled += OnWeaponSlotTwoInput;
-
-        _forward = mainCamera.transform.forward;
-        _forward.y = 0;
-        _forward = Vector3.Normalize(_forward);
-        _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
-    }
-
-    void OnMovementInput (InputAction.CallbackContext context)
-    {
-        _currentMovementInput = context.ReadValue<Vector2>();
-        _rightMovement = _right * _currentMovementInput.x;
-        _forwardMovement = _forward * _currentMovementInput.y;
-        _initialMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
-        _currentMovement = Vector3.Lerp(_currentMovement, _initialMovement, dampening);
-        _isMovementPressed = _currentMovementInput.x != 0 || _currentMovementInput.y != 0;
-    }
-
-    void OnSprintInput (InputAction.CallbackContext context)
-    {
-        _isSprintPressed = context.ReadValueAsButton();
-    }
-
-    void OnCrouchInput (InputAction.CallbackContext context)
-    {
-        _isCrouchPressed = context.ReadValueAsButton();
-    }
-
-    void OnRollInput (InputAction.CallbackContext context)
-    {
-        _isRollPressed = context.ReadValueAsButton();
-    }
-
-    void OnFireInput (InputAction.CallbackContext context)
-    {
-        _isFirePressed = context.ReadValueAsButton();
-    }
-
-    void OnReloadInput (InputAction.CallbackContext context)
-    {
-        _isReloadPressed = context.ReadValueAsButton();
-    }
-
-    void OnWeaponSlotOneInput(InputAction.CallbackContext context)
-    {
-        _isOnePressed = context.ReadValueAsButton();
-    }
-
-    void OnWeaponSlotTwoInput(InputAction.CallbackContext context)
-    {
-        _isTwoPressed = context.ReadValueAsButton();
-    }
+    [SerializeField]
+    private SO_Input _input;
 
     void OnEnable()
     {
-        playerInput.CharacterControls.Enable();
+        _input.MoveEvent += OnMove;
+        _input.RollEvent += OnRoll;
+        _input.RollCancelledEvent += OnRollCancelled;
+        _input.CrouchEvent += OnCrouch;
+        _input.CrouchCancelledEvent += OnCrouchCancelled;
+        _input.SprintEvent += OnSprint;
+        _input.SprintCancelledEvent += OnSprintCancelled;
+        _input.FireEvent += OnFire;
+        _input.FireCancelledEvent += OnFireCancelled;
+        _input.ReloadEvent += OnReload;
+        _input.ReloadCancelledEvent += OnReloadCancelled;
+        _input.OneEvent += OnOne;
+        _input.OneCancelledEvent += OnOneCancelled;
+        _input.TwoEvent += OnTwo;
+        _input.TwoCancelledEvent += OnTwoCancelled;
     }
 
     void OnDisable()
     {
-        playerInput.CharacterControls.Disable();
+        _input.MoveEvent -= OnMove;
+        _input.RollEvent -= OnRoll;
+        _input.RollCancelledEvent -= OnRollCancelled;
+        _input.CrouchEvent -= OnCrouch;
+        _input.CrouchCancelledEvent -= OnCrouchCancelled;
+        _input.SprintEvent -= OnSprint;
+        _input.SprintCancelledEvent -= OnSprintCancelled;
+        _input.FireEvent -= OnFire;
+        _input.FireCancelledEvent -= OnFireCancelled;
+        _input.ReloadEvent -= OnReload;
+        _input.ReloadCancelledEvent -= OnReloadCancelled;
+        _input.OneEvent -= OnOne;
+        _input.OneCancelledEvent -= OnOneCancelled;
+        _input.TwoEvent -= OnTwo;
+        _input.TwoCancelledEvent -= OnTwoCancelled;
+    }
+
+    private void OnMove(Vector2 movement)
+    {
+        _input._currentMovementInput = movement;
+        if(movement.x != 0 || movement.y != 0)
+            _input._isMovementPressed = true;
+        else
+            _input._isMovementPressed = false;
+    }
+
+    private void OnRoll()
+    {
+        _input._isRollPressed = true;
+    }
+
+    private void OnRollCancelled()
+    {
+        _input._isRollPressed = false;
+    }
+
+    private void OnCrouch()
+    {
+        _input._isCrouchPressed = true;
+    }
+
+    private void OnCrouchCancelled()
+    {
+        _input._isCrouchPressed = false;
+    }
+
+    private void OnSprint()
+    {
+        _input._isSprintPressed = true;
+    }
+
+    private void OnSprintCancelled()
+    {
+        _input._isSprintPressed = false;
+    }
+
+    private void OnFire()
+    {
+        _input._isFirePressed = true;
+    }
+
+    private void OnFireCancelled()
+    {
+        _input._isFirePressed = false;
+    }
+
+    private void OnReload()
+    {
+        _input._isReloadPressed = true;
+    }
+
+    private void OnReloadCancelled()
+    {
+        _input._isReloadPressed = false;
+    }
+
+    private void OnOne()
+    {
+        _input._isOnePressed = true;
+    }
+
+    private void OnOneCancelled()
+    {
+        _input._isOnePressed = false;
+    }
+
+    private void OnTwo()
+    {
+        _input._isTwoPressed = true;
+    }
+
+    private void OnTwoCancelled()
+    {
+        _input._isTwoPressed = false;
     }
 }

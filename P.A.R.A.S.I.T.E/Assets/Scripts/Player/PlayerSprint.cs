@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerSprint : MonoBehaviour
 {
     [SerializeField]
-    private InputHandler input;
+    private SO_Player _player;
     [SerializeField]
-    private PlayerStats playerStats;
+    private SO_Input _input;
     [SerializeField]
     private CharacterController characterController;
     [SerializeField]
@@ -27,14 +27,14 @@ public class PlayerSprint : MonoBehaviour
 
     void HandleSprint()
     {
-        if(input._isSprintPressed && input._isMovementPressed && playerController._speed <= playerStats.sprintSpeed)
+        if(_input._isSprintPressed && _input._isMovementPressed && playerController._speed <= _player.sprintSpeed)
         {
-            playerController._speed += playerStats.sprintAcceleration * Time.deltaTime;
+            playerController._speed += _player.acceleration * Time.deltaTime;
         }
 
-        if (!input._isSprintPressed && playerController._speed >= playerStats.speed)
+        if (!_input._isSprintPressed && playerController._speed >= _player.speed)
         {
-            playerController._speed -= playerStats.sprintDeceleration * Time.deltaTime;
+            playerController._speed -= _player.deceleration * Time.deltaTime;
         }
     }
 }

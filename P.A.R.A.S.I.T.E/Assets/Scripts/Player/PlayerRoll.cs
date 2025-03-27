@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerRoll : MonoBehaviour
 {
     [SerializeField]
-    private InputHandler input;
+    private SO_Player _player;
     [SerializeField]
-    private PlayerStats playerStats;
+    private SO_Input _input;
     private CharacterController characterController;
     private PlayerController playerController;
     private Transform characterTransform;
@@ -39,7 +39,7 @@ public class PlayerRoll : MonoBehaviour
 
     void UpdateValues()
     {
-        _currentMovement = input._currentMovement;
+        _currentMovement = _input._currentMovement;
         _currentRotation = playerController._currentRotation;
     }
 
@@ -56,11 +56,11 @@ public class PlayerRoll : MonoBehaviour
 
     void handleRoll()
     {
-        if(_canRoll && input._isRollPressed && input._isMovementPressed)
+        if(_canRoll && _input._isRollPressed && _input._isMovementPressed)
         {
             StartCoroutine(roll());
         }
-        else if (_canRoll && input._isRollPressed)
+        else if (_canRoll && _input._isRollPressed)
         {
             StartCoroutine(standingRoll());
         }
@@ -76,9 +76,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < playerStats.rollTime)
+        while (elapsedTime < _player.rollTime)
         {
-            characterController.Move(_rollMovement * playerStats.rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * _player.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             
             yield return null;
@@ -99,9 +99,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < playerStats.rollTime)
+        while (elapsedTime < _player.rollTime)
         {
-            characterController.Move(_rollMovement * playerStats.rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * _player.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -112,7 +112,7 @@ public class PlayerRoll : MonoBehaviour
 
     public IEnumerator rollDelay()
     {
-        yield return new WaitForSecondsRealtime(playerStats.rollDelay);
+        yield return new WaitForSecondsRealtime(_player.rollDelay);
         _canRoll = true;
     }
 }

@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc615861712b2834b8aef7a974a0f49a, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: c0f6df616ae41b14fae2891835d056e0, type: 3}
+  m_Name: Player
   m_EditorClassIdentifier: 
   speed: 2
   acceleration: 16
   deceleration: 16
   sprintSpeed: 6
   rollSpeed: 15
-  rollTime: 0.5
-  rollDelay: 2
-  health: 500
-  damageable: 0
+  rollTime: 0.2
+  rollDelay: 1
+  maxHealth: 0
+  health: 100
+  damageable: 1
+  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  weaponInventory:
+  - {fileID: 0}
+  - {fileID: 0}

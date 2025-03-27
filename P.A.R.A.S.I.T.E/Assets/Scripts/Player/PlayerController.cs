@@ -8,16 +8,23 @@ public class PlayerController : MonoBehaviour
     public float _speed = 0.0f;
 
     [SerializeField]
-    private InputHandler input;
+    private SO_Player _player;
     [SerializeField]
-    private PlayerStats playerStats;
+    private SO_Input _input;
     private CharacterController characterController;
     private PlayerRoll playerRoll;
+
+    private Camera _camera;
 
     [HideInInspector]
     public Vector3 _lastMovement, _currentVelocity;
     [HideInInspector]
     public Quaternion _currentRotation;
+    [HideInInspector]
+    public Vector3 _forward, _right, _forwardMovement, _rightMovement, _initialMovement;
+    
+    [Header("Movement Dampening")]
+    public float dampening = 5.0f;
 
     private bool _rolling;
 
@@ -25,8 +32,16 @@ public class PlayerController : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerRoll = GetComponent<PlayerRoll>();
+        _camera = Camera.main;
 
         _lastMovement = new Vector3(0.0f, -9.8f, 0.0f);
+
+        _camera = Camera.main;
+
+        _forward = _camera.transform.forward;
+        _forward.y = 0;
+        _forward = Vector3.Normalize(_forward);
+        _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
     }
 
     void UpdateValues()
@@ -36,14 +51,19 @@ public class PlayerController : MonoBehaviour
 
     void handleMovement()
     {
-        if(input._isMovementPressed && _speed <= playerStats.speed)
+        _rightMovement = _right * _input._currentMovementInput.x;
+        _forwardMovement = _forward * _input._currentMovementInput.y;
+        _initialMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
+        _input._currentMovement = Vector3.Lerp(_input._currentMovement, _initialMovement, dampening);
+
+        if(_input._isMovementPressed && _speed <= _player.speed)
         {
-            _speed += playerStats.acceleration * Time.deltaTime;
+            _speed += _player.acceleration * Time.deltaTime;
         }
 
-        if(!input._isMovementPressed && _speed > 0.0f)
+        if(!_input._isMovementPressed && _speed > 0.0f)
         {
-            _speed -= playerStats.deceleration * Time.deltaTime;
+            _speed -= _player.deceleration * Time.deltaTime;
         }
 
         if(_speed < 0.0f)
@@ -51,17 +71,17 @@ public class PlayerController : MonoBehaviour
             _speed = 0.0f;
         }
 
-        if (!input._isMovementPressed)
+        if (!_input._isMovementPressed)
         {
-            input._currentMovement = _lastMovement;
-            characterController.Move(new Vector3(input._currentMovement.x * _speed * Time.deltaTime, input._currentMovement.y * Time.deltaTime, input._currentMovement.z * _speed * Time.deltaTime));
+            _input._currentMovement = _lastMovement;
+            characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
         }
 
-        if (!_rolling && input._isMovementPressed)
+        if (!_rolling && _input._isMovementPressed)
         {
-            characterController.Move(new Vector3(input._currentMovement.x * _speed * Time.deltaTime, input._currentMovement.y * Time.deltaTime, input._currentMovement.z * _speed * Time.deltaTime));
+            characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
 
-            _lastMovement = input._currentMovement;
+            _lastMovement = _input._currentMovement;
         }
 
         _currentVelocity = characterController.velocity;
@@ -72,12 +92,12 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded)
         {
             float _groundedGravity = -0.5f;
-            input._currentMovement.y = _groundedGravity;
+            _input._currentMovement.y = _groundedGravity;
         }
         else
         {
             float _gravity = -9.8f;
-            input._currentMovement.y = _gravity;
+            _input._currentMovement.y = _gravity;
         }
     }
 

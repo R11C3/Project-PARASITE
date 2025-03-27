@@ -63,7 +63,7 @@ public class GenerateHUD : MonoBehaviour
 
     private void UpdateAmmo()
     {
-        _currentAmmo.text = gun.currentAmmo.ToString();
-        _maxAmmo.text = gun.maxAmmo.ToString();
+        _currentAmmo.text = gun.gunData.currentAmmo.ToString();
+        _maxAmmo.text = gun.gunData.maxAmmo.ToString();
     }
 }
