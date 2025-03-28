@@ -12,38 +12,42 @@ public class InputHandler : MonoBehaviour
     {
         _input.MoveEvent += OnMove;
         _input.RollEvent += OnRoll;
-        _input.RollCancelledEvent += OnRollCancelled;
+        _input.RollCanceledEvent += OnRollCanceled;
         _input.CrouchEvent += OnCrouch;
-        _input.CrouchCancelledEvent += OnCrouchCancelled;
+        _input.CrouchCanceledEvent += OnCrouchCanceled;
         _input.SprintEvent += OnSprint;
-        _input.SprintCancelledEvent += OnSprintCancelled;
+        _input.SprintCanceledEvent += OnSprintCanceled;
         _input.FireEvent += OnFire;
-        _input.FireCancelledEvent += OnFireCancelled;
+        _input.FireCanceledEvent += OnFireCanceled;
         _input.ReloadEvent += OnReload;
-        _input.ReloadCancelledEvent += OnReloadCancelled;
+        _input.ReloadCanceledEvent += OnReloadCanceled;
         _input.OneEvent += OnOne;
-        _input.OneCancelledEvent += OnOneCancelled;
+        _input.OneCanceledEvent += OnOneCanceled;
         _input.TwoEvent += OnTwo;
-        _input.TwoCancelledEvent += OnTwoCancelled;
+        _input.TwoCanceledEvent += OnTwoCanceled;
+        _input.InteractEvent += OnInteract;
+        _input.InteractCanceledEvent += OnInteractCanceled;
     }
 
     void OnDisable()
     {
         _input.MoveEvent -= OnMove;
         _input.RollEvent -= OnRoll;
-        _input.RollCancelledEvent -= OnRollCancelled;
+        _input.RollCanceledEvent -= OnRollCanceled;
         _input.CrouchEvent -= OnCrouch;
-        _input.CrouchCancelledEvent -= OnCrouchCancelled;
+        _input.CrouchCanceledEvent -= OnCrouchCanceled;
         _input.SprintEvent -= OnSprint;
-        _input.SprintCancelledEvent -= OnSprintCancelled;
+        _input.SprintCanceledEvent -= OnSprintCanceled;
         _input.FireEvent -= OnFire;
-        _input.FireCancelledEvent -= OnFireCancelled;
+        _input.FireCanceledEvent -= OnFireCanceled;
         _input.ReloadEvent -= OnReload;
-        _input.ReloadCancelledEvent -= OnReloadCancelled;
+        _input.ReloadCanceledEvent -= OnReloadCanceled;
         _input.OneEvent -= OnOne;
-        _input.OneCancelledEvent -= OnOneCancelled;
+        _input.OneCanceledEvent -= OnOneCanceled;
         _input.TwoEvent -= OnTwo;
-        _input.TwoCancelledEvent -= OnTwoCancelled;
+        _input.TwoCanceledEvent -= OnTwoCanceled;
+        _input.InteractEvent -= OnInteract;
+        _input.InteractCanceledEvent -= OnInteractCanceled;
     }
 
     private void OnMove(Vector2 movement)
@@ -60,7 +64,7 @@ public class InputHandler : MonoBehaviour
         _input._isRollPressed = true;
     }
 
-    private void OnRollCancelled()
+    private void OnRollCanceled()
     {
         _input._isRollPressed = false;
     }
@@ -70,7 +74,7 @@ public class InputHandler : MonoBehaviour
         _input._isCrouchPressed = true;
     }
 
-    private void OnCrouchCancelled()
+    private void OnCrouchCanceled()
     {
         _input._isCrouchPressed = false;
     }
@@ -80,7 +84,7 @@ public class InputHandler : MonoBehaviour
         _input._isSprintPressed = true;
     }
 
-    private void OnSprintCancelled()
+    private void OnSprintCanceled()
     {
         _input._isSprintPressed = false;
     }
@@ -90,7 +94,7 @@ public class InputHandler : MonoBehaviour
         _input._isFirePressed = true;
     }
 
-    private void OnFireCancelled()
+    private void OnFireCanceled()
     {
         _input._isFirePressed = false;
     }
@@ -100,7 +104,7 @@ public class InputHandler : MonoBehaviour
         _input._isReloadPressed = true;
     }
 
-    private void OnReloadCancelled()
+    private void OnReloadCanceled()
     {
         _input._isReloadPressed = false;
     }
@@ -110,7 +114,7 @@ public class InputHandler : MonoBehaviour
         _input._isOnePressed = true;
     }
 
-    private void OnOneCancelled()
+    private void OnOneCanceled()
     {
         _input._isOnePressed = false;
     }
@@ -120,8 +124,18 @@ public class InputHandler : MonoBehaviour
         _input._isTwoPressed = true;
     }
 
-    private void OnTwoCancelled()
+    private void OnTwoCanceled()
     {
         _input._isTwoPressed = false;
+    }
+
+    private void OnInteract()
+    {
+        _input._isInteractPressed = true;
+    }
+
+    private void OnInteractCanceled()
+    {
+        _input._isInteractPressed = false;
     }
 }

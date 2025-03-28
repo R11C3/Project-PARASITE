@@ -678,8 +678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunData: {fileID: 0}
-  maxAmmo: 0
-  currentAmmo: 0
   barrel: {fileID: 2021857801228630654}
   leftHand: {fileID: 5465968348282686102}
   leftHandHint: {fileID: 8274015339391233643}
@@ -1182,7 +1180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   renderLine: 0
   mousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5697971344168195618

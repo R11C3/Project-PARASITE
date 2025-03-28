@@ -14,6 +14,7 @@ public class SO_Input : ScriptableObject
     private InputAction _crouchAction;
     private InputAction _fireAction;
     private InputAction _reloadAction;
+    private InputAction _interactAction;
     private InputAction _oneAction;
     private InputAction _twoAction;
 
@@ -30,6 +31,7 @@ public class SO_Input : ScriptableObject
     public bool _isReloadPressed;
     public bool _isOnePressed;
     public bool _isTwoPressed;
+    public bool _isInteractPressed;
 
     public event UnityAction<Vector2> MoveEvent;
     public event UnityAction SprintEvent;
@@ -39,14 +41,16 @@ public class SO_Input : ScriptableObject
     public event UnityAction ReloadEvent;
     public event UnityAction OneEvent;
     public event UnityAction TwoEvent;
+    public event UnityAction InteractEvent;
 
-    public event UnityAction SprintCancelledEvent;
-    public event UnityAction RollCancelledEvent;
-    public event UnityAction CrouchCancelledEvent;
-    public event UnityAction FireCancelledEvent;
-    public event UnityAction ReloadCancelledEvent;
-    public event UnityAction OneCancelledEvent;
-    public event UnityAction TwoCancelledEvent;
+    public event UnityAction SprintCanceledEvent;
+    public event UnityAction RollCanceledEvent;
+    public event UnityAction CrouchCanceledEvent;
+    public event UnityAction FireCanceledEvent;
+    public event UnityAction ReloadCanceledEvent;
+    public event UnityAction OneCanceledEvent;
+    public event UnityAction TwoCanceledEvent;
+    public event UnityAction InteractCanceledEvent;
 
     void OnEnable()
     {
@@ -58,6 +62,7 @@ public class SO_Input : ScriptableObject
         _reloadAction = _input.FindAction("Reload");
         _oneAction = _input.FindAction("WeaponSlotOne");
         _twoAction = _input.FindAction("WeaponSlotTwo");
+        _interactAction = _input.FindAction("Interact");
 
         _moveAction.started += OnMovementInput;
         _moveAction.performed += OnMovementInput;
@@ -84,6 +89,9 @@ public class SO_Input : ScriptableObject
         _twoAction.started += OnWeaponSlotTwoInput;
         _twoAction.canceled += OnWeaponSlotTwoInput;
 
+        _interactAction.started += OnInteractInput;
+        _interactAction.canceled += OnInteractInput;
+
         _moveAction.Enable();
         _sprintAction.Enable();
         _rollAction.Enable();
@@ -92,6 +100,7 @@ public class SO_Input : ScriptableObject
         _reloadAction.Enable();
         _oneAction.Enable();
         _twoAction.Enable();
+        _interactAction.Enable();
     }
 
     void OnDisable()
@@ -121,6 +130,9 @@ public class SO_Input : ScriptableObject
         _twoAction.started -= OnWeaponSlotTwoInput;
         _twoAction.canceled -= OnWeaponSlotTwoInput;
 
+        _interactAction.started -= OnInteractInput;
+        _interactAction.canceled -= OnInteractInput;
+
         _moveAction.Disable();
         _sprintAction.Disable();
         _rollAction.Disable();
@@ -129,6 +141,7 @@ public class SO_Input : ScriptableObject
         _reloadAction.Disable();
         _oneAction.Disable();
         _twoAction.Disable();
+        _interactAction.Disable();
     }
 
     void OnMovementInput (InputAction.CallbackContext context)
@@ -142,9 +155,9 @@ public class SO_Input : ScriptableObject
         {
             SprintEvent.Invoke();
         }
-        if(SprintCancelledEvent != null && context.canceled)
+        if(SprintCanceledEvent != null && context.canceled)
         {
-            SprintCancelledEvent.Invoke();
+            SprintCanceledEvent.Invoke();
         }
     }
 
@@ -154,9 +167,9 @@ public class SO_Input : ScriptableObject
         {
             CrouchEvent.Invoke();
         }
-        if(CrouchCancelledEvent != null && context.canceled)
+        if(CrouchCanceledEvent != null && context.canceled)
         {
-            CrouchCancelledEvent.Invoke();
+            CrouchCanceledEvent.Invoke();
         }
     }
 
@@ -166,9 +179,9 @@ public class SO_Input : ScriptableObject
         {
             RollEvent.Invoke();
         }
-        if(RollCancelledEvent != null && context.canceled)
+        if(RollCanceledEvent != null && context.canceled)
         {
-            RollCancelledEvent.Invoke();
+            RollCanceledEvent.Invoke();
         }
     }
 
@@ -178,9 +191,9 @@ public class SO_Input : ScriptableObject
         {
             FireEvent.Invoke();
         }
-        if(FireCancelledEvent != null && context.canceled)
+        if(FireCanceledEvent != null && context.canceled)
         {
-            FireCancelledEvent.Invoke();
+            FireCanceledEvent.Invoke();
         }
     }
 
@@ -190,9 +203,9 @@ public class SO_Input : ScriptableObject
         {
             ReloadEvent.Invoke();
         }
-        if(ReloadCancelledEvent != null && context.canceled)
+        if(ReloadCanceledEvent != null && context.canceled)
         {
-            ReloadCancelledEvent.Invoke();
+            ReloadCanceledEvent.Invoke();
         }
     }
 
@@ -202,9 +215,9 @@ public class SO_Input : ScriptableObject
         {
             OneEvent.Invoke();
         }
-        if(OneCancelledEvent != null && context.canceled)
+        if(OneCanceledEvent != null && context.canceled)
         {
-            OneCancelledEvent.Invoke();
+            OneCanceledEvent.Invoke();
         }
     }
 
@@ -214,9 +227,21 @@ public class SO_Input : ScriptableObject
         {
             TwoEvent.Invoke();
         }
-        if(TwoCancelledEvent != null && context.canceled)
+        if(TwoCanceledEvent != null && context.canceled)
         {
-            TwoCancelledEvent.Invoke();
+            TwoCanceledEvent.Invoke();
+        }
+    }
+
+    void OnInteractInput(InputAction.CallbackContext context)
+    {
+        if(InteractEvent != null && context.started)
+        {
+            InteractEvent.Invoke();
+        }
+        if(InteractEvent != null && context.canceled)
+        {
+            InteractCanceledEvent.Invoke();
         }
     }
 }
