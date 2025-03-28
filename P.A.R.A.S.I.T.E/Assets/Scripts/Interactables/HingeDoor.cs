@@ -20,7 +20,8 @@ public class HingeDoor : Interactable
     [SerializeField]
     private float closeAngle = -90f;
     [SerializeField]
-    private float speed = 0.25f;
+    [Header("Lower time faster door")]
+    private float time = 0.25f;
 
     public override void Interact()
     {
@@ -42,9 +43,9 @@ public class HingeDoor : Interactable
 
         float elapsedTime = 0f;
 
-        angle = angle / speed;
+        angle = angle / time;
 
-        while(elapsedTime < speed)
+        while(elapsedTime < time)
         {
             door.transform.RotateAround(hinge.transform.position, Vector3.up, angle * Time.deltaTime);
 
