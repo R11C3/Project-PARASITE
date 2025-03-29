@@ -6,10 +6,27 @@ public class SO_Player : SO_Mob
 {
     [Header("Weapon Inventory")]
     public SO_Gun[] weaponInventory;
+    [Header("Item Inventory")]
+    public List<SO_Item> itemInventory;
 
     public void ReplaceGun(int index, SO_Gun newGun)
     {
         weaponInventory[index] = Instantiate(newGun);
+    }
+
+    public void Add(SO_Item item)
+    {
+        itemInventory.Add(item);
+    }
+
+    public void Remove(SO_Item item)
+    {
+        itemInventory.Remove(item);
+    }
+
+    public void ClearInventory()
+    {
+        itemInventory.Clear();
     }
 
     public override void DoDamage(float damage)

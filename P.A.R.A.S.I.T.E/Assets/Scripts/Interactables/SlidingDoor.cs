@@ -15,7 +15,7 @@ public class SlidingDoor : Interactable
     [Header("Higher Speed Faster Door")]
     private float speed = 4f;
 
-    public override void Interact()
+    public override void Interact(GameObject source)
     {
         if(open)
         {

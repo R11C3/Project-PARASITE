@@ -4,9 +4,14 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField]
-    private SO_Player _player;
+    public SO_Player _player;
     [SerializeField]
     private SO_Input _input;
+
+    void Start()
+    {
+        _player.ClearInventory();
+    }
 
     // Update is called once per frame
     void Update()

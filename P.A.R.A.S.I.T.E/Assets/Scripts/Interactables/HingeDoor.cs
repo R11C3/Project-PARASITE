@@ -23,7 +23,7 @@ public class HingeDoor : Interactable
     [Header("Lower time faster door")]
     private float time = 0.25f;
 
-    public override void Interact()
+    public override void Interact(GameObject source)
     {
         if(open)
         {

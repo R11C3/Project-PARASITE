@@ -47,7 +47,7 @@ public class Interact : MonoBehaviour
                 hitObject = hitObject.transform.parent.gameObject;
                 hitObject.TryGetComponent<Interactable>(out target);
             }
-            target.Interact();
+            target.Interact(gameObject);
         }
     }
 }
