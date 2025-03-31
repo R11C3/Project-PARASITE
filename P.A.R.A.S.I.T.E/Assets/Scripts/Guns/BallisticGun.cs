@@ -98,7 +98,7 @@ public class BallisticGun : MonoBehaviour
         Vector3 target = direction - characterTransform.position;
 
         target += new Vector3(
-        Random.Range(-gunData.accuracy.x, gunData.accuracy.x),0,
+        Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
         Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
 
         target.Normalize();

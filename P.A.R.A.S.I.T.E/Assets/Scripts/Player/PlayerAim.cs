@@ -7,6 +7,7 @@ public class PlayerAim : MonoBehaviour
 {
 
     [SerializeField] public LayerMask mask;
+    [SerializeField] public LayerMask floor;
     [SerializeField] private bool renderLine;
 
     private GameObject lineRendererObject;
@@ -36,9 +37,15 @@ public class PlayerAim : MonoBehaviour
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, mask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, mask))
         {
             return hitInfo.point;
+        }
+        else if (Physics.Raycast(ray, out RaycastHit groundHit, Mathf.Infinity, floor))
+        {
+            Vector3 position = groundHit.point;
+            position.y += 1f;
+            return position;
         }
         else
         {
