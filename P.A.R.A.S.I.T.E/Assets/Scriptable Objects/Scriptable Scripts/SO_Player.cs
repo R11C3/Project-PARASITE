@@ -7,7 +7,7 @@ public class SO_Player : SO_Mob
     [Header("Weapon Inventory")]
     public SO_Gun[] weaponInventory;
     [Header("Item Inventory")]
-    public List<SO_Item> itemInventory;
+    public List<InventorySlot> itemInventory = new List<InventorySlot>();
 
     public void ReplaceGun(int index, SO_Gun newGun)
     {
@@ -16,17 +16,60 @@ public class SO_Player : SO_Mob
 
     public void Add(SO_Item item)
     {
-        itemInventory.Add(item);
+        int index = findItem(item);
+        if(index == -1)
+        {
+            itemInventory.Add(new InventorySlot(item, 1));
+        }
+        else
+        {
+            itemInventory[index].Add(1);
+        }
+        ExposeInventory();
     }
 
     public void Remove(SO_Item item)
     {
-        itemInventory.Remove(item);
+        int index = findItem(item);
+        if(index >= 0)
+        {
+            if(!itemInventory[index].Remove(1))
+            {
+                itemInventory.RemoveAt(index);
+            }
+        }
     }
 
     public void ClearInventory()
     {
-        itemInventory.Clear();
+        if(itemInventory.Count > 0)
+        {
+            itemInventory.Clear();
+        }
+    }
+
+    public int findItem(SO_Item item)
+    {
+        int count = 0;
+        foreach (InventorySlot slot in itemInventory)
+        {
+            if(slot.item.itemName.Equals(item.itemName))
+            {
+                return count;
+            }
+            count++;
+        }
+        return -1;
+    }
+
+    public void ExposeInventory()
+    {
+        string str = "";
+        foreach (InventorySlot slot in itemInventory)
+        {
+            str += slot.item.itemName + " | " + slot.amount + "\n";
+        }
+        Debug.Log(str);
     }
 
     public override void DoDamage(float damage)
