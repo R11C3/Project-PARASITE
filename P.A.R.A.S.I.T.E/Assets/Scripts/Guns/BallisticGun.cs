@@ -81,7 +81,7 @@ public class BallisticGun : MonoBehaviour
 
                 Enemy target;
                 hit.transform.gameObject.TryGetComponent<Enemy>(out target);
-                target.DoDamage(gunData.damage);
+                if(target != null) target.DoDamage(gunData.damage);
             }
             else
             {

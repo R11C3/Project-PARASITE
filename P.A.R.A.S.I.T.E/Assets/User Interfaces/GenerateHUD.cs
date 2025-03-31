@@ -15,28 +15,64 @@ public class GenerateHUD : MonoBehaviour
     private Label _slash;
     private Label _maxAmmo;
 
+    private VisualElement _healthContainer;
+    private ProgressBar _healthBar;
+
     [SerializeField]
     private BallisticGun gun;
+    [SerializeField]
+    private SO_Player player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(Generate());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        StartCoroutine(Generate());
-    }
-
-    private IEnumerator Generate()
-    {
-        yield return null;
         _root = _document.rootVisualElement;
         _root.Clear();
 
         _root.styleSheets.Add(_styleSheet);
 
+        // StartCoroutine(GenerateHealth());
+        StartCoroutine(GenerateAmmo());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        _root = _document.rootVisualElement;
+        _root.Clear();
+
+        _root.styleSheets.Add(_styleSheet);
+
+        // StartCoroutine(GenerateHealth());
+        StartCoroutine(GenerateAmmo());
+    }
+
+    private IEnumerator GenerateHealth()
+    {
+        yield return null;
+
+        _healthContainer = new VisualElement();
+        _healthContainer.AddToClassList("health-container");
+
+        _healthBar = new ProgressBar();
+        _healthBar.AddToClassList("health-bar");
+
+        _root.Add(_healthContainer);
+        _root.Add(_healthBar);
+
+        UpdateHealth();
+    }
+
+    private void UpdateHealth()
+    {
+        _healthBar.lowValue = 0.0f;
+        _healthBar.highValue = player.maxHealth;
+
+        _healthBar.value = player.health;
+    }
+
+    private IEnumerator GenerateAmmo()
+    {
+        yield return null;
         _ammoContainer = new VisualElement();
         _ammoContainer.AddToClassList("ammo-container");
 

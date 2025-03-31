@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Test Item
   m_EditorClassIdentifier: 
   itemName: Test Item
-  Fab: {fileID: 0}
+  Fab: {fileID: 3484881743505036314, guid: ac2e06c9ed23c3348bec5765c94cd555, type: 3}
   sprite: {fileID: 0}
