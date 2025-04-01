@@ -1255,18 +1255,18 @@ PrefabInstance:
     - target: {fileID: 5768834739586983821, guid: ac2e06c9ed23c3348bec5765c94cd555,
         type: 3}
       propertyPath: m_Materials.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5768834739586983821, guid: ac2e06c9ed23c3348bec5765c94cd555,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6fa3572e119da2f40849034390ae83fc, type: 2}
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 5768834739586983821, guid: ac2e06c9ed23c3348bec5765c94cd555,
         type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+      objectReference: {fileID: 2100000, guid: 6fa3572e119da2f40849034390ae83fc, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
