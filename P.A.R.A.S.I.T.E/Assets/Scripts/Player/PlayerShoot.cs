@@ -17,6 +17,7 @@ public class PlayerShoot : MonoBehaviour
     {
         ballisticGun.gunData = _player.weaponInventory[0];
         ballisticGun.LoadStats();
+        _player.activeSlot = 0;
     }
 
     // Update is called once per frame
@@ -40,11 +41,13 @@ public class PlayerShoot : MonoBehaviour
         {
             ballisticGun.gunData = _player.weaponInventory[0];
             ballisticGun.LoadStats();
+            _player.activeSlot = 0;
         }
         if(_input._isTwoPressed)
         {
             ballisticGun.gunData = _player.weaponInventory[1];
             ballisticGun.LoadStats();
+            _player.activeSlot = 1;
         }
     }
 }

@@ -6,6 +6,7 @@ public class SO_Player : SO_Mob
 {
     [Header("Weapon Inventory")]
     public SO_Gun[] weaponInventory;
+    public int activeSlot;
     [Header("Item Inventory")]
     public List<InventorySlot> itemInventory = new List<InventorySlot>();
 

@@ -1,0 +1,13 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/User%20Interfaces/HUD.uss?fileID=7433441132597879392&amp;guid=f6ec238c202040244be76018ad57711a&amp;type=3#HUD" />
+    <engine:VisualElement name="full-panel" class="full-panel" style="flex-grow: 1; justify-content: center; flex-direction: row; align-items: flex-end;">
+        <engine:VisualElement name="health-container" class="health-container" style="flex-grow: 1; flex-direction: column; align-items: center; width: auto; height: auto; align-content: flex-end; padding-bottom: 0; margin-bottom: 0;">
+            <engine:ProgressBar value="22" name="health-bar" class="health-bar" />
+        </engine:VisualElement>
+        <engine:VisualElement name="ammo-container" class="ammo-container" style="flex-grow: 1; width: 0; height: 100px; flex-direction: row; justify-content: flex-start; align-content: center;">
+            <engine:Label text="-1" name="current-ammo" class="ammo-label" style="padding-left: 360px; left: auto; flex-basis: auto;" />
+            <engine:Label text="/" name="slash" class="ammo-label" />
+            <engine:Label text="-1" name="max-ammo" class="ammo-label" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
