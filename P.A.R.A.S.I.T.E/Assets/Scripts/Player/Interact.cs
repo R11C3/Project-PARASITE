@@ -95,6 +95,16 @@ public class Interact : MonoBehaviour
     void DropAction()
     {
         InventorySlot slot = player.itemInventory[0];
-        if(slot != null) player.Drop(slot.item);
+        if(slot != null)
+        {
+            int index = player.findItem(slot.item);
+            if(index >= 0)
+            {
+                Vector3 position = transform.position;
+                position.x += 1f;
+                Instantiate(slot.item.Fab, position, new Quaternion(0f,0f,0f,0f));
+                player.Remove(slot.item);
+            }
+        }
     }
 }

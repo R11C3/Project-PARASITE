@@ -27,12 +27,18 @@ public class BallisticGun : MonoBehaviour
     private LayerMask mask;
     [SerializeField]
     private Transform characterTransform;
+    private Camera mainCamera;
     [SerializeField]
     private float speed = 100.0f;
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
     private bool reloading = false;
+
+    void Awake()
+    {
+        mainCamera = Camera.main;
+    }
 
     public void LoadStats()
     {
@@ -69,6 +75,7 @@ public class BallisticGun : MonoBehaviour
         if(canShoot && gunData.currentAmmo > 0 && !reloading)
         {
             shootingSystem.Play();
+            mainCamera.GetComponent<CameraShake>().Shake();
             canShoot = false;
 
             Vector3 direction = AccuracyVariation();

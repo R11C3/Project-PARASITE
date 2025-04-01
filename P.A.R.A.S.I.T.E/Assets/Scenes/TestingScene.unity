@@ -411,6 +411,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 849360076877620838, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2941337171247925528, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,10 +471,30 @@ PrefabInstance:
       propertyPath: sourceAsset
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4727607999235322121, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.105731584
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727607999235322121, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.26759782
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727607999235322121, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
     - target: {fileID: 4965131758044466079, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: mask.m_Bits
       value: 192
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086505844144453374, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7584459976343944215, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
@@ -1252,6 +1277,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pick Up Test
       objectReference: {fileID: 0}
+    - target: {fileID: 5716395489597463929, guid: ac2e06c9ed23c3348bec5765c94cd555,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5768834739586983821, guid: ac2e06c9ed23c3348bec5765c94cd555,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -1329,6 +1359,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395633283918194832, guid: 93d5bb8d91c4fbf409ba97405d1777bb,
+        type: 3}
+      propertyPath: recieving.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7395633283918194832, guid: 93d5bb8d91c4fbf409ba97405d1777bb,
         type: 3}

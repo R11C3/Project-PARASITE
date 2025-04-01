@@ -4,9 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SO_Player", menuName = "Scriptable Objects/Player")]
 public class SO_Player : SO_Mob
 {
-    [Header("Character Game Object")]
-    [SerializeField]
-    private GameObject player;
     [Header("Weapon Inventory")]
     public SO_Gun[] weaponInventory;
     [Header("Item Inventory")]
@@ -40,18 +37,6 @@ public class SO_Player : SO_Mob
             {
                 itemInventory.RemoveAt(index);
             }
-        }
-    }
-
-    public void Drop(SO_Item item)
-    {
-        int index = findItem(item);
-        if(index >= 0)
-        {
-            Vector3 position = player.transform.position;
-            position.x += 1f;
-            Instantiate(item.Fab, position, new Quaternion(0f,0f,0f,0f));
-            Remove(item);
         }
     }
 
