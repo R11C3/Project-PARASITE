@@ -10,6 +10,8 @@ public class Interact : MonoBehaviour
     private PlayerAim _aim;
     [SerializeField]
     private LayerMask mask;
+    [SerializeField]
+    private float interactDistance;
 
     [SerializeField]
     private SO_Player player;
@@ -31,6 +33,18 @@ public class Interact : MonoBehaviour
         DropInput();
     }
 
+    bool InRange(Vector3 position)
+    {
+        if(Vector3.Distance(transform.position, position) <= interactDistance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void InteractInput()
     {
         if(_input._isInteractPressed && _canInteract)
@@ -50,15 +64,18 @@ public class Interact : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mask))
         {
-            Interactable target;
-            GameObject hitObject = hit.transform.gameObject;
-            hitObject.TryGetComponent<Interactable>(out target);
-            while(target == null && hitObject != null)
+            if(InRange(hit.point))
             {
-                hitObject = hitObject.transform.parent.gameObject;
+                Interactable target;
+                GameObject hitObject = hit.transform.gameObject;
                 hitObject.TryGetComponent<Interactable>(out target);
+                while(target == null && hitObject != null)
+                {
+                    hitObject = hitObject.transform.parent.gameObject;
+                    hitObject.TryGetComponent<Interactable>(out target);
+                }
+                target.Interact(gameObject);
             }
-            target.Interact(gameObject);
         }
     }
 
