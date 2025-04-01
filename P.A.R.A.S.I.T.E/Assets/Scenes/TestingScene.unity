@@ -371,6 +371,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60,
         type: 2}
+    - target: {fileID: 222042235755838811, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2941337171247925528, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,11 +426,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4010895355853765929, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: sourceAsset
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4965131758044466079, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: mask.m_Bits
       value: 192
       objectReference: {fileID: 0}
+    - target: {fileID: 7584459976343944215, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60,
+        type: 2}
     - target: {fileID: 7734437731834019194, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: speed

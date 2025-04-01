@@ -51,6 +51,11 @@ public class SO_Input : ScriptableObject
     public event UnityAction OneCanceledEvent;
     public event UnityAction TwoCanceledEvent;
     public event UnityAction InteractCanceledEvent;
+    
+    private InputAction _dropAction;
+    public event UnityAction DropEvent;
+    public event UnityAction DropCanceledEvent;
+    public bool _isDropPressed;
 
     void OnEnable()
     {
@@ -101,6 +106,11 @@ public class SO_Input : ScriptableObject
         _oneAction.Enable();
         _twoAction.Enable();
         _interactAction.Enable();
+
+        _dropAction = _input.FindAction("Drop");
+        _dropAction.started += OnDropInput;
+        _dropAction.canceled += OnDropInput;
+        _dropAction.Enable();
     }
 
     void OnDisable()
@@ -142,6 +152,10 @@ public class SO_Input : ScriptableObject
         _oneAction.Disable();
         _twoAction.Disable();
         _interactAction.Disable();
+
+        _dropAction.started -= OnDropInput;
+        _dropAction.canceled -= OnDropInput;
+        _dropAction.Disable();
     }
 
     void OnMovementInput (InputAction.CallbackContext context)
@@ -242,6 +256,18 @@ public class SO_Input : ScriptableObject
         if(InteractEvent != null && context.canceled)
         {
             InteractCanceledEvent.Invoke();
+        }
+    }
+
+    void OnDropInput(InputAction.CallbackContext context)
+    {
+        if(DropEvent != null && context.started)
+        {
+            DropEvent.Invoke();
+        }
+        if(DropEvent != null && context.canceled)
+        {
+            DropCanceledEvent.Invoke();
         }
     }
 }

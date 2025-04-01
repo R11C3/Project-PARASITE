@@ -9,6 +9,10 @@ public class GenerateHUD : MonoBehaviour
     [SerializeField] private StyleSheet _styleSheet;
 
     private VisualElement _root;
+    private VisualElement _topThird;
+    private VisualElement _middleThird;
+    private VisualElement _bottomThird;
+
     private VisualElement _ammoContainer;
     private Label _ammoLabel;
     private Label _currentAmmo;
@@ -25,11 +29,7 @@ public class GenerateHUD : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _root = _document.rootVisualElement;
-        _root.Clear();
-
-        _root.styleSheets.Add(_styleSheet);
-
+        StartCoroutine(GenerateBase());
         // StartCoroutine(GenerateHealth());
         StartCoroutine(GenerateAmmo());
     }
@@ -37,13 +37,18 @@ public class GenerateHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(GenerateBase());
+        // StartCoroutine(GenerateHealth());
+        StartCoroutine(GenerateAmmo());
+    }
+
+    private IEnumerator GenerateBase()
+    {
+        yield return null;
         _root = _document.rootVisualElement;
         _root.Clear();
 
         _root.styleSheets.Add(_styleSheet);
-
-        // StartCoroutine(GenerateHealth());
-        StartCoroutine(GenerateAmmo());
     }
 
     private IEnumerator GenerateHealth()
@@ -57,7 +62,7 @@ public class GenerateHUD : MonoBehaviour
         _healthBar.AddToClassList("health-bar");
 
         _root.Add(_healthContainer);
-        _root.Add(_healthBar);
+        _healthContainer.Add(_healthBar);
 
         UpdateHealth();
     }

@@ -22,6 +22,7 @@ MonoBehaviour:
   maxHealth: 0
   health: 100
   damageable: 1
+  player: {fileID: 8667823253887843557, guid: 5ba560cf02eb8f243b21df54641a80fd, type: 3}
   weaponInventory:
   - {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
   - {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1, type: 2}

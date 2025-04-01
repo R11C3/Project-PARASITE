@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Interact : MonoBehaviour
 {
@@ -10,9 +11,13 @@ public class Interact : MonoBehaviour
     [SerializeField]
     private LayerMask mask;
 
+    [SerializeField]
+    private SO_Player player;
+
     private Camera _camera;
 
     private bool _canInteract = true;
+    private bool _canDrop = true;
 
     void Awake()
     {
@@ -21,6 +26,12 @@ public class Interact : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        InteractInput();
+        DropInput();
+    }
+
+    void InteractInput()
     {
         if(_input._isInteractPressed && _canInteract)
         {
@@ -49,5 +60,24 @@ public class Interact : MonoBehaviour
             }
             target.Interact(gameObject);
         }
+    }
+
+    void DropInput()
+    {
+        if(_input._isDropPressed && _canDrop)
+        {
+            DropAction();
+            _canDrop = false;
+        }
+        if(!_input._isDropPressed && !_canDrop)
+        {
+            _canDrop = true;
+        }
+    }
+
+    void DropAction()
+    {
+        InventorySlot slot = player.itemInventory[0];
+        if(slot != null) player.Drop(slot.item);
     }
 }

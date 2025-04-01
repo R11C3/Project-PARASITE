@@ -27,6 +27,9 @@ public class InputHandler : MonoBehaviour
         _input.TwoCanceledEvent += OnTwoCanceled;
         _input.InteractEvent += OnInteract;
         _input.InteractCanceledEvent += OnInteractCanceled;
+
+        _input.DropEvent += OnDrop;
+        _input.DropCanceledEvent += OnDropCanceled;
     }
 
     void OnDisable()
@@ -48,6 +51,9 @@ public class InputHandler : MonoBehaviour
         _input.TwoCanceledEvent -= OnTwoCanceled;
         _input.InteractEvent -= OnInteract;
         _input.InteractCanceledEvent -= OnInteractCanceled;
+
+        _input.DropEvent -= OnDrop;
+        _input.DropCanceledEvent -= OnDropCanceled;
     }
 
     private void OnMove(Vector2 movement)
@@ -137,5 +143,15 @@ public class InputHandler : MonoBehaviour
     private void OnInteractCanceled()
     {
         _input._isInteractPressed = false;
+    }
+
+    private void OnDrop()
+    {
+        _input._isDropPressed = true;
+    }
+
+    private void OnDropCanceled()
+    {
+        _input._isDropPressed = false;
     }
 }
