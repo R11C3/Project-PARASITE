@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
   m_Name: Automatic Rifle PlaceHolder
   m_EditorClassIdentifier: 
-  _name: Rifle
+  itemName: Rifle
+  Fab: {fileID: 0}
+  sprite: {fileID: 0}
   model: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
   offset: {x: 0.094, y: 0.202, z: -0.033}
   offsetRotation: {x: 0.49119765, y: 0.50865, z: -0.50865, w: 0.49119765}
