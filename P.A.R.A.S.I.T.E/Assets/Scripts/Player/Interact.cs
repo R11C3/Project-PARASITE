@@ -14,7 +14,7 @@ public class Interact : MonoBehaviour
     private float interactDistance;
 
     [SerializeField]
-    private SO_Player player;
+    private PlayerStats player;
 
     private Camera _camera;
 
@@ -23,6 +23,7 @@ public class Interact : MonoBehaviour
 
     void Awake()
     {
+        player = GetComponent<PlayerStats>();
         _camera = Camera.main;
     }
 
@@ -94,17 +95,14 @@ public class Interact : MonoBehaviour
 
     void DropAction()
     {
-        InventorySlot slot = player.itemInventory[0];
-        if(slot != null)
+        SO_Item item = player.inventory.Get(0);
+        if(item != null)
         {
-            int index = player.findItem(slot.item);
-            if(index >= 0)
-            {
-                Vector3 position = transform.position;
-                position.x += 1f;
-                Instantiate(slot.item.Fab, position, new Quaternion(0f,0f,0f,0f));
-                player.Remove(slot.item);
-            }
+            
+            Vector3 position = transform.position;
+            position.x += 1f;
+            Instantiate(item.Fab, position, new Quaternion(0f,0f,0f,0f));
+            player.inventory.Remove(item);
         }
     }
 }

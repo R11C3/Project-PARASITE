@@ -16,19 +16,4 @@ public abstract class SO_Mob : ScriptableObject
     public float maxHealth;
     public float health;
     public bool damageable;
-
-    [Header("Inventory")]
-    public Dictionary<string, SO_Item> inventory;
-    
-    public void addItem(SO_Item item) 
-    {
-        inventory.Add(item.name, item);
-    }
-
-    public virtual void DoDamage(float damage)
-    {
-        health -= damage;
-    }
-    public abstract void Shoot();
-    public abstract void Reload();
 }

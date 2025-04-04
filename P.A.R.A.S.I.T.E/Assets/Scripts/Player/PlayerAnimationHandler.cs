@@ -13,7 +13,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private Transform characterTransform;
     private Quaternion _currentRotation;
     [SerializeField]
-    private SO_Player _player;
+    private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
     private PlayerController playerController;
@@ -84,7 +84,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void AnimationSpeeds()
     {
-        animator.SetFloat("rollSpeed", 1/ _player.rollTime);
+        animator.SetFloat("rollSpeed", 1/ player.rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
         animator.SetFloat("linearSpeed", _linearSpeed * 10);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerSprint : MonoBehaviour
 {
     [SerializeField]
-    private SO_Player _player;
+    private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
     [SerializeField]
@@ -16,7 +16,7 @@ public class PlayerSprint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -27,14 +27,14 @@ public class PlayerSprint : MonoBehaviour
 
     void HandleSprint()
     {
-        if(_input._isSprintPressed && _input._isMovementPressed && playerController._speed <= _player.sprintSpeed)
+        if(_input._isSprintPressed && _input._isMovementPressed && playerController._speed <= player.sprintSpeed)
         {
-            playerController._speed += _player.acceleration * Time.deltaTime;
+            playerController._speed += player.acceleration * Time.deltaTime;
         }
 
-        if (!_input._isSprintPressed && playerController._speed >= _player.speed)
+        if (!_input._isSprintPressed && playerController._speed >= player.speed)
         {
-            playerController._speed -= _player.deceleration * Time.deltaTime;
+            playerController._speed -= player.deceleration * Time.deltaTime;
         }
     }
 }

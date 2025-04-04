@@ -5,8 +5,7 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField]
-    private SO_Mob statsTemplate;
-    private SO_Mob stats;
+    private MobStats mob;
 
     float health;
     bool damageable;
@@ -14,8 +13,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        stats = Instantiate(statsTemplate);
-        InitializeStats();
+        mob = GetComponent<MobStats>();
     }
 
     // Update is called once per frame
@@ -24,15 +22,9 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void InitializeStats()
-    {
-        health = stats.health;
-        damageable = stats.damageable;
-    }
-
     public void DoDamage(float damage)
     {
-        stats.DoDamage(damage);
+        mob.DoDamage(damage);
 
         Debug.Log(gameObject + " damaged\nHealth remaining: " + health);
 

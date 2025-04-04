@@ -1,35 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField]
-    private BallisticGun ballisticGun;
-    [SerializeField]
-    private SO_Player _player;
+    private BallisticGun gun;
     [SerializeField]
     private SO_Input _input;
+    private PlayerStats player;
 
     // Start is called before the first frame update
     void Awake()
     {
-        ballisticGun.gunData = _player.weaponInventory[0];
-        ballisticGun.LoadStats();
-        _player.activeSlot = 0;
+        player = GetComponent<PlayerStats>();
+        player.activeSlot = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_input._isFirePressed)
+        if(_input._isFirePressed && gun.gunData != null)
         {
-            ballisticGun.Shoot();
+            gun.Shoot();
         }
-        if(_input._isReloadPressed)
+        if(_input._isReloadPressed && gun.gunData != null)
         {
-            ballisticGun.Reload();
+            gun.Reload();
         }
 
         SwitchWeapons();
@@ -37,17 +36,26 @@ public class PlayerShoot : MonoBehaviour
 
     void SwitchWeapons()
     {
+        SO_Gun swapTo;
         if(_input._isOnePressed)
         {
-            ballisticGun.gunData = _player.weaponInventory[0];
-            ballisticGun.LoadStats();
-            _player.activeSlot = 0;
+            swapTo = player.weaponInventory.Get(0);
+            if(swapTo != null)
+            {
+                gun.gunData = swapTo;
+                gun.LoadStats();
+            }
+            player.activeSlot = 0;
         }
         if(_input._isTwoPressed)
         {
-            ballisticGun.gunData = _player.weaponInventory[1];
-            ballisticGun.LoadStats();
-            _player.activeSlot = 1;
+            swapTo = player.weaponInventory.Get(1);
+            if(swapTo != null)
+            {
+                gun.gunData = swapTo;
+                gun.LoadStats();
+            }
+            player.activeSlot = 1;
         }
     }
 }

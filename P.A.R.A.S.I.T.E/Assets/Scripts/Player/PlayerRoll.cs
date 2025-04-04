@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerRoll : MonoBehaviour
 {
     [SerializeField]
-    private SO_Player _player;
+    private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
     private CharacterController characterController;
@@ -24,6 +24,7 @@ public class PlayerRoll : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        player = GetComponent<PlayerStats>();
         characterController = GetComponent<CharacterController>();
         playerController = GetComponent<PlayerController>();
         playerAim = GetComponent<PlayerAim>();
@@ -76,9 +77,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < _player.rollTime)
+        while (elapsedTime < player.rollTime)
         {
-            characterController.Move(_rollMovement * _player.rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * player.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             
             yield return null;
@@ -99,9 +100,9 @@ public class PlayerRoll : MonoBehaviour
 
         StartCoroutine(rollDelay());
 
-        while (elapsedTime < _player.rollTime)
+        while (elapsedTime < player.rollTime)
         {
-            characterController.Move(_rollMovement * _player.rollSpeed * Time.deltaTime);
+            characterController.Move(_rollMovement * player.rollSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -112,7 +113,7 @@ public class PlayerRoll : MonoBehaviour
 
     public IEnumerator rollDelay()
     {
-        yield return new WaitForSecondsRealtime(_player.rollDelay);
+        yield return new WaitForSecondsRealtime(player.rollDelay);
         _canRoll = true;
     }
 }

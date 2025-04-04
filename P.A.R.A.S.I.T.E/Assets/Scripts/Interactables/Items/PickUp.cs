@@ -11,7 +11,7 @@ public class PickUp : Interactable
         PlayerStats playerStats;
         source.TryGetComponent<PlayerStats>(out playerStats);
 
-        playerStats._player.Add(item);
+        playerStats.inventory.Add(item);
 
         Destroy(gameObject);
     }

@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float _speed = 0.0f;
 
     [SerializeField]
-    private SO_Player _player;
+    private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
     private CharacterController characterController;
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        player = GetComponent<PlayerStats>();
         characterController = GetComponent<CharacterController>();
         playerRoll = GetComponent<PlayerRoll>();
         _camera = Camera.main;
@@ -56,14 +57,14 @@ public class PlayerController : MonoBehaviour
         _initialMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
         _input._currentMovement = Vector3.Lerp(_input._currentMovement, _initialMovement, dampening);
 
-        if(_input._isMovementPressed && _speed <= _player.speed)
+        if(_input._isMovementPressed && _speed <= player.speed)
         {
-            _speed += _player.acceleration * Time.deltaTime;
+            _speed += player.acceleration * Time.deltaTime;
         }
 
         if(!_input._isMovementPressed && _speed > 0.0f)
         {
-            _speed -= _player.deceleration * Time.deltaTime;
+            _speed -= player.deceleration * Time.deltaTime;
         }
 
         if(_speed < 0.0f)

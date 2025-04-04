@@ -3,8 +3,7 @@ using UnityEngine.UIElements;
 
 public class HUDController : MonoBehaviour
 {
-    [SerializeField]
-    private SO_Player player;
+    private PlayerStats player;
 
     public VisualElement ui;
 
@@ -16,16 +15,20 @@ public class HUDController : MonoBehaviour
     void Awake()
     {
         ui = GetComponent<UIDocument>().rootVisualElement;
+        player = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentAmmo.text = player.weaponInventory[player.activeSlot].currentAmmo.ToString();
-        maxAmmo.text = player.weaponInventory[player.activeSlot].maxAmmo.ToString();
-
+        SO_Gun gun = player.weaponInventory.Get(player.activeSlot);
+        if(gun != null)
+        {
+            currentAmmo.text = gun.currentAmmo.ToString();
+            maxAmmo.text = gun.maxAmmo.ToString();
+        }
         healthBar.highValue = player.maxHealth;
-        healthBar.value = player.health;
+        healthBar.value = player.currentHealth;
     }
 
     void OnEnable()
