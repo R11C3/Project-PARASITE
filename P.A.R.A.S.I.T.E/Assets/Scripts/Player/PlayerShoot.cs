@@ -17,6 +17,12 @@ public class PlayerShoot : MonoBehaviour
     {
         player = GetComponent<PlayerStats>();
         player.activeSlot = 0;
+        SO_Gun current = player.weaponInventory.Get(player.activeSlot);
+        if(current != null)
+        {
+            gun.gunData = current;
+            gun.LoadStats();
+        }
     }
 
     // Update is called once per frame
@@ -42,8 +48,8 @@ public class PlayerShoot : MonoBehaviour
             swapTo = player.weaponInventory.Get(0);
             if(swapTo != null)
             {
-                gun.gunData = swapTo;
-                gun.LoadStats();
+                player.changingWeapons = true;
+                StartCoroutine(DelaySwitch(0));
             }
             player.activeSlot = 0;
         }
@@ -52,10 +58,20 @@ public class PlayerShoot : MonoBehaviour
             swapTo = player.weaponInventory.Get(1);
             if(swapTo != null)
             {
-                gun.gunData = swapTo;
-                gun.LoadStats();
+                player.changingWeapons = true;
+                StartCoroutine(DelaySwitch(1));
             }
             player.activeSlot = 1;
         }
+    }
+
+    IEnumerator DelaySwitch(int swap)
+    {
+        yield return new WaitForSecondsRealtime(0.69f);
+        GameObject.Find("Gun").GetComponent<Renderer>().enabled = false;
+        yield return new WaitForSecondsRealtime(0.716f);
+        GameObject.Find("Gun").GetComponent<Renderer>().enabled = true;
+        gun.gunData = player.weaponInventory.Get(swap);
+        gun.LoadStats();
     }
 }

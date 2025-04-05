@@ -2,6 +2,8 @@ using System;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
+public enum Holding{Rifle, Pistol, None};
+
 public class MobStats : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +19,9 @@ public class MobStats : MonoBehaviour
     public float acceleration;
     public float deceleration;
     public bool damageable;
+
+    [Header("In Hand")]
+    public Holding inHand;
 
     void Awake()
     {

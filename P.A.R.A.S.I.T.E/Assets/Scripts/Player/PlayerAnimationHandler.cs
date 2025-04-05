@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
 {
-
-    public Direction _Direction;
-
     private Animator animator;
     private Transform characterTransform;
     private Quaternion _currentRotation;
@@ -31,14 +28,6 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private float _MovementAngle;
     private float _linearSpeed;
-    
-    public enum Direction
-    {
-        FORWARDS,
-        LEFT,
-        RIGHT,
-        BACKWARDS
-    };
 
     // Start is called before the first frame update
     void Start()

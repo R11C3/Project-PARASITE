@@ -16,6 +16,10 @@ public class WeaponInventory
 
     public SO_Gun Get(int index)
     {
+        if(index > size || index < 0)
+        {
+            return null;
+        }
         return inventory[index];
     }
 
