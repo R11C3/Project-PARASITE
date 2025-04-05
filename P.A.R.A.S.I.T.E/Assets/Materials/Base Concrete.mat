@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Concrete
+  m_Name: Base Concrete
   m_Shader: {fileID: -6465566751694194690, guid: cc71ed75fac6a4992a9e4bfff6a356ad,
     type: 3}
   m_Parent: {fileID: 0}
@@ -55,8 +55,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Crack_Density: 1
+    - _Crack_Depth: 0.1
+    - _Crack_Int: 8
+    - _Crack_Noise: 10
+    - _Normal_Stength: 0.15
+    - _Number_of_Cracks: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Texture_Detail: 5
+    - _Texture_Scale: 5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
