@@ -15,7 +15,7 @@ public class PlayerStats : MobStats
     public float rollDelay;
 
     [Header("Weapon Inventory")]
-    public WeaponInventory weaponInventory;
+    public WeaponInventory weaponInventory = new WeaponInventory();
     public int activeSlot = 0;
     [Header("Item Inventory")]
     public Inventory inventory = new Inventory();
@@ -37,10 +37,10 @@ public class PlayerStats : MobStats
 
     protected override void Load()
     {
-        base.Load();
         rollTime = stats.rollTime;
         rollSpeed = stats.rollSpeed;
         rollDelay = stats.rollDelay;
+        base.Load();
     }
 
     private void MovementPressed()

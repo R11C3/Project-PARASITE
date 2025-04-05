@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SO_Item", menuName = "Scriptable Objects/Item")]
+[Serializable]
 public class SO_Item : ScriptableObject
 {
     public String itemName;

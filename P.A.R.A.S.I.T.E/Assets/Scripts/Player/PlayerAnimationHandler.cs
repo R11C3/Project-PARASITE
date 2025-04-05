@@ -12,7 +12,6 @@ public class PlayerAnimationHandler : MonoBehaviour
     private Animator animator;
     private Transform characterTransform;
     private Quaternion _currentRotation;
-    [SerializeField]
     private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
@@ -48,6 +47,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         characterTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         playerRoll = GetComponent<PlayerRoll>();
+        player = GetComponent<PlayerStats>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");

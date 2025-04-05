@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/GunData")]

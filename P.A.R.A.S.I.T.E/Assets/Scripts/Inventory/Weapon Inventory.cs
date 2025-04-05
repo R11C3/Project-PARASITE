@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[SerializeField]
-public class WeaponInventory : MonoBehaviour
+[Serializable]
+public class WeaponInventory
 {
     [SerializeField]
     private SO_Gun[] inventory;

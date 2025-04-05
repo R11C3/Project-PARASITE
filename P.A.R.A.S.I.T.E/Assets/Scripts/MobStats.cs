@@ -35,6 +35,12 @@ public class MobStats : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-        currentHealth -= damage;
+        if(damageable)
+            currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
