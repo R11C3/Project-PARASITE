@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[SerializeField]
-public class WeaponInventory : MonoBehaviour
+[Serializable]
+public class WeaponInventory
 {
     [SerializeField]
     private SO_Gun[] inventory;
@@ -16,6 +16,10 @@ public class WeaponInventory : MonoBehaviour
 
     public SO_Gun Get(int index)
     {
+        if(index > size || index < 0)
+        {
+            return null;
+        }
         return inventory[index];
     }
 

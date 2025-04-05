@@ -6,13 +6,9 @@ using UnityEngine;
 
 public class PlayerAnimationHandler : MonoBehaviour
 {
-
-    public Direction _Direction;
-
     private Animator animator;
     private Transform characterTransform;
     private Quaternion _currentRotation;
-    [SerializeField]
     private PlayerStats player;
     [SerializeField]
     private SO_Input _input;
@@ -32,14 +28,6 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private float _MovementAngle;
     private float _linearSpeed;
-    
-    public enum Direction
-    {
-        FORWARDS,
-        LEFT,
-        RIGHT,
-        BACKWARDS
-    };
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +36,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         characterTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
         playerRoll = GetComponent<PlayerRoll>();
+        player = GetComponent<PlayerStats>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isRollingHash = Animator.StringToHash("isRolling");

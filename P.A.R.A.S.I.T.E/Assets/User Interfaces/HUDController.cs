@@ -15,7 +15,7 @@ public class HUDController : MonoBehaviour
     void Awake()
     {
         ui = GetComponent<UIDocument>().rootVisualElement;
-        player = GetComponent<PlayerStats>();
+        player = GameObject.Find("Character").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame

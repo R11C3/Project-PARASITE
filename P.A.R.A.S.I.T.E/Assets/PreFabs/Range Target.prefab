@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944824394388140960}
   - component: {fileID: 1408545432436392774}
+  - component: {fileID: 2626188109302302452}
   - component: {fileID: 5269361814116188113}
   - component: {fileID: 2011440487465022380}
   - component: {fileID: 8152784737652621350}
@@ -57,6 +58,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2626188109302302452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059663671403646642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e5fd087fde9bb4eae8b0092dd3069c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: f32ecdf5ad1463a4f87295cb9f287810, type: 2}
+  maxHealth: 0
+  currentHealth: 100
+  speed: 0
+  sprintSpeed: 0
+  acceleration: 0
+  deceleration: 0
+  damageable: 0
 --- !u!114 &5269361814116188113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a9fb30535ee6440a955f85de75ec9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsTemplate: {fileID: 11400000, guid: f32ecdf5ad1463a4f87295cb9f287810, type: 2}
 --- !u!33 &2011440487465022380
 MeshFilter:
   m_ObjectHideFlags: 0

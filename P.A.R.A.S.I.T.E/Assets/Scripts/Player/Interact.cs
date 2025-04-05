@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(PlayerStats))]
+
 public class Interact : MonoBehaviour
 {
 
@@ -13,7 +15,6 @@ public class Interact : MonoBehaviour
     [SerializeField]
     private float interactDistance;
 
-    [SerializeField]
     private PlayerStats player;
 
     private Camera _camera;

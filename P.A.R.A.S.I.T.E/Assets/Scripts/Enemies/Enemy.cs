@@ -1,14 +1,11 @@
 using Mono.Cecil.Cil;
 using UnityEngine;
 
+[RequireComponent(typeof(MobStats))]
+
 public class Enemy : MonoBehaviour
 {
-
-    [SerializeField]
     private MobStats mob;
-
-    float health;
-    bool damageable;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,11 +23,6 @@ public class Enemy : MonoBehaviour
     {
         mob.DoDamage(damage);
 
-        Debug.Log(gameObject + " damaged\nHealth remaining: " + health);
-
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        Debug.Log(gameObject + " damaged\nHealth remaining: " + mob.currentHealth);
     }
 }

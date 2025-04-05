@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
+
+public enum GunType{Rifle, Pistol}
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/GunData")]
 public class SO_Gun : SO_Item
 {
+    public GunType gunType;
     [Header("Mesh for Gun")]
     public Mesh model;
     [Header("Offset and IK positions")]

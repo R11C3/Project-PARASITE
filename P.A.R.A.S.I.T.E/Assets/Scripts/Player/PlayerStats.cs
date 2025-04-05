@@ -5,20 +5,22 @@ using UnityEngine;
 public class PlayerStats : MobStats
 {
     [SerializeField]
+    [Header("Input SO")]
     private SO_Input _input;
 
-    [Header("Health")]
-
-    [Header("Stats")]
+    [Header("Roll Stats")]
     public float rollTime;
     public float rollSpeed;
     public float rollDelay;
 
     [Header("Weapon Inventory")]
-    public WeaponInventory weaponInventory;
+    public WeaponInventory weaponInventory = new WeaponInventory();
     public int activeSlot = 0;
     [Header("Item Inventory")]
     public Inventory inventory = new Inventory();
+
+    [HideInInspector]
+    public bool changingWeapons = false;
 
     void Start()
     {
@@ -37,10 +39,10 @@ public class PlayerStats : MobStats
 
     protected override void Load()
     {
-        base.Load();
         rollTime = stats.rollTime;
         rollSpeed = stats.rollSpeed;
         rollDelay = stats.rollDelay;
+        base.Load();
     }
 
     private void MovementPressed()
