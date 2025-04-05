@@ -77,9 +77,6 @@
         },
         {
             "m_Id": "d95235c0572e461c8ded401e923b41f7"
-        },
-        {
-            "m_Id": "f2be423d32514d7d8293645a8626f354"
         }
     ],
     "m_Keywords": [
@@ -133,9 +130,6 @@
         },
         {
             "m_Id": "e7cf28d0859d485c94b173d1f5bb1ad1"
-        },
-        {
-            "m_Id": "ce7a37504c7345da8dba08c0b5342583"
         }
     ],
     "m_Nodes": [
@@ -2520,7 +2514,7 @@
     "m_Title": "NormalMap",
     "m_Position": {
         "x": -909.0,
-        "y": 319.0
+        "y": 319.5
     }
 }
 
@@ -3063,7 +3057,7 @@
     "m_Title": "Parallax",
     "m_Position": {
         "x": -2098.0,
-        "y": 274.0
+        "y": 274.5
     }
 }
 
@@ -4014,7 +4008,7 @@
     "m_Title": "Is Metallic",
     "m_Position": {
         "x": -201.0,
-        "y": -189.0
+        "y": -188.5
     }
 }
 
@@ -4670,7 +4664,7 @@
     "m_Title": "Emission",
     "m_Position": {
         "x": -919.0,
-        "y": 920.0
+        "y": 920.5
     }
 }
 
@@ -6273,7 +6267,7 @@
     "m_Title": "Main UVs",
     "m_Position": {
         "x": -1939.0,
-        "y": 522.0
+        "y": 522.5
     }
 }
 
@@ -6884,7 +6878,7 @@
     "m_Title": "Smoothness",
     "m_Position": {
         "x": 266.0,
-        "y": -188.0
+        "y": -187.5
     }
 }
 
@@ -7796,7 +7790,7 @@
     "m_Title": "Metallic",
     "m_Position": {
         "x": -868.0,
-        "y": -324.0
+        "y": -323.5
     }
 }
 
@@ -9233,7 +9227,7 @@
     "m_Title": "BaseColor",
     "m_Position": {
         "x": -61.0,
-        "y": -490.0
+        "y": -489.5
     }
 }
 
@@ -9619,7 +9613,7 @@
     "m_Title": "Detail Maps",
     "m_Position": {
         "x": -190.0,
-        "y": 343.0
+        "y": 343.5
     }
 }
 
@@ -9733,7 +9727,7 @@
     "m_Title": "Occlusion",
     "m_Position": {
         "x": -888.0,
-        "y": 618.0
+        "y": 618.5
     }
 }
 
@@ -11153,18 +11147,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
-    "m_ObjectId": "ce7a37504c7345da8dba08c0b5342583",
-    "m_Name": "Lightmap",
-    "m_ChildObjectList": [
-        {
-            "m_Id": "f2be423d32514d7d8293645a8626f354"
-        }
-    ]
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "cf7cd1b5db1f48bca9d32a37ea518dc4",
     "m_Id": 0,
@@ -11333,7 +11315,7 @@
     "m_Title": "Detail UVs",
     "m_Position": {
         "x": -793.0,
-        "y": 1222.0
+        "y": 1222.5
     }
 }
 
@@ -12669,36 +12651,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
-    "m_ObjectId": "f2be423d32514d7d8293645a8626f354",
-    "m_Guid": {
-        "m_GuidSerialized": "d4fea4ce-e243-4535-b04d-3cd36e55e916"
-    },
-    "m_Name": "Lightmap2D",
-    "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Lightmap2D",
-    "m_DefaultReferenceName": "_Lightmap2D",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_UseCustomSlotLabel": false,
-    "m_CustomSlotLabel": "",
-    "m_DismissedVersion": 0,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "m_SerializedTexture": "",
-        "m_Guid": ""
-    },
-    "isMainTexture": false,
-    "useTilingAndOffset": false,
-    "m_Modifiable": true,
-    "m_DefaultType": 0
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "f3607664f56e4c9aab012f3de09437e3",
     "m_Id": 0,
@@ -12825,7 +12777,7 @@
     "m_Title": "Specular",
     "m_Position": {
         "x": -918.0,
-        "y": 5.0
+        "y": 5.5
     }
 }
 
