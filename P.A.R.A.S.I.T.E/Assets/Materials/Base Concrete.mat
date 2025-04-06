@@ -58,7 +58,7 @@ Material:
     - _Crack_Density: 1
     - _Crack_Depth: 0.1
     - _Crack_Int: 8
-    - _Crack_Noise: 10
+    - _Crack_Noise: 15
     - _Normal_Stength: 0.15
     - _Number_of_Cracks: 0.1
     - _QueueControl: 0

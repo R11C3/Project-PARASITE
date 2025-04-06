@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7307379211019587039
+--- !u!114 &-1502494493697898141
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base Metal
-  m_Shader: {fileID: -6465566751694194690, guid: 88f550c3382a346749bc8be4dded2adb,
+  m_Name: Base Dirt
+  m_Shader: {fileID: -6465566751694194690, guid: 98b24e5933ea14136aae762a994f447b,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -52,13 +52,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Metallic: 0.82
-    - _Noise_Scale: 0
+    - _Normal_Noise: 100
+    - _Normal_Noise_Strength: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Reflection_Strength: 0
-    - _Smoothness: 0.682
-    m_Colors:
-    - _Base_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Roughness_Mult_1: 0.01
+    - _Roughness_Mult_2: 0.1
+    - _Roughness_Noise: 1000
+    - _Texture_Fuzziness: 4.37
+    - _Texture_Gradient_Noise: 5.1
+    - _Texture_Noise: 402
+    - _Texture_Normal_Strength: 0.05
+    - _Texture_Range: 1
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
