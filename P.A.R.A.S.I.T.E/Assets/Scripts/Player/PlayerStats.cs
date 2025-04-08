@@ -31,10 +31,14 @@ public class PlayerStats : MobStats
     // Update is called once per frame
     void Update()
     {
-        if(_input._isMovementPressed)
-            MovementPressed();
         if(_input._isCrouchPressed)
             CrouchPressed();
+        else if(_input._isSprintPressed)
+            SprintPressed();
+        else if(_input._isMovementPressed)
+            MovementPressed();
+        // else
+        //     MovementPressed();
     }
 
     protected override void Load()
@@ -47,10 +51,18 @@ public class PlayerStats : MobStats
 
     private void MovementPressed()
     {
-        speed = 2.0f;
+        speed = stats.speed;
+        stance = Stance.Walking;
     }
     private void CrouchPressed()
     {
-        speed = 1.0f;
+        speed = crouchSpeed;
+        stance = Stance.Crouching;
+    }
+
+    private void SprintPressed()
+    {
+        speed = sprintSpeed;
+        stance = Stance.Running;
     }
 }

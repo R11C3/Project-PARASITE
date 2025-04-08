@@ -72,7 +72,12 @@ public class PlayerController : MonoBehaviour
             _speed = 0.0f;
         }
 
-        if (!_input._isMovementPressed)
+        if(_speed > player.speed)
+        {
+            _speed -= player.deceleration * Time.deltaTime;
+        }
+
+        if (!_input._isMovementPressed && !_input._isCrouchPressed && !_input._isSprintPressed)
         {
             _input._currentMovement = _lastMovement;
             characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));

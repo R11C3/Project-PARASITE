@@ -3,6 +3,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public enum Holding{Rifle, Pistol, None};
+public enum Stance{Walking, Running, Crouching};
 
 public class MobStats : MonoBehaviour
 {
@@ -15,13 +16,19 @@ public class MobStats : MonoBehaviour
 
     [Header("Stats")]
     public float speed;
-    public float sprintSpeed;
+    public float sprintMult;
+    public float crouchMult;
     public float acceleration;
     public float deceleration;
     public bool damageable;
 
+    protected float sprintSpeed;
+    protected float crouchSpeed;
+
     [Header("In Hand")]
     public Holding inHand;
+    [Header("Stance")]
+    public Stance stance = Stance.Walking;
 
     void Awake()
     {
@@ -32,10 +39,13 @@ public class MobStats : MonoBehaviour
     {
         maxHealth = stats.maxHealth;
         speed = stats.speed;
-        sprintSpeed = stats.sprintSpeed;
+        sprintMult = stats.sprintMult;
+        crouchMult = stats.crouchMult;
         acceleration = stats.acceleration;
         deceleration = stats.deceleration;
         damageable = stats.damageable;
+        sprintSpeed = speed * sprintMult;
+        crouchSpeed = speed * crouchMult;
     }
 
     public void DoDamage(float damage)

@@ -9,7 +9,8 @@ public abstract class SO_Mob : ScriptableObject
     public float speed;
     public float acceleration;
     public float deceleration;
-    public float sprintSpeed;
+    public float sprintMult;
+    public float crouchMult;
     public float rollSpeed;
     public float rollTime;
     public float rollDelay;
