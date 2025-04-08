@@ -6,9 +6,10 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
     private Animator animator;
     private PlayerStats player;
 
-    private int holdingRifleHash;
-    private int holdingPistolHash;
+    private int holdingWeaponHash;
     private int holdingNothingHash;
+
+    private int switchingWeaponHash;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,9 +17,10 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GetComponent<PlayerStats>();
 
-        holdingRifleHash = Animator.StringToHash("holdingRifle");
-        holdingPistolHash = Animator.StringToHash("holdingPistol");
+        holdingWeaponHash = Animator.StringToHash("holdingWeapon");
         holdingNothingHash = Animator.StringToHash("holdingNothing");
+
+        switchingWeaponHash = Animator.StringToHash("switchingWeapon");
     }
 
     // Update is called once per frame
@@ -29,36 +31,31 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
 
     void Holding()
     {
-        SO_Gun currentWeapon = player.equipmentInventory.EquippedGun();
+        WeaponSlot currentWeapon = player.equipmentInventory.equipped;
 
-        if(currentWeapon == null)
+
+        if(currentWeapon == WeaponSlot.None)
         {
-            animator.SetBool(holdingPistolHash, false);
-            animator.SetBool(holdingRifleHash, false);
+            animator.SetBool(holdingWeaponHash, false);
             animator.SetBool(holdingNothingHash, true);
         }
-        else if(currentWeapon.gunType == GunType.Rifle)
+        if(currentWeapon != WeaponSlot.None)
         {
-            animator.SetBool(holdingPistolHash, false);
-            animator.SetBool(holdingRifleHash, true);
-            animator.SetBool(holdingNothingHash, false);
-        }
-        else if(currentWeapon.gunType == GunType.Pistol)
-        {
-            animator.SetBool(holdingPistolHash, true);
-            animator.SetBool(holdingRifleHash, false);
+            animator.SetBool(holdingWeaponHash, true);
             animator.SetBool(holdingNothingHash, false);
         }
 
         if(player.changingWeapons)
         {
             player.changingWeapons = false;
-            StartCoroutine(DisableKinematics(2));
+            animator.SetBool(switchingWeaponHash, true);
+            StartCoroutine(DisableKinematics(1));
         }
     }
 
     IEnumerator DisableKinematics(float time)
     {
         yield return new WaitForSecondsRealtime(time);
+            animator.SetBool(switchingWeaponHash, false);
     }
 }

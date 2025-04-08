@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
-  m_Name: Automatic Rifle PlaceHolder
+  m_Name: AK47
   m_EditorClassIdentifier: 
-  itemName: Rifle
+  itemName: AK47
   Fab: {fileID: 0}
   sprite: {fileID: 0}
   type: 0
