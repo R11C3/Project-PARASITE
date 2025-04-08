@@ -34,6 +34,7 @@ public class BallisticGun : MonoBehaviour
     [SerializeField]
     private bool canShoot = true;
     private bool reloading = false;
+    public bool fireHeld = false;
 
     void Awake()
     {
@@ -50,6 +51,7 @@ public class BallisticGun : MonoBehaviour
         leftHand.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
         leftHandHint.GetComponent<Transform>().localPosition = gunData.leftHandHintPosition;
         leftHandHint.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
+        gunData.currentFireMode = gunData.fireModes[gunData.fireModeIndex];
     }
 
     public void Reload()
@@ -66,6 +68,18 @@ public class BallisticGun : MonoBehaviour
     }
 
     public void Shoot()
+    {
+        if(gunData.currentFireMode == FireMode.Automatic)
+        {
+            ShootingSystem();
+        }
+        else if(gunData.currentFireMode == FireMode.Single && !fireHeld)
+        {
+            ShootingSystem();
+        }
+    }
+
+    public void ShootingSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
         if(lastShootTime + gunData.fireSpeed < Time.time)

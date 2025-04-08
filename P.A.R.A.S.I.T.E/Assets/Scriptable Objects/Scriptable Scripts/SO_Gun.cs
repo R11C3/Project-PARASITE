@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 public enum GunType{Rifle, Pistol}
+public enum FireMode{Automatic, Burst, Single}
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/GunData")]
 public class SO_Gun : SO_Item
@@ -19,6 +20,7 @@ public class SO_Gun : SO_Item
     public Quaternion leftHandHintRotation;
 
     [Header("Gun Statistics")]
+    public FireMode[] fireModes;
     public float damage;
     public float fireSpeed;
     public int maxAmmo;
@@ -28,7 +30,20 @@ public class SO_Gun : SO_Item
     public GameObject impactParticle;
     public Vector3 accuracy;
     public bool shotgun;
-    public int currentAmmo;
 
-    // Methods
+    [Header("Instance Statistics")]
+    public int currentAmmo;
+    public FireMode currentFireMode;
+    [HideInInspector]
+    public int fireModeIndex = 0;
+
+    public void ChangeFireMode()
+    {
+        fireModeIndex++;
+        currentFireMode = fireModes[fireModeIndex % fireModes.Length];
+        if(fireModeIndex >= fireModes.Length)
+        {
+            fireModeIndex = 0;
+        }
+    }
 }

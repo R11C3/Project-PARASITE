@@ -19,6 +19,8 @@ public class InputHandler : MonoBehaviour
         _input.SprintCanceledEvent += OnSprintCanceled;
         _input.FireEvent += OnFire;
         _input.FireCanceledEvent += OnFireCanceled;
+        _input.FireModeEvent += OnFireMode;
+        _input.FireModeCanceledEvent += onFireModeCanceled;
         _input.ReloadEvent += OnReload;
         _input.ReloadCanceledEvent += OnReloadCanceled;
         _input.OneEvent += OnOne;
@@ -43,6 +45,8 @@ public class InputHandler : MonoBehaviour
         _input.SprintCanceledEvent -= OnSprintCanceled;
         _input.FireEvent -= OnFire;
         _input.FireCanceledEvent -= OnFireCanceled;
+        _input.FireModeEvent -= OnFireMode;
+        _input.FireModeCanceledEvent -= onFireModeCanceled;
         _input.ReloadEvent -= OnReload;
         _input.ReloadCanceledEvent -= OnReloadCanceled;
         _input.OneEvent -= OnOne;
@@ -103,6 +107,16 @@ public class InputHandler : MonoBehaviour
     private void OnFireCanceled()
     {
         _input._isFirePressed = false;
+    }
+
+    private void OnFireMode()
+    {
+        _input._isFireModePressed = true;
+    }
+
+    private void onFireModeCanceled()
+    {
+        _input._isFireModePressed = false;
     }
 
     private void OnReload()

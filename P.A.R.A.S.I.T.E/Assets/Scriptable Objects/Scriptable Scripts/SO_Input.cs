@@ -13,6 +13,7 @@ public class SO_Input : ScriptableObject
     private InputAction _rollAction;
     private InputAction _crouchAction;
     private InputAction _fireAction;
+    private InputAction _fireModeAction;
     private InputAction _reloadAction;
     private InputAction _interactAction;
     private InputAction _oneAction;
@@ -28,6 +29,7 @@ public class SO_Input : ScriptableObject
     public bool _isCrouchPressed;
     public bool _isRollPressed;
     public bool _isFirePressed;
+    public bool _isFireModePressed;
     public bool _isReloadPressed;
     public bool _isOnePressed;
     public bool _isTwoPressed;
@@ -38,6 +40,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction RollEvent;
     public event UnityAction CrouchEvent;
     public event UnityAction FireEvent;
+    public event UnityAction FireModeEvent;
     public event UnityAction ReloadEvent;
     public event UnityAction OneEvent;
     public event UnityAction TwoEvent;
@@ -47,6 +50,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction RollCanceledEvent;
     public event UnityAction CrouchCanceledEvent;
     public event UnityAction FireCanceledEvent;
+    public event UnityAction FireModeCanceledEvent;
     public event UnityAction ReloadCanceledEvent;
     public event UnityAction OneCanceledEvent;
     public event UnityAction TwoCanceledEvent;
@@ -64,6 +68,7 @@ public class SO_Input : ScriptableObject
         _rollAction = _input.FindAction("Roll");
         _crouchAction = _input.FindAction("Crouch");
         _fireAction = _input.FindAction("Fire");
+        _fireModeAction = _input.FindAction("FireMode");
         _reloadAction = _input.FindAction("Reload");
         _oneAction = _input.FindAction("WeaponSlotOne");
         _twoAction = _input.FindAction("WeaponSlotTwo");
@@ -85,6 +90,9 @@ public class SO_Input : ScriptableObject
         _fireAction.started += OnFireInput;
         _fireAction.canceled += OnFireInput;
 
+        _fireModeAction.started += OnFireModeInput;
+        _fireModeAction.canceled += OnFireModeInput;
+
         _reloadAction.started += OnReloadInput;
         _reloadAction.canceled += OnReloadInput;
 
@@ -102,6 +110,7 @@ public class SO_Input : ScriptableObject
         _rollAction.Enable();
         _crouchAction.Enable();
         _fireAction.Enable();
+        _fireModeAction.Enable();
         _reloadAction.Enable();
         _oneAction.Enable();
         _twoAction.Enable();
@@ -131,6 +140,9 @@ public class SO_Input : ScriptableObject
         _fireAction.started -= OnFireInput;
         _fireAction.canceled -= OnFireInput;
 
+        _fireModeAction.started -= OnFireModeInput;
+        _fireModeAction.canceled -= OnFireModeInput;
+
         _reloadAction.started -= OnReloadInput;
         _reloadAction.canceled -= OnReloadInput;
 
@@ -148,6 +160,7 @@ public class SO_Input : ScriptableObject
         _rollAction.Disable();
         _crouchAction.Disable();
         _fireAction.Disable();
+        _fireModeAction.Disable();
         _reloadAction.Disable();
         _oneAction.Disable();
         _twoAction.Disable();
@@ -208,6 +221,18 @@ public class SO_Input : ScriptableObject
         if(FireCanceledEvent != null && context.canceled)
         {
             FireCanceledEvent.Invoke();
+        }
+    }
+
+    void OnFireModeInput (InputAction.CallbackContext context)
+    {
+        if(FireModeEvent != null && context.started)
+        {
+            FireModeEvent.Invoke();
+        }
+        if(FireCanceledEvent != null && context.canceled)
+        {
+            FireModeCanceledEvent.Invoke();
         }
     }
 

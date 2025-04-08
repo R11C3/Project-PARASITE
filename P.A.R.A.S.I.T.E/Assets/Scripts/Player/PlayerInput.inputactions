@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FireMode",
+                    "type": "Button",
+                    "id": "6f247803-7aca-4945-889c-5bdab683ef18",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -290,6 +299,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd8e5e1c-f007-4ebc-8b79-2f969159d3da",
+                    "path": "<Keyboard>/#(B)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -12,6 +12,8 @@ public class PlayerShoot : MonoBehaviour
     private SO_Input _input;
     private PlayerStats player;
 
+    private bool fireSelectHeld = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,10 +33,25 @@ public class PlayerShoot : MonoBehaviour
         if(_input._isFirePressed && gun.gunData != null)
         {
             gun.Shoot();
+            gun.fireHeld = true;
         }
         if(_input._isReloadPressed && gun.gunData != null)
         {
             gun.Reload();
+        }
+        if(!_input._isFirePressed)
+        {
+            gun.fireHeld = false;
+        }
+
+        if(_input._isFireModePressed && gun.gunData != null && !fireSelectHeld)
+        {
+            gun.gunData.ChangeFireMode();
+            fireSelectHeld = true;
+        }
+        if(!_input._isFireModePressed)
+        {
+            fireSelectHeld = false;
         }
 
         SwitchWeapons();
