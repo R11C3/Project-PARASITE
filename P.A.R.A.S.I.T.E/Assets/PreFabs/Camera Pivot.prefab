@@ -239,7 +239,7 @@ MonoBehaviour:
   zoom: 0
   smoothSpeed: 0.01
   targetPos: {x: 0, y: 0, z: 0}
-  aimOffset: {x: 0, y: 0, z: 0}
+  aimOffset: {x: -10, y: 15, z: -10}
 --- !u!114 &3024132544737413717
 MonoBehaviour:
   m_ObjectHideFlags: 0

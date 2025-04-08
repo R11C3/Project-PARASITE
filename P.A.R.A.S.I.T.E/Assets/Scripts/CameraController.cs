@@ -8,8 +8,6 @@ public class CameraController : MonoBehaviour
 
     public GameObject target;
     public GameObject aimSphere;
-    private Camera mainCamera;
-
     [SerializeField]
     private SO_Input input;
 
@@ -18,23 +16,18 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float smoothSpeed = 0.1f;
 
     [SerializeField] private Vector3 targetPos;
-    private Vector3 aimTargetPos;
-    private Vector3 origin;
 
     [SerializeField] private Vector3 aimOffset;
-
-    private bool flag = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = Camera.main;
+        
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        origin = target.transform.position;
         if(!input._isAimPressed)
         {
             SmoothFollow();
@@ -42,13 +35,24 @@ public class CameraController : MonoBehaviour
         }
         if(input._isAimPressed)
         {
-
+            SmoothAim();
         }
     }
 
     public void SmoothFollow()
     {
-        targetPos = origin + offset;
+        targetPos = target.transform.position + offset;
+        ZoomChange();
+        Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
+
+        if(input._isAimPressed) LookTo(smoothFollow);
+
+        transform.position = smoothFollow;
+    }
+
+    public void SmoothAim()
+    {
+        targetPos = aimSphere.transform.position + aimOffset;
         ZoomChange();
         Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
 
@@ -67,8 +71,8 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void LookTo(Vector3 obj)
+    public void LookTo(Vector3 position)
     {
-        transform.LookAt(obj);
+        transform.LookAt(position);
     }
 }
