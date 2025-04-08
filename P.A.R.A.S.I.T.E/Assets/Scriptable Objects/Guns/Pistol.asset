@@ -25,6 +25,7 @@ MonoBehaviour:
   leftHandRotation: {x: -0.36368087, y: 0.63410133, z: -0.4373494, w: 0.5238103}
   leftHandHintPosition: {x: 0.118, y: -0.18, z: 0.262}
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
+  fireModes: 02000000
   damage: 5
   fireSpeed: 0.3
   maxAmmo: 12
@@ -34,4 +35,6 @@ MonoBehaviour:
   impactParticle: {fileID: 0}
   accuracy: {x: 0.7, y: 0.7, z: 0.7}
   shotgun: 0
-  currentAmmo: 8
+  currentAmmo: 7
+  currentFireMode: 2
+  fireModeIndex: 0

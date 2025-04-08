@@ -34,6 +34,7 @@ public class BallisticGun : MonoBehaviour
     [SerializeField]
     private bool canShoot = true;
     private bool reloading = false;
+    public bool switching = false;
     public bool fireHeld = false;
 
     void Awake()
@@ -86,7 +87,7 @@ public class BallisticGun : MonoBehaviour
         {
             canShoot = true;
         }
-        if(canShoot && gunData.currentAmmo > 0 && !reloading)
+        if(canShoot && gunData.currentAmmo > 0 && !reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();

@@ -9,6 +9,7 @@ public class HUDController : MonoBehaviour
 
     public Label currentAmmo;
     public Label maxAmmo;
+    public Label fireMode;
 
     public ProgressBar healthBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,6 +27,7 @@ public class HUDController : MonoBehaviour
         {
             currentAmmo.text = gun.currentAmmo.ToString();
             maxAmmo.text = gun.maxAmmo.ToString();
+            fireMode.text = gun.currentFireMode.ToString();
         }
         healthBar.highValue = player.maxHealth;
         healthBar.value = player.currentHealth;
@@ -35,6 +37,7 @@ public class HUDController : MonoBehaviour
     {
         currentAmmo = ui.Q<Label>("current-ammo");
         maxAmmo = ui.Q<Label>("max-ammo");
+        fireMode = ui.Q<Label>("fire-mode");
 
         healthBar = ui.Q<ProgressBar>("health-bar");
     }

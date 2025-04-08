@@ -34,7 +34,7 @@
     font-size: 40px;
 }
 
-.ammo-container {
+.weapon-container {
     align-items: center;
     justify-content: center;
     align-self: flex-end;
@@ -54,4 +54,30 @@
     align-content: center;
     justify-content: center;
     flex-direction: row;
+}
+
+.ammo-container {
+    flex-direction: row;
+}
+
+.weapon-container {
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    align-content: center;
+    width: 0;
+    height: 100px;
+}
+
+.fire-mode-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.fire-mode {
+    font-size: 25px;
+    border-bottom-width: 100px;
+    border-left-width: 320px;
 }

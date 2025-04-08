@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -84,11 +85,13 @@ public class PlayerShoot : MonoBehaviour
 
     IEnumerator DelaySwitch(int swap)
     {
+        gun.switching = true;
         yield return new WaitForSecondsRealtime(0.69f);
         GameObject.Find("Gun").GetComponent<Renderer>().enabled = false;
         yield return new WaitForSecondsRealtime(0.716f);
         GameObject.Find("Gun").GetComponent<Renderer>().enabled = true;
         gun.gunData = player.weaponInventory.Get(swap);
         gun.LoadStats();
+        gun.switching = false;
     }
 }
