@@ -21,12 +21,16 @@ public class InputHandler : MonoBehaviour
         _input.FireCanceledEvent += OnFireCanceled;
         _input.FireModeEvent += OnFireMode;
         _input.FireModeCanceledEvent += onFireModeCanceled;
+        _input.AimEvent += OnAim;
+        _input.AimCanceledEvent += OnAimCanceled;
         _input.ReloadEvent += OnReload;
         _input.ReloadCanceledEvent += OnReloadCanceled;
         _input.OneEvent += OnOne;
         _input.OneCanceledEvent += OnOneCanceled;
         _input.TwoEvent += OnTwo;
         _input.TwoCanceledEvent += OnTwoCanceled;
+        _input.ThreeEvent += OnThree;
+        _input.ThreeCanceledEvent += OnThreeCanceled;
         _input.InteractEvent += OnInteract;
         _input.InteractCanceledEvent += OnInteractCanceled;
 
@@ -45,6 +49,8 @@ public class InputHandler : MonoBehaviour
         _input.SprintCanceledEvent -= OnSprintCanceled;
         _input.FireEvent -= OnFire;
         _input.FireCanceledEvent -= OnFireCanceled;
+        _input.AimEvent -= OnAim;
+        _input.AimCanceledEvent -= OnAimCanceled;
         _input.FireModeEvent -= OnFireMode;
         _input.FireModeCanceledEvent -= onFireModeCanceled;
         _input.ReloadEvent -= OnReload;
@@ -53,6 +59,8 @@ public class InputHandler : MonoBehaviour
         _input.OneCanceledEvent -= OnOneCanceled;
         _input.TwoEvent -= OnTwo;
         _input.TwoCanceledEvent -= OnTwoCanceled;
+        _input.ThreeEvent -= OnThree;
+        _input.ThreeCanceledEvent -= OnThreeCanceled;
         _input.InteractEvent -= OnInteract;
         _input.InteractCanceledEvent -= OnInteractCanceled;
 
@@ -109,6 +117,16 @@ public class InputHandler : MonoBehaviour
         _input._isFirePressed = false;
     }
 
+    private void OnAim()
+    {
+        _input._isAimPressed = true;
+    }
+
+    private void OnAimCanceled()
+    {
+        _input._isAimPressed = false;
+    }
+
     private void OnFireMode()
     {
         _input._isFireModePressed = true;
@@ -147,6 +165,16 @@ public class InputHandler : MonoBehaviour
     private void OnTwoCanceled()
     {
         _input._isTwoPressed = false;
+    }
+
+    private void OnThree()
+    {
+        _input._isThreePressed = true;
+    }
+
+    private void OnThreeCanceled()
+    {
+        _input._isThreePressed = false;
     }
 
     private void OnInteract()

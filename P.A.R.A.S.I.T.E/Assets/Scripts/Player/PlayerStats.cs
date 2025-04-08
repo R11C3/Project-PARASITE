@@ -14,8 +14,7 @@ public class PlayerStats : MobStats
     public float rollDelay;
 
     [Header("Weapon Inventory")]
-    public WeaponInventory weaponInventory = new WeaponInventory();
-    public int activeSlot = 0;
+    public EquipmentInventory equipmentInventory;
     [Header("Item Inventory")]
     public Inventory inventory = new Inventory();
 

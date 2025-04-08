@@ -233,11 +233,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  offset: {x: -10, y: 10, z: -10}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
+  aimSphere: {fileID: 0}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  offset: {x: -20, y: 25, z: -20}
   zoom: 0
   smoothSpeed: 0.01
   targetPos: {x: 0, y: 0, z: 0}
+  aimOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &3024132544737413717
 MonoBehaviour:
   m_ObjectHideFlags: 0

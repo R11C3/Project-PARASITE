@@ -6,55 +6,69 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public Transform target;
-    private Transform cameraTransform;
-    private CharacterController characterController;
+    public GameObject target;
+    public GameObject aimSphere;
+    private Camera mainCamera;
+
+    [SerializeField]
+    private SO_Input input;
 
     [SerializeField] private Vector3 offset;
-    [SerializeField] private Quaternion rotation;
     [Range(-6.0f, 2f)][SerializeField] private float zoom = 0.0f;
     [SerializeField] private float smoothSpeed = 0.1f;
 
     [SerializeField] private Vector3 targetPos;
+    private Vector3 aimTargetPos;
+    private Vector3 origin;
+
+    [SerializeField] private Vector3 aimOffset;
+
+    private bool flag = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraTransform = GetComponent<Transform>();
-        characterController = GetComponent<CharacterController>();
-        cameraTransform.rotation = rotation;
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        SmoothFollow();
-        LookAt();
+        origin = target.transform.position;
+        if(!input._isAimPressed)
+        {
+            SmoothFollow();
+            LookTo(target.transform.position);
+        }
+        if(input._isAimPressed)
+        {
+
+        }
     }
 
     public void SmoothFollow()
     {
-        targetPos = target.position + offset;
-        zoomChange();
+        targetPos = origin + offset;
+        ZoomChange();
         Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
 
         transform.position = smoothFollow;
     }
 
-    public void zoomChange()
+    public void ZoomChange()
     {
         targetPos.x = targetPos.x - zoom;
         targetPos.y = targetPos.y + zoom * 3;
         targetPos.z = targetPos.z - zoom;
 
-        if (targetPos.y < target.position.y + 1.5f)
+        if (targetPos.y < target.transform.position.y + 1.5f)
         {
-            targetPos.y = target.position.y + 1.5f;
+            targetPos.y = target.transform.position.y + 1.5f;
         }
     }
 
-    public void LookAt()
+    public void LookTo(Vector3 obj)
     {
-        cameraTransform.LookAt(target);
+        transform.LookAt(obj);
     }
 }

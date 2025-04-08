@@ -29,7 +29,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
 
     void Holding()
     {
-        SO_Gun currentWeapon = player.weaponInventory.Get(player.activeSlot);
+        SO_Gun currentWeapon = player.equipmentInventory.EquippedGun();
 
         if(currentWeapon == null)
         {

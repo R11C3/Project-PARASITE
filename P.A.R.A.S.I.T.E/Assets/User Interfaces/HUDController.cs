@@ -22,7 +22,7 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SO_Gun gun = player.weaponInventory.Get(player.activeSlot);
+        SO_Gun gun = player.equipmentInventory.EquippedGun();
         if(gun != null)
         {
             currentAmmo.text = gun.currentAmmo.ToString();

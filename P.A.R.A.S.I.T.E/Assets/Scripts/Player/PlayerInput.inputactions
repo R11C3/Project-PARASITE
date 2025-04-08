@@ -45,7 +45,7 @@
                     "name": "Aim",
                     "type": "Button",
                     "id": "e963f157-1c7e-4886-829f-14365915e529",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -81,6 +81,15 @@
                     "name": "WeaponSlotTwo",
                     "type": "Button",
                     "id": "44cf029c-6994-4f6b-a7a9-85ce9e8d68a8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSlotThree",
+                    "type": "Button",
+                    "id": "a2fbf6e5-a722-4f88-b7f3-c399aa0a09ae",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -310,6 +319,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "FireMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec023f0a-2dc3-4b4e-a82e-b074a7c6f384",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSlotThree",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
