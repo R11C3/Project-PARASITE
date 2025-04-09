@@ -1,0 +1,120 @@
+.container {
+    flex-grow: 1;
+    background-color: rgba(29, 29, 29, 0.69);
+}
+
+.header {
+    flex-direction: row;
+    height: 100px;
+    max-height: 150px;
+    min-height: 100px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-bottom-color: rgb(255, 124, 0);
+    border-left-width: 1px;
+}
+
+.body {
+    flex-grow: 1;
+    flex-direction: row-reverse;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.container-level {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.level-bar-outer {
+    width: 250px;
+    height: 100px;
+    border-left-color: rgba(255, 128, 0, 0);
+    border-right-color: rgba(255, 128, 0, 0);
+    border-top-color: rgba(255, 128, 0, 0);
+    border-bottom-color: rgba(255, 128, 0, 0);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.level-bar-inner {
+    width: 75%;
+    height: 100%;
+    background-color: rgb(152, 89, 26);
+    border-left-color: rgba(152, 89, 26, 0.93);
+    border-right-color: rgba(152, 89, 26, 0.93);
+    border-top-color: rgba(152, 89, 26, 0.93);
+    border-bottom-color: rgba(152, 89, 26, 0.93);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.header_main {
+    flex-grow: 1;
+    -unity-text-align: middle-left;
+    font-size: 50px;
+}
+
+.inventory {
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 894px;
+}
+
+.slot-icon {
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    min-width: 50px;
+    min-height: 50px;
+    border-left-color: rgb(75, 75, 75);
+    border-right-color: rgb(75, 75, 75);
+    border-top-color: rgb(75, 75, 75);
+    border-bottom-color: rgb(75, 75, 75);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.visual-icon-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 15px;
+    background-color: rgb(14,14,14);
+    border-width: 1px;
+    border-color: rgb(75,75,75);
+}
+
+.visual-icon {
+    height: 100%;
+    width: 100%;
+    -unity-background-scale-mode: scale-to-fit;
+}

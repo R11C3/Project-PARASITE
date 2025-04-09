@@ -13,10 +13,10 @@ public class PlayerStats : MobStats
     public float rollSpeed;
     public float rollDelay;
 
-    [Header("Weapon Inventory")]
+    [Header("Equipment Inventory")]
     public EquipmentInventory equipmentInventory;
     [Header("Item Inventory")]
-    public Inventory inventory = new Inventory();
+    public GridInventory inventory = new GridInventory();
 
     [HideInInspector]
     public bool changingWeapons = false;
@@ -24,7 +24,6 @@ public class PlayerStats : MobStats
     void Start()
     {
         Load();
-        inventory.ClearInventory();
     }
 
     // Update is called once per frame

@@ -1,0 +1,78 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/User%20Interfaces/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
+    <ui:VisualElement name="container" class="container" style="flex-grow: 1;">
+        <ui:VisualElement name="header" class="header" style="flex-grow: 1;">
+            <ui:Label text="INVENTORY" name="lbl_header" class="header_main" />
+            <ui:VisualElement name="container-level" class="container-level" style="flex-grow: 1;">
+                <ui:Label text="Label" name="level-value" class="header_main" style="font-size: 50px;" />
+                <ui:VisualElement name="container-level-bar" style="flex-grow: 1;">
+                    <ui:Label text="Level" name="header" style="font-size: 18px;" />
+                    <ui:VisualElement name="bar-outer" class="level-bar-outer" style="flex-grow: 1;">
+                        <ui:VisualElement name="bar-inner" class="level-bar-inner" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:Label text="150/200" name="experience-value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="body" class="body" style="flex-grow: 1;">
+            <ui:VisualElement name="inventory" class="inventory" style="flex-grow: 1;">
+                <ui:VisualElement name="grid" class="grid" style="flex-grow: 1;">
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                    <ui:VisualElement name="slot-icon" class="slot-icon" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

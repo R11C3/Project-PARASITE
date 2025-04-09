@@ -99,11 +99,7 @@ public class Interact : MonoBehaviour
         SO_Item item = player.inventory.Get(0);
         if(item != null)
         {
-            
-            Vector3 position = transform.position;
-            position.x += 1f;
-            Instantiate(item.Fab, position, new Quaternion(0f,0f,0f,0f));
-            player.inventory.Remove(item);
+            player.inventory.DropItem(gameObject, item);
         }
     }
 }

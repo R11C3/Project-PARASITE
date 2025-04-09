@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
   m_Name: M4A4
   m_EditorClassIdentifier: 
+  ID: 85084f61-22e9-4beb-874e-621f878ccacc
   itemName: M4A4
+  type: 0
   Fab: {fileID: 1117582899397640, guid: 689946d975a0e55449b1e7ae41933e73, type: 3}
   sprite: {fileID: 0}
-  type: 0
+  dimensions:
+    height: 2
+    width: 3
   gunType: 0
   model: {fileID: 4300000, guid: c7741850eebe1df4ea75a80275b16311, type: 3}
   offset: {x: 0.0338, y: 0.2328, z: -0.0422}

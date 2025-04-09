@@ -46,4 +46,9 @@ public class SO_Gun : SO_Item
             fireModeIndex = 0;
         }
     }
+
+    public override bool Equals(SO_Item other)
+    {
+        return base.Equals(other);
+    }
 }

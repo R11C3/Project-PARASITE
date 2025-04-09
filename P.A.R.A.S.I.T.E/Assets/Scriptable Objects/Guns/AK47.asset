@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
   m_Name: AK47
   m_EditorClassIdentifier: 
+  ID: 88fc4b94-7841-4432-8b2a-d50d2dac84af
   itemName: AK47
+  type: 0
   Fab: {fileID: 0}
   sprite: {fileID: 0}
-  type: 0
+  dimensions:
+    height: 2
+    width: 3
   gunType: 0
   model: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
   offset: {x: 0.094, y: 0.202, z: -0.033}

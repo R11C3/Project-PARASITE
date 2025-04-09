@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c86566c026b3f04e85e0b7b010b8e72, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
+  ID: 9e29ad65-09b8-4aae-979c-3be4d2c39e69
   itemName: Pistol
+  type: 0
   Fab: {fileID: 0}
   sprite: {fileID: 0}
-  type: 0
+  dimensions:
+    height: 2
+    width: 2
   gunType: 1
   model: {fileID: 4300000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
   offset: {x: 0.069, y: 0.162, z: -0.032}

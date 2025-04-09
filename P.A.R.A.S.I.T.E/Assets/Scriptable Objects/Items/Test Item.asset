@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0763bfb0485ca41b049ff846753400, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a97f74076fb6134a8897ba1e47184f8, type: 3}
   m_Name: Test Item
   m_EditorClassIdentifier: 
+  ID: 18f9ada1-932a-4742-9f95-95699019f314
   itemName: Test Item
+  type: 2
   Fab: {fileID: 3484881743505036314, guid: ac2e06c9ed23c3348bec5765c94cd555, type: 3}
   sprite: {fileID: 0}
-  type: 2
+  dimensions:
+    height: 1
+    width: 1
