@@ -669,6 +669,8 @@ MonoBehaviour:
   characterTransform: {fileID: 2941337171247925528}
   speed: 100
   canShoot: 1
+  switching: 0
+  fireHeld: 0
 --- !u!23 &8659624111756088748
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1102,34 +1104,15 @@ MonoBehaviour:
   rollTime: 0
   rollSpeed: 0
   rollDelay: 0
-  weaponInventory:
-    inventory:
-    - {fileID: 0}
-    - {fileID: 0}
-  activeSlot: 0
+  equipmentInventory:
+    primary: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
+    sling: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
+    holster: {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1, type: 2}
+    equipped: 0
   inventory:
-    inventory:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    itemList: []
   changingWeapons: 0
+  reloading: 0
 --- !u!114 &3154710176588290544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1215,6 +1198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f184e9d5b17f153408a32701c29c3525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 6475693388280897561}
+  leftHandRig: {fileID: 2099834967676915777}
+  rightHandRig: {fileID: 3530537952248081521}
 --- !u!114 &7788661217132101810
 MonoBehaviour:
   m_ObjectHideFlags: 0

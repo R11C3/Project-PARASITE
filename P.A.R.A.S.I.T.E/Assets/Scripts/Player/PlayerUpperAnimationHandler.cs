@@ -1,15 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.Rendering;
 
 public class PlayerUpperAnimationHandler : MonoBehaviour
 {
     private Animator animator;
     private PlayerStats player;
 
+    public GameObject gun;
+    public GameObject leftHandRig;
+    public GameObject rightHandRig;
+
     private int holdingWeaponHash;
     private int holdingNothingHash;
 
     private int switchingWeaponHash;
+    private int reloadingWeaponHash;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +28,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
         holdingNothingHash = Animator.StringToHash("holdingNothing");
 
         switchingWeaponHash = Animator.StringToHash("switchingWeapon");
+        reloadingWeaponHash = Animator.StringToHash("reloadingWeapon");
     }
 
     // Update is called once per frame
@@ -48,14 +56,38 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
         if(player.changingWeapons)
         {
             player.changingWeapons = false;
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 0.3f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;
             animator.SetBool(switchingWeaponHash, true);
             StartCoroutine(DisableKinematics(1));
+        }
+        if(player.reloading)
+        {
+            player.reloading = false;
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 0.3f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;
+            animator.SetBool(reloadingWeaponHash, true);
+            StartCoroutine(Reload(3));
         }
     }
 
     IEnumerator DisableKinematics(float time)
     {
         yield return new WaitForSecondsRealtime(time);
-            animator.SetBool(switchingWeaponHash, false);
+        animator.SetBool(switchingWeaponHash, false);
+        rightHandRig.GetComponent<MultiAimConstraint>().weight = 1f;
+        leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.8f;
+        leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.8f;
+    }
+
+    IEnumerator Reload(float time)
+    {
+        yield return new WaitForSeconds(time);
+        animator.SetBool(reloadingWeaponHash, false);
+        rightHandRig.GetComponent<MultiAimConstraint>().weight = 1f;
+        leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.8f;
+        leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.8f;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 
-[Serializable]
+[Serializable] 
 public class GridInventory
 {
     [SerializeField]

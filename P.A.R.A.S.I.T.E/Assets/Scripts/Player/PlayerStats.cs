@@ -20,6 +20,8 @@ public class PlayerStats : MobStats
 
     [HideInInspector]
     public bool changingWeapons = false;
+    [HideInInspector]
+    public bool reloading = false;
 
     void Start()
     {
