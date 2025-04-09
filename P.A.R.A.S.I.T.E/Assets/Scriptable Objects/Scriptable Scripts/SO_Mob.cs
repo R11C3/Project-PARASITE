@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_Mob", menuName = "Scriptable Objects/Mob")]
+[CreateAssetMenu(fileName = "SO_Mob", menuName = "Scriptable Objects/Mob/Mob")]
 public abstract class SO_Mob : ScriptableObject
 {
     [Header("UnModified Stats")]

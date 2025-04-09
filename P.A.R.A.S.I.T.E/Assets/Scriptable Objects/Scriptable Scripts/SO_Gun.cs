@@ -4,7 +4,7 @@ using UnityEngine;
 public enum GunType{Rifle, Pistol}
 public enum FireMode{Automatic, Burst, Single}
 
-[CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/GunData")]
+[CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]
 public class SO_Gun : SO_Item
 {
     public GunType gunType;
