@@ -15,17 +15,21 @@ public class PlayerStats : MobStats
 
     [Header("Equipment Inventory")]
     public EquipmentInventory equipmentInventory;
-    [Header("Item Inventory")]
-    public GridInventory inventory = new GridInventory();
+    [Header("UI's")]
+    public InventoryGridHandler gridHandler;
+    public HUDController playerUI;
 
     [HideInInspector]
     public bool changingWeapons = false;
     [HideInInspector]
     public bool reloading = false;
+    private bool canToggle = true;
 
     void Start()
     {
         Load();
+        playerUI.visible = true;
+        gridHandler.visible = false;
     }
 
     // Update is called once per frame
@@ -37,8 +41,8 @@ public class PlayerStats : MobStats
             SprintPressed();
         else if(_input._isMovementPressed)
             MovementPressed();
-        // else
-        //     MovementPressed();
+        
+        UISwitch();
     }
 
     protected override void Load()
@@ -64,5 +68,20 @@ public class PlayerStats : MobStats
     {
         speed = sprintSpeed;
         stance = Stance.Running;
+    }
+
+    private void UISwitch()
+    {
+        if(_input._isInventoryPressed && canToggle)
+        {
+            playerUI.visible = !playerUI.visible;
+            gridHandler.visible = !gridHandler.visible;
+            canToggle = false;
+            gridHandler.LoadBackpackInventoryItems();
+        }
+        else if(!_input._isInventoryPressed)
+        {
+            canToggle = true;
+        }
     }
 }

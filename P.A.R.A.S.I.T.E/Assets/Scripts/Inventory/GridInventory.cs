@@ -8,11 +8,11 @@ using UnityEngine.InputSystem.LowLevel;
 public class GridInventory
 {
     [SerializeField]
-    private List<SO_Item> itemList;
+    public List<SO_Item> itemList;
 
     [SerializeField]
     private SO_Item[,] grid;
-    private Dimensions dimensions;
+    public Dimensions dimensions;
 
     public GridInventory ()
     {
@@ -44,6 +44,7 @@ public class GridInventory
                     {
                         itemList.Add(item);
                         AddToGrid(i, j, width, height, item);
+                        item.location = new Dimensions{height = i, width = j};
                         success = true;
                         break;
                     }

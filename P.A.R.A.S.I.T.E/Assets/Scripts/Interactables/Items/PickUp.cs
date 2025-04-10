@@ -19,8 +19,8 @@ public class PickUp : Interactable
         PlayerStats playerStats;
         source.TryGetComponent<PlayerStats>(out playerStats);
 
-        playerStats.inventory.Add(item);
+        bool success = playerStats.equipmentInventory.AddItem(playerStats, item);
 
-        gameObject.SetActive(false);
+        if(success) gameObject.SetActive(false);
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class HUDController : MonoBehaviour
@@ -6,6 +7,8 @@ public class HUDController : MonoBehaviour
     private PlayerStats player;
 
     public VisualElement ui;
+
+    public bool visible;
 
     public Label currentAmmo;
     public Label maxAmmo;
@@ -22,6 +25,8 @@ public class HUDController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ui.visible = visible;
+
         SO_Gun gun = player.equipmentInventory.EquippedGun();
         if(gun != null)
         {

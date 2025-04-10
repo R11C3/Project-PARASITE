@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public enum WeaponSlot{Primary, Sling, Holster, None}
@@ -20,7 +21,7 @@ public class EquipmentInventory
     [SerializeField]
     private SO_InventoryItem rig;
     [SerializeField]
-    private SO_Backpack backpack;
+    public SO_Backpack backpack;
 
     [Header("Armors")]
     [SerializeField]
@@ -94,5 +95,34 @@ public class EquipmentInventory
     public void ExposeInventory()
     {
         
+    }
+
+    public bool AddItem(PlayerStats source, SO_Item item)
+    {
+        if(backpack == null && item.type == SO_Item.Type.Backpack)
+        {
+            backpack = (SO_Backpack)item;
+            source.gridHandler.RemoveBackpackItemSlots();
+            source.gridHandler.LoadBackpackInventories();
+            return true;
+        }
+        else
+        {
+            return AddItemToBackpack(item);
+        }
+    }
+
+    public bool AddItemToBackpack(SO_Item item)
+    {
+        bool success = false;
+        for(int i = 0; i < backpack.inventories.Length; i++)
+        {
+            success = backpack.inventories[i].Add(item);
+            if(success)
+            {
+                return success;
+            }
+        }
+        return success;
     }
 }

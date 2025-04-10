@@ -96,10 +96,10 @@ public class Interact : MonoBehaviour
 
     void DropAction()
     {
-        SO_Item item = player.inventory.Get(0);
-        if(item != null)
-        {
-            player.inventory.DropItem(gameObject, item);
-        }
+        // SO_Item item = player.inventory.Get(0);
+        // if(item != null)
+        // {
+        //     player.inventory.DropItem(gameObject, item);
+        // }
     }
 }

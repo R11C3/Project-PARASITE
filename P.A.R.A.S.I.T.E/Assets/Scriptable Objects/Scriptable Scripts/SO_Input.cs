@@ -20,6 +20,7 @@ public class SO_Input : ScriptableObject
     private InputAction _oneAction;
     private InputAction _twoAction;
     private InputAction _threeAction;
+    private InputAction _inventoryAction;
 
     [Header("Current Movement")]
     public Vector3 _currentMovement;
@@ -38,6 +39,7 @@ public class SO_Input : ScriptableObject
     public bool _isTwoPressed;
     public bool _isThreePressed;
     public bool _isInteractPressed;
+    public bool _isInventoryPressed;
 
     public event UnityAction<Vector2> MoveEvent;
     public event UnityAction SprintEvent;
@@ -51,6 +53,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction TwoEvent;
     public event UnityAction ThreeEvent;
     public event UnityAction InteractEvent;
+    public event UnityAction InventoryEvent;
 
     public event UnityAction SprintCanceledEvent;
     public event UnityAction RollCanceledEvent;
@@ -63,6 +66,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction TwoCanceledEvent;
     public event UnityAction ThreeCanceledEvent;
     public event UnityAction InteractCanceledEvent;
+    public event UnityAction InventoryCanceledEvent;
     
     private InputAction _dropAction;
     public event UnityAction DropEvent;
@@ -83,6 +87,7 @@ public class SO_Input : ScriptableObject
         _twoAction = _input.FindAction("WeaponSlotTwo");
         _threeAction = _input.FindAction("WeaponSlotThree");
         _interactAction = _input.FindAction("Interact");
+        _inventoryAction = _input.FindAction("Inventory");
 
         _moveAction.started += OnMovementInput;
         _moveAction.performed += OnMovementInput;
@@ -121,6 +126,9 @@ public class SO_Input : ScriptableObject
         _interactAction.started += OnInteractInput;
         _interactAction.canceled += OnInteractInput;
 
+        _inventoryAction.started += OnInventoryInput;
+        _inventoryAction.canceled += OnInventoryInput;
+
         _moveAction.Enable();
         _sprintAction.Enable();
         _rollAction.Enable();
@@ -133,6 +141,7 @@ public class SO_Input : ScriptableObject
         _twoAction.Enable();
         _threeAction.Enable();
         _interactAction.Enable();
+        _inventoryAction.Enable();
 
         _dropAction = _input.FindAction("Drop");
         _dropAction.started += OnDropInput;
@@ -179,6 +188,9 @@ public class SO_Input : ScriptableObject
         _interactAction.started -= OnInteractInput;
         _interactAction.canceled -= OnInteractInput;
 
+        _inventoryAction.started -= OnInventoryInput;
+        _inventoryAction.canceled -= OnInventoryInput;
+
         _moveAction.Disable();
         _sprintAction.Disable();
         _rollAction.Disable();
@@ -191,6 +203,7 @@ public class SO_Input : ScriptableObject
         _twoAction.Disable();
         _threeAction.Disable();
         _interactAction.Disable();
+        _inventoryAction.Disable();
 
         _dropAction.started -= OnDropInput;
         _dropAction.canceled -= OnDropInput;
@@ -340,9 +353,21 @@ public class SO_Input : ScriptableObject
         {
             DropEvent.Invoke();
         }
-        if(DropEvent != null && context.canceled)
+        if(DropCanceledEvent != null && context.canceled)
         {
             DropCanceledEvent.Invoke();
+        }
+    }
+
+    void OnInventoryInput(InputAction.CallbackContext context)
+    {
+        if(InventoryEvent != null && context.started)
+        {
+            InventoryEvent.Invoke();
+        }
+        if(InventoryCanceledEvent != null && context.canceled)
+        {
+            InventoryCanceledEvent.Invoke();
         }
     }
 }

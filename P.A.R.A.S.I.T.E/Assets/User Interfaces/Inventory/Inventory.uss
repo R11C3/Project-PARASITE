@@ -154,17 +154,6 @@
     padding-left: 0;
 }
 
-.inventory {
-    flex-grow: 1;
-    align-items: center;
-    justify-content: center;
-    margin-right: 20px;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-}
-
 .weapon-icon {
     width: 450px;
     height: 150px;
@@ -200,20 +189,58 @@
 }
 
 .gear-icon {
-    width: 150px;
-    height: 150px;
-    max-width: 150px;
-    max-height: 150px;
+    width: auto;
+    height: auto;
+    max-width: 905px;
+    max-height: none;
     min-width: 50px;
     min-height: 50px;
     border-left-color: rgb(75, 75, 75);
     border-right-color: rgb(75, 75, 75);
     border-top-color: rgb(75, 75, 75);
     border-bottom-color: rgb(75, 75, 75);
-    border-top-width: 10px;
-    border-right-width: 10px;
-    border-bottom-width: 10px;
-    border-left-width: 10px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
     margin-bottom: 100px;
     flex-direction: row;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.item-slot {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    border-left-color: rgb(75, 75, 75);
+    border-right-color: rgb(75, 75, 75);
+    border-top-color: rgb(75, 75, 75);
+    border-bottom-color: rgb(75, 75, 75);
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+}
+
+.inventory {
+    flex-grow: 1;
+    align-items: flex-start;
+    justify-content: center;
+    margin-right: 20px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    align-content: flex-start;
+}
+
+.visual-icon-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    -unity-background-scale-mode: scale-to-fit;
 }

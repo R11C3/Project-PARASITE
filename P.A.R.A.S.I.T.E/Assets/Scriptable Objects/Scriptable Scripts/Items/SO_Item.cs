@@ -21,9 +21,11 @@ public abstract class SO_Item : ScriptableObject
     public Type type;
     [Header("InSceneObject & Sprite")]
     public GameObject obj;
-    public Sprite sprite;
+    public Texture2D sprite;
     [Header("Size in Inventory")]
     public Dimensions dimensions;
+    [Header("Location in inventory")]
+    public Dimensions location;
 
     public virtual bool Equals(SO_Item other)
     {

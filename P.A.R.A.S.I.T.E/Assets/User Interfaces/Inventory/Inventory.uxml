@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
     <ui:VisualElement name="container" class="container" style="flex-grow: 1;">
-        <ui:VisualElement name="header" class="header" style="flex-grow: 1;">
+        <ui:VisualElement name="header" class="header" style="flex-grow: 1; left: 0; bottom: 0; right: 0; top: 0;">
             <ui:Label text="INVENTORY" name="lbl_header" class="header_main" />
             <ui:VisualElement name="container-level" class="container-level" style="flex-grow: 1;">
                 <ui:Label text="Label" name="level-value" class="header_main" style="font-size: 50px;" />
@@ -15,12 +15,14 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="body" class="body" style="flex-grow: 1;">
-            <ui:VisualElement name="inventory" class="inventory" style="flex-grow: 1;">
+            <ui:ScrollView name="inventory" class="inventory">
                 <ui:VisualElement name="rig" class="gear-icon" style="flex-grow: 1;" />
                 <ui:VisualElement name="pockets" class="gear-icon" style="flex-grow: 1;" />
-                <ui:VisualElement name="rig" class="gear-icon" style="flex-grow: 1;" />
-            </ui:VisualElement>
-            <ui:VisualElement name="equipment" class="inventory" style="flex-grow: 1; margin-right: 0; margin-left: 20px; max-width: 800px;">
+                <ui:VisualElement name="backpack" class="gear-icon" style="flex-grow: 1;">
+                    <ui:VisualElement name="slot" class="item-slot" style="flex-grow: 1;" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:VisualElement name="equipment" class="inventory" style="flex-grow: 1; margin-right: 0; margin-left: 20px; max-width: 800px; align-items: center;">
                 <ui:VisualElement name="helmet" class="equipment-icon" style="flex-grow: 1; margin-bottom: 100px;" />
                 <ui:VisualElement name="armor" class="equipment-icon" style="flex-grow: 1;" />
                 <ui:VisualElement name="weapons" class="inventory" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-content: flex-start; flex-wrap: nowrap; left: 0;">

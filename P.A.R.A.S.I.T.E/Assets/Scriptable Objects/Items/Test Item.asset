@@ -15,8 +15,11 @@ MonoBehaviour:
   ID: 18f9ada1-932a-4742-9f95-95699019f314
   itemName: Test Item
   type: 2
-  Fab: {fileID: 3484881743505036314, guid: ac2e06c9ed23c3348bec5765c94cd555, type: 3}
-  sprite: {fileID: 0}
+  obj: {fileID: 0}
+  sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:
     height: 1
     width: 1
+  location:
+    height: 0
+    width: 0
