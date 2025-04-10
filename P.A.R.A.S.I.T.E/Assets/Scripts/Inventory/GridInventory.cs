@@ -18,7 +18,14 @@ public class GridInventory
     {
         dimensions.width = 10;
         dimensions.height = 10;
-        grid = new SO_Item[dimensions.width,dimensions.height];
+        grid = new SO_Item[dimensions.height,dimensions.width];
+    }
+
+    public GridInventory (int width, int height)
+    {
+        dimensions.width = width;
+        dimensions.height = height;
+        grid = new SO_Item[dimensions.height,dimensions.width];
     }
 
     public bool Add(SO_Item item)
@@ -107,7 +114,8 @@ public class GridInventory
     {
         Vector3 position = source.transform.position;
         position.x += 1f;
-        GameObject.Instantiate(item.Fab, position, new Quaternion(0f,0f,0f,0f));
+        item.obj.transform.position = position;
+        item.obj.SetActive(true);
         Remove(item);
     }
 

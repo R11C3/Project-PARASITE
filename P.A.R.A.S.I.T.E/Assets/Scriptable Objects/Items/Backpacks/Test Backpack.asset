@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5408d2bb210c99541b83b2d96efcd152, type: 3}
+  m_Name: Test Backpack
+  m_EditorClassIdentifier: 
+  ID: a69277a1-86cf-4742-8791-85eb1ceea916
+  itemName: Test Backpack
+  type: 9
+  Fab: {fileID: 6368318764671224132, guid: 8874efd4d93ab62458a651713fd9828e, type: 3}
+  sprite: {fileID: 0}
+  dimensions:
+    height: 5
+    width: 6
+  storageDimensions:
+  - height: 10
+    width: 10
+  inventories:
+  - itemList: []

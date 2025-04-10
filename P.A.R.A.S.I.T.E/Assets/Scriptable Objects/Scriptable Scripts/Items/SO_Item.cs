@@ -19,8 +19,8 @@ public abstract class SO_Item : ScriptableObject
     public string ID = Guid.NewGuid().ToString();
     public string itemName;
     public Type type;
-    [Header("Prefab & Sprite")]
-    public GameObject Fab;
+    [Header("InSceneObject & Sprite")]
+    public GameObject obj;
     public Sprite sprite;
     [Header("Size in Inventory")]
     public Dimensions dimensions;

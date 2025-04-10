@@ -1,15 +1,16 @@
 using UnityEngine;
 
-public class PickUp : Interactable
+public class InventoryPickUp : Interactable
 {
     [SerializeField]
-    private SO_Item itemData;
+    private SO_InventoryItem itemData;
 
-    private SO_Item item;
+    private SO_InventoryItem item;
 
     public void Start()
     {
         item = Instantiate(itemData);
+        item.InitializeInventories();
         item.obj = gameObject;
     }
 

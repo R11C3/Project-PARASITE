@@ -7,14 +7,24 @@ public enum WeaponSlot{Primary, Sling, Holster, None}
 [Serializable]
 public class EquipmentInventory
 {
+    [Header("Weapons")]
     [SerializeField]
     private SO_Gun primary;
     [SerializeField]
     private SO_Gun sling;
     [SerializeField]
     private SO_Gun holster;
-
     public WeaponSlot equipped;
+    
+    [Header("Equipment")]
+    [SerializeField]
+    private SO_InventoryItem rig;
+    [SerializeField]
+    private SO_Backpack backpack;
+
+    [Header("Armors")]
+    [SerializeField]
+    private SO_Item armor;
 
     public SO_Gun EquippedGun()
     {
