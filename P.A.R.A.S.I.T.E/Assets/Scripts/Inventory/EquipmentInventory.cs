@@ -97,23 +97,20 @@ public class EquipmentInventory
         if(backpack == null && item.type == SO_Item.Type.Backpack)
         {
             backpack = (SO_Backpack)item;
-            Debug.Log(backpack);
             source.gridHandler.LoadBackpackInventories();
             return true;
         }
-        else
+        else if(backpack != null)
         {
             return AddItemToBackpack(item);
         }
+        return false;
     }
 
     public bool AddItemToBackpack(SO_Item item)
     {
         bool success = backpack.inventories.Add(item);
-        if(success)
-        {
-            return success;
-        }
+        Debug.Log(success);
         return success;
     }
 }

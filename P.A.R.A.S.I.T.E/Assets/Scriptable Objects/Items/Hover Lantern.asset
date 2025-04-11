@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8cd3e25a5b4694ebf0242722667321, type: 3}
+  m_Name: Hover Lantern
+  m_EditorClassIdentifier: 
+  ID: 8b97fe1e-8a1f-4773-b56d-495f5bb7c547
+  itemName: Hover Lantern
+  type: 10
+  obj: {fileID: 1571884908303043475, guid: 21d8b7da678bba048aa115bdc6baa595, type: 3}
+  sprite: {fileID: 2800000, guid: 23dae86773082aa49848153155ef6acc, type: 3}
+  dimensions:
+    height: 3
+    width: 2
+  location:
+    height: 0
+    width: 0

@@ -85,7 +85,8 @@ public class PlayerStats : MobStats
             playerUI.visible = !playerUI.visible;
             gridHandler.visible = !gridHandler.visible;
             canToggle = false;
-            gridHandler.LoadBackpackInventoryItems();
+            if(equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
+            if(equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
         }
         else if(!_input._isInventoryPressed)
         {

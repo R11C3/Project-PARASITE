@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using System.Linq;
@@ -76,6 +77,8 @@ public class InventoryGridHandler : MonoBehaviour
 
     public void LoadBackpackInventoryItems()
     {
+        RemoveBackpackItemSlots();
+        LoadBackpackInventories();
         foreach(SO_Item item in backpack.inventories.itemList)
         {
             
@@ -118,6 +121,10 @@ public class InventoryGridHandler : MonoBehaviour
     private Vector2 originalPosition;
     private Vector2 originalMousePosition;
 
+    public Vector2 layout;
+
+    private SO_Item item;
+
     public void SelectItem()
     {
         if(!isDragging)
@@ -137,7 +144,7 @@ public class InventoryGridHandler : MonoBehaviour
 
         if(selected != null && selected.name.Equals("visualIconContainer"))
         {
-            Debug.Log("\nPicked: " + selected.name);
+            item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y)/100), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x)/100)];
             selected.AddToClassList("selected");
             selected.BringToFront();
             isDragging = true;
@@ -172,7 +179,39 @@ public class InventoryGridHandler : MonoBehaviour
         }
         isDragging = false;
 
-        selected.transform.position = originalPosition;
+        yield return 0;
+
+        Vector3 finalPosition = selected.worldBound.position - backpackHolder.worldBound.position;
+
+        Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y/100), (int)Math.Round(finalPosition.x/100));
+
+        backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+
+        bool success = false;
+
+        if(finalPosition.y <= backpackHolder.resolvedStyle.width && finalPosition.y >= 0 && finalPosition.x <= backpackHolder.resolvedStyle.height && finalPosition.x >= 0)
+            success = backpack.inventories.CheckNull((int)coordinates.x, (int)coordinates.y, item.dimensions.width, item.dimensions.height);
+
+        if(success)
+        {
+            backpack.inventories.itemList.Remove(item);
+            Dimensions location = new Dimensions {height = item.location.height, width = item.location.width};
+            item.location = new Dimensions {height = (int)Math.Round(finalPosition.y/100), width = (int)Math.Round(finalPosition.x/100)};
+            backpack.inventories.AddToGrid(location.height, location.width, item.dimensions.width, item.dimensions.height, null);
+            backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+            backpack.inventories.itemList.Add(item);
+        }
+        else
+        {
+            backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+            selected.transform.position = originalPosition;
+        }
+
+        selected.RemoveFromClassList("selected");
+
+        LoadBackpackInventoryItems();
+
+        selected = null;
 
         yield return null;
     }

@@ -32,7 +32,7 @@ public class GridInventory
         {
             for(int j = 0; j < dimensions.width; j++)
             {
-                if(grid[i,j] == null && i + height < dimensions.height && j + width < dimensions.width)
+                if(grid[i,j] == null && i + height <= dimensions.height && j + width <= dimensions.width)
                 {
                     if(CheckNull(i, j, width, height))
                     {
@@ -124,7 +124,7 @@ public class GridInventory
         string str = "";
         foreach(SO_Item item in itemList)
         {
-            str += item.itemName + "\n";
+            str += item.itemName + "| at: " + item.location.width + "|" + item.location.height + "\n";
         }
 
         Debug.Log(str);
