@@ -92,17 +92,12 @@ public class EquipmentInventory
         return null;
     }
 
-    public void ExposeInventory()
-    {
-        
-    }
-
     public bool AddItem(PlayerStats source, SO_Item item)
     {
         if(backpack == null && item.type == SO_Item.Type.Backpack)
         {
             backpack = (SO_Backpack)item;
-            source.gridHandler.RemoveBackpackItemSlots();
+            Debug.Log(backpack);
             source.gridHandler.LoadBackpackInventories();
             return true;
         }
@@ -114,14 +109,10 @@ public class EquipmentInventory
 
     public bool AddItemToBackpack(SO_Item item)
     {
-        bool success = false;
-        for(int i = 0; i < backpack.inventories.Length; i++)
+        bool success = backpack.inventories.Add(item);
+        if(success)
         {
-            success = backpack.inventories[i].Add(item);
-            if(success)
-            {
-                return success;
-            }
+            return success;
         }
         return success;
     }

@@ -242,5 +242,30 @@
     height: 100%;
     width: 100%;
     position: absolute;
+    padding: 10px;
+    background-color: rgb(52, 52, 52);
+    border-width: 2px;
+    border-color: rgb(75,75,75);
+}
+
+.visual-icon {
+    height: 100%;
+    width: 100%;
+    /* position: absolute; */
     -unity-background-scale-mode: scale-to-fit;
+}
+
+.item-icon-highlighted {
+    border-width: 2px;
+    border-color: rgb(202,158,0);
+    transform-origin: center;
+    position: absolute;
+    visibility: hidden;
+}
+
+.selected {
+    border-width: 5px;
+    border-color: rgb(190, 0, 0);
+    transform-origin: center;
+    position: absolute;
 }

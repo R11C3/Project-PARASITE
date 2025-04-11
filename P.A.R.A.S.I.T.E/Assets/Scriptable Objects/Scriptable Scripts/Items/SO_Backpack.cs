@@ -7,4 +7,10 @@ public class SO_Backpack : SO_InventoryItem
     {
         type = Type.Backpack;
     }
+
+    public override void InitializeInventories()
+    {
+        Debug.Log("Initialized");
+        inventories = new GridInventory(storageDimensions.width, storageDimensions.height);
+    }
 }

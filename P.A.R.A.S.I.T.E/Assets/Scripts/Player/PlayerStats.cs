@@ -43,6 +43,14 @@ public class PlayerStats : MobStats
             MovementPressed();
         
         UISwitch();
+
+        if(gridHandler.visible)
+        {
+            if(_input._isFirePressed)
+            {
+                gridHandler.SelectItem();
+            }
+        }
     }
 
     protected override void Load()

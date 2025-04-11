@@ -18,9 +18,7 @@
             <ui:ScrollView name="inventory" class="inventory">
                 <ui:VisualElement name="rig" class="gear-icon" style="flex-grow: 1;" />
                 <ui:VisualElement name="pockets" class="gear-icon" style="flex-grow: 1;" />
-                <ui:VisualElement name="backpack" class="gear-icon" style="flex-grow: 1;">
-                    <ui:VisualElement name="slot" class="item-slot" style="flex-grow: 1;" />
-                </ui:VisualElement>
+                <ui:VisualElement name="backpack" class="gear-icon" style="flex-grow: 1;" />
             </ui:ScrollView>
             <ui:VisualElement name="equipment" class="inventory" style="flex-grow: 1; margin-right: 0; margin-left: 20px; max-width: 800px; align-items: center;">
                 <ui:VisualElement name="helmet" class="equipment-icon" style="flex-grow: 1; margin-bottom: 100px;" />

@@ -7,15 +7,9 @@ using UnityEngine;
 public abstract class SO_InventoryItem : SO_Item
 {
     [SerializeField]
-    public Dimensions[] storageDimensions;
+    public Dimensions storageDimensions;
     [SerializeField]
-    public GridInventory[] inventories;
+    public GridInventory inventories;
 
-    public void InitializeInventories()
-    {
-        for(int i = 0; i < storageDimensions.Length; i++)
-        {
-            inventories.Append(new GridInventory(storageDimensions[i].width, storageDimensions[i].height));
-        }
-    }
+    public abstract void InitializeInventories();
 }

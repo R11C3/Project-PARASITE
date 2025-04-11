@@ -54,7 +54,7 @@ public class Interact : MonoBehaviour
             InteractAction();
             _canInteract = false;
         }
-        if(!_input._isInteractPressed && !_canInteract)
+        if(!_input._isInteractPressed)
         {
             _canInteract = true;
         }

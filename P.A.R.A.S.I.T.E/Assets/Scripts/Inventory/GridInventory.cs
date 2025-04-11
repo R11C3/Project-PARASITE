@@ -11,21 +11,15 @@ public class GridInventory
     public List<SO_Item> itemList;
 
     [SerializeField]
-    private SO_Item[,] grid;
+    public SO_Item[,] grid;
     public Dimensions dimensions;
-
-    public GridInventory ()
-    {
-        dimensions.width = 10;
-        dimensions.height = 10;
-        grid = new SO_Item[dimensions.height,dimensions.width];
-    }
 
     public GridInventory (int width, int height)
     {
         dimensions.width = width;
         dimensions.height = height;
         grid = new SO_Item[dimensions.height,dimensions.width];
+        itemList = new List<SO_Item>();
     }
 
     public bool Add(SO_Item item)
