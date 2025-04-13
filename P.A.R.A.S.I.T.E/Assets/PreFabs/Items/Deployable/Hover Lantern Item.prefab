@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7328705173430225684}
+  - {fileID: 4344169228770561692}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3271426902033746051
@@ -68,7 +68,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.6, z: 0.5}
   m_Center: {x: 0, y: 0.75, z: 0}
---- !u!1001 &7079223189693082879
+--- !u!1001 &4306338002129398135
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -79,27 +79,27 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 200
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 200
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 200
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
@@ -109,22 +109,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
@@ -146,7 +146,7 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: edf72f0e1907e1047846ba03e1cb2db4,
+    - target: {fileID: -7601226680800833775, guid: edf72f0e1907e1047846ba03e1cb2db4,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -156,19 +156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hover Lantern
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf72f0e1907e1047846ba03e1cb2db4, type: 3}
---- !u!4 &7328705173430225684 stripped
+--- !u!4 &4344169228770561692 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
     type: 3}
-  m_PrefabInstance: {fileID: 7079223189693082879}
+  m_PrefabInstance: {fileID: 4306338002129398135}
   m_PrefabAsset: {fileID: 0}

@@ -1691,6 +1691,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1285828384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &125829036
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.580334
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6249999
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.866724
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 33417762836022645, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571884908303043475, guid: 21d8b7da678bba048aa115bdc6baa595,
+        type: 3}
+      propertyPath: m_Name
+      value: Hover Lantern Item
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21d8b7da678bba048aa115bdc6baa595, type: 3}
 --- !u!43 &237648314
 Mesh:
   m_ObjectHideFlags: 0
@@ -8913,99 +8981,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1090612242}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &733814759
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12.545818
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.825
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.7059414
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: e15f62194a5df604f9b477776cff3d41, type: 2}
-    - target: {fileID: 919132149155446097, guid: edf72f0e1907e1047846ba03e1cb2db4,
-        type: 3}
-      propertyPath: m_Name
-      value: Hover Lantern
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: edf72f0e1907e1047846ba03e1cb2db4, type: 3}
 --- !u!1001 &754683699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29272,6 +29247,6 @@ SceneRoots:
   - {fileID: 591595870}
   - {fileID: 1463913561}
   - {fileID: 796995243}
-  - {fileID: 733814759}
   - {fileID: 1312221528}
   - {fileID: 934559194}
+  - {fileID: 125829036}
