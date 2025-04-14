@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
     {
         UpdateValues();
         handleGravity();
-        handleMovement();
+        if(player.action != Action.Inventory)
+            handleMovement();
     }
 }

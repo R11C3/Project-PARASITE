@@ -46,10 +46,15 @@ public class PlayerStats : MobStats
 
         if(gridHandler.visible)
         {
+            action = Action.Inventory;
             if(_input._isFirePressed)
             {
                 gridHandler.SelectItem();
             }
+        }
+        else
+        {
+            action = Action.None;
         }
     }
 
@@ -86,6 +91,7 @@ public class PlayerStats : MobStats
             gridHandler.visible = !gridHandler.visible;
             canToggle = false;
             if(equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
+            if(equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
             if(equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
         }
         else if(!_input._isInventoryPressed)

@@ -19,7 +19,7 @@ public class EquipmentInventory
     
     [Header("Equipment")]
     [SerializeField]
-    private SO_InventoryItem rig;
+    public SO_Rig rig;
     [SerializeField]
     public SO_Backpack backpack;
 
@@ -94,22 +94,40 @@ public class EquipmentInventory
 
     public bool AddItem(PlayerStats source, SO_Item item)
     {
-        if(backpack == null && item.type == SO_Item.Type.Backpack)
+        bool success = false;
+        if((backpack == null && item.type == SO_Item.Type.Backpack) && !success)
         {
             backpack = (SO_Backpack)item;
             source.gridHandler.LoadBackpackInventories();
-            return true;
+            success = true;
         }
-        else if(backpack != null)
+        if((rig == null && item.type == SO_Item.Type.Rig) && !success)
         {
-            return AddItemToBackpack(item);
+            rig = (SO_Rig)item;
+            source.gridHandler.LoadRigInventories();
+            success = true;
         }
-        return false;
+        if(rig != null && !success)
+        {
+            success = AddItemToRig(item);
+        }
+        if(backpack != null && !success)
+        {
+            success = AddItemToBackpack(item);
+        }
+        return success;
     }
 
-    public bool AddItemToBackpack(SO_Item item)
+    private bool AddItemToBackpack(SO_Item item)
     {
         bool success = backpack.inventories.Add(item);
+        Debug.Log(success);
+        return success;
+    }
+
+    private bool AddItemToRig(SO_Item item)
+    {
+        bool success = rig.inventories.Add(item);
         Debug.Log(success);
         return success;
     }

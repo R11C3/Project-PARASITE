@@ -30,32 +30,35 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_input._isFirePressed && gun.gunData != null)
+        if(player.action != Action.Inventory)
         {
-            gun.Shoot();
-            gun.fireHeld = true;
-        }
-        if(_input._isReloadPressed && gun.gunData != null)
-        {
-            player.reloading = true;
-            gun.Reload();
-        }
-        if(!_input._isFirePressed)
-        {
-            gun.fireHeld = false;
-        }
+            if(_input._isFirePressed && gun.gunData != null)
+            {
+                gun.Shoot();
+                gun.fireHeld = true;
+            }
+            if(_input._isReloadPressed && gun.gunData != null)
+            {
+                player.reloading = true;
+                gun.Reload();
+            }
+            if(!_input._isFirePressed)
+            {
+                gun.fireHeld = false;
+            }
 
-        if(_input._isFireModePressed && gun.gunData != null && !fireSelectHeld)
-        {
-            gun.gunData.ChangeFireMode();
-            fireSelectHeld = true;
-        }
-        if(!_input._isFireModePressed)
-        {
-            fireSelectHeld = false;
-        }
+            if(_input._isFireModePressed && gun.gunData != null && !fireSelectHeld)
+          {
+                gun.gunData.ChangeFireMode();
+                fireSelectHeld = true;
+            }
+            if(!_input._isFireModePressed)
+            {
+                fireSelectHeld = false;
+            }
 
-        SwitchWeapons();
+            SwitchWeapons();
+            }
     }
 
     void SwitchWeapons()

@@ -14,6 +14,7 @@ public class PlayerAim : MonoBehaviour
     private Transform characterTransform;
     private Camera mainCamera;
     private LineRenderer lineRenderer;
+    private PlayerStats player;
     public Vector3 mousePosition;
 
     void Awake()
@@ -22,6 +23,7 @@ public class PlayerAim : MonoBehaviour
         characterTransform = GetComponent<Transform>();
         lineRendererObject = GameObject.Find("Line Renderer");
         lineRenderer = lineRendererObject.GetComponent<LineRenderer>();
+        player = GetComponent<PlayerStats>();
 
         lineRenderer.positionCount = 3;
     }
@@ -29,28 +31,35 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetMousePosition();
-        Aim();
+        if(player.action != Action.Inventory)
+        {
+            GetMousePosition();
+            Aim();
+        }
     }
 
     public Vector3 GetMousePosition() 
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if(player.action != Action.Inventory)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, mask))
-        {
-            return hitInfo.point;
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, mask))
+            {
+                return hitInfo.point;
+            }
+            else if (Physics.Raycast(ray, out RaycastHit groundHit, Mathf.Infinity, floor))
+            {
+                Vector3 position = groundHit.point;
+                position.y += 1f;
+                return position;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
         }
-        else if (Physics.Raycast(ray, out RaycastHit groundHit, Mathf.Infinity, floor))
-        {
-            Vector3 position = groundHit.point;
-            position.y += 1f;
-            return position;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
+        return Vector3.zero;
     }
 
     private void Aim()

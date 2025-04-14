@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Vector3 aimOffset;
 
+    [SerializeField] private float clampDistance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,6 @@ public class CameraController : MonoBehaviour
         if(!input._isAimPressed)
         {
             SmoothFollow();
-            LookTo(target.transform.position);
         }
         if(input._isAimPressed)
         {

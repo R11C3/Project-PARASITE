@@ -3,6 +3,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public enum Holding{Rifle, Pistol, None};
+public enum Action{None, Inventory};
 public enum Stance{Walking, Running, Crouching};
 
 public class MobStats : MonoBehaviour
@@ -27,6 +28,8 @@ public class MobStats : MonoBehaviour
 
     [Header("In Hand")]
     public Holding inHand;
+    [Header("Current Action")]
+    public Action action;
     [Header("Stance")]
     public Stance stance = Stance.Walking;
 

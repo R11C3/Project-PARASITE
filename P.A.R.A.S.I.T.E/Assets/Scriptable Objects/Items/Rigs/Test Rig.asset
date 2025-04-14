@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8156ead9ce97c945a1a99ee5b59c2e8, type: 3}
+  m_Name: Test Rig
+  m_EditorClassIdentifier: 
+  ID: c14b8fb9-2c95-4897-aeb8-587408a7901b
+  itemName: Test Rig
+  type: 8
+  obj: {fileID: 0}
+  sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
+  dimensions:
+    height: 2
+    width: 3
+  location:
+    height: 0
+    width: 0
+  storageDimensions:
+    height: 2
+    width: 3
+  inventories:
+    itemList: []
+    dimensions:
+      height: 0
+      width: 0
