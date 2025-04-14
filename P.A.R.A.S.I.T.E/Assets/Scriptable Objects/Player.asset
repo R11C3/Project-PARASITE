@@ -20,6 +20,6 @@ MonoBehaviour:
   rollSpeed: 15
   rollTime: 0.5
   rollDelay: 1
-  maxHealth: 0
+  maxHealth: 200
   health: 100
   damageable: 1

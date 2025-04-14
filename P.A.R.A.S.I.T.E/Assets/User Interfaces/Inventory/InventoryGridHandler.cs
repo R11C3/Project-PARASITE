@@ -46,6 +46,9 @@ public class InventoryGridHandler : MonoBehaviour
     void Update()
     {
         root.visible = visible;
+        Label inventoryHealth = root.Q<Label>("health");
+
+        inventoryHealth.text = stats.currentHealth + " / " + stats.maxHealth;
     }
 
     void ConfigureSlotDimensions()

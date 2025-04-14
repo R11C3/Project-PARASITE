@@ -39,6 +39,11 @@
                     </ui:VisualElement>
                     <ui:VisualElement name="holster-icon" class="holster-icon" style="flex-grow: 1; border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px;" />
                 </ui:VisualElement>
+                <ui:VisualElement name="statistics" class="statistics" style="flex-grow: 1;">
+                    <ui:Label text="0/0" name="health" class="statistics-label" style="color: rgb(161, 0, 0);" />
+                    <ui:Label text="0/0" name="energy" class="statistics-label" />
+                    <ui:Label text="0/0" name="thirsty" class="statistics-label" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

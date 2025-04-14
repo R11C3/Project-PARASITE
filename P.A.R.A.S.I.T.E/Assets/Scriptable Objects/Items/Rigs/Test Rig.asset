@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: c14b8fb9-2c95-4897-aeb8-587408a7901b
   itemName: Test Rig
   type: 8
-  obj: {fileID: 0}
+  obj: {fileID: 4131923122354939121, guid: d26bbb51b82d19445bc8a8d6ea1e9379, type: 3}
   sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:
     height: 2
