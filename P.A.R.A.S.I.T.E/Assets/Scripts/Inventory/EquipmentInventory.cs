@@ -10,11 +10,11 @@ public class EquipmentInventory
 {
     [Header("Weapons")]
     [SerializeField]
-    private SO_Gun primary;
+    public SO_Gun primary;
     [SerializeField]
-    private SO_Gun sling;
+    public SO_Gun sling;
     [SerializeField]
-    private SO_Gun holster;
+    public SO_Gun holster;
     public WeaponSlot equipped;
     
     [Header("Equipment")]

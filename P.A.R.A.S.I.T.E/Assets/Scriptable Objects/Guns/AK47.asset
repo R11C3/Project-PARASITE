@@ -15,11 +15,14 @@ MonoBehaviour:
   ID: 88fc4b94-7841-4432-8b2a-d50d2dac84af
   itemName: AK47
   type: 0
-  Fab: {fileID: 0}
-  sprite: {fileID: 0}
+  obj: {fileID: 0}
+  sprite: {fileID: -1304905567622442630, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
   dimensions:
     height: 2
     width: 3
+  location:
+    height: 0
+    width: 0
   gunType: 0
   model: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
   offset: {x: 0.094, y: 0.202, z: -0.033}
@@ -41,6 +44,6 @@ MonoBehaviour:
     type: 3}
   accuracy: {x: 0.5, y: 0, z: 0.5}
   shotgun: 0
-  currentAmmo: 12
+  currentAmmo: 10
   currentFireMode: 0
   fireModeIndex: 0

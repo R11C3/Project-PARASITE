@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:ScrollView name="inventory" class="inventory">
+        <ui:VisualElement name="rig-holder" class="inventory" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="rig-icon" class="equipment-icon" style="flex-grow: 1; margin-right: 50px;" />
+            <ui:VisualElement name="rig" class="gear-icon" style="flex-grow: 1; margin-top: 50px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="backpack-holder" class="inventory" style="flex-grow: 1; flex-direction: row;">
+            <ui:VisualElement name="backpack-icon" class="equipment-icon" style="flex-grow: 1; width: 150px; height: 150px; margin-right: 50px; margin-bottom: 0; margin-top: 0; max-width: 150px; max-height: 150px;" />
+            <ui:VisualElement name="backpack" class="gear-icon" style="flex-grow: 1; margin-top: 50px;" />
+        </ui:VisualElement>
+    </ui:ScrollView>
+</ui:UXML>

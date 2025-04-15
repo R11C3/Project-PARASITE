@@ -15,11 +15,14 @@ MonoBehaviour:
   ID: 9e29ad65-09b8-4aae-979c-3be4d2c39e69
   itemName: Pistol
   type: 0
-  Fab: {fileID: 0}
-  sprite: {fileID: 0}
+  obj: {fileID: 0}
+  sprite: {fileID: -2236324273849735119, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
   dimensions:
     height: 2
     width: 2
+  location:
+    height: 0
+    width: 0
   gunType: 1
   model: {fileID: 4300000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
   offset: {x: 0.069, y: 0.162, z: -0.032}
