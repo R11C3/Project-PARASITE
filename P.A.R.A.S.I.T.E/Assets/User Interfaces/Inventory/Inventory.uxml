@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:Template name="playerInventoryItems" src="project://database/Assets/User%20Interfaces/Inventory/playerInventoryItems.uxml?fileID=9197481963319205126&amp;guid=8b273d00a0cbb4742b014efb7194b7c1&amp;type=3#playerInventoryItems" />
+    <ui:Template name="playerEquipment" src="project://database/Assets/User%20Interfaces/Inventory/playerEquipment.uxml?fileID=9197481963319205126&amp;guid=615199ef18eccf64d80c80f7b8b21850&amp;type=3#playerEquipment" />
     <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
     <ui:VisualElement name="container" class="container" style="flex-grow: 1;">
         <ui:VisualElement name="header" class="header" style="flex-grow: 1; left: 0; bottom: 0; right: 0; top: 0;">
@@ -15,24 +16,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="body" class="body" style="flex-grow: 1;">
+        <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row-reverse;">
             <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory" />
-            <ui:VisualElement name="equipment" class="inventory" style="flex-grow: 1; margin-right: 0; margin-left: 20px; max-width: 800px; align-items: center;">
-                <ui:VisualElement name="helmet" class="equipment-icon" style="flex-grow: 1; margin-bottom: 100px;" />
-                <ui:VisualElement name="armor" class="equipment-icon" style="flex-grow: 1;" />
-                <ui:VisualElement name="weapons" class="inventory" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-content: flex-start; flex-wrap: nowrap; left: 0;">
-                    <ui:VisualElement name="large-weapons" class="inventory" style="flex-grow: 1; width: auto; max-width: 450px;">
-                        <ui:VisualElement name="primary" class="weapon-icon" style="flex-grow: 1; width: 450px; max-width: 450px;" />
-                        <ui:VisualElement name="sling" class="weapon-icon" style="flex-grow: 1;" />
-                    </ui:VisualElement>
-                    <ui:VisualElement name="holster" class="holster-icon" style="flex-grow: 1; border-top-width: 10px; border-right-width: 10px; border-bottom-width: 10px; border-left-width: 10px;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="statistics" class="statistics" style="flex-grow: 1;">
-                    <ui:Label text="0/0" name="health" class="statistics-label" style="color: rgb(161, 0, 0);" />
-                    <ui:Label text="0/0" name="energy" class="statistics-label" />
-                    <ui:Label text="0/0" name="thirsty" class="statistics-label" />
-                </ui:VisualElement>
-            </ui:VisualElement>
+            <ui:Instance template="playerEquipment" name="playerEquipment" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

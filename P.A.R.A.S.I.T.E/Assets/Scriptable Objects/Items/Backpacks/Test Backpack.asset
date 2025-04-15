@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: a69277a1-86cf-4742-8791-85eb1ceea916
   itemName: Test Backpack
-  type: 9
+  type: 10
   obj: {fileID: 0}
   sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:

@@ -13,7 +13,7 @@ using UnityEngine;
 [Serializable]
 public abstract class SO_Item : ScriptableObject
 {
-    public enum Type{Weapon, Key, Material, Consumable, Medical, Mod, Armor, Helmet, Rig, Backpack, Deployable}
+    public enum Type{Pistol, Weapon, Key, Material, Consumable, Medical, Mod, Armor, Helmet, Rig, Backpack, Deployable}
 
     [Header("Item Name & Type")]
     public string ID = Guid.NewGuid().ToString();

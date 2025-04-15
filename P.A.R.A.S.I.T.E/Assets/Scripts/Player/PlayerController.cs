@@ -80,11 +80,13 @@ public class PlayerController : MonoBehaviour
         if (!_input._isMovementPressed && !_input._isCrouchPressed && !_input._isSprintPressed)
         {
             _input._currentMovement = _lastMovement;
+            handleGravity();
             characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
         }
 
         if (!_rolling && _input._isMovementPressed)
         {
+            handleGravity();
             characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
 
             _lastMovement = _input._currentMovement;
@@ -110,8 +112,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateValues();
-        handleGravity();
         if(player.action != Action.Inventory)
+        {
+            // handleGravity();
             handleMovement();
+        }
+        
     }
 }

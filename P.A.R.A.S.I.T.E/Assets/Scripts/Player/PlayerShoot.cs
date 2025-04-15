@@ -30,6 +30,7 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player.equipmentInventory.CheckNone();
         if(player.action != Action.Inventory)
         {
             if(_input._isFirePressed && gun.gunData != null)

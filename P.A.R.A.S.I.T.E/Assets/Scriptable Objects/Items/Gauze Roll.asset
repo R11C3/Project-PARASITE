@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 802c2d36-cb8a-42bc-9bee-1f5cee802f31
   itemName: Gauze Roll
-  type: 4
+  type: 5
   obj: {fileID: 3249871672733669422, guid: 0b0e9e2a81d174b48ad71047ea8853c4, type: 3}
   sprite: {fileID: 2800000, guid: 233bba2611ce5fb4783d23c28effef14, type: 3}
   dimensions:

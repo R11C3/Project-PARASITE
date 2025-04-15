@@ -328,6 +328,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: equipmentInventory.sling
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: equipmentInventory.primary
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3520674929600380531, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: inventory

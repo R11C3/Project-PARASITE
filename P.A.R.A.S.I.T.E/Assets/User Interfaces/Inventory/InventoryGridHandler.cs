@@ -296,8 +296,6 @@ public class InventoryGridHandler : MonoBehaviour
                 selection = Selection.Holster;
             else
                 selection = Selection.None;
-            
-            Debug.Log(selection);
 
             if (selected != null && selected.name.Equals("visualIcon"))
             {
@@ -372,6 +370,9 @@ public class InventoryGridHandler : MonoBehaviour
 
         backpackBounds = backpackHolder.worldBound;
         rigBounds = rigHolder.worldBound;
+        primaryBounds = primaryHolder.worldBound;
+        slingBounds = slingHolder.worldBound;
+        holsterBounds = holsterHolder.worldBound;
         
         if(backpackBounds.Contains(selected.worldBound.position))
         {
@@ -439,22 +440,62 @@ public class InventoryGridHandler : MonoBehaviour
                 selected.transform.position = originalPosition;
             }
         }
-        else if(primaryBounds.Contains(selected.worldBound.position))
+        else if(primaryBounds.Contains(selected.worldBound.center))
         {
-            // if(item.type == SO_Item.Type.Weapon && stats.equipmentInventory.primary == null)
-            // {
-            //     if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            //     if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            //     if(selection == Selection.Sling) stats.equipmentInventory.sling = null;
-            //     if(selection == Selection.Holster) stats.equipmentInventory.holster = null;
+            if(item.type == SO_Item.Type.Weapon && stats.equipmentInventory.primary == null)
+            {
+                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Sling) stats.equipmentInventory.sling = null;
+                if(selection == Selection.Holster) stats.equipmentInventory.holster = null;
 
-            //     stats.equipmentInventory.primary = (SO_Gun)item;
+                stats.equipmentInventory.primary = (SO_Gun)item;
 
-            // }
-            // else
-            // {
-            //     selected.transform.position = originalPosition;
-            // }
+                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+            }
+            else
+            {
+                selected.transform.position = originalPosition;
+            }
+        }
+        else if(slingBounds.Contains(selected.worldBound.center))
+        {
+            if(item.type == SO_Item.Type.Weapon && stats.equipmentInventory.sling == null)
+            {
+                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Primary) stats.equipmentInventory.primary = null;
+                if(selection == Selection.Holster) stats.equipmentInventory.holster = null;
+
+                stats.equipmentInventory.sling = (SO_Gun)item;
+
+                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+            }
+            else
+            {
+                selected.transform.position = originalPosition;
+            }
+        }
+        else if(holsterBounds.Contains(selected.worldBound.center))
+        {
+            if(item.type == SO_Item.Type.Pistol && stats.equipmentInventory.holster == null)
+            {
+                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if(selection == Selection.Primary) stats.equipmentInventory.primary = null;
+                if(selection == Selection.Sling) stats.equipmentInventory.sling = null;
+
+                stats.equipmentInventory.holster = (SO_Gun)item;
+
+                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+            }
+            else
+            {
+                selected.transform.position = originalPosition;
+            }
         }
         else 
         {

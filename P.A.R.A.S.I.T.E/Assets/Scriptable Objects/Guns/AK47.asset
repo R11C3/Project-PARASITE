@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 88fc4b94-7841-4432-8b2a-d50d2dac84af
   itemName: AK47
-  type: 0
+  type: 1
   obj: {fileID: 0}
   sprite: {fileID: -1304905567622442630, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
   dimensions:

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 18f9ada1-932a-4742-9f95-95699019f314
   itemName: Test Item
-  type: 2
+  type: 3
   obj: {fileID: 0}
   sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:

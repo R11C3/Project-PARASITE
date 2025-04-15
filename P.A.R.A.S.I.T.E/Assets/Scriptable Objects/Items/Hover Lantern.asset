@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 8b97fe1e-8a1f-4773-b56d-495f5bb7c547
   itemName: Hover Lantern
-  type: 10
+  type: 11
   obj: {fileID: 1571884908303043475, guid: 21d8b7da678bba048aa115bdc6baa595, type: 3}
   sprite: {fileID: 2800000, guid: 23dae86773082aa49848153155ef6acc, type: 3}
   dimensions:

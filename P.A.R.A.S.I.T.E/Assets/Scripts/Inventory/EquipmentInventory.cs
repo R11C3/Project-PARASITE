@@ -41,6 +41,31 @@ public class EquipmentInventory
         return null;
     }
 
+    public void CheckNone()
+    {
+        switch (equipped)
+        {
+            case WeaponSlot.Primary:
+                if(primary == null)
+                    equipped = WeaponSlot.None;
+                else
+                    equipped = WeaponSlot.Primary;
+                return;
+            case WeaponSlot.Sling:
+                if(sling == null)
+                    equipped = WeaponSlot.None;
+                else
+                    equipped = WeaponSlot.Sling;
+                return;
+            case WeaponSlot.Holster:
+                if(holster == null)
+                    equipped = WeaponSlot.None;
+                else
+                    equipped = WeaponSlot.Holster;
+                return;
+        }
+    }
+
     public void SwitchGun(WeaponSlot slot)
     {
         switch (slot)
@@ -95,16 +120,31 @@ public class EquipmentInventory
     public bool AddItem(PlayerStats source, SO_Item item)
     {
         bool success = false;
-        if((backpack == null && item.type == SO_Item.Type.Backpack) && !success)
+        if(backpack == null && item.type == SO_Item.Type.Backpack)
         {
             backpack = (SO_Backpack)item;
             source.gridHandler.LoadBackpackInventories();
             success = true;
         }
-        if((rig == null && item.type == SO_Item.Type.Rig) && !success)
+        if(rig == null && item.type == SO_Item.Type.Rig && !success)
         {
             rig = (SO_Rig)item;
             source.gridHandler.LoadRigInventories();
+            success = true;
+        }
+        if(primary == null && item.type == SO_Item.Type.Weapon && !success)
+        {
+            primary = (SO_Gun)item;
+            success = true;
+        }
+        if(sling == null && item.type == SO_Item.Type.Weapon && !success)
+        {
+            sling = (SO_Gun)item;
+            success = true;
+        }
+        if(holster == null && item.type == SO_Item.Type.Pistol && !success)
+        {
+            holster = (SO_Gun)item;
             success = true;
         }
         if(rig != null && !success)

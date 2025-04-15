@@ -46,11 +46,19 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
         {
             animator.SetBool(holdingWeaponHash, false);
             animator.SetBool(holdingNothingHash, true);
+            animator.SetLayerWeight(1, 0f);
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 0f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0f;
         }
         if(currentWeapon != WeaponSlot.None)
         {
             animator.SetBool(holdingWeaponHash, true);
             animator.SetBool(holdingNothingHash, false);
+            animator.SetLayerWeight(1, 1f);
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 1f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.8f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.8f;
         }
 
         if(player.changingWeapons)
@@ -60,7 +68,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
             leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;
             animator.SetBool(switchingWeaponHash, true);
-            StartCoroutine(DisableKinematics(1));
+            StartCoroutine(SwitchWeapons(1));
         }
         if(player.reloading)
         {
@@ -73,7 +81,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
         }
     }
 
-    IEnumerator DisableKinematics(float time)
+    IEnumerator SwitchWeapons(float time)
     {
         yield return new WaitForSecondsRealtime(time);
         animator.SetBool(switchingWeaponHash, false);

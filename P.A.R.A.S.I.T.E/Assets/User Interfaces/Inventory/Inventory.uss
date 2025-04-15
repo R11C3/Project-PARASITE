@@ -282,3 +282,8 @@
     background-color: rgba(75, 75, 75, 0.39);
     align-self: auto;
 }
+
+.unity-scroll-view__content-viewport {
+    flex: auto;
+    overflow: visible;
+}
