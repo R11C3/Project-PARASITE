@@ -247,6 +247,14 @@
     position: absolute;
 }
 
+.telegraph {
+    height: 100%;
+    width: 100%;
+    border-width: 2px;
+    background-color: rgba(72,72,72, 0.8);
+    border-color: rgb(75,75,75);
+}
+
 .statistics-label {
     font-size: 45px;
     -unity-font-style: bold;

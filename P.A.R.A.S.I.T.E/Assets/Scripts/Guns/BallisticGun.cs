@@ -82,6 +82,18 @@ public class BallisticGun : MonoBehaviour
 
     public void ShootingSystem()
     {
+        if(gunData.gunType == GunType.Shotgun)
+        {
+            MultiBulletSystem();
+        }
+        else
+        {
+            SingleBulletSystem();
+        }
+    }
+
+    public void SingleBulletSystem()
+    {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
         if(lastShootTime + gunData.fireSpeed < Time.time)
         {
@@ -108,6 +120,44 @@ public class BallisticGun : MonoBehaviour
             else
             {
                 StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
+            }
+            lastShootTime = Time.time;
+            gunData.currentAmmo--;
+        }
+    }
+
+    public void MultiBulletSystem()
+    {
+        shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
+        if(lastShootTime + gunData.fireSpeed < Time.time)
+        {
+            canShoot = true;
+        }
+        if(canShoot && gunData.currentAmmo > 0 && !reloading && !switching)
+        {
+            shootingSystem.Play();
+            mainCamera.GetComponent<CameraShake>().Shake();
+            canShoot = false;
+
+            for(int i = 0; i < gunData.pelletCount; i++)
+            {
+                Vector3 direction = AccuracyVariation();
+
+                TrailRenderer tempTrail = Instantiate(trail, barrel.GetComponent<Transform>().position, Quaternion.identity);
+
+                if (Physics.Raycast(barrel.GetComponent<Transform>().position, direction, out RaycastHit hit, float.MaxValue, mask))
+                {
+                    StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
+
+                    Enemy target;
+                    hit.transform.gameObject.TryGetComponent<Enemy>(out target);
+                    if(target != null) target.DoDamage(gunData.damage);
+                }
+                else
+                {
+                    StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
+                }
+                
             }
             lastShootTime = Time.time;
             gunData.currentAmmo--;

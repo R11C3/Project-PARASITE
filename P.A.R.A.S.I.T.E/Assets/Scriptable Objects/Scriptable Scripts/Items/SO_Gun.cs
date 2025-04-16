@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum GunType{Rifle, Pistol}
+public enum GunType{Rifle, Pistol, Shotgun}
 public enum FireMode{Automatic, Burst, Single}
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]
@@ -29,13 +29,20 @@ public class SO_Gun : SO_Item
     public GameObject firingParticle;
     public GameObject impactParticle;
     public Vector3 accuracy;
-    public bool shotgun;
+
+    [Header("Shotgun Statistics")]
+    public int pelletCount;
 
     [Header("Instance Statistics")]
     public int currentAmmo;
     public FireMode currentFireMode;
     [HideInInspector]
     public int fireModeIndex = 0;
+
+    public void Reset()
+    {
+        type = Type.Weapon;
+    }
 
     public void ChangeFireMode()
     {

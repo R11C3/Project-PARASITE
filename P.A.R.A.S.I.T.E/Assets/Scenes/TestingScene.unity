@@ -337,7 +337,8 @@ PrefabInstance:
         type: 3}
       propertyPath: equipmentInventory.primary
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 628ba402f89c47e4d9c919868903974f,
+        type: 2}
     - target: {fileID: 3520674929600380531, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: inventory

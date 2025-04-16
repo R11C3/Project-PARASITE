@@ -374,7 +374,7 @@ public class InventoryGridHandler : MonoBehaviour
         slingBounds = slingHolder.worldBound;
         holsterBounds = holsterHolder.worldBound;
         
-        if(backpackBounds.Contains(selected.worldBound.position))
+        if(backpackBounds.Contains(selected.worldBound.center))
         {
             Vector3 finalPosition = selected.worldBound.position - backpackHolder.worldBound.position;
 
@@ -403,11 +403,15 @@ public class InventoryGridHandler : MonoBehaviour
             }
             else
             {
-                backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
+                if(selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
+                if(selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
                 selected.transform.position = originalPosition;
             }
         }
-        else if(rigBounds.Contains(selected.worldBound.position))
+        else if(rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
         {
             Vector3 finalPosition = selected.worldBound.position - rigHolder.worldBound.position;
 
@@ -436,7 +440,11 @@ public class InventoryGridHandler : MonoBehaviour
             }
             else
             {
-                rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if(selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
+                if(selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
+                if(selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
                 selected.transform.position = originalPosition;
             }
         }
