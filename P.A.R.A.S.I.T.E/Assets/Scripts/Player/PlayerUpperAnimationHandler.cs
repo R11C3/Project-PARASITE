@@ -9,6 +9,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
     private PlayerStats player;
 
     public GameObject gun;
+    private BallisticGun gunData;
     public GameObject leftHandRig;
     public GameObject rightHandRig;
 
@@ -23,6 +24,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         player = GetComponent<PlayerStats>();
+        gunData = gun.GetComponent<BallisticGun>();
 
         holdingWeaponHash = Animator.StringToHash("holdingWeapon");
         holdingNothingHash = Animator.StringToHash("holdingNothing");
@@ -70,14 +72,14 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
             animator.SetBool(switchingWeaponHash, true);
             StartCoroutine(SwitchWeapons(1));
         }
-        if(player.reloading)
+        if(player.reloading && gunData.reloading)
         {
             player.reloading = false;
             rightHandRig.GetComponent<MultiAimConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;
             animator.SetBool(reloadingWeaponHash, true);
-            StartCoroutine(Reload(3));
+            StartCoroutine(Reload(gunData.gunData.reloadTime));
         }
     }
 

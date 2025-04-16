@@ -34,13 +34,14 @@ MonoBehaviour:
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
   fireModes: 02000000
   damage: 5
-  fireSpeed: 0.1
+  fireSpeed: 0.25
   maxAmmo: 8
-  reloadTime: 1
+  reloadTime: 0.5
   automatic: 0
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
   accuracy: {x: 2, y: 2, z: 2}
+  reloadType: 1
   pelletCount: 10
   currentAmmo: 0
   currentFireMode: 2

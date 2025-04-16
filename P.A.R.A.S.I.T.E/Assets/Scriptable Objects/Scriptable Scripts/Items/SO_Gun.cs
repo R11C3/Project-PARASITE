@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum GunType{Rifle, Pistol, Shotgun}
 public enum FireMode{Automatic, Burst, Single}
+public enum ReloadType{Magazine, Single}
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]
 public class SO_Gun : SO_Item
@@ -24,11 +25,12 @@ public class SO_Gun : SO_Item
     public float damage;
     public float fireSpeed;
     public int maxAmmo;
-    public int reloadTime;
+    public float reloadTime;
     public bool automatic;
     public GameObject firingParticle;
     public GameObject impactParticle;
     public Vector3 accuracy;
+    public ReloadType reloadType;
 
     [Header("Shotgun Statistics")]
     public int pelletCount;

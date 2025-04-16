@@ -33,7 +33,7 @@ public class BallisticGun : MonoBehaviour
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
-    private bool reloading = false;
+    public bool reloading = false;
     public bool switching = false;
     public bool fireHeld = false;
 
@@ -57,14 +57,32 @@ public class BallisticGun : MonoBehaviour
 
     public void Reload()
     {
-        reloading = true;
-        StartCoroutine(ReloadDelay());
+        if(gunData.reloadType == ReloadType.Magazine && !reloading)
+        {
+            reloading = true;
+            StartCoroutine(ReloadDelay());
+        }
+        else if(gunData.reloadType == ReloadType.Single && !reloading)
+        {
+            reloading = true;
+            StartCoroutine(SingleReloadDelay());
+        }
     }
 
     private IEnumerator ReloadDelay()
     {
         yield return new WaitForSecondsRealtime(gunData.reloadTime);
         gunData.currentAmmo = gunData.maxAmmo;
+        reloading = false;
+    }
+
+    private IEnumerator SingleReloadDelay()
+    {
+        for(int i = gunData.currentAmmo; i < gunData.maxAmmo; i++)
+        {
+            yield return new WaitForSecondsRealtime(gunData.reloadTime);
+            gunData.currentAmmo++;
+        }
         reloading = false;
     }
 
