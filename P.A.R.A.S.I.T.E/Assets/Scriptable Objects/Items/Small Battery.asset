@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Small Battery
   m_EditorClassIdentifier: 
   ID: a5cd3d77-1e6b-4169-8c25-01f6252aeb9c
-  itemName: 
+  itemName: Battery
   type: 3
   obj: {fileID: 328839142383883238, guid: 63c12909147c613499bc2f1a4542bead, type: 3}
   sprite: {fileID: 2800000, guid: c8daabde00f9049468ee5903f3d41c12, type: 3}
   dimensions:
-    height: 0
-    width: 0
+    height: 1
+    width: 1
   location:
     height: 0
     width: 0
