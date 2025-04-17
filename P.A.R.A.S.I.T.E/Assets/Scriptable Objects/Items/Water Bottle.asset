@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a97f74076fb6134a8897ba1e47184f8, type: 3}
+  m_Script: {fileID: 11500000, guid: f3ed538eea604694aa7c686cd15e53c3, type: 3}
   m_Name: Water Bottle
   m_EditorClassIdentifier: 
-  ID: fdc1bc97-1450-4b9c-9681-ec6e4343ed32
+  ID: 2e752a09-d85c-4823-8158-802f978e6698
   itemName: Water Bottle
   type: 4
   obj: {fileID: 4833822173354710054, guid: 74e706ad76a11b944a7f61827fda1715, type: 3}
@@ -23,3 +23,5 @@ MonoBehaviour:
   location:
     height: 0
     width: 0
+  energy: 0
+  hydration: 30
