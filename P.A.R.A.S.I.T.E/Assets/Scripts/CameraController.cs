@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Vector3 aimOffset;
 
-    [SerializeField] private float clampDistance;
+    [SerializeField] private float maxDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +43,18 @@ public class CameraController : MonoBehaviour
 
     public void SmoothFollow()
     {
-        targetPos = target.transform.position + offset;
-        ZoomChange();
-        Vector3 smoothFollow = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
+        Vector3 difference = -transform.position + aimSphere.transform.position;
 
-        if(input._isAimPressed) LookTo(smoothFollow);
+        ZoomChange();
+
+        if(difference.magnitude > maxDistance)
+        {
+            difference = difference.normalized * maxDistance;
+        }
+
+        difference += offset + target.transform.position;
+
+        Vector3 smoothFollow = Vector3.Lerp(transform.position, difference, smoothSpeed);
 
         transform.position = smoothFollow;
     }
@@ -77,4 +84,6 @@ public class CameraController : MonoBehaviour
     {
         transform.LookAt(position);
     }
+
+    
 }

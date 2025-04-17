@@ -25,6 +25,7 @@ MonoBehaviour:
     width: 0
   gunType: 2
   model: {fileID: 4300000, guid: bf2593fe0c804b84688e307cfb1ddfae, type: 3}
+  bullet: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9, type: 3}
   offset: {x: 0.1083, y: 0.256, z: -0.0224}
   offsetRotation: {x: 0.49119765, y: 0.50865, z: -0.50865, w: 0.49119765}
   endOfBarrel: {x: 0, y: 0, z: -0.4797}

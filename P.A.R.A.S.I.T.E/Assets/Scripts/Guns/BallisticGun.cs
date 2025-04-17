@@ -36,6 +36,7 @@ public class BallisticGun : MonoBehaviour
     public bool reloading = false;
     public bool switching = false;
     public bool fireHeld = false;
+    public bool aiming = false;
 
     void Awake()
     {
@@ -187,9 +188,18 @@ public class BallisticGun : MonoBehaviour
         Vector3 direction = playerAim.GetMousePosition();
         Vector3 target = direction - characterTransform.position;
 
-        target += new Vector3(
-        Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
-        Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
+        if(aiming)
+        {
+            target += new Vector3(
+            Random.Range(-gunData.accuracy.x * 0.5f, gunData.accuracy.x * 0.5f), -1.5f,
+            Random.Range(-gunData.accuracy.z * 0.5f, gunData.accuracy.z * 0.5f));
+        }
+        else
+        {
+            target += new Vector3(
+            Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
+            Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
+        }
 
         target.Normalize();
 

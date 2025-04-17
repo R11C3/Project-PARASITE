@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 4c86566c026b3f04e85e0b7b010b8e72
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - obj: {instanceID: 0}
+  - sprite: {instanceID: 0}
+  - model: {instanceID: 0}
+  - bullet: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9,
+      type: 3}
+  - firingParticle: {instanceID: 0}
+  - impactParticle: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -25,6 +25,7 @@ MonoBehaviour:
     width: 0
   gunType: 1
   model: {fileID: 4300000, guid: b812e42521a5a27499e76cc5ed56e3ac, type: 3}
+  bullet: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9, type: 3}
   offset: {x: 0.069, y: 0.162, z: -0.032}
   offsetRotation: {x: 0.4912761, y: 0.5087239, z: -0.4999272, w: 0.49992058}
   endOfBarrel: {x: 0.0004, y: 0.026, z: -0.151}
@@ -41,7 +42,8 @@ MonoBehaviour:
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
   accuracy: {x: 0.7, y: 0.7, z: 0.7}
-  shotgun: 0
+  reloadType: 0
+  pelletCount: 0
   currentAmmo: 7
   currentFireMode: 2
   fireModeIndex: 0

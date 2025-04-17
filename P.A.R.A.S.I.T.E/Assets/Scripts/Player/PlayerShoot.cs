@@ -58,6 +58,15 @@ public class PlayerShoot : MonoBehaviour
                 fireSelectHeld = false;
             }
 
+            if(_input._isAimPressed)
+            {
+                gun.aiming = true;
+            }
+            else
+            {
+                gun.aiming = false;
+            }
+
             SwitchWeapons();
             }
     }

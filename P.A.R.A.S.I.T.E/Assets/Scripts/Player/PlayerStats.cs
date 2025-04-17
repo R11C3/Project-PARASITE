@@ -41,6 +41,8 @@ public class PlayerStats : MobStats
             SprintPressed();
         else if(_input._isMovementPressed)
             MovementPressed();
+        else if(_input._isAimPressed)
+            AimPressed();
         
         UISwitch();
 
@@ -81,6 +83,12 @@ public class PlayerStats : MobStats
     {
         speed = sprintSpeed;
         stance = Stance.Running;
+    }
+
+    private void AimPressed()
+    {
+        speed = stats.speed;
+        stance = Stance.Aiming;
     }
 
     private void UISwitch()
