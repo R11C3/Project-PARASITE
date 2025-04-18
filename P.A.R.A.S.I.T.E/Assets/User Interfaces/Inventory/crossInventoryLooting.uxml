@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="playerInventoryItems" src="project://database/Assets/User%20Interfaces/Inventory/playerInventoryItems.uxml?fileID=9197481963319205126&amp;guid=8b273d00a0cbb4742b014efb7194b7c1&amp;type=3#playerInventoryItems" />
+    <ui:Template name="container" src="project://database/Assets/User%20Interfaces/Inventory/container.uxml?fileID=9197481963319205126&amp;guid=3b2da5bb3477a134d91a491e858f1696&amp;type=3#container" />
+    <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
+    <Style src="project://database/Assets/User%20Interfaces/Inventory/crossInventory.uss?fileID=7433441132597879392&amp;guid=ac2fbecf6201dcc45b4f6a5b7d03d604&amp;type=3#crossInventory" />
+    <ui:VisualElement name="container" class="container" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement name="header" class="header" style="flex-grow: 1;" />
+        <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row; justify-content: flex-start;">
+            <ui:VisualElement name="player-inventory-holder" class="player-inventory" style="flex-grow: 1;">
+                <ui:Instance template="playerInventoryItems" name="player-inventory" style="flex-direction: column-reverse; align-self: stretch;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="other-inventory-holder" class="external-inventory" style="flex-grow: 1;">
+                <ui:Instance template="container" style="align-self: stretch; justify-content: flex-start; opacity: 1; flex-direction: row-reverse;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
