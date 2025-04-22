@@ -28,6 +28,17 @@ public class Container : Interactable
         GenerateLoot();
     }
 
+    public SO_Item GetRandomItem()
+    {
+        int length = lootTable.table.Count;
+
+        SO_Item item = lootTable.table[UnityEngine.Random.Range(0, length)];
+
+        lootTable.table.Remove(item);
+
+        return item;
+    }
+
     public void GenerateLoot()
     {
         int attemptedItems = UnityEngine.Random.Range(0, container.dimensions.width * container.dimensions.height);
@@ -38,7 +49,7 @@ public class Container : Interactable
                 break;
             }
 
-            container.inventory.Add(lootTable.GetRandomItem());
+            container.inventory.Add(Instantiate(GetRandomItem()));
         }
     }
 

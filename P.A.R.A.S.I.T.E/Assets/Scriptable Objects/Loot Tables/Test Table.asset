@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ae5ddd88dfe4b408e91f98c17b26e8, type: 3}
   m_Name: Test Table
   m_EditorClassIdentifier: 
+  worldData: {fileID: 11400000, guid: 2a4c768a760203d4487f2d85e6f51e9a, type: 2}
   lootTable:
   - item: {fileID: 11400000, guid: 66bcda028a2dd5d4abffad349268d641, type: 2}
     chance: 5

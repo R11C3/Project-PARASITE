@@ -322,7 +322,6 @@ public class ExternalGridHandler : MonoBehaviour
                 if(selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
                 item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
-                container.inventory.AddToGrid(location.height, location.width, item.dimensions.width, item.dimensions.height, null);
                 container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 container.inventory.itemList.Add(item);
             }
@@ -356,7 +355,6 @@ public class ExternalGridHandler : MonoBehaviour
                 if(selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
                 item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
-                backpack.inventories.AddToGrid(location.height, location.width, item.dimensions.width, item.dimensions.height, null);
                 backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 backpack.inventories.itemList.Add(item);
             }
@@ -390,7 +388,6 @@ public class ExternalGridHandler : MonoBehaviour
                 if(selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
                 item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
-                rig.inventories.AddToGrid(location.height, location.width, item.dimensions.width, item.dimensions.height, null);
                 rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 rig.inventories.itemList.Add(item);
             }

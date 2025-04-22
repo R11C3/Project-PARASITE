@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SO_LootTable", menuName = "Loot Table")]
 [Serializable]
 public class SO_LootTable : ScriptableObject
 {
+    public SO_WorldData worldData;
+
     public SpawnChance[] lootTable;
 
     public List<SO_Item> table;
@@ -20,17 +23,6 @@ public class SO_LootTable : ScriptableObject
                 table.Add(obj.item);
             }
         }
-    }
-
-    public SO_Item GetRandomItem()
-    {
-        int length = table.Count;
-
-        SO_Item item = table[UnityEngine.Random.Range(0, length)];
-
-        table.Remove(item);
-
-        return item;
     }
 
     [Serializable]
