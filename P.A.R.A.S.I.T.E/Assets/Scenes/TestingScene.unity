@@ -702,6 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   containerData: {fileID: 11400000, guid: 8a99cecffea32894f9626c9f8fd69615, type: 2}
+  lootTableData: {fileID: 11400000, guid: 69c4fbad1e32e1a468c5fb0208b5a04d, type: 2}
   stats: {fileID: 579364179}
 --- !u!1 &904734929 stripped
 GameObject:

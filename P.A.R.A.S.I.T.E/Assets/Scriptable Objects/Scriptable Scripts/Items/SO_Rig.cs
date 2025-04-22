@@ -10,7 +10,6 @@ public class SO_Rig : SO_InventoryItem
 
     public override void InitializeInventories()
     {
-        Debug.Log("Initialized");
         inventories = new GridInventory(storageDimensions.width, storageDimensions.height);
     }
 }

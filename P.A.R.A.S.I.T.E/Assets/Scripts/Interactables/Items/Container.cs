@@ -7,6 +7,9 @@ public class Container : Interactable
     [SerializeField]
     private SO_Container containerData;
     private SO_Container container;
+    [SerializeField]
+    private SO_LootTable lootTableData;
+    private SO_LootTable lootTable;
 
     [SerializeField]
     private PlayerStats stats;
@@ -15,6 +18,28 @@ public class Container : Interactable
     {
         container = Instantiate(containerData);
         container.IntializeInventories();
+
+        lootTable = Instantiate(lootTableData);
+        lootTable.GenerateTable();
+    }
+
+    void Start()
+    {
+        GenerateLoot();
+    }
+
+    public void GenerateLoot()
+    {
+        int attemptedItems = UnityEngine.Random.Range(0, container.dimensions.width * container.dimensions.height);
+        for(int i = 0; i < attemptedItems; i++)
+        {
+            if(lootTable.table.Count <= 0)
+            {
+                break;
+            }
+
+            container.inventory.Add(lootTable.GetRandomItem());
+        }
     }
 
     public override void Interact(GameObject source)
