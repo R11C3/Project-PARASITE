@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private SO_Input _input;
     private CharacterController characterController;
-    private PlayerRoll playerRoll;
 
     private Camera _camera;
 
@@ -26,13 +25,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Dampening")]
     public float dampening = 5.0f;
 
-    private bool _rolling;
-
     void Awake()
     {
         player = GetComponent<PlayerStats>();
         characterController = GetComponent<CharacterController>();
-        playerRoll = GetComponent<PlayerRoll>();
         _camera = Camera.main;
 
         _lastMovement = new Vector3(0.0f, -9.8f, 0.0f);
@@ -43,11 +39,6 @@ public class PlayerController : MonoBehaviour
         _forward.y = 0;
         _forward = Vector3.Normalize(_forward);
         _right = Quaternion.Euler(new Vector3(0,90,0)) * _forward;
-    }
-
-    void UpdateValues()
-    {
-        _rolling = playerRoll._rolling;
     }
 
     void handleMovement()
@@ -84,7 +75,7 @@ public class PlayerController : MonoBehaviour
             characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
         }
 
-        if (!_rolling && _input._isMovementPressed)
+        if (_input._isMovementPressed)
         {
             handleGravity();
             characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
@@ -111,8 +102,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        UpdateValues();
-        if(player.action != Action.Inventory)
+        if(player.action == Action.None)
         {
             // handleGravity();
             handleMovement();

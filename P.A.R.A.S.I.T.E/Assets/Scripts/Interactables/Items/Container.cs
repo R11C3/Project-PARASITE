@@ -5,32 +5,36 @@ using UnityEngine.UIElements;
 public class Container : Interactable
 {
     [SerializeField]
-    private UIDocument lootingInventory;
-    [SerializeField]
-    private VisualTreeAsset containerUI;
-    private VisualElement containerVisualElement;
-    [SerializeField]
     private SO_Container containerData;
     private SO_Container container;
 
-    private VisualElement root;
-    private VisualElement body;
-    private PlayerStats stats;
-
     [SerializeField]
-    private SO_Input input;
+    private PlayerStats stats;
 
     void Awake()
     {
-        containerVisualElement = containerUI.Instantiate();
         container = Instantiate(containerData);
         container.IntializeInventories();
     }
 
     public override void Interact(GameObject source)
     {
-        // source.TryGetComponent<PlayerStats>(out stats);
+        source.TryGetComponent<PlayerStats>(out stats);
 
-        // stats.gridHandler.LootingContainer(containerVisualElement, container);
+        stats.externalGridHandler.container = container;
+
+        if(stats.canToggle)
+        {
+            stats.canToggle = false;
+
+            stats.action = Action.Looting;
+
+            stats.playerUI.visible = false;
+            stats.gridHandler.visible = false;
+            stats.externalGridHandler.visible = true;
+            if(stats.equipmentInventory.backpack != null) stats.externalGridHandler.LoadBackpackInventoryItems();
+            if(stats.equipmentInventory.rig != null) stats.externalGridHandler.LoadRigInventoryItems();
+            stats.externalGridHandler.LoadContainerItems();
+        }
     }
 }

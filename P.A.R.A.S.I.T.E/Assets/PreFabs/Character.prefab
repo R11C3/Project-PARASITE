@@ -558,6 +558,84 @@ MonoBehaviour:
   visible: 0
   backpack: {fileID: 11400000, guid: 8925d1098cfb06443a686e14060e6b9d, type: 2}
   rig: {fileID: 0}
+  container: {fileID: 0}
+  layout: {x: 0, y: 0}
+--- !u!1 &5070956045546430417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2818149334573544644}
+  - component: {fileID: 3833891751264944537}
+  - component: {fileID: 5389002082188181702}
+  m_Layer: 0
+  m_Name: Looting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2818149334573544644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070956045546430417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2941337171247925528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3833891751264944537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070956045546430417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 39060a7e71557c54089e83baf4afd303, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: e6d84fccb0960c1469a14f0cfcbbc82f,
+    type: 3}
+  m_SortingOrder: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &5389002082188181702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070956045546430417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb060b13b2ae9c4c88d0e53422d4367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  visible: 0
+  container: {fileID: 0}
+  backpack: {fileID: 0}
+  rig: {fileID: 0}
+  containerBounds:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   layout: {x: 0, y: 0}
 --- !u!1 &5465968348282686102
 GameObject:
@@ -737,10 +815,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   characterTransform: {fileID: 2941337171247925528}
-  speed: 100
+  projectile: {fileID: 0}
   canShoot: 1
+  reloading: 0
   switching: 0
   fireHeld: 0
+  aiming: 0
 --- !u!23 &8659624111756088748
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1063,7 +1143,6 @@ GameObject:
   - component: {fileID: 6329113388683329203}
   - component: {fileID: 3515050039642512570}
   - component: {fileID: 3154710176588290544}
-  - component: {fileID: 1102376081572940936}
   - component: {fileID: 4965131758044466079}
   - component: {fileID: 5697971344168195618}
   - component: {fileID: 7648389221158071315}
@@ -1099,6 +1178,7 @@ Transform:
   - {fileID: 8517534150930227605}
   - {fileID: 4077988535837227707}
   - {fileID: 7220818389968829587}
+  - {fileID: 2818149334573544644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7086505844144453374
@@ -1173,9 +1253,6 @@ MonoBehaviour:
   action: 0
   stance: 0
   _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
-  rollTime: 0
-  rollSpeed: 0
-  rollDelay: 0
   equipmentInventory:
     primary: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
     sling: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
@@ -1186,6 +1263,7 @@ MonoBehaviour:
     armor: {fileID: 0}
   gridHandler: {fileID: 2718655177287888378}
   playerUI: {fileID: 3520674929600380531}
+  externalGridHandler: {fileID: 5389002082188181702}
   changingWeapons: 0
   reloading: 0
 --- !u!114 &3154710176588290544
@@ -1212,22 +1290,6 @@ MonoBehaviour:
   _rightMovement: {x: 0, y: 0, z: 0}
   _initialMovement: {x: 0, y: 0, z: 0}
   dampening: 5
---- !u!114 &1102376081572940936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667823253887843557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c125c90effabe2b4ab77bd53af81d211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
-  _currentMovement: {x: 0, y: 0, z: 0}
-  _rolling: 0
 --- !u!114 &4965131758044466079
 MonoBehaviour:
   m_ObjectHideFlags: 0

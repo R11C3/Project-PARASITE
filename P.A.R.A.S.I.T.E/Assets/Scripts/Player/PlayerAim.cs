@@ -31,7 +31,7 @@ public class PlayerAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.action != Action.Inventory)
+        if(player.action == Action.None)
         {
             GetMousePosition();
             Aim();

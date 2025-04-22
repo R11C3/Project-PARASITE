@@ -11,8 +11,8 @@ public class InputHandler : MonoBehaviour
     void OnEnable()
     {
         _input.MoveEvent += OnMove;
-        _input.RollEvent += OnRoll;
-        _input.RollCanceledEvent += OnRollCanceled;
+        _input.VaultEvent += OnVault;
+        _input.VaultCanceledEvent += OnVaultCanceled;
         _input.CrouchEvent += OnCrouch;
         _input.CrouchCanceledEvent += OnCrouchCanceled;
         _input.SprintEvent += OnSprint;
@@ -43,8 +43,8 @@ public class InputHandler : MonoBehaviour
     void OnDisable()
     {
         _input.MoveEvent -= OnMove;
-        _input.RollEvent -= OnRoll;
-        _input.RollCanceledEvent -= OnRollCanceled;
+        _input.VaultEvent -= OnVault;
+        _input.VaultCanceledEvent -= OnVaultCanceled;
         _input.CrouchEvent -= OnCrouch;
         _input.CrouchCanceledEvent -= OnCrouchCanceled;
         _input.SprintEvent -= OnSprint;
@@ -81,14 +81,14 @@ public class InputHandler : MonoBehaviour
             _input._isMovementPressed = false;
     }
 
-    private void OnRoll()
+    private void OnVault()
     {
-        _input._isRollPressed = true;
+        _input._isVaultPressed = true;
     }
 
-    private void OnRollCanceled()
+    private void OnVaultCanceled()
     {
-        _input._isRollPressed = false;
+        _input._isVaultPressed = false;
     }
 
     private void OnCrouch()

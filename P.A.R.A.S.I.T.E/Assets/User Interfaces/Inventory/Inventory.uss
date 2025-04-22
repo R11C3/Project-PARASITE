@@ -221,6 +221,7 @@
     padding-bottom: 5px;
     padding-left: 5px;
     align-content: flex-start;
+    max-width: 960px;
 }
 
 .visual-icon-container {

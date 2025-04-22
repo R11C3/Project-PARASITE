@@ -10,7 +10,7 @@ public class SO_Input : ScriptableObject
 
     private InputAction _moveAction;
     private InputAction _sprintAction;
-    private InputAction _rollAction;
+    private InputAction _vaultAction;
     private InputAction _crouchAction;
     private InputAction _fireAction;
     private InputAction _aimAction;
@@ -30,7 +30,7 @@ public class SO_Input : ScriptableObject
     public bool _isMovementPressed;
     public bool _isSprintPressed;
     public bool _isCrouchPressed;
-    public bool _isRollPressed;
+    public bool _isVaultPressed;
     public bool _isFirePressed;
     public bool _isAimPressed;
     public bool _isFireModePressed;
@@ -43,7 +43,7 @@ public class SO_Input : ScriptableObject
 
     public event UnityAction<Vector2> MoveEvent;
     public event UnityAction SprintEvent;
-    public event UnityAction RollEvent;
+    public event UnityAction VaultEvent;
     public event UnityAction CrouchEvent;
     public event UnityAction FireEvent;
     public event UnityAction AimEvent;
@@ -56,7 +56,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction InventoryEvent;
 
     public event UnityAction SprintCanceledEvent;
-    public event UnityAction RollCanceledEvent;
+    public event UnityAction VaultCanceledEvent;
     public event UnityAction CrouchCanceledEvent;
     public event UnityAction FireCanceledEvent;
     public event UnityAction AimCanceledEvent;
@@ -77,7 +77,7 @@ public class SO_Input : ScriptableObject
     {
         _moveAction = _input.FindAction("Move");
         _sprintAction = _input.FindAction("Sprint");
-        _rollAction = _input.FindAction("Roll");
+        _vaultAction = _input.FindAction("Vault");
         _crouchAction = _input.FindAction("Crouch");
         _fireAction = _input.FindAction("Fire");
         _aimAction = _input.FindAction("Aim");
@@ -96,8 +96,8 @@ public class SO_Input : ScriptableObject
         _sprintAction.started += OnSprintInput;
         _sprintAction.canceled += OnSprintInput;
 
-        _rollAction.started += OnRollInput;
-        _rollAction.canceled += OnRollInput;
+        _vaultAction.started += OnVaultInput;
+        _vaultAction.canceled += OnVaultInput;
 
         _crouchAction.started += OnCrouchInput;
         _crouchAction.canceled += OnCrouchInput;
@@ -131,7 +131,7 @@ public class SO_Input : ScriptableObject
 
         _moveAction.Enable();
         _sprintAction.Enable();
-        _rollAction.Enable();
+        _vaultAction.Enable();
         _crouchAction.Enable();
         _fireAction.Enable();
         _aimAction.Enable();
@@ -158,8 +158,8 @@ public class SO_Input : ScriptableObject
         _sprintAction.started -= OnSprintInput;
         _sprintAction.canceled -= OnSprintInput;
 
-        _rollAction.started -= OnRollInput;
-        _rollAction.canceled -= OnRollInput;
+        _vaultAction.started -= OnVaultInput;
+        _vaultAction.canceled -= OnVaultInput;
 
         _crouchAction.started -= OnCrouchInput;
         _crouchAction.canceled -= OnCrouchInput;
@@ -193,7 +193,7 @@ public class SO_Input : ScriptableObject
 
         _moveAction.Disable();
         _sprintAction.Disable();
-        _rollAction.Disable();
+        _vaultAction.Disable();
         _crouchAction.Disable();
         _fireAction.Disable();
         _aimAction.Disable();
@@ -239,15 +239,15 @@ public class SO_Input : ScriptableObject
         }
     }
 
-    void OnRollInput (InputAction.CallbackContext context)
+    void OnVaultInput (InputAction.CallbackContext context)
     {
-        if(RollEvent != null && context.started)
+        if(VaultEvent != null && context.started)
         {
-            RollEvent.Invoke();
+            VaultEvent.Invoke();
         }
-        if(RollCanceledEvent != null && context.canceled)
+        if(VaultCanceledEvent != null && context.canceled)
         {
-            RollCanceledEvent.Invoke();
+            VaultCanceledEvent.Invoke();
         }
     }
 

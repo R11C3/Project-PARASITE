@@ -253,68 +253,6 @@ public class InventoryGridHandler : MonoBehaviour
         }
     }
 
-    // Container for Looting Load
-    public void LoadContainerInventories()
-    {
-        RemoveContainerItemSlots();
-
-        int width = container.inventory.dimensions.width;
-        int height = container.inventory.dimensions.height;
-
-        containerHolder.style.maxWidth = slotDimensions.width * width + 5;
-        containerHolder.style.maxHeight = slotDimensions.height * height + 5;
-
-        for (int i = 0; i < height * width; i++)
-        {
-            VisualElement slot = new VisualElement();
-            slot.AddToClassList("item-slot");
-            containerHolder.Add(slot);
-        }
-    }
-
-    public void RemoveContainerItemSlots()
-    {
-        containerHolder.Clear();
-    }
-
-    public void LoadContainerInventoryItems()
-    {
-        LoadContainerInventories();
-        foreach (SO_Item item in container.inventory.itemList)
-        {
-
-            VisualElement visualIconContainer = new VisualElement();
-            visualIconContainer.AddToClassList("visual-icon-container");
-
-            VisualElement visualIcon = new VisualElement();
-            visualIcon.AddToClassList("visual-icon");
-
-            visualIconContainer.style.height = item.dimensions.height * slotDimensions.height;
-            visualIconContainer.style.width = item.dimensions.width * slotDimensions.width;
-            visualIconContainer.name = "visualIconContainer";
-            visualIcon.name = "visualIcon";
-
-            visualIconContainer.style.top = item.location.height * slotDimensions.height;
-            visualIconContainer.style.left = item.location.width * slotDimensions.width;
-
-            visualIcon.style.backgroundImage = item.sprite;
-
-            containerHolder.Add(visualIconContainer);
-            visualIconContainer.Add(visualIcon);
-        }
-    }
-
-    public void LootingContainer(VisualElement containerHolder, SO_Container container)
-    {
-        this.container = container;
-        VisualElement body = root.Q<VisualElement>("body");
-        body.Add(containerHolder);
-
-        this.containerHolder = root.Q<VisualElement>("container");
-
-        LoadContainerInventoryItems();
-    }
-
     private VisualElement selected;
     private bool isDragging = false;
 

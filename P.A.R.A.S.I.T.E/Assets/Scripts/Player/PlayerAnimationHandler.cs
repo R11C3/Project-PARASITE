@@ -13,17 +13,13 @@ public class PlayerAnimationHandler : MonoBehaviour
     [SerializeField]
     private SO_Input _input;
     private PlayerController playerController;
-    private PlayerRoll playerRoll;
     private Vector3 _currentVelocity;
 
     private int isWalkingHash;
-    private int isRollingHash;
     private int isCrouchingHash;
 
     private bool _isWalking;
     private bool _isCrouching;
-    private bool _isRolling;
-    private bool _rolling;
     private bool _isMovementPressed;
 
     private float _MovementAngle;
@@ -35,11 +31,9 @@ public class PlayerAnimationHandler : MonoBehaviour
         animator = GetComponent<Animator>();
         characterTransform = GetComponent<Transform>();
         playerController = GetComponent<PlayerController>();
-        playerRoll = GetComponent<PlayerRoll>();
         player = GetComponent<PlayerStats>();
 
         isWalkingHash = Animator.StringToHash("isWalking");
-        isRollingHash = Animator.StringToHash("isRolling");
         isCrouchingHash = Animator.StringToHash("isCrouching");
     }
 
@@ -55,9 +49,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     void UpdateBools()
     {
         _isWalking = animator.GetBool(isWalkingHash);
-        _isRolling = animator.GetBool(isRollingHash);
         _isCrouching = animator.GetBool(isCrouchingHash);
-        _rolling = playerRoll._rolling;
     }
 
     void UpdateValues()
@@ -73,7 +65,6 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void AnimationSpeeds()
     {
-        animator.SetFloat("rollSpeed", 1/ player.rollTime);
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
         animator.SetFloat("linearSpeed", _linearSpeed * 10);
@@ -90,14 +81,7 @@ public class PlayerAnimationHandler : MonoBehaviour
         {
             animator.SetBool(isWalkingHash, false);
         }
-        if (_rolling && !_isRolling)
-        {
-            animator.SetBool(isRollingHash, true);
-        }
-        else if (!_rolling && _isRolling)
-        {
-            animator.SetBool(isRollingHash, false);
-        }
+
         if(_input._isCrouchPressed && !_isCrouching)
         {
             animator.SetBool(isCrouchingHash, true);

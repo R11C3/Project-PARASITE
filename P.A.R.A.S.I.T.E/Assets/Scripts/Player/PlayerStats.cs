@@ -8,28 +8,25 @@ public class PlayerStats : MobStats
     [Header("Input SO")]
     private SO_Input _input;
 
-    [Header("Roll Stats")]
-    public float rollTime;
-    public float rollSpeed;
-    public float rollDelay;
-
     [Header("Equipment Inventory")]
     public EquipmentInventory equipmentInventory;
     [Header("UI's")]
     public InventoryGridHandler gridHandler;
     public HUDController playerUI;
+    public ExternalGridHandler externalGridHandler;
 
     [HideInInspector]
     public bool changingWeapons = false;
     [HideInInspector]
     public bool reloading = false;
-    private bool canToggle = true;
+    public bool canToggle = true;
 
     void Start()
     {
         Load();
         playerUI.visible = true;
         gridHandler.visible = false;
+        externalGridHandler.visible = false;
     }
 
     // Update is called once per frame
@@ -46,25 +43,24 @@ public class PlayerStats : MobStats
         
         UISwitch();
 
-        if(gridHandler.visible)
+        if(action == Action.Inventory)
         {
-            action = Action.Inventory;
             if(_input._isFirePressed)
             {
                 gridHandler.SelectItem();
             }
         }
-        else
+        if(action == Action.Looting)
         {
-            action = Action.None;
+            if(_input._isFirePressed)
+            {
+                externalGridHandler.SelectItem();
+            }
         }
     }
 
     protected override void Load()
     {
-        rollTime = stats.rollTime;
-        rollSpeed = stats.rollSpeed;
-        rollDelay = stats.rollDelay;
         base.Load();
     }
 
@@ -93,32 +89,29 @@ public class PlayerStats : MobStats
 
     private void UISwitch()
     {
-        if(_input._isInventoryPressed && canToggle)
+        if(_input._isInventoryPressed && canToggle && action == Action.None)
         {
-            playerUI.visible = !playerUI.visible;
-            gridHandler.visible = !gridHandler.visible;
+            action = Action.Inventory;
+            playerUI.visible = false;
+            gridHandler.visible = true;
+            externalGridHandler.visible = false;
             canToggle = false;
             gridHandler.LoadWeaponImages();
             if(equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
             if(equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
             if(equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
-            if(gridHandler.container != null) gridHandler.LoadContainerInventoryItems();
-
-            if(!gridHandler.visible)
-            {
-                gridHandler.container = null;
-            }
-            
+        }
+        if(_input._isInventoryPressed && canToggle && (action == Action.Inventory || action == Action.Looting))
+        {
+            action = Action.None;
+            playerUI.visible = true;
+            gridHandler.visible = false;
+            externalGridHandler.visible = false;
+            canToggle = false;
         }
         else if(!_input._isInventoryPressed)
         {
             canToggle = true;
         }
-    }
-
-    public void UIVariableSwap()
-    {
-        playerUI.visible = !playerUI.visible;
-        gridHandler.visible = !gridHandler.visible;
     }
 }

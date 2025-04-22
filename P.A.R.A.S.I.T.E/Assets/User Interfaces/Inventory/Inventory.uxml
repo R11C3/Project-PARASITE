@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:Template name="playerInventoryItems" src="project://database/Assets/User%20Interfaces/Inventory/playerInventoryItems.uxml?fileID=9197481963319205126&amp;guid=8b273d00a0cbb4742b014efb7194b7c1&amp;type=3#playerInventoryItems" />
     <ui:Template name="playerEquipment" src="project://database/Assets/User%20Interfaces/Inventory/playerEquipment.uxml?fileID=9197481963319205126&amp;guid=615199ef18eccf64d80c80f7b8b21850&amp;type=3#playerEquipment" />
+    <ui:Template name="playerInventoryItems" src="project://database/Assets/User%20Interfaces/Inventory/playerInventoryItems.uxml?fileID=9197481963319205126&amp;guid=8b273d00a0cbb4742b014efb7194b7c1&amp;type=3#playerInventoryItems" />
     <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
     <ui:VisualElement name="container" class="container" style="flex-grow: 1;">
         <ui:VisualElement name="header" class="header" style="flex-grow: 1; left: 0; bottom: 0; right: 0; top: 0;">
@@ -17,7 +17,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row;">
-            <ui:Instance template="playerEquipment" name="playerEquipment" />
+            <ui:Instance template="playerEquipment" name="playerEquipment" class="inventory" />
             <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory" />
         </ui:VisualElement>
     </ui:VisualElement>

@@ -366,6 +366,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 494454899}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &579364179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 494454899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579364168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cfc1e6b27e51147a1c4f22ef92cff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620734691
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,11 +701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cca551ec820ac844bc6e4925b79c077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootingInventory: {fileID: 0}
-  containerUI: {fileID: 9197481963319205126, guid: 3b2da5bb3477a134d91a491e858f1696,
-    type: 3}
   containerData: {fileID: 11400000, guid: 8a99cecffea32894f9626c9f8fd69615, type: 2}
-  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  stats: {fileID: 579364179}
 --- !u!1 &904734929 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5716395489597463929, guid: ac2e06c9ed23c3348bec5765c94cd555,
