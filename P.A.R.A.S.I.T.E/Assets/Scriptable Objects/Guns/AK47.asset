@@ -25,7 +25,6 @@ MonoBehaviour:
     width: 0
   gunType: 0
   model: {fileID: 4300000, guid: 6f966b9a7c817ed49973b4a8762cbbdf, type: 3}
-  bullet: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9, type: 3}
   offset: {x: 0.094, y: 0.202, z: -0.033}
   offsetRotation: {x: 0.49119765, y: 0.50865, z: -0.50865, w: 0.49119765}
   endOfBarrel: {x: 0, y: 0, z: -0.448}
@@ -36,6 +35,7 @@ MonoBehaviour:
   fireModes: 0000000002000000
   damage: 20
   fireSpeed: 0.15
+  velocity: 50
   maxAmmo: 30
   reloadTime: 2
   automatic: 1

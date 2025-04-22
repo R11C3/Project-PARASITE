@@ -102,10 +102,23 @@ public class PlayerStats : MobStats
             if(equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
             if(equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
             if(equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
+            if(gridHandler.container != null) gridHandler.LoadContainerInventoryItems();
+
+            if(!gridHandler.visible)
+            {
+                gridHandler.container = null;
+            }
+            
         }
         else if(!_input._isInventoryPressed)
         {
             canToggle = true;
         }
+    }
+
+    public void UIVariableSwap()
+    {
+        playerUI.visible = !playerUI.visible;
+        gridHandler.visible = !gridHandler.visible;
     }
 }

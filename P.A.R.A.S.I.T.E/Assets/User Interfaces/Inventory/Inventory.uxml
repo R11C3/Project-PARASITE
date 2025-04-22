@@ -16,9 +16,9 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row-reverse;">
-            <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory" />
+        <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row;">
             <ui:Instance template="playerEquipment" name="playerEquipment" />
+            <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

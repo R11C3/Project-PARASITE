@@ -24,6 +24,7 @@ public class SO_Gun : SO_Item
     public FireMode[] fireModes;
     public float damage;
     public float fireSpeed;
+    public float velocity;
     public int maxAmmo;
     public float reloadTime;
     public bool automatic;

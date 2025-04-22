@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -27,9 +28,9 @@ public class BallisticGun : MonoBehaviour
     private LayerMask mask;
     [SerializeField]
     private Transform characterTransform;
-    private Camera mainCamera;
     [SerializeField]
-    private float speed = 100.0f;
+    private GameObject projectile;
+    private Camera mainCamera;
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
@@ -126,20 +127,7 @@ public class BallisticGun : MonoBehaviour
 
             Vector3 direction = AccuracyVariation();
 
-            TrailRenderer tempTrail = Instantiate(trail, barrel.GetComponent<Transform>().position, Quaternion.identity);
-
-            if (Physics.Raycast(barrel.GetComponent<Transform>().position, direction, out RaycastHit hit, float.MaxValue, mask))
-            {
-                StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
-
-                Enemy target;
-                hit.transform.gameObject.TryGetComponent<Enemy>(out target);
-                if(target != null) target.DoDamage(gunData.damage);
-            }
-            else
-            {
-                StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
-            }
+            StartCoroutine(SpawnProjectile(direction, 50f));
             lastShootTime = Time.time;
             gunData.currentAmmo--;
         }
@@ -162,22 +150,9 @@ public class BallisticGun : MonoBehaviour
             {
                 Vector3 direction = AccuracyVariation();
 
-                TrailRenderer tempTrail = Instantiate(trail, barrel.GetComponent<Transform>().position, Quaternion.identity);
-
-                if (Physics.Raycast(barrel.GetComponent<Transform>().position, direction, out RaycastHit hit, float.MaxValue, mask))
-                {
-                    StartCoroutine(SpawnTrail(tempTrail, hit.point, true));
-
-                    Enemy target;
-                    hit.transform.gameObject.TryGetComponent<Enemy>(out target);
-                    if(target != null) target.DoDamage(gunData.damage);
-                }
-                else
-                {
-                    StartCoroutine(SpawnTrail(tempTrail, direction * 100, false));
-                }
-                
+                StartCoroutine(SpawnProjectile(direction, 50f));
             }
+
             lastShootTime = Time.time;
             gunData.currentAmmo--;
         }
@@ -191,14 +166,14 @@ public class BallisticGun : MonoBehaviour
         if(aiming)
         {
             target += new Vector3(
-            Random.Range(-gunData.accuracy.x * 0.5f, gunData.accuracy.x * 0.5f), -1.5f,
-            Random.Range(-gunData.accuracy.z * 0.5f, gunData.accuracy.z * 0.5f));
+            UnityEngine.Random.Range(-gunData.accuracy.x * 0.5f, gunData.accuracy.x * 0.5f), -1.5f,
+            UnityEngine.Random.Range(-gunData.accuracy.z * 0.5f, gunData.accuracy.z * 0.5f));
         }
         else
         {
             target += new Vector3(
-            Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
-            Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
+            UnityEngine.Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
+            UnityEngine.Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
         }
 
         target.Normalize();
@@ -206,27 +181,22 @@ public class BallisticGun : MonoBehaviour
         return target;
     }
 
-    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hit, bool impact)
+    private IEnumerator SpawnProjectile(Vector3 direction, float distance)
     {
-        float distance = Vector3.Distance(trail.transform.position, hit);
-        float startingDistance = distance;
-        Vector3 startPosition = trail.transform.position;
+        Vector3 original = barrel.transform.position;
 
-        while (distance > 0)
+        GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
+
+        bullet.GetComponent<Bullet>().damage = gunData.damage;
+
+        while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
         {
-            trail.transform.position = Vector3.Lerp(startPosition, hit, 1 - (distance / startingDistance));
-            distance -= Time.deltaTime * speed;
-
+            bullet.transform.localPosition += direction * gunData.velocity * Time.deltaTime;
             yield return null;
         }
 
-        trail.transform.position = hit;
+        Destroy(bullet);
 
-        if (impact)
-        {
-            // Instantiate(impactSystem, hit, Quaternion.LookRotation(hit.normalized));
-        }
-
-        Destroy(trail.gameObject, trail.time);
+        yield return null;
     }
 }
