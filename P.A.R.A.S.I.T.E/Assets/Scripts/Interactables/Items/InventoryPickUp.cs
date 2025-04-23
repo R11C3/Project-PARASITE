@@ -11,6 +11,7 @@ public class InventoryPickUp : Interactable
     {
         item = Instantiate(itemData);
         item.InitializeInventories();
+        item.InitializePhysical();
         item.obj = gameObject;
     }
 

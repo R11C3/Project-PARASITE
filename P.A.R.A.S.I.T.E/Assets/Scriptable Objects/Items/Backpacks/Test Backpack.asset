@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: a69277a1-86cf-4742-8791-85eb1ceea916
   itemName: Test Backpack
   type: 10
-  obj: {fileID: 0}
+  obj: {fileID: 6368318764671224132, guid: 8874efd4d93ab62458a651713fd9828e, type: 3}
   sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:
     height: 6
@@ -23,6 +23,8 @@ MonoBehaviour:
   location:
     height: 0
     width: 0
+  mesh: {fileID: 0}
+  material: {fileID: 0}
   storageDimensions:
     height: 6
     width: 5

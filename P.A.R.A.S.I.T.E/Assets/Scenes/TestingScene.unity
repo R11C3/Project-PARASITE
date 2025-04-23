@@ -349,6 +349,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9,
         type: 3}
+    - target: {fileID: 8455185071211899597, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8667823253887843557, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_Name
@@ -1112,6 +1117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera Pivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024132544737413717, guid: ad5ec636ba040a548bffa739bd0f32c1,
+        type: 3}
+      propertyPath: _isOrtho
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7466862562093113640, guid: ad5ec636ba040a548bffa739bd0f32c1,
         type: 3}

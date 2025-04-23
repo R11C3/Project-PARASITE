@@ -6,10 +6,21 @@ using UnityEngine;
 [Serializable]
 public abstract class SO_InventoryItem : SO_Item
 {
+    [HideInInspector]
+    public Mesh mesh;
+    [HideInInspector]
+    public Material material;
+    [HideInInspector]
+    public Vector3 scale;
+    [HideInInspector]
+    public Vector3 rotation;
+
     [SerializeField]
     public Dimensions storageDimensions;
     [SerializeField]
     public GridInventory inventories;
 
     public abstract void InitializeInventories();
+
+    public abstract void InitializePhysical();
 }

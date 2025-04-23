@@ -14,6 +14,9 @@ public class PlayerStats : MobStats
     public InventoryGridHandler gridHandler;
     public HUDController playerUI;
     public ExternalGridHandler externalGridHandler;
+    [Header("GameObjects for Backpack/Rig")]
+    public GameObject rig;
+    public GameObject backpack;
 
     [HideInInspector]
     public bool changingWeapons = false;
@@ -32,6 +35,8 @@ public class PlayerStats : MobStats
     // Update is called once per frame
     void Update()
     {
+        UpdateBodyVisuals();
+
         if(_input._isCrouchPressed)
             CrouchPressed();
         else if(_input._isSprintPressed)
@@ -112,6 +117,34 @@ public class PlayerStats : MobStats
         else if(!_input._isInventoryPressed)
         {
             canToggle = true;
+        }
+    }
+
+    private void UpdateBodyVisuals()
+    {
+        if(equipmentInventory.backpack != null)
+        {
+            backpack.GetComponent<MeshFilter>().mesh = equipmentInventory.backpack.mesh;
+            backpack.GetComponent<MeshRenderer>().material = equipmentInventory.backpack.material;
+            backpack.GetComponent<Transform>().localScale = equipmentInventory.backpack.scale;
+            backpack.GetComponent<Transform>().localEulerAngles = equipmentInventory.backpack.rotation;
+        }
+        else
+        {
+            backpack.GetComponent<MeshFilter>().mesh = null;
+            backpack.GetComponent<MeshRenderer>().material = null;
+        }
+        if(equipmentInventory.rig != null)
+        {
+            rig.GetComponent<MeshFilter>().mesh = equipmentInventory.rig.mesh;
+            rig.GetComponent<MeshRenderer>().material = equipmentInventory.rig.material;
+            rig.GetComponent<Transform>().localScale = equipmentInventory.rig.scale;
+            rig.GetComponent<Transform>().localEulerAngles = equipmentInventory.rig.rotation;
+        }
+        else
+        {
+            rig.GetComponent<MeshFilter>().mesh = null;
+            rig.GetComponent<MeshRenderer>().material = null;
         }
     }
 }
