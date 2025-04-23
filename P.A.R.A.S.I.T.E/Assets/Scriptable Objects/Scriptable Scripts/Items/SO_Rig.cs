@@ -32,6 +32,5 @@ public class SO_Rig : SO_InventoryItem
         }
         mesh = filter.sharedMesh;
         material = renderer.sharedMaterial;
-        Debug.Log(scale);
     }
 }

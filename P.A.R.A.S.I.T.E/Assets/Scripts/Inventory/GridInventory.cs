@@ -47,7 +47,7 @@ public class GridInventory
             if(success) break;
         }
 
-        ExposeInventory();
+        // ExposeInventory();
 
         return success;
     }
