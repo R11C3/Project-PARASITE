@@ -41,6 +41,7 @@ public class MobStats : MonoBehaviour
     protected virtual void Load()
     {
         maxHealth = stats.maxHealth;
+        currentHealth = stats.maxHealth;
         speed = stats.speed;
         sprintMult = stats.sprintMult;
         crouchMult = stats.crouchMult;
@@ -60,6 +61,6 @@ public class MobStats : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        Debug.Log(damage + " inflicted onto " + gameObject);
+        Debug.Log(damage + " inflicted onto " + gameObject + "\nHealth Remaining: " + currentHealth);
     }
 }

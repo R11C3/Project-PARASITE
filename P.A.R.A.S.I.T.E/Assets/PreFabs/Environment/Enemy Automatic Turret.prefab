@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4811095370441025589}
   - component: {fileID: 6054421741581398261}
   - component: {fileID: 7670951404224386195}
-  - component: {fileID: 1975768478029203126}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -88,29 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1975768478029203126
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036172184730234070}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2062663442457263611
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +97,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8439108024104108766}
   - component: {fileID: 74529090958742703}
-  m_Layer: 0
+  - component: {fileID: -5524770601494603084}
+  - component: {fileID: 4597343731909124867}
+  - component: {fileID: 8271729588562745191}
+  m_Layer: 6
   m_Name: Enemy Automatic Turret
   m_TagString: Hostile
   m_Icon: {fileID: 0}
@@ -165,6 +144,74 @@ MonoBehaviour:
   impactParticle: {fileID: 0}
   sightDistance: 20
   target: {fileID: 0}
+--- !u!114 &-5524770601494603084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062663442457263611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83783e85676e56b4db9af452efca9538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 533dc0fa83bf20d4b961f9b643b38cc2, type: 2}
+  maxHealth: 0
+  currentHealth: 100
+  speed: 0
+  sprintMult: 0
+  crouchMult: 0
+  acceleration: 0
+  deceleration: 0
+  damageable: 1
+  inHand: 0
+  action: 0
+  stance: 0
+--- !u!135 &4597343731909124867
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062663442457263611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8271729588562745191
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062663442457263611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Height: 1.25
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &2333526866293994930
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +223,6 @@ GameObject:
   - component: {fileID: 304499076724507208}
   - component: {fileID: 3790685099892731399}
   - component: {fileID: 8712512171385195007}
-  - component: {fileID: 6456161070920049067}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -253,27 +299,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6456161070920049067
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2333526866293994930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4354488829665372950
 GameObject:
   m_ObjectHideFlags: 0
