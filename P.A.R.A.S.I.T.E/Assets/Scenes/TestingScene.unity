@@ -668,12 +668,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Range Target
       objectReference: {fileID: 0}
-    - target: {fileID: 5269361814116188113, guid: 117bec83dccc78f47a855ba035edbf07,
-        type: 3}
-      propertyPath: statsTemplate
-      value: 
-      objectReference: {fileID: 11400000, guid: f32ecdf5ad1463a4f87295cb9f287810,
-        type: 2}
     - target: {fileID: 8944824394388140960, guid: 117bec83dccc78f47a855ba035edbf07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -724,7 +718,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

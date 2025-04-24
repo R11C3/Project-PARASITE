@@ -51,7 +51,7 @@ public class MobStats : MonoBehaviour
         crouchSpeed = speed * crouchMult;
     }
 
-    public void DoDamage(float damage)
+    public virtual void DoDamage(float damage)
     {
         if(damageable)
             currentHealth -= damage;
@@ -60,5 +60,6 @@ public class MobStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log(damage + " inflicted onto " + gameObject);
     }
 }

@@ -8,8 +8,8 @@ public class Bullet : MonoBehaviour
     {
         if(other.gameObject.layer == 6)
         {
-            Enemy target;
-            other.gameObject.TryGetComponent<Enemy>(out target);
+            MobStats target;
+            other.gameObject.TryGetComponent<MobStats>(out target);
             if(target != null) target.DoDamage(damage);
             Destroy(gameObject);
         }
