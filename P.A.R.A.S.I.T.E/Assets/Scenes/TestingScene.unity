@@ -1143,6 +1143,21 @@ PrefabInstance:
       propertyPath: _isOrtho
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5785288714484282000, guid: ad5ec636ba040a548bffa739bd0f32c1,
+        type: 3}
+      propertyPath: field of view
+      value: 60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785288714484282000, guid: ad5ec636ba040a548bffa739bd0f32c1,
+        type: 3}
+      propertyPath: m_FocalLength
+      value: 20.78461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785288714484282000, guid: ad5ec636ba040a548bffa739bd0f32c1,
+        type: 3}
+      propertyPath: m_projectionMatrixMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7466862562093113640, guid: ad5ec636ba040a548bffa739bd0f32c1,
         type: 3}
       propertyPath: initialPosition.x

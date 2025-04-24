@@ -31,7 +31,7 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         player.equipmentInventory.CheckNone();
-        if(player.action == Action.None)
+        if(player.action == Action.None && player.stance != Stance.Running)
         {
             if(_input._isFirePressed && gun.gunData != null)
             {

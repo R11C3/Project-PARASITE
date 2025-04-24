@@ -28,7 +28,7 @@ MonoBehaviour:
   offset: {x: 0.0338, y: 0.2328, z: -0.0422}
   offsetRotation: {x: 0.49999997, y: 0.49999997, z: -0.49999997, w: 0.49999997}
   endOfBarrel: {x: 0, y: 0.057, z: -0.339}
-  leftHandPosition: {x: 0.0397, y: -0.0394, z: -0.038}
+  leftHandPosition: {x: -0.0274, y: 0.0065, z: -0.0199}
   leftHandRotation: {x: -0.15649164, y: 0.65629315, z: -0.7157032, w: 0.18043974}
   leftHandHintPosition: {x: 0.152, y: -0.07, z: 0.144}
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   automatic: 1
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
-  accuracy: {x: 0.25, y: 0, z: 0.25}
+  accuracy: {x: 1.8, y: 0, z: 1.8}
   reloadType: 0
   pelletCount: 0
   currentAmmo: 1
