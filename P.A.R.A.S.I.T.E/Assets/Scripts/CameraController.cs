@@ -21,6 +21,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Vector3 aimOffset;
 
     [SerializeField] private float maxDistance;
+
+    public float aimDistance;
     private float baseDistance;
 
     // Start is called before the first frame update
@@ -39,7 +41,7 @@ public class CameraController : MonoBehaviour
         }
         if(input._isAimPressed)
         {
-            maxDistance = baseDistance * 2;
+            maxDistance = baseDistance * aimDistance;
             SmoothAim();
         }
     }
