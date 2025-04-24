@@ -58,7 +58,7 @@ public class MobStats : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         Debug.Log(damage + " inflicted onto " + gameObject);
     }

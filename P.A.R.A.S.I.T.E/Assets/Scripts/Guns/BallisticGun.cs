@@ -188,6 +188,7 @@ public class BallisticGun : MonoBehaviour
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
 
         bullet.GetComponent<Bullet>().damage = gunData.damage;
+        bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
 
         while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
         {
