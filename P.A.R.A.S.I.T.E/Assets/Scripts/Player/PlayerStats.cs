@@ -62,10 +62,15 @@ public class PlayerStats : MobStats
         }
         if(action == Action.Looting)
         {
+            if(_input._isFirePressed)
+            {
+                externalGridHandler.PassiveSelection();
+            }
             if(_input._isDragPressed)
             {
                 externalGridHandler.SelectItem();
             }
+            externalGridHandler.LoadItemInfo();
         }
     }
 

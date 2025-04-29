@@ -56,7 +56,7 @@ public class InventoryGridHandler : MonoBehaviour
         itemImageHolder = root.Q<VisualElement>("item-image");
         itemStatsHolder = root.Q<VisualElement>("item-stats");
         itemDescriptionLabel = root.Q<Label>("item-description-label");
-        // inventoryHealth = root.Q<Label>("health");
+        inventoryHealth = root.Q<Label>("health");
         ConfigureSlotDimensions();
         root.visible = false;
     }
@@ -66,7 +66,7 @@ public class InventoryGridHandler : MonoBehaviour
     {
         root.visible = visible;
 
-        // inventoryHealth.text = stats.currentHealth + " / " + stats.maxHealth;
+        inventoryHealth.text = stats.currentHealth + " / " + stats.maxHealth;
     }
 
     void ConfigureSlotDimensions()
@@ -317,9 +317,9 @@ public class InventoryGridHandler : MonoBehaviour
             if (selected != null && selected.name.Equals("visualIconContainer"))
             {
                 if(selection == Selection.Backpack)
-                    item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / 100), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / 100)];
+                    item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
                 else if(selection == Selection.Rig)
-                    item = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / 100), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / 100)];
+                    item = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
                 else if(selection == Selection.Primary && stats.equipmentInventory.primary != null)
                 {
                     item = stats.equipmentInventory.primary;
@@ -390,7 +390,7 @@ public class InventoryGridHandler : MonoBehaviour
         {
             Vector3 finalPosition = selected.worldBound.position - backpackHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / 100), (int)Math.Round(finalPosition.x / 100));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
 
             if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
@@ -408,7 +408,7 @@ public class InventoryGridHandler : MonoBehaviour
                 if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
                 if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
-                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
+                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
                 backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 backpack.inventories.itemList.Add(item);
             }
@@ -426,7 +426,7 @@ public class InventoryGridHandler : MonoBehaviour
         {
             Vector3 finalPosition = selected.worldBound.position - rigHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / 100), (int)Math.Round(finalPosition.x / 100));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
 
             if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
@@ -444,7 +444,7 @@ public class InventoryGridHandler : MonoBehaviour
                 if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
                 if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
-                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
+                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
                 rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 rig.inventories.itemList.Add(item);
             }
@@ -574,9 +574,9 @@ public class InventoryGridHandler : MonoBehaviour
             if (passiveSelected != null && passiveSelected.name.Equals("visualIconContainer"))
             {
                 if(passiveSelection == Selection.Backpack)
-                    passiveItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / 100), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / 100)];
+                    passiveItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
                 else if(passiveSelection == Selection.Rig)
-                    passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / 100), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / 100)];
+                    passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
                 else if(passiveSelection == Selection.Primary && stats.equipmentInventory.primary != null)
                 {
                     passiveItem = stats.equipmentInventory.primary;

@@ -24,8 +24,12 @@ public class ExternalGridHandler : MonoBehaviour
     private VisualElement backpackHolder;
     private VisualElement rigHolder;
     private VisualElement containerHolder;
-    
-    private Dimensions slotDimensions = new Dimensions { width = 100, height = 100 };
+
+    private VisualElement itemImageHolder;
+    private VisualElement itemStatsHolder;
+    private Label itemDescriptionLabel;
+
+    private Dimensions slotDimensions = new Dimensions { width = 75, height = 75 };
 
     void Start()
     {
@@ -35,12 +39,19 @@ public class ExternalGridHandler : MonoBehaviour
         backpackHolder = root.Q<VisualElement>("backpack");
         rigHolder = root.Q<VisualElement>("rig");
         containerHolder = root.Q<VisualElement>("container-items");
+        itemImageHolder = root.Q<VisualElement>("item-image");
+        itemStatsHolder = root.Q<VisualElement>("item-stats");
+        itemDescriptionLabel = root.Q<Label>("item-description-label");
         root.visible = false;
     }
 
     void Update()
     {
         root.visible = visible;
+        if(!visible)
+        {
+            passiveItem = null;
+        }
     }
 
     private void RemoveContainerChildren()
@@ -219,7 +230,7 @@ public class ExternalGridHandler : MonoBehaviour
 
     private SO_Item item;
 
-    private enum Selection {Container, Rig, Backpack, None};
+    private enum Selection { Container, Rig, Backpack, None };
     private Selection selection = Selection.None;
 
     public void SelectItem()
@@ -236,11 +247,11 @@ public class ExternalGridHandler : MonoBehaviour
 
             selected = panel.Pick(position);
 
-            if(backpackBounds.Contains(position))
+            if (backpackBounds.Contains(position))
                 selection = Selection.Backpack;
-            else if(rigBounds.Contains(position))
+            else if (rigBounds.Contains(position))
                 selection = Selection.Rig;
-            else if(containerBounds.Contains(position))
+            else if (containerBounds.Contains(position))
                 selection = Selection.Container;
 
             if (selected != null && selected.name.Equals("visualIcon"))
@@ -250,12 +261,12 @@ public class ExternalGridHandler : MonoBehaviour
 
             if (selected != null && selected.name.Equals("visualIconContainer"))
             {
-                if(selection == Selection.Backpack)
-                    item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / 100), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / 100)];
-                else if(selection == Selection.Rig)
-                    item = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / 100), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / 100)];
-                else if(selection == Selection.Container)
-                    item = container.inventory.grid[(int)Math.Round((-containerHolder.worldBound.position.y + selected.worldBound.position.y) / 100), (int)Math.Round((-containerHolder.worldBound.position.x + selected.worldBound.position.x) / 100)];
+                if (selection == Selection.Backpack)
+                    item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
+                else if (selection == Selection.Rig)
+                    item = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
+                else if (selection == Selection.Container)
+                    item = container.inventory.grid[(int)Math.Round((-containerHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-containerHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
                 selected.AddToClassList("selected");
                 selected.BringToFront();
                 isDragging = true;
@@ -299,16 +310,16 @@ public class ExternalGridHandler : MonoBehaviour
         containerBounds = containerHolder.worldBound;
         backpackBounds = backpackHolder.worldBound;
         rigBounds = rigHolder.worldBound;
-        
-        if(containerBounds.Contains(selected.worldBound.center))
+
+        if (containerBounds.Contains(selected.worldBound.center))
         {
             Vector3 finalPosition = selected.worldBound.position - containerHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / 100), (int)Math.Round(finalPosition.x / 100));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
 
-            if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
 
             bool success = false;
 
@@ -317,31 +328,31 @@ public class ExternalGridHandler : MonoBehaviour
 
             if (success)
             {
-                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
-                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
-                if(selection == Selection.Container) container.inventory.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+                if (selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
-                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
+                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
                 container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 container.inventory.itemList.Add(item);
             }
             else
             {
-                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 selected.transform.position = originalPosition;
             }
         }
-        else if(backpackBounds.Contains(selected.worldBound.center))
+        else if (backpackBounds.Contains(selected.worldBound.center))
         {
             Vector3 finalPosition = selected.worldBound.position - backpackHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / 100), (int)Math.Round(finalPosition.x / 100));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
 
-            if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
 
             bool success = false;
 
@@ -350,31 +361,31 @@ public class ExternalGridHandler : MonoBehaviour
 
             if (success)
             {
-                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
-                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
-                if(selection == Selection.Container) container.inventory.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+                if (selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
-                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
+                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
                 backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 backpack.inventories.itemList.Add(item);
             }
             else
             {
-                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 selected.transform.position = originalPosition;
             }
         }
-        else if(rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
+        else if (rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
         {
             Vector3 finalPosition = selected.worldBound.position - rigHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / 100), (int)Math.Round(finalPosition.x / 100));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
 
-            if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
-            if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
 
             bool success = false;
 
@@ -383,35 +394,98 @@ public class ExternalGridHandler : MonoBehaviour
 
             if (success)
             {
-                if(selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
-                if(selection == Selection.Rig) rig.inventories.itemList.Remove(item);
-                if(selection == Selection.Container) container.inventory.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+                if (selection == Selection.Container) container.inventory.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
-                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / 100), width = (int)Math.Round(finalPosition.x / 100) };
+                item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
                 rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 rig.inventories.itemList.Add(item);
             }
             else
             {
-                if(selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if(selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 selected.transform.position = originalPosition;
             }
         }
-        else 
+        else
         {
-            selected.transform.position = originalPosition;    
+            selected.transform.position = originalPosition;
         }
 
         selected.RemoveFromClassList("selected");
 
-        if(stats.equipmentInventory.backpack != null) LoadBackpackInventoryItems();
-        if(stats.equipmentInventory.rig != null) LoadRigInventoryItems();
+        if (stats.equipmentInventory.backpack != null) LoadBackpackInventoryItems();
+        if (stats.equipmentInventory.rig != null) LoadRigInventoryItems();
         LoadContainerItems();
 
         selected = null;
 
         yield return null;
+    }
+
+    public SO_Item passiveItem;
+    Selection passiveSelection;
+    VisualElement passiveSelected;
+
+    public void PassiveSelection()
+    {
+        if (!isDragging)
+        {
+            backpackBounds = backpackHolder.worldBound;
+            rigBounds = rigHolder.worldBound;
+
+            Vector2 mousePosition = Input.mousePosition;
+            mousePosition.y = Screen.height - mousePosition.y;
+
+            IPanel panel = root.panel;
+            Vector2 position = RuntimePanelUtils.ScreenToPanel(panel, mousePosition);
+
+            passiveSelected = panel.Pick(position);
+
+            if (backpackBounds.Contains(position))
+                passiveSelection = Selection.Backpack;
+            else if (rigBounds.Contains(position))
+                passiveSelection = Selection.Rig;
+            else if (containerBounds.Contains(position))
+                passiveSelection = Selection.Container;
+            else
+                passiveSelection = Selection.None;
+
+            if (passiveSelected != null && passiveSelected.name.Equals("visualIcon"))
+            {
+                passiveSelected = passiveSelected.parent;
+            }
+
+            if (passiveSelected != null && passiveSelected.name.Equals("visualIconContainer"))
+            {
+                if (passiveSelection == Selection.Backpack)
+                    passiveItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
+                else if (passiveSelection == Selection.Rig)
+                    passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
+                else if (passiveSelection == Selection.Container)
+                    passiveItem = container.inventory.grid[(int)Math.Round((-containerHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-containerHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
+            }
+            else
+            {
+                Debug.Log("No pick");
+            }
+        }
+    }
+
+    public void LoadItemInfo()
+    {
+        if (passiveItem != null)
+        {
+            itemImageHolder.style.backgroundImage = passiveItem.sprite;
+            itemDescriptionLabel.text = passiveItem.description;
+        }
+        if (passiveItem == null)
+        {
+            itemImageHolder.style.backgroundImage = null;
+            itemDescriptionLabel.text = "";
+        }
     }
 }

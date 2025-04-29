@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="item-info" class="inventory" style="flex-grow: 1; max-width: 330px; width: auto;">
+        <ui:VisualElement name="item-image-holder" style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; max-width: 300px; width: 300px; height: 300px; max-height: 300px;">
+            <ui:VisualElement name="item-image" class="visual-icon" style="flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="item-stats" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 150px; max-height: 150px;" />
+        <ui:VisualElement name="item-description" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+            <ui:Label name="item-description-label" class="item-description-label" style="white-space: normal;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <ui:Template name="playerEquipment" src="project://database/Assets/User%20Interfaces/Inventory/playerEquipment.uxml?fileID=9197481963319205126&amp;guid=615199ef18eccf64d80c80f7b8b21850&amp;type=3#playerEquipment" />
     <ui:Template name="playerInventoryItems" src="project://database/Assets/User%20Interfaces/Inventory/playerInventoryItems.uxml?fileID=9197481963319205126&amp;guid=8b273d00a0cbb4742b014efb7194b7c1&amp;type=3#playerInventoryItems" />
+    <ui:Template name="item-info" src="project://database/Assets/User%20Interfaces/Inventory/ItemInfo/item-info.uxml?fileID=9197481963319205126&amp;guid=1d0e25d1bd93e9b459a299409e186229&amp;type=3#item-info" />
     <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
     <ui:VisualElement name="container" class="container" style="flex-grow: 1;">
         <ui:VisualElement name="header" class="header" style="flex-grow: 1; left: 0; bottom: 0; right: 0; top: 0;">
@@ -19,15 +20,7 @@
         <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row;">
             <ui:Instance template="playerEquipment" name="playerEquipment" class="inventory" style="max-width: 700px;" />
             <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory" style="max-width: 750px;" />
-            <ui:VisualElement name="item-info" class="inventory" style="flex-grow: 1; max-width: 330px; width: auto;">
-                <ui:VisualElement name="item-image-holder" style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; max-width: 300px; width: 300px; height: 300px; max-height: 300px;">
-                    <ui:VisualElement name="item-image" class="visual-icon" style="flex-grow: 1;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="item-stats" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 150px; max-height: 150px;" />
-                <ui:VisualElement name="item-description" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
-                    <ui:Label name="item-description-label" class="item-description-label" style="white-space: normal;" />
-                </ui:VisualElement>
-            </ui:VisualElement>
+            <ui:Instance template="item-info" name="item-info" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
