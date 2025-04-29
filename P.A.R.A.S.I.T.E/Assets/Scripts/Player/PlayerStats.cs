@@ -52,12 +52,17 @@ public class PlayerStats : MobStats
         {
             if(_input._isFirePressed)
             {
+                gridHandler.PassiveSelection();
+            }
+            if(_input._isDragPressed)
+            {
                 gridHandler.SelectItem();
             }
+            gridHandler.LoadItemInfo();
         }
         if(action == Action.Looting)
         {
-            if(_input._isFirePressed)
+            if(_input._isDragPressed)
             {
                 externalGridHandler.SelectItem();
             }
@@ -71,7 +76,7 @@ public class PlayerStats : MobStats
 
     private void MovementPressed()
     {
-        speed = stats.speed;
+        speed = ((SO_Mob)stats).speed;
         stance = Stance.Walking;
     }
     private void CrouchPressed()
@@ -88,7 +93,7 @@ public class PlayerStats : MobStats
 
     private void AimPressed()
     {
-        speed = stats.speed;
+        speed = ((SO_Mob)stats).speed;
         stance = Stance.Aiming;
     }
 

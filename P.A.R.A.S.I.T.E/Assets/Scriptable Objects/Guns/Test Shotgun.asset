@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 452d8d7f-3c4f-449c-a63d-81944feb29cf
   itemName: Test Shotgun
   type: 1
+  description: spread pew
   obj: {fileID: 0}
   sprite: {fileID: 2800000, guid: 8ccad0345c98fb54aa69522d18c6392c, type: 3}
   dimensions:

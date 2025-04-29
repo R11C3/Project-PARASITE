@@ -19,6 +19,9 @@ public abstract class SO_Item : ScriptableObject
     public string ID = Guid.NewGuid().ToString();
     public string itemName;
     public Type type;
+    [Header("Description")]
+    [TextArea]
+    public string description;
     [Header("InSceneObject & Sprite")]
     public GameObject obj;
     public Texture2D sprite;

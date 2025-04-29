@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1408545432436392774}
   - component: {fileID: 2011440487465022380}
   - component: {fileID: 8152784737652621350}
-  - component: {fileID: 7507224819190940657}
+  - component: {fileID: 6907103704412201562}
   m_Layer: 6
   m_Name: Range Target
   m_TagString: Untagged
@@ -110,7 +110,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7507224819190940657
+--- !u!114 &6907103704412201562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,18 +119,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4059663671403646642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a0c325db2dcf1489c29c4a42028e61, type: 3}
+  m_Script: {fileID: 11500000, guid: e4e5fd087fde9bb4eae8b0092dd3069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: f32ecdf5ad1463a4f87295cb9f287810, type: 2}
-  maxHealth: 0
-  currentHealth: 100
+  maxHealth: 100
+  currentHealth: 1
+  damageable: 0
   speed: 0
   sprintMult: 0
   crouchMult: 0
   acceleration: 0
   deceleration: 0
-  damageable: 0
   inHand: 0
   action: 0
   stance: 0

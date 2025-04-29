@@ -35,6 +35,8 @@ public class InputHandler : MonoBehaviour
         _input.InteractCanceledEvent += OnInteractCanceled;
         _input.InventoryEvent += OnInventory;
         _input.InventoryCanceledEvent += OnInventoryCanceled;
+        _input.DragEvent += OnDrag;
+        _input.DragCanceledEvent += OnDragCanceled;
 
         _input.DropEvent += OnDrop;
         _input.DropCanceledEvent += OnDropCanceled;
@@ -67,6 +69,8 @@ public class InputHandler : MonoBehaviour
         _input.InteractCanceledEvent -= OnInteractCanceled;
         _input.InventoryEvent -= OnInventory;
         _input.InventoryCanceledEvent -= OnInventoryCanceled;
+        _input.DragEvent -= OnDrag;
+        _input.DragCanceledEvent -= OnDragCanceled;
 
         _input.DropEvent -= OnDrop;
         _input.DropCanceledEvent -= OnDropCanceled;
@@ -199,6 +203,16 @@ public class InputHandler : MonoBehaviour
     private void OnInventoryCanceled()
     {
         _input._isInventoryPressed = false;
+    }
+
+    private void OnDrag()
+    {
+        _input._isDragPressed = true;
+    }
+
+    private void OnDragCanceled()
+    {
+        _input._isDragPressed = false;
     }
 
     private void OnDrop()

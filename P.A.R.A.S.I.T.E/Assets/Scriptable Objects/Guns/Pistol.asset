@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 9e29ad65-09b8-4aae-979c-3be4d2c39e69
   itemName: Pistol
   type: 0
+  description: tiny pew
   obj: {fileID: 0}
   sprite: {fileID: -2236324273849735119, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
   dimensions:

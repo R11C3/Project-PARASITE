@@ -31,6 +31,10 @@ public class InventoryGridHandler : MonoBehaviour
     private VisualElement slingHolder;
     private VisualElement holsterHolder;
 
+    private VisualElement itemImageHolder;
+    private VisualElement itemStatsHolder;
+    private Label itemDescriptionLabel;
+
     public VisualElement containerHolder;
     public SO_Container container;
 
@@ -49,6 +53,9 @@ public class InventoryGridHandler : MonoBehaviour
         primaryHolder = root.Q<VisualElement>("primary");
         slingHolder = root.Q<VisualElement>("sling");
         holsterHolder = root.Q<VisualElement>("holster");
+        itemImageHolder = root.Q<VisualElement>("item-image");
+        itemStatsHolder = root.Q<VisualElement>("item-stats");
+        itemDescriptionLabel = root.Q<Label>("item-description-label");
         // inventoryHealth = root.Q<Label>("health");
         ConfigureSlotDimensions();
         root.visible = false;
@@ -64,7 +71,7 @@ public class InventoryGridHandler : MonoBehaviour
 
     void ConfigureSlotDimensions()
     {
-        slotDimensions = new Dimensions { width = 100, height = 100 };
+        slotDimensions = new Dimensions { width = 75, height = 75 };
     }
 
     public void LoadWeaponImages()
@@ -522,6 +529,86 @@ public class InventoryGridHandler : MonoBehaviour
         selected = null;
 
         yield return null;
+    }
+
+    public SO_Item passiveItem;
+    Selection passiveSelection;
+    VisualElement passiveSelected;
+
+    public void PassiveSelection()
+    {
+        if (!isDragging)
+        {
+            backpackBounds = backpackHolder.worldBound;
+            rigBounds = rigHolder.worldBound;
+            primaryBounds = primaryHolder.worldBound;
+            slingBounds = slingHolder.worldBound;
+            holsterBounds = holsterHolder.worldBound;
+
+            Vector2 mousePosition = Input.mousePosition;
+            mousePosition.y = Screen.height - mousePosition.y;
+
+            IPanel panel = root.panel;
+            Vector2 position = RuntimePanelUtils.ScreenToPanel(panel, mousePosition);
+
+            passiveSelected = panel.Pick(position);
+
+            if(backpackBounds.Contains(position))
+                passiveSelection = Selection.Backpack;
+            else if(rigBounds.Contains(position))
+                passiveSelection = Selection.Rig;
+            else if(primaryBounds.Contains(position))
+                passiveSelection = Selection.Primary;
+            else if(slingBounds.Contains(position))
+                passiveSelection = Selection.Sling;
+            else if(holsterBounds.Contains(position))
+                selection = Selection.Holster;
+            else
+                passiveSelection = Selection.None;
+
+            if (passiveSelected != null && passiveSelected.name.Equals("visualIcon"))
+            {
+                passiveSelected = passiveSelected.parent;
+            }
+
+            if (passiveSelected != null && passiveSelected.name.Equals("visualIconContainer"))
+            {
+                if(passiveSelection == Selection.Backpack)
+                    passiveItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / 100), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / 100)];
+                else if(passiveSelection == Selection.Rig)
+                    passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / 100), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / 100)];
+                else if(passiveSelection == Selection.Primary && stats.equipmentInventory.primary != null)
+                {
+                    passiveItem = stats.equipmentInventory.primary;
+                }
+                else if(passiveSelection == Selection.Sling && stats.equipmentInventory.sling != null)
+                {
+                    passiveItem = stats.equipmentInventory.sling;
+                }
+                else if(passiveSelection == Selection.Holster && stats.equipmentInventory.holster != null)
+                {
+                    passiveItem = stats.equipmentInventory.holster;
+                }
+            }
+            else
+            {
+                Debug.Log("No pick");
+            }
+        }
+    }
+
+    public void LoadItemInfo()
+    {
+        if(passiveItem != null)
+        {
+            itemImageHolder.style.backgroundImage = passiveItem.sprite;
+            itemDescriptionLabel.text = passiveItem.description;
+        }
+        if(passiveItem == null)
+        {
+            itemImageHolder.style.backgroundImage = null;
+            itemDescriptionLabel.text = "";
+        }
     }
 
     private bool canRotate = true;

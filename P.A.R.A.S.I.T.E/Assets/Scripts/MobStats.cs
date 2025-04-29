@@ -6,22 +6,14 @@ public enum Holding{Rifle, Pistol, None};
 public enum Action{None, Inventory, Looting};
 public enum Stance{Walking, Running, Crouching, Aiming};
 
-public class MobStats : MonoBehaviour
+public class MobStats : Damageable
 {
-    [SerializeField]
-    public SO_Mob stats;
-
-    [Header("Health")]
-    public float maxHealth;
-    public float currentHealth = 100;
-
     [Header("Stats")]
     public float speed;
     public float sprintMult;
     public float crouchMult;
     public float acceleration;
     public float deceleration;
-    public bool damageable;
 
     protected float sprintSpeed;
     protected float crouchSpeed;
@@ -38,29 +30,16 @@ public class MobStats : MonoBehaviour
         Load();
     }
 
-    protected virtual void Load()
+    protected override void Load()
     {
-        maxHealth = stats.maxHealth;
-        currentHealth = stats.maxHealth;
-        speed = stats.speed;
-        sprintMult = stats.sprintMult;
-        crouchMult = stats.crouchMult;
-        acceleration = stats.acceleration;
-        deceleration = stats.deceleration;
+        speed = ((SO_Mob)stats).speed;
+        sprintMult = ((SO_Mob)stats).sprintMult;
+        crouchMult = ((SO_Mob)stats).crouchMult;
+        acceleration = ((SO_Mob)stats).acceleration;
+        deceleration = ((SO_Mob)stats).deceleration;
         damageable = stats.damageable;
         sprintSpeed = speed * sprintMult;
         crouchSpeed = speed * crouchMult;
-    }
-
-    public virtual void DoDamage(float damage)
-    {
-        if(damageable)
-            currentHealth -= damage;
-
-        if(currentHealth <= 0)
-        {
-            gameObject.SetActive(false);
-        }
-        Debug.Log(damage + " inflicted onto " + gameObject + "\nHealth Remaining: " + currentHealth);
+        base.Load();
     }
 }

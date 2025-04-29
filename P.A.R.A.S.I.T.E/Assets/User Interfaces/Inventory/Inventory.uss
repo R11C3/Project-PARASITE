@@ -195,12 +195,12 @@
 }
 
 .item-slot {
-    width: 100px;
-    height: 100px;
-    max-width: 100px;
-    max-height: 100px;
-    min-width: 100px;
-    min-height: 100px;
+    width: 75px;
+    height: 75px;
+    max-width: 75px;
+    max-height: 75px;
+    min-width: 75px;
+    min-height: 75px;
     border-left-color: rgb(75, 75, 75);
     border-right-color: rgb(75, 75, 75);
     border-top-color: rgb(75, 75, 75);
@@ -238,6 +238,8 @@
     height: 100%;
     width: 100%;
     -unity-background-scale-mode: scale-to-fit;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .selected {
@@ -296,4 +298,10 @@
 .unity-scroll-view__content-viewport {
     flex: auto;
     overflow: visible;
+}
+
+.item-description-label {
+    font-size: 30px;
+    -unity-font-style: bold;
+    max-width: 315px;
 }

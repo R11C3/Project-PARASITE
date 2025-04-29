@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 2e752a09-d85c-4823-8158-802f978e6698
   itemName: Water Bottle
   type: 4
+  description: wawa
   obj: {fileID: 4833822173354710054, guid: 74e706ad76a11b944a7f61827fda1715, type: 3}
   sprite: {fileID: 2800000, guid: 80a7ebce13137f747a27909cd9e92609, type: 3}
   dimensions:

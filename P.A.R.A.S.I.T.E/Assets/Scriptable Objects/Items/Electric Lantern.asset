@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 699a11ed-3deb-4fcd-828f-939a3b712e68
   itemName: Electric Lantern
   type: 11
+  description: Electric Lantern Description
   obj: {fileID: 8463056324833821121, guid: 79d6d5a9e27bb154a8498c302a3723ad, type: 3}
   sprite: {fileID: 2800000, guid: b33c96877e1ecaf4ab833d8021e7d05d, type: 3}
   dimensions:
