@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Dynamic;
 using NUnit.Framework.Constraints;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class PlayerStats : MobStats
     [HideInInspector]
     public bool reloading = false;
     public bool canToggle = true;
+    public bool canSprint = true;
 
     void Start()
     {
@@ -39,14 +41,17 @@ public class PlayerStats : MobStats
 
         if(_input._isCrouchPressed)
             CrouchPressed();
-        else if(_input._isSprintPressed)
+        else if(_input._isSprintPressed && _input._isMovementPressed && canSprint)
             SprintPressed();
         else if(_input._isMovementPressed)
             MovementPressed();
         else if(_input._isAimPressed)
             AimPressed();
+        else
+            stance = Stance.Walking;
         
         UISwitch();
+        Stamina();
 
         if(action == Action.Inventory)
         {
@@ -155,6 +160,50 @@ public class PlayerStats : MobStats
         {
             rig.GetComponent<MeshFilter>().mesh = null;
             rig.GetComponent<MeshRenderer>().material = null;
+        }
+    }
+
+    private void Stamina()
+    {
+        if(currentStamina <= maxStamina && stance != Stance.Running)
+        {
+            StaminaRegen(staminaRegen);
+        }
+        else if(stance == Stance.Running)
+        {
+            StaminaDegen(staminaDegen);
+        }
+        if(currentStamina <= 0)
+        {
+            canSprint = false;
+        }
+    }
+
+    private void StaminaRegen(float amt)
+    {
+        if(currentStamina < maxStamina)
+        {
+            currentStamina += amt * Time.deltaTime;
+            if(currentStamina > 30f)
+            {
+                canSprint = true;
+            }
+        }
+        if(currentStamina > maxStamina)
+        {
+            currentStamina = maxStamina;
+        }
+    }
+
+    private void StaminaDegen(float amt)
+    {
+        if(currentStamina > 0)
+        {
+            currentStamina -= amt * Time.deltaTime;
+        }
+        if(currentStamina < 0)
+        {
+            currentStamina = 0;
         }
     }
 }

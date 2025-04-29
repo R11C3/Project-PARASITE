@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f6df616ae41b14fae2891835d056e0, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  maxHealth: 200
+  health: 100
+  damageable: 1
   speed: 2
   acceleration: 16
   deceleration: 16
@@ -20,6 +23,7 @@ MonoBehaviour:
   rollSpeed: 15
   rollTime: 0.5
   rollDelay: 1
-  maxHealth: 200
-  health: 100
-  damageable: 1
+  maxStamina: 100
+  currentStamina: 0
+  staminaRegen: 20
+  staminaDegen: 100

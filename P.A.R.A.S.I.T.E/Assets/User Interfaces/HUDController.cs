@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -15,6 +16,7 @@ public class HUDController : MonoBehaviour
     public Label fireMode;
 
     public ProgressBar healthBar;
+    public ProgressBar staminaBar;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -36,6 +38,8 @@ public class HUDController : MonoBehaviour
         }
         healthBar.highValue = player.maxHealth;
         healthBar.value = player.currentHealth;
+        staminaBar.highValue = player.maxStamina;
+        staminaBar.value = player.currentStamina;
     }
 
     void OnEnable()
@@ -45,5 +49,6 @@ public class HUDController : MonoBehaviour
         fireMode = ui.Q<Label>("fire-mode");
 
         healthBar = ui.Q<ProgressBar>("health-bar");
+        staminaBar = ui.Q<ProgressBar>("stamina-bar");
     }
 }

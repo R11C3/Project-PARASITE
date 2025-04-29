@@ -14,6 +14,10 @@ public class MobStats : Damageable
     public float crouchMult;
     public float acceleration;
     public float deceleration;
+    public float maxStamina;
+    public float currentStamina;
+    public float staminaRegen;
+    public float staminaDegen;
 
     protected float sprintSpeed;
     protected float crouchSpeed;
@@ -40,6 +44,10 @@ public class MobStats : Damageable
         damageable = stats.damageable;
         sprintSpeed = speed * sprintMult;
         crouchSpeed = speed * crouchMult;
+        maxStamina = ((SO_Mob)stats).maxStamina;
+        currentStamina = ((SO_Mob)stats).maxStamina;
+        staminaRegen = ((SO_Mob)stats).staminaRegen;
+        staminaDegen = ((SO_Mob)stats).staminaDegen;
         base.Load();
     }
 }

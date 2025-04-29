@@ -14,4 +14,8 @@ public abstract class SO_Mob : SO_Damageable
     public float rollSpeed;
     public float rollTime;
     public float rollDelay;
+    public float maxStamina;
+    public float currentStamina;
+    public float staminaRegen;
+    public float staminaDegen;
 }
