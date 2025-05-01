@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage;
+    public SO_Bullet bullet;
     public string source;
+
+    private float damage;
 
     void OnTriggerEnter(Collider other)
     {
@@ -11,7 +13,7 @@ public class Bullet : MonoBehaviour
         {
             MobStats target;
             other.gameObject.TryGetComponent<MobStats>(out target);
-            if(target != null) target.DoDamage(damage);
+            if(target != null) target.DoDamage(CalculateDamage());
             Destroy(gameObject);
         }
         else if(!other.gameObject.tag.Equals(source))
@@ -22,5 +24,10 @@ public class Bullet : MonoBehaviour
         {
             
         }
+    }
+
+    float CalculateDamage()
+    {
+        return (bullet.velocity/10 + bullet.penetration) * bullet.bluntDamage;
     }
 }

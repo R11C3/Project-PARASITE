@@ -7,7 +7,7 @@ public class BallisticGun : MonoBehaviour
 {
 
     [SerializeField]
-    public SO_Gun gunData;
+    public SO_Gun gun;
 
     [SerializeField]
     private GameObject barrel;
@@ -46,25 +46,25 @@ public class BallisticGun : MonoBehaviour
 
     public void LoadStats()
     {
-        GetComponent<MeshFilter>().mesh = gunData.model;
-        transform.localPosition = gunData.offset;
-        transform.localRotation = gunData.offsetRotation;
-        barrel.GetComponent<Transform>().localPosition = gunData.endOfBarrel;
-        leftHand.GetComponent<Transform>().localPosition = gunData.leftHandPosition;
-        leftHand.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
-        leftHandHint.GetComponent<Transform>().localPosition = gunData.leftHandHintPosition;
-        leftHandHint.GetComponent<Transform>().localRotation = gunData.leftHandRotation;
-        gunData.currentFireMode = gunData.fireModes[gunData.fireModeIndex];
+        GetComponent<MeshFilter>().mesh = gun.model;
+        transform.localPosition = gun.offset;
+        transform.localRotation = gun.offsetRotation;
+        barrel.GetComponent<Transform>().localPosition = gun.endOfBarrel;
+        leftHand.GetComponent<Transform>().localPosition = gun.leftHandPosition;
+        leftHand.GetComponent<Transform>().localRotation = gun.leftHandRotation;
+        leftHandHint.GetComponent<Transform>().localPosition = gun.leftHandHintPosition;
+        leftHandHint.GetComponent<Transform>().localRotation = gun.leftHandRotation;
+        gun.currentFireMode = gun.stats.fireModes[gun.fireModeIndex];
     }
 
     public void Reload()
     {
-        if(gunData.reloadType == ReloadType.Magazine && !reloading)
+        if(gun.stats.reloadType == ReloadType.Magazine && !reloading)
         {
             reloading = true;
             StartCoroutine(ReloadDelay());
         }
-        else if(gunData.reloadType == ReloadType.Single && !reloading)
+        else if(gun.stats.reloadType == ReloadType.Single && !reloading)
         {
             reloading = true;
             StartCoroutine(SingleReloadDelay());
@@ -73,28 +73,28 @@ public class BallisticGun : MonoBehaviour
 
     private IEnumerator ReloadDelay()
     {
-        yield return new WaitForSecondsRealtime(gunData.reloadTime);
-        gunData.currentAmmo = gunData.maxAmmo;
+        yield return new WaitForSecondsRealtime(gun.stats.reloadTime);
+        gun.attachments.magazine.currentAmmo = gun.attachments.magazine.maxAmmo;
         reloading = false;
     }
 
     private IEnumerator SingleReloadDelay()
     {
-        for(int i = gunData.currentAmmo; i < gunData.maxAmmo; i++)
+        for(int i = gun.attachments.magazine.currentAmmo; i < gun.attachments.magazine.maxAmmo; i++)
         {
-            yield return new WaitForSecondsRealtime(gunData.reloadTime);
-            gunData.currentAmmo++;
+            yield return new WaitForSecondsRealtime(gun.stats.reloadTime);
+            gun.attachments.magazine.currentAmmo++;
         }
         reloading = false;
     }
 
     public void Shoot()
     {
-        if(gunData.currentFireMode == FireMode.Automatic)
+        if(gun.currentFireMode == FireMode.Automatic)
         {
             ShootingSystem();
         }
-        else if(gunData.currentFireMode == FireMode.Single && !fireHeld)
+        else if(gun.currentFireMode == FireMode.Single && !fireHeld)
         {
             ShootingSystem();
         }
@@ -102,7 +102,7 @@ public class BallisticGun : MonoBehaviour
 
     public void ShootingSystem()
     {
-        if(gunData.gunType == GunType.Shotgun)
+        if(gun.gunType == GunType.Shotgun)
         {
             MultiBulletSystem();
         }
@@ -115,11 +115,11 @@ public class BallisticGun : MonoBehaviour
     public void SingleBulletSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
-        if(lastShootTime + gunData.fireSpeed < Time.time)
+        if(lastShootTime + gun.stats.fireSpeed < Time.time)
         {
             canShoot = true;
         }
-        if(canShoot && gunData.currentAmmo > 0 && !reloading && !switching)
+        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();
@@ -129,24 +129,24 @@ public class BallisticGun : MonoBehaviour
 
             StartCoroutine(SpawnProjectile(direction, 50f));
             lastShootTime = Time.time;
-            gunData.currentAmmo--;
+            gun.attachments.magazine.currentAmmo--;
         }
     }
 
     public void MultiBulletSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
-        if(lastShootTime + gunData.fireSpeed < Time.time)
+        if(lastShootTime + gun.stats.fireSpeed < Time.time)
         {
             canShoot = true;
         }
-        if(canShoot && gunData.currentAmmo > 0 && !reloading && !switching)
+        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();
             canShoot = false;
 
-            for(int i = 0; i < gunData.pelletCount; i++)
+            for(int i = 0; i < gun.pelletCount; i++)
             {
                 Vector3 direction = AccuracyVariation();
 
@@ -154,7 +154,7 @@ public class BallisticGun : MonoBehaviour
             }
 
             lastShootTime = Time.time;
-            gunData.currentAmmo--;
+            gun.attachments.magazine.currentAmmo--;
         }
     }
 
@@ -166,14 +166,14 @@ public class BallisticGun : MonoBehaviour
         if(aiming)
         {
             target += new Vector3(
-            UnityEngine.Random.Range(-gunData.accuracy.x * 0.5f, gunData.accuracy.x * 0.5f), -1.5f,
-            UnityEngine.Random.Range(-gunData.accuracy.z * 0.5f, gunData.accuracy.z * 0.5f));
+            UnityEngine.Random.Range(-gun.stats.accuracy * 0.5f, gun.stats.accuracy * 0.5f), -1.5f,
+            UnityEngine.Random.Range(-gun.stats.accuracy * 0.5f, gun.stats.accuracy * 0.5f));
         }
         else
         {
             target += new Vector3(
-            UnityEngine.Random.Range(-gunData.accuracy.x, gunData.accuracy.x), -1.5f,
-            UnityEngine.Random.Range(-gunData.accuracy.z, gunData.accuracy.z));
+            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy), -1.5f,
+            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy));
         }
 
         target.Normalize();
@@ -187,12 +187,12 @@ public class BallisticGun : MonoBehaviour
 
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
 
-        bullet.GetComponent<Bullet>().damage = gunData.damage;
+        bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
         bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
 
         while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
         {
-            bullet.transform.localPosition += direction * gunData.velocity * Time.deltaTime;
+            bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
             yield return null;
         }
 

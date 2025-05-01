@@ -22,7 +22,7 @@ public class PlayerShoot : MonoBehaviour
         SO_Gun current = player.equipmentInventory.EquippedGun();
         if(current != null)
         {
-            gun.gunData = current;
+            gun.gun = current;
             gun.LoadStats();
         }
     }
@@ -33,12 +33,12 @@ public class PlayerShoot : MonoBehaviour
         player.equipmentInventory.CheckNone();
         if(player.action == Action.None && player.stance != Stance.Running)
         {
-            if(_input._isFirePressed && gun.gunData != null)
+            if(_input._isFirePressed && gun.gun != null)
             {
                 gun.Shoot();
                 gun.fireHeld = true;
             }
-            if(_input._isReloadPressed && gun.gunData != null)
+            if(_input._isReloadPressed && gun.gun != null)
             {
                 player.reloading = true;
                 gun.Reload();
@@ -48,9 +48,9 @@ public class PlayerShoot : MonoBehaviour
                 gun.fireHeld = false;
             }
 
-            if(_input._isFireModePressed && gun.gunData != null && !fireSelectHeld)
+            if(_input._isFireModePressed && gun.gun != null && !fireSelectHeld)
           {
-                gun.gunData.ChangeFireMode();
+                gun.gun.ChangeFireMode();
                 fireSelectHeld = true;
             }
             if(!_input._isFireModePressed)
@@ -107,7 +107,7 @@ public class PlayerShoot : MonoBehaviour
     {
         gun.switching = true;
         player.equipmentInventory.SwitchGun(slot);
-        gun.gunData = player.equipmentInventory.EquippedGun();
+        gun.gun = player.equipmentInventory.EquippedGun();
         yield return new WaitForSecondsRealtime(0.69f);
         GameObject.Find("Gun").GetComponent<Renderer>().enabled = false;
         yield return new WaitForSecondsRealtime(0.716f);

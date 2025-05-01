@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e65e62b600b024487fabc8f165942d, type: 3}
+  m_Name: AK Mag
+  m_EditorClassIdentifier: 
+  ID: 068b4901-d326-4a15-b77d-46f1ce33265f
+  itemName: 
+  type: 0
+  description: 
+  obj: {fileID: 0}
+  sprite: {fileID: 0}
+  dimensions:
+    height: 2
+    width: 1
+  location:
+    height: 0
+    width: 0
+  maxAmmo: 25
+  currentAmmo: 20

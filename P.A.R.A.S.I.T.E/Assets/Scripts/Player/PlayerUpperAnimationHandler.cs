@@ -79,7 +79,7 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
             leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;
             animator.SetBool(reloadingWeaponHash, true);
-            StartCoroutine(Reload(gunData.gunData.reloadTime));
+            StartCoroutine(Reload(gunData.gun.stats.reloadTime));
         }
     }
 

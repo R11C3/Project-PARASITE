@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e65e62b600b024487fabc8f165942d, type: 3}
+  m_Name: M4 Standard
+  m_EditorClassIdentifier: 
+  ID: a29003c2-d04d-4b8d-b459-759d0074072d
+  itemName: M4 Standard Magazine
+  type: 12
+  description: 
+  obj: {fileID: 0}
+  sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
+  dimensions:
+    height: 2
+    width: 1
+  location:
+    height: 0
+    width: 0
+  maxAmmo: 30
+  currentAmmo: 10

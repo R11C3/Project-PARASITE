@@ -46,7 +46,7 @@ public class AutomaticTurret : MonoBehaviour
     void Shoot()
     {
         shootingParticle.transform.position = barrel.transform.position;
-        if(lastShootTime + gun.fireSpeed < Time.time)
+        if(lastShootTime + gun.stats.fireSpeed < Time.time)
         {
             canShoot = true;
         }
@@ -69,8 +69,8 @@ public class AutomaticTurret : MonoBehaviour
         Vector3 direction = target.transform.position - gameObject.transform.position;
 
         direction += new Vector3(
-            UnityEngine.Random.Range(-gun.accuracy.x, gun.accuracy.x), 1.5f,
-            UnityEngine.Random.Range(-gun.accuracy.z, gun.accuracy.z));
+            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy), 1.5f,
+            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy));
 
         direction.Normalize();
         return direction;
@@ -82,12 +82,12 @@ public class AutomaticTurret : MonoBehaviour
 
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
 
-        bullet.GetComponent<Bullet>().damage = gun.damage;
+        bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
         bullet.GetComponent<Bullet>().source = gameObject.tag;
 
         while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
         {
-            bullet.transform.localPosition += direction * gun.velocity * Time.deltaTime;
+            bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
             yield return null;
         }
 

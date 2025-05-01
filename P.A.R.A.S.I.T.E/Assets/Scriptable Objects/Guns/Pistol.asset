@@ -33,18 +33,18 @@ MonoBehaviour:
   leftHandRotation: {x: -0.36368087, y: 0.63410133, z: -0.4373494, w: 0.5238103}
   leftHandHintPosition: {x: 0.118, y: -0.18, z: 0.262}
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
-  fireModes: 02000000
-  damage: 5
-  fireSpeed: 0.3
-  velocity: 30
-  maxAmmo: 12
-  reloadTime: 1
-  automatic: 0
+  stats:
+    accuracy: 2
+    fireSpeed: 0.15
+    reloadTime: 0.25
+    magnification: 1
+    fireModes: 02000000
+    reloadType: 0
+    bullet: {fileID: 11400000, guid: 069e7e2a6b7fab44595631f3d19e62c6, type: 2}
+  attachments:
+    magazine: {fileID: 11400000, guid: ce1ed75548705bb40bb81aff3ad18d82, type: 2}
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
-  accuracy: {x: 0.7, y: 0.7, z: 0.7}
-  reloadType: 0
   pelletCount: 0
-  currentAmmo: 1
   currentFireMode: 2
   fireModeIndex: 0

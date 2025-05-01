@@ -5,6 +5,24 @@ public enum GunType{Rifle, Pistol, Shotgun}
 public enum FireMode{Automatic, Burst, Single}
 public enum ReloadType{Magazine, Single}
 
+[Serializable]
+public class Statistics 
+{
+    public float accuracy;
+    public float fireSpeed;
+    public float reloadTime;
+    public float magnification;
+    public FireMode[] fireModes;
+    public ReloadType reloadType;
+    public SO_Bullet bullet;
+}
+
+[Serializable]
+public class Attachments
+{
+    public SO_Magazine magazine;
+}
+
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]
 public class SO_Gun : SO_Item
 {
@@ -21,23 +39,15 @@ public class SO_Gun : SO_Item
     public Quaternion leftHandHintRotation;
 
     [Header("Gun Statistics")]
-    public FireMode[] fireModes;
-    public float damage;
-    public float fireSpeed;
-    public float velocity;
-    public int maxAmmo;
-    public float reloadTime;
-    public bool automatic;
+    public Statistics stats;
+    public Attachments attachments;
     public GameObject firingParticle;
     public GameObject impactParticle;
-    public Vector3 accuracy;
-    public ReloadType reloadType;
 
     [Header("Shotgun Statistics")]
     public int pelletCount;
 
     [Header("Instance Statistics")]
-    public int currentAmmo;
     public FireMode currentFireMode;
     [HideInInspector]
     public int fireModeIndex = 0;
@@ -50,8 +60,8 @@ public class SO_Gun : SO_Item
     public void ChangeFireMode()
     {
         fireModeIndex++;
-        currentFireMode = fireModes[fireModeIndex % fireModes.Length];
-        if(fireModeIndex >= fireModes.Length)
+        currentFireMode = stats.fireModes[fireModeIndex % stats.fireModes.Length];
+        if(fireModeIndex >= stats.fireModes.Length)
         {
             fireModeIndex = 0;
         }

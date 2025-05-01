@@ -32,8 +32,12 @@ public class HUDController : MonoBehaviour
         SO_Gun gun = player.equipmentInventory.EquippedGun();
         if(gun != null)
         {
-            currentAmmo.text = gun.currentAmmo.ToString();
-            maxAmmo.text = gun.maxAmmo.ToString();
+            if(gun.attachments.magazine != null)
+            {
+                currentAmmo.text = gun.attachments.magazine.currentAmmo.ToString();
+                maxAmmo.text = gun.attachments.magazine.maxAmmo.ToString();
+            }
+            
             fireMode.text = gun.currentFireMode.ToString();
         }
         healthBar.highValue = player.maxHealth;
