@@ -60,19 +60,22 @@ public class BallisticGun : MonoBehaviour
 
     public void Shoot()
     {
-        if(gun.currentFireMode == FireMode.Automatic)
+        if (gun.attachments.magazine.currentAmmo > 0)
         {
-            ShootingSystem();
-        }
-        else if(gun.currentFireMode == FireMode.Single && !fireHeld)
-        {
-            ShootingSystem();
+            if (gun.currentFireMode == FireMode.Automatic)
+            {
+                ShootingSystem();
+            }
+            else if (gun.currentFireMode == FireMode.Single && !fireHeld)
+            {
+                ShootingSystem();
+            }
         }
     }
 
     public void ShootingSystem()
     {
-        if(gun.gunType == GunType.Shotgun)
+        if (gun.gunType == GunType.Shotgun)
         {
             MultiBulletSystem();
         }
@@ -85,11 +88,11 @@ public class BallisticGun : MonoBehaviour
     public void SingleBulletSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
-        if(lastShootTime + gun.stats.fireSpeed < Time.time)
+        if (lastShootTime + gun.stats.fireSpeed < Time.time)
         {
             canShoot = true;
         }
-        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
+        if (canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();
@@ -106,17 +109,17 @@ public class BallisticGun : MonoBehaviour
     public void MultiBulletSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
-        if(lastShootTime + gun.stats.fireSpeed < Time.time)
+        if (lastShootTime + gun.stats.fireSpeed < Time.time)
         {
             canShoot = true;
         }
-        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
+        if (canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();
             canShoot = false;
 
-            for(int i = 0; i < gun.pelletCount; i++)
+            for (int i = 0; i < gun.pelletCount; i++)
             {
                 Vector3 direction = AccuracyVariation();
 
@@ -133,7 +136,7 @@ public class BallisticGun : MonoBehaviour
         Vector3 direction = playerAim.GetMousePosition();
         Vector3 target = direction - characterTransform.position;
 
-        if(aiming)
+        if (aiming)
         {
             target += new Vector3(
             UnityEngine.Random.Range(-gun.stats.accuracy * 0.5f, gun.stats.accuracy * 0.5f), -1.5f,
@@ -160,7 +163,7 @@ public class BallisticGun : MonoBehaviour
         bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
         bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
 
-        while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
+        while (bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
         {
             bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
             yield return null;
