@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ae5ddd88dfe4b408e91f98c17b26e8, type: 3}
+  m_Name: Test Magazine Table
+  m_EditorClassIdentifier: 
+  worldData: {fileID: 11400000, guid: 2a4c768a760203d4487f2d85e6f51e9a, type: 2}
+  lootTable:
+  - item: {fileID: 11400000, guid: 021ae8e7a79e0aa4e860cffbed805064, type: 2}
+    chance: 10
+  table: []

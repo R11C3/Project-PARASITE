@@ -43,6 +43,8 @@ MonoBehaviour:
     bullet: {fileID: 11400000, guid: 069e7e2a6b7fab44595631f3d19e62c6, type: 2}
   attachments:
     magazine: {fileID: 11400000, guid: ce1ed75548705bb40bb81aff3ad18d82, type: 2}
+    compatibleMagazines:
+    - {fileID: 11400000, guid: ce1ed75548705bb40bb81aff3ad18d82, type: 2}
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
   pelletCount: 0

@@ -19,6 +19,8 @@ public class BallisticGun : MonoBehaviour
     [SerializeField]
     private PlayerAim playerAim;
     [SerializeField]
+    private PlayerStats stats;
+    [SerializeField]
     private TrailRenderer trail;
     [SerializeField]
     private ParticleSystem shootingSystem;
@@ -34,7 +36,6 @@ public class BallisticGun : MonoBehaviour
     private float lastShootTime;
     [SerializeField]
     private bool canShoot = true;
-    public bool reloading = false;
     public bool switching = false;
     public bool fireHeld = false;
     public bool aiming = false;
@@ -55,37 +56,6 @@ public class BallisticGun : MonoBehaviour
         leftHandHint.GetComponent<Transform>().localPosition = gun.leftHandHintPosition;
         leftHandHint.GetComponent<Transform>().localRotation = gun.leftHandRotation;
         gun.currentFireMode = gun.stats.fireModes[gun.fireModeIndex];
-    }
-
-    public void Reload()
-    {
-        if(gun.stats.reloadType == ReloadType.Magazine && !reloading)
-        {
-            reloading = true;
-            StartCoroutine(ReloadDelay());
-        }
-        else if(gun.stats.reloadType == ReloadType.Single && !reloading)
-        {
-            reloading = true;
-            StartCoroutine(SingleReloadDelay());
-        }
-    }
-
-    private IEnumerator ReloadDelay()
-    {
-        yield return new WaitForSecondsRealtime(gun.stats.reloadTime);
-        gun.attachments.magazine.currentAmmo = gun.attachments.magazine.maxAmmo;
-        reloading = false;
-    }
-
-    private IEnumerator SingleReloadDelay()
-    {
-        for(int i = gun.attachments.magazine.currentAmmo; i < gun.attachments.magazine.maxAmmo; i++)
-        {
-            yield return new WaitForSecondsRealtime(gun.stats.reloadTime);
-            gun.attachments.magazine.currentAmmo++;
-        }
-        reloading = false;
     }
 
     public void Shoot()
@@ -119,7 +89,7 @@ public class BallisticGun : MonoBehaviour
         {
             canShoot = true;
         }
-        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !reloading && !switching)
+        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();
@@ -140,7 +110,7 @@ public class BallisticGun : MonoBehaviour
         {
             canShoot = true;
         }
-        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !reloading && !switching)
+        if(canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
         {
             shootingSystem.Play();
             mainCamera.GetComponent<CameraShake>().Shake();

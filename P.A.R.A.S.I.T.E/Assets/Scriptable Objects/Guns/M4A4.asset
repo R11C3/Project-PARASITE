@@ -42,7 +42,9 @@ MonoBehaviour:
     reloadType: 0
     bullet: {fileID: 11400000, guid: e6de715ed1c7efd4eafd8fe8b74468ee, type: 2}
   attachments:
-    magazine: {fileID: 11400000, guid: 021ae8e7a79e0aa4e860cffbed805064, type: 2}
+    magazine: {fileID: 0}
+    compatibleMagazines:
+    - {fileID: 11400000, guid: 021ae8e7a79e0aa4e860cffbed805064, type: 2}
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
   pelletCount: 0

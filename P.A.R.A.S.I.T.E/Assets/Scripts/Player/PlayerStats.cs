@@ -2,6 +2,7 @@ using System.Collections;
 using System.Dynamic;
 using NUnit.Framework.Constraints;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStats : MobStats
 {
@@ -21,7 +22,6 @@ public class PlayerStats : MobStats
 
     [HideInInspector]
     public bool changingWeapons = false;
-    [HideInInspector]
     public bool reloading = false;
     public bool canToggle = true;
     public bool canSprint = true;
@@ -39,39 +39,45 @@ public class PlayerStats : MobStats
     {
         UpdateBodyVisuals();
 
-        if(_input._isCrouchPressed)
+        if (_input._isCrouchPressed)
             CrouchPressed();
-        else if(_input._isSprintPressed && _input._isMovementPressed && canSprint)
+        else if (_input._isSprintPressed && _input._isMovementPressed && canSprint)
             SprintPressed();
-        else if(_input._isMovementPressed)
+        else if (_input._isMovementPressed)
             MovementPressed();
-        else if(_input._isAimPressed)
+        else if (_input._isAimPressed)
             AimPressed();
         else
             stance = Stance.Walking;
-        
+
         UISwitch();
         Stamina();
 
-        if(action == Action.Inventory)
+        if (_input._isReloadPressed && !reloading)
         {
-            if(_input._isFirePressed)
+            reloading = true;
+            Reload();
+        }
+
+        if (action == Action.Inventory)
+        {
+            if (_input._isFirePressed)
             {
                 gridHandler.PassiveSelection();
             }
-            if(_input._isDragPressed)
+            if (_input._isDragPressed)
             {
                 gridHandler.SelectItem();
             }
             gridHandler.LoadItemInfo();
         }
-        if(action == Action.Looting)
+        if (action == Action.Looting)
         {
-            if(_input._isFirePressed)
+            if (_input._isFirePressed)
             {
                 externalGridHandler.PassiveSelection();
             }
-            if(_input._isDragPressed)
+            if (_input._isDragPressed)
             {
                 externalGridHandler.SelectItem();
             }
@@ -109,7 +115,7 @@ public class PlayerStats : MobStats
 
     private void UISwitch()
     {
-        if(_input._isInventoryPressed && canToggle && action == Action.None)
+        if (_input._isInventoryPressed && canToggle && action == Action.None)
         {
             action = Action.Inventory;
             playerUI.visible = false;
@@ -117,11 +123,11 @@ public class PlayerStats : MobStats
             externalGridHandler.visible = false;
             canToggle = false;
             gridHandler.LoadWeaponImages();
-            if(equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
-            if(equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
-            if(equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
+            if (equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
+            if (equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
+            if (equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
         }
-        if(_input._isInventoryPressed && canToggle && (action == Action.Inventory || action == Action.Looting))
+        if (_input._isInventoryPressed && canToggle && (action == Action.Inventory || action == Action.Looting))
         {
             action = Action.None;
             playerUI.visible = true;
@@ -129,7 +135,7 @@ public class PlayerStats : MobStats
             externalGridHandler.visible = false;
             canToggle = false;
         }
-        else if(!_input._isInventoryPressed)
+        else if (!_input._isInventoryPressed)
         {
             canToggle = true;
         }
@@ -137,7 +143,7 @@ public class PlayerStats : MobStats
 
     private void UpdateBodyVisuals()
     {
-        if(equipmentInventory.backpack != null)
+        if (equipmentInventory.backpack != null)
         {
             backpack.GetComponent<MeshFilter>().mesh = equipmentInventory.backpack.mesh;
             backpack.GetComponent<MeshRenderer>().material = equipmentInventory.backpack.material;
@@ -149,7 +155,7 @@ public class PlayerStats : MobStats
             backpack.GetComponent<MeshFilter>().mesh = null;
             backpack.GetComponent<MeshRenderer>().material = null;
         }
-        if(equipmentInventory.rig != null)
+        if (equipmentInventory.rig != null)
         {
             rig.GetComponent<MeshFilter>().mesh = equipmentInventory.rig.mesh;
             rig.GetComponent<MeshRenderer>().material = equipmentInventory.rig.material;
@@ -163,17 +169,21 @@ public class PlayerStats : MobStats
         }
     }
 
+    /*
+    This Section is responsible for STAMINA
+    */
+
     private void Stamina()
     {
-        if(currentStamina <= maxStamina && stance != Stance.Running)
+        if (currentStamina <= maxStamina && stance != Stance.Running)
         {
             StaminaRegen(staminaRegen);
         }
-        else if(stance == Stance.Running)
+        else if (stance == Stance.Running)
         {
             StaminaDegen(staminaDegen);
         }
-        if(currentStamina <= 0)
+        if (currentStamina <= 0)
         {
             canSprint = false;
         }
@@ -181,15 +191,15 @@ public class PlayerStats : MobStats
 
     private void StaminaRegen(float amt)
     {
-        if(currentStamina < maxStamina)
+        if (currentStamina < maxStamina)
         {
             currentStamina += amt * Time.deltaTime;
-            if(currentStamina > 30f)
+            if (currentStamina > 30f)
             {
                 canSprint = true;
             }
         }
-        if(currentStamina > maxStamina)
+        if (currentStamina > maxStamina)
         {
             currentStamina = maxStamina;
         }
@@ -197,13 +207,66 @@ public class PlayerStats : MobStats
 
     private void StaminaDegen(float amt)
     {
-        if(currentStamina > 0)
+        if (currentStamina > 0)
         {
             currentStamina -= amt * Time.deltaTime;
         }
-        if(currentStamina < 0)
+        if (currentStamina < 0)
         {
             currentStamina = 0;
         }
+    }
+
+    /*
+    This section is responsible for RELOADING using the GRIDINVENTORY system
+    */
+
+    private bool Reload()
+    {
+        if (equipmentInventory.EquippedGun() != null && equipmentInventory.rig != null)
+        {
+            if (equipmentInventory.EquippedGun().stats.reloadType == ReloadType.Magazine)
+            {
+                SO_Magazine mag = equipmentInventory.GetMagWithMostAmmo(equipmentInventory.EquippedGun());
+                Debug.Log(mag);
+                if (mag != null)
+                {
+                    StartCoroutine(ReloadDelay());
+                    equipmentInventory.rig.inventories.Remove(mag);
+                    if (equipmentInventory.EquippedGun().attachments.magazine != null)
+                    {
+                        SO_Magazine oldMag = equipmentInventory.EquippedGun().attachments.magazine;
+                        if(!equipmentInventory.rig.inventories.Add(oldMag))
+                        {
+                            Instantiate(oldMag.obj, transform.position, Quaternion.identity);
+                        }
+                    }
+                    equipmentInventory.EquippedGun().attachments.magazine = mag;
+                    return true;
+                }
+            }
+            if (equipmentInventory.EquippedGun().stats.reloadType == ReloadType.Single)
+            {
+                StartCoroutine(SingleReloadDelay());
+            }
+        }
+        reloading = false;
+        return false;
+    }
+
+    private IEnumerator ReloadDelay()
+    {
+        yield return new WaitForSeconds(equipmentInventory.EquippedGun().stats.reloadTime);
+        reloading = false;
+    }
+
+    private IEnumerator SingleReloadDelay()
+    {
+        while (equipmentInventory.EquippedGun().attachments.magazine.currentAmmo < equipmentInventory.EquippedGun().attachments.magazine.maxAmmo)
+        {
+            yield return new WaitForSeconds(equipmentInventory.EquippedGun().stats.reloadTime);
+            equipmentInventory.EquippedGun().attachments.magazine.currentAmmo++;
+        }
+        reloading = false;
     }
 }

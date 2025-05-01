@@ -21,6 +21,7 @@ public class Statistics
 public class Attachments
 {
     public SO_Magazine magazine;
+    public SO_Magazine[] compatibleMagazines;
 }
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]

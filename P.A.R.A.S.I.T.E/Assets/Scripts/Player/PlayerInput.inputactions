@@ -267,7 +267,7 @@
                     "name": "",
                     "id": "4ec0c9f6-727c-443f-9667-cc0d7ba20bf1",
                     "path": "<Keyboard>/r",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=0.5,behavior=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Reload",

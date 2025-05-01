@@ -899,6 +899,12 @@ PrefabInstance:
       propertyPath: stats
       value: 
       objectReference: {fileID: 579364179}
+    - target: {fileID: 1737450047854548159, guid: 3ee7b68c704003c44bb239e976a5f5fa,
+        type: 3}
+      propertyPath: lootTableData
+      value: 
+      objectReference: {fileID: 11400000, guid: 56ae976250e7b8b408aac37ce0d0af68,
+        type: 2}
     - target: {fileID: 6473482856367080925, guid: 3ee7b68c704003c44bb239e976a5f5fa,
         type: 3}
       propertyPath: m_Name

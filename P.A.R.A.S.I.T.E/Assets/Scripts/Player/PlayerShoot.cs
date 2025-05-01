@@ -38,11 +38,6 @@ public class PlayerShoot : MonoBehaviour
                 gun.Shoot();
                 gun.fireHeld = true;
             }
-            if(_input._isReloadPressed && gun.gun != null)
-            {
-                player.reloading = true;
-                gun.Reload();
-            }
             if(!_input._isFirePressed)
             {
                 gun.fireHeld = false;

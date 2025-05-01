@@ -72,9 +72,8 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
             animator.SetBool(switchingWeaponHash, true);
             StartCoroutine(SwitchWeapons(1));
         }
-        if(player.reloading && gunData.reloading)
+        if(player.reloading)
         {
-            player.reloading = false;
             rightHandRig.GetComponent<MultiAimConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.3f;
             leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.1f;

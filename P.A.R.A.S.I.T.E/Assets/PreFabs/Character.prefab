@@ -732,6 +732,7 @@ MonoBehaviour:
   rig: {fileID: 0}
   container: {fileID: 0}
   layout: {x: 0, y: 0}
+  passiveItem: {fileID: 0}
 --- !u!1 &5070956045546430417
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +810,7 @@ MonoBehaviour:
     width: 0
     height: 0
   layout: {x: 0, y: 0}
+  passiveItem: {fileID: 0}
 --- !u!1 &5465968348282686102
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,11 +977,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b018b185b8371146ba7ff3652a6c4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 0}
+  gun: {fileID: 0}
   barrel: {fileID: 2021857801228630654}
   leftHand: {fileID: 5465968348282686102}
   leftHandHint: {fileID: 8274015339391233643}
   playerAim: {fileID: 4965131758044466079}
+  stats: {fileID: 3515050039642512570}
   trail: {fileID: 4727607999235322121}
   shootingSystem: {fileID: 994490737402809884}
   impactSystem: {fileID: 994211229758721722}
@@ -989,7 +992,6 @@ MonoBehaviour:
   characterTransform: {fileID: 2941337171247925528}
   projectile: {fileID: 0}
   canShoot: 1
-  reloading: 0
   switching: 0
   fireHeld: 0
   aiming: 0
@@ -1415,12 +1417,16 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: d911576716cb1704390ce094a168fc60, type: 2}
   maxHealth: 0
   currentHealth: 100
+  damageable: 0
   speed: 0
   sprintMult: 0
   crouchMult: 0
   acceleration: 0
   deceleration: 0
-  damageable: 0
+  maxStamina: 0
+  currentStamina: 0
+  staminaRegen: 0
+  staminaDegen: 0
   inHand: 2
   action: 0
   stance: 0
@@ -1441,6 +1447,7 @@ MonoBehaviour:
   changingWeapons: 0
   reloading: 0
   canToggle: 1
+  canSprint: 1
 --- !u!114 &3154710176588290544
 MonoBehaviour:
   m_ObjectHideFlags: 0

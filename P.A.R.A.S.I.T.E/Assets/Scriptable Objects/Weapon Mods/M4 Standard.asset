@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: a29003c2-d04d-4b8d-b459-759d0074072d
   itemName: M4 Standard Magazine
   type: 12
-  description: 
+  description: M4 magazine
   obj: {fileID: 0}
   sprite: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
   dimensions:
@@ -25,4 +25,4 @@ MonoBehaviour:
     height: 0
     width: 0
   maxAmmo: 30
-  currentAmmo: 10
+  currentAmmo: 30

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Mono.Cecil.Cil;
 using UnityEngine;
 
@@ -170,5 +171,40 @@ public class EquipmentInventory
         bool success = rig.inventories.Add(item);
         Debug.Log(success);
         return success;
+    }
+
+    public SO_Magazine GetMagWithMostAmmo(SO_Gun gun)
+    {
+        SO_Magazine mag = GameObject.Instantiate(gun.attachments.compatibleMagazines[0]);
+        mag.currentAmmo = 0;
+
+        bool success = false;
+
+        foreach(SO_Magazine magazine in rig.inventories.itemList)
+        {
+            if(magazine.currentAmmo > mag.currentAmmo)
+            {
+                bool flag = false;
+                foreach(SO_Magazine compatibleMag in gun.attachments.compatibleMagazines)
+                {
+                    if(compatibleMag.Equals(magazine))
+                    {
+                        flag = true;
+                    }
+                }
+                if(flag)
+                {
+                    mag = magazine;
+                    success = true;
+                }
+            }
+        }
+
+        if(success)
+        {
+            return mag;
+        }
+
+        return null;
     }
 }

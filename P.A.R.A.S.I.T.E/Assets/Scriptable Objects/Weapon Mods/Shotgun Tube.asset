@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 9c03cc04-9d67-48b4-b3a0-58de40fbd1ca
   itemName: 
   type: 0
-  description: 
+  description: toob
   obj: {fileID: 0}
   sprite: {fileID: 0}
   dimensions:
