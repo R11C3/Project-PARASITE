@@ -15,6 +15,7 @@ MonoBehaviour:
   ID: 751e3198-69dc-4344-afc3-94bb3e595bd0
   itemName: Automatic Turret
   type: 1
+  description: 
   obj: {fileID: 0}
   sprite: {fileID: 0}
   dimensions:
@@ -32,18 +33,19 @@ MonoBehaviour:
   leftHandRotation: {x: 0, y: 0, z: 0, w: 0}
   leftHandHintPosition: {x: 0, y: 0, z: 0}
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
-  fireModes: 
-  damage: 30
-  fireSpeed: 0.5
-  velocity: 20
-  maxAmmo: 50
-  reloadTime: 2
-  automatic: 1
+  stats:
+    accuracy: 1.5
+    fireSpeed: 0.75
+    reloadTime: 0
+    magnification: 0
+    fireModes: 
+    reloadType: 0
+    bullet: {fileID: 11400000, guid: e6de715ed1c7efd4eafd8fe8b74468ee, type: 2}
+  attachments:
+    magazine: {fileID: 0}
+    compatibleMagazines: []
   firingParticle: {fileID: 0}
   impactParticle: {fileID: 0}
-  accuracy: {x: 1, y: 1, z: 1}
-  reloadType: 0
   pelletCount: 0
-  currentAmmo: 0
   currentFireMode: 0
   fireModeIndex: 0
