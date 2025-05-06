@@ -3,7 +3,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public enum Holding{Rifle, Pistol, None};
-public enum Action{None, Inventory, Looting};
+public enum Action{None, Inventory, Looting, Ladder};
 public enum Stance{Walking, Running, Crouching, Aiming};
 
 public class MobStats : Damageable
