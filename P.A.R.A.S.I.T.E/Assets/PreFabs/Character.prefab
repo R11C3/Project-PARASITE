@@ -1472,6 +1472,13 @@ MonoBehaviour:
   _rightMovement: {x: 0, y: 0, z: 0}
   _initialMovement: {x: 0, y: 0, z: 0}
   dampening: 5
+  ladderTop:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  ladderBottom:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  ladderDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4965131758044466079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1527,8 @@ MonoBehaviour:
   gun: {fileID: 6475693388280897561}
   leftHandRig: {fileID: 2099834967676915777}
   rightHandRig: {fileID: 3530537952248081521}
+  headAim: {fileID: 6705304259057959249}
+  bodyAim: {fileID: 5832478638441420471}
 --- !u!114 &7788661217132101810
 MonoBehaviour:
   m_ObjectHideFlags: 0

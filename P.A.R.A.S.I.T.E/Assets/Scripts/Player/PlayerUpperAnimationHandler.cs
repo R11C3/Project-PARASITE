@@ -12,6 +12,8 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
     private BallisticGun gunData;
     public GameObject leftHandRig;
     public GameObject rightHandRig;
+    public GameObject headAim;
+    public GameObject bodyAim;
 
     private int holdingWeaponHash;
     private int holdingNothingHash;
@@ -37,6 +39,29 @@ public class PlayerUpperAnimationHandler : MonoBehaviour
     void Update()
     {
         Holding();
+        ActionRestrictions();
+    }
+
+    void ActionRestrictions()
+    {
+        if(player.action == Action.Ladder)
+        {
+            headAim.GetComponent<MultiAimConstraint>().weight = 0.8f;
+            bodyAim.GetComponent<MultiAimConstraint>().weight = 0.0f;
+            animator.SetLayerWeight(1, 0f);
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 0f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0f;
+        }
+        else if(player.equipmentInventory.equipped != WeaponSlot.None)
+        {
+            headAim.GetComponent<MultiAimConstraint>().weight = 1f;
+            bodyAim.GetComponent<MultiAimConstraint>().weight = 0.625f;
+            animator.SetLayerWeight(1, 1f);
+            rightHandRig.GetComponent<MultiAimConstraint>().weight = 1f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().weight = 0.8f;
+            leftHandRig.GetComponent<TwoBoneIKConstraint>().data.hintWeight = 0.8f;
+        }
     }
 
     void Holding()
