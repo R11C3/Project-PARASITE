@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_input._currentMovementInput.y > 0.2f && _input._isMovementPressed)
         {
-            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 3f * Time.deltaTime, 0);
+            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 1.5f * Time.deltaTime, 0);
 
             if (ladderTop.Contains(gameObject.transform.position))
             {
@@ -120,13 +120,11 @@ public class PlayerController : MonoBehaviour
                 movement.z = ladderDirection.z * 6f * Time.deltaTime;
             }
 
-            characterController.Move(movement);
-
-            
+            characterController.Move(movement);            
         }
         else if (_input._currentMovementInput.y < 0.2f && _input._isMovementPressed)
         {
-            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 3f * Time.deltaTime, 0);
+            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 1.5f * Time.deltaTime, 0);
 
             if (ladderBottom.Contains(gameObject.transform.position))
             {
@@ -135,6 +133,8 @@ public class PlayerController : MonoBehaviour
 
             characterController.Move(movement);
         }
+
+        _speed = _input._currentMovementInput.y * 3f;
     }
 
     void Update()

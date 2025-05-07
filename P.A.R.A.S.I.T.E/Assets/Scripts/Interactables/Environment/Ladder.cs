@@ -20,6 +20,7 @@ public class Ladder : Interactable
 
             Vector3 direction = new Vector3(transform.position.x - source.transform.position.x, 0, transform.position.z - source.transform.position.z);
             playerController.ladderDirection = direction.normalized;
+            source.transform.forward = direction.normalized;
         }
     }
 }

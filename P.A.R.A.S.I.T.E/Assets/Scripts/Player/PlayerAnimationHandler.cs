@@ -17,9 +17,11 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     private int isWalkingHash;
     private int isCrouchingHash;
+    private int isClimbingHash;
 
     private bool _isWalking;
     private bool _isCrouching;
+    private bool _isClimbing;
     private bool _isMovementPressed;
 
     private float _MovementAngle;
@@ -35,6 +37,7 @@ public class PlayerAnimationHandler : MonoBehaviour
 
         isWalkingHash = Animator.StringToHash("isWalking");
         isCrouchingHash = Animator.StringToHash("isCrouching");
+        isClimbingHash = Animator.StringToHash("isClimbing");
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         _isWalking = animator.GetBool(isWalkingHash);
         _isCrouching = animator.GetBool(isCrouchingHash);
+        _isClimbing = animator.GetBool(isClimbingHash);
     }
 
     void UpdateValues()
@@ -73,22 +77,31 @@ public class PlayerAnimationHandler : MonoBehaviour
 
     void HandleAnimation()
     {
-        if (_input._isMovementPressed && !_isWalking)
+        if (_input._isMovementPressed && !_isWalking && player.action == Action.None)
         {
             animator.SetBool(isWalkingHash, true);
         }
-        else if (!_input._isMovementPressed && _isWalking)
+        else if (!_input._isMovementPressed && _isWalking && player.action == Action.None)
         {
             animator.SetBool(isWalkingHash, false);
         }
 
-        if(_input._isCrouchPressed && !_isCrouching)
+        if(_input._isCrouchPressed && !_isCrouching && player.action == Action.None)
         {
             animator.SetBool(isCrouchingHash, true);
         }
-        else if(!_input._isCrouchPressed && _isCrouching)
+        else if(!_input._isCrouchPressed && _isCrouching && player.action == Action.None)
         {
             animator.SetBool(isCrouchingHash, false);
+        }
+
+        if(player.action == Action.Ladder)
+        {
+            animator.SetBool(isClimbingHash, true);
+        }
+        else
+        {
+            animator.SetBool(isClimbingHash, false);
         }
     }
 }

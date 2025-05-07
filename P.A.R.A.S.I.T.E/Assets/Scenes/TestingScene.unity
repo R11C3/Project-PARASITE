@@ -368,6 +368,11 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 768
       objectReference: {fileID: 0}
+    - target: {fileID: 7584459976343944215, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: interactDistance
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7734437731834019194, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: projectile
