@@ -305,3 +305,34 @@
     -unity-font-style: bold;
     max-width: 315px;
 }
+
+.item-stats-box {
+    max-width: 275px;
+    max-height: 50px;
+    width: 275px;
+    height: 50px;
+    background-color: rgba(55, 55, 55, 0.46);
+    border-left-color: rgba(152, 152, 152, 0.31);
+    border-right-color: rgba(152, 152, 152, 0.31);
+    border-top-color: rgba(152, 152, 152, 0.31);
+    border-bottom-color: rgba(152, 152, 152, 0.31);
+    border-top-width: 6px;
+    border-right-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 6px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.item-stats-name {
+    align-self: center;
+    padding-left: 10px;
+    -unity-font-style: bold;
+    font-size: 15px;
+}
+
+.item-stats-number {
+    justify-content: center;
+    align-self: center;
+    font-size: 15px;
+}

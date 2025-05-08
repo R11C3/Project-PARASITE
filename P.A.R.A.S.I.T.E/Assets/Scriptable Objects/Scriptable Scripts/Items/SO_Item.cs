@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,6 +31,9 @@ public abstract class SO_Item : ScriptableObject
     public Dimensions dimensions;
     [Header("Location in inventory")]
     public Dimensions location;
+    [Header("Statistics")]
+    [SerializeField]
+    public List<ItemStatistic> itemStats = new List<ItemStatistic>();
 
     public virtual bool Equals(SO_Item other)
     {

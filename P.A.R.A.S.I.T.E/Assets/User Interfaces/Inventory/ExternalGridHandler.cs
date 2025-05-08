@@ -48,7 +48,7 @@ public class ExternalGridHandler : MonoBehaviour
     void Update()
     {
         root.visible = visible;
-        if(!visible)
+        if (!visible)
         {
             passiveItem = null;
         }
@@ -434,8 +434,13 @@ public class ExternalGridHandler : MonoBehaviour
     {
         if (!isDragging)
         {
+            itemImageHolder.style.backgroundImage = StyleKeyword.None;
+            itemDescriptionLabel.text = " ";
+            itemStatsHolder.Clear();
+
             backpackBounds = backpackHolder.worldBound;
             rigBounds = rigHolder.worldBound;
+            containerBounds = containerHolder.worldBound;
 
             Vector2 mousePosition = Input.mousePosition;
             mousePosition.y = Screen.height - mousePosition.y;
@@ -467,6 +472,9 @@ public class ExternalGridHandler : MonoBehaviour
                     passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
                 else if (passiveSelection == Selection.Container)
                     passiveItem = container.inventory.grid[(int)Math.Round((-containerHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-containerHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
+                LoadItemStats();
+                itemImageHolder.style.backgroundImage = passiveItem.sprite;
+                itemDescriptionLabel.text = passiveItem.description;
             }
             else
             {
@@ -475,17 +483,25 @@ public class ExternalGridHandler : MonoBehaviour
         }
     }
 
-    public void LoadItemInfo()
+    public void LoadItemStats()
     {
-        if (passiveItem != null)
+        foreach (ItemStatistic stat in passiveItem.itemStats)
         {
-            itemImageHolder.style.backgroundImage = passiveItem.sprite;
-            itemDescriptionLabel.text = passiveItem.description;
-        }
-        if (passiveItem == null)
-        {
-            itemImageHolder.style.backgroundImage = null;
-            itemDescriptionLabel.text = "";
+            VisualElement itemStatsBox = new VisualElement();
+            itemStatsBox.AddToClassList("item-stats-box");
+
+            Label itemStatsName = new Label();
+            itemStatsName.AddToClassList("item-stats-name");
+
+            Label itemStatsValue = new Label();
+            itemStatsValue.AddToClassList("item-stats-number");
+
+            itemStatsBox.Add(itemStatsName);
+            itemStatsBox.Add(itemStatsValue);
+            itemStatsName.text = stat.statName;
+            itemStatsValue.text = stat.statValue.ToString();
+
+            itemStatsHolder.Add(itemStatsBox);
         }
     }
 }

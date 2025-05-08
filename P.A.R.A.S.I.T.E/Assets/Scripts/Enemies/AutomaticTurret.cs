@@ -57,7 +57,7 @@ public class AutomaticTurret : MonoBehaviour
             canShoot = false;
 
             Vector3 direction = AccuracyVariation();
-
+            
             StartCoroutine(SpawnProjectile(direction, 50f));
 
             lastShootTime = Time.time;

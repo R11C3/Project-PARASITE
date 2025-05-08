@@ -539,6 +539,10 @@ public class InventoryGridHandler : MonoBehaviour
     {
         if (!isDragging)
         {
+            itemImageHolder.style.backgroundImage = StyleKeyword.None;
+            itemDescriptionLabel.text = " ";
+            itemStatsHolder.Clear();
+            
             backpackBounds = backpackHolder.worldBound;
             rigBounds = rigHolder.worldBound;
             primaryBounds = primaryHolder.worldBound;
@@ -589,6 +593,9 @@ public class InventoryGridHandler : MonoBehaviour
                 {
                     passiveItem = stats.equipmentInventory.holster;
                 }
+                LoadItemStats();
+                itemImageHolder.style.backgroundImage = passiveItem.sprite;
+                itemDescriptionLabel.text = passiveItem.description;
             }
             else
             {
@@ -597,17 +604,25 @@ public class InventoryGridHandler : MonoBehaviour
         }
     }
 
-    public void LoadItemInfo()
+    public void LoadItemStats()
     {
-        if(passiveItem != null)
+        foreach(ItemStatistic stat in passiveItem.itemStats)
         {
-            itemImageHolder.style.backgroundImage = passiveItem.sprite;
-            itemDescriptionLabel.text = passiveItem.description;
-        }
-        if(passiveItem == null)
-        {
-            itemImageHolder.style.backgroundImage = null;
-            itemDescriptionLabel.text = "";
+            VisualElement itemStatsBox = new VisualElement();
+            itemStatsBox.AddToClassList("item-stats-box");
+
+            Label itemStatsName = new Label();
+            itemStatsName.AddToClassList("item-stats-name");
+
+            Label itemStatsValue = new Label();
+            itemStatsValue.AddToClassList("item-stats-number");
+
+            itemStatsBox.Add(itemStatsName);
+            itemStatsBox.Add(itemStatsValue);
+            itemStatsName.text = stat.statName;
+            itemStatsValue.text = stat.statValue.ToString();
+
+            itemStatsHolder.Add(itemStatsBox);
         }
     }
 

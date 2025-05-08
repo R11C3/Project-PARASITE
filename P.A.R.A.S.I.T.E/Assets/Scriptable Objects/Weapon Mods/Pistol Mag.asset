@@ -25,4 +25,4 @@ MonoBehaviour:
     height: 0
     width: 0
   maxAmmo: 15
-  currentAmmo: 8
+  currentAmmo: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1733a5c0f280e604aa094847ee8c0683, type: 3}
   m_Name: 9x19
   m_EditorClassIdentifier: 
-  velocity: 15
+  velocity: 35
   penetration: 1
   bluntDamage: 5

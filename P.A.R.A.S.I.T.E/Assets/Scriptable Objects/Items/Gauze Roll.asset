@@ -24,3 +24,8 @@ MonoBehaviour:
   location:
     height: 0
     width: 0
+  itemStats:
+  - statName: Weight
+    statValue: 0.5
+  - statName: Durability
+    statValue: 5

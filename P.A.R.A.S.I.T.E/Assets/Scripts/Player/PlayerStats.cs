@@ -69,7 +69,6 @@ public class PlayerStats : MobStats
             {
                 gridHandler.SelectItem();
             }
-            gridHandler.LoadItemInfo();
         }
         if (action == Action.Looting)
         {
@@ -81,7 +80,6 @@ public class PlayerStats : MobStats
             {
                 externalGridHandler.SelectItem();
             }
-            externalGridHandler.LoadItemInfo();
         }
     }
 
