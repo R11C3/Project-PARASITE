@@ -30,7 +30,6 @@
     border-right-color: rgb(46, 43, 36);
     border-top-color: rgb(46, 43, 36);
     border-bottom-color: rgb(46, 43, 36);
-    background-color: rgba(31, 31, 31, 0.47);
     align-content: flex-start;
 }
 
@@ -98,6 +97,22 @@
     padding-right: 5px;
     padding-bottom: 5px;
     padding-left: 5px;
+}
+
+.inventory-outer {
+    flex-grow: 1;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: rgba(50, 50, 50, 0.5);
+    margin-right: 20px;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    align-content: flex-start;
+    max-width: 960px;
+    height: auto;
 }
 
 .slot-icon {
@@ -273,12 +288,13 @@
     align-content: center;
     justify-content: center;
     max-width: 750px;
-    width: 750px;
+    width: 550px;
     height: 100px;
     margin-top: 0;
     border-bottom-width: 10px;
     transform-origin: center;
     translate: 0 0;
+    border-radius: 25px;
     border-left-color: rgba(75, 75, 75, 0.78);
     border-right-color: rgba(75, 75, 75, 0.78);
     border-top-color: rgba(75, 75, 75, 0.78);
@@ -311,15 +327,16 @@
     max-height: 50px;
     width: 275px;
     height: 50px;
-    background-color: rgba(55, 55, 55, 0.46);
-    border-left-color: rgba(152, 152, 152, 0.31);
-    border-right-color: rgba(152, 152, 152, 0.31);
-    border-top-color: rgba(152, 152, 152, 0.31);
-    border-bottom-color: rgba(152, 152, 152, 0.31);
-    border-top-width: 6px;
-    border-right-width: 6px;
-    border-bottom-width: 6px;
-    border-left-width: 6px;
+    background-color: rgba(126, 145, 129, 0.93);
+    border-radius: 15px;
+    border-left-color: rgba(83, 83, 83, 0.48);
+    border-right-color: rgba(83, 83, 83, 0.48);
+    border-top-color: rgba(83, 83, 83, 0.48);
+    border-bottom-color: rgba(83, 83, 83, 0.48);
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
     justify-content: center;
     flex-direction: row;
 }
@@ -336,3 +353,4 @@
     align-self: center;
     font-size: 15px;
 }
+

@@ -606,7 +606,7 @@ public class InventoryGridHandler : MonoBehaviour
 
     public void LoadItemStats()
     {
-        foreach(ItemStatistic stat in passiveItem.itemStats)
+        foreach(ItemStatistic stat in passiveItem.itemStats.itemStatsList)
         {
             VisualElement itemStatsBox = new VisualElement();
             itemStatsBox.AddToClassList("item-stats-box");

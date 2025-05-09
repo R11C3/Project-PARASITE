@@ -5,4 +5,9 @@ public class SO_Magazine : SO_WeaponMod
 {
     public int maxAmmo;
     public int currentAmmo;
+
+    void Reset()
+    {
+        type = Type.Mod;
+    }
 }

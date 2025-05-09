@@ -15,7 +15,7 @@ using UnityEngine;
 [Serializable]
 public abstract class SO_Item : ScriptableObject
 {
-    public enum Type{Pistol, Weapon, Key, Material, Consumable, Medical, Mod, Armor, Helmet, Rig, Backpack, Deployable, Magazine}
+    public enum Type{Pistol, Weapon, Key, Material, Consumable, Medical, Mod, Armor, Helmet, Rig, Backpack, Deployable, Magazine, Ammo}
 
     [Header("Item Name & Type")]
     public string ID = Guid.NewGuid().ToString();
@@ -32,11 +32,15 @@ public abstract class SO_Item : ScriptableObject
     [Header("Location in inventory")]
     public Dimensions location;
     [Header("Statistics")]
-    [SerializeField]
-    public List<ItemStatistic> itemStats = new List<ItemStatistic>();
+    public ItemStatisticList itemStats = new();
 
     public virtual bool Equals(SO_Item other)
     {
         return itemName.Equals(other.itemName);
+    }
+
+    void Reset()
+    {
+        
     }
 }

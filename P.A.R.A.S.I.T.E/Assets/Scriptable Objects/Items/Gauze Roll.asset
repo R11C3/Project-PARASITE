@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccf33f0fe45e07e438b810cfa25f6577, type: 3}
   m_Name: Gauze Roll
   m_EditorClassIdentifier: 
-  ID: 802c2d36-cb8a-42bc-9bee-1f5cee802f31
+  ID: d6cd199a-66e2-4c7f-89fe-f456ca069342
   itemName: Gauze Roll
   type: 5
-  description: Gauze Roll Description
+  description: Can stop bleeds
   obj: {fileID: 3249871672733669422, guid: 0b0e9e2a81d174b48ad71047ea8853c4, type: 3}
   sprite: {fileID: 2800000, guid: 233bba2611ce5fb4783d23c28effef14, type: 3}
   dimensions:
@@ -25,7 +25,8 @@ MonoBehaviour:
     height: 0
     width: 0
   itemStats:
-  - statName: Weight
-    statValue: 0.5
-  - statName: Durability
-    statValue: 5
+    itemStatsList:
+    - statName: Weight
+      statValue: 1
+    - statName: Uses Left
+      statValue: 4

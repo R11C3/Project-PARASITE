@@ -6,6 +6,7 @@ public class SO_Backpack : SO_InventoryItem
     public void Reset()
     {
         type = Type.Backpack;
+        itemStats.itemStatsList.Add(new ItemStatistic("Total Size", 0));
     }
 
     public override void InitializeInventories()

@@ -1,8 +1,14 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SO_Scope", menuName = "Scriptable Objects/Weapon Mod/Scope")]
-public class SO_Scope : ScriptableObject
+[CreateAssetMenu(fileName = "SO_Optic", menuName = "Scriptable Objects/Weapon Mod/Optic")]
+public class SO_Optic : SO_WeaponMod
 {
-    public float magnification;
-    public float accuracy;
+    void Reset()
+    {
+        type = Type.Mod;
+        itemStats.itemStatsList.Add(new ItemStatistic("Magnification", 0));
+        itemStats.itemStatsList.Add(new ItemStatistic("Accuracy", 0.0f));
+    }
 }

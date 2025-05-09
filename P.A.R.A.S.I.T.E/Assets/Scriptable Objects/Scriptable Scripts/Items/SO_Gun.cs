@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum GunType{Rifle, Pistol, Shotgun}
@@ -8,7 +9,9 @@ public enum ReloadType{Magazine, Single}
 [Serializable]
 public class Statistics 
 {
+    public float baseAccuracy;
     public float accuracy;
+    public float ADSaccuracy;
     public float fireSpeed;
     public float reloadTime;
     public float magnification;
@@ -22,6 +25,8 @@ public class Attachments
 {
     public SO_Magazine magazine;
     public SO_Magazine[] compatibleMagazines;
+    public SO_Optic optic;
+    public SO_Optic[] compatibleScopes;
 }
 
 [CreateAssetMenu(fileName = "SO_Gun", menuName = "Scriptable Objects/Item/Gun")]
@@ -53,9 +58,11 @@ public class SO_Gun : SO_Item
     [HideInInspector]
     public int fireModeIndex = 0;
 
-    public void Reset()
+    void Reset()
     {
         type = Type.Weapon;
+        itemStats.itemStatsList.Add(new ItemStatistic("Magnification", 0));
+        itemStats.itemStatsList.Add(new ItemStatistic("Accuracy", 0.0f));
     }
 
     public void ChangeFireMode()
@@ -66,6 +73,19 @@ public class SO_Gun : SO_Item
         {
             fireModeIndex = 0;
         }
+    }
+
+    public void CalculateWeaponStats()
+    {
+        if(attachments.optic != null)
+        {
+            stats.ADSaccuracy = stats.accuracy * attachments.optic.itemStats.GetByName("Accuracy").statValue;
+        }
+        if(attachments.optic == null)
+        {
+            stats.ADSaccuracy = stats.baseAccuracy;
+        }
+
     }
 
     public override bool Equals(SO_Item other)

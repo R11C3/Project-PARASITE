@@ -8,5 +8,6 @@ public class SO_HealingItem : SO_Item
     public void Reset()
     {
         type = Type.Medical;
+        itemStats.itemStatsList.Add(new ItemStatistic("Uses Left", 0));
     }
 }
