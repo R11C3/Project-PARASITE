@@ -293,6 +293,11 @@ PrefabInstance:
       propertyPath: backpack
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2826334299188704754, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2941337171247925528, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -384,6 +389,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5084445681638057567, guid: 38fd41adb2f8d41489f4207292203be9,
         type: 3}
+    - target: {fileID: 7761106891943325963, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8455185071211899597, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_Mesh

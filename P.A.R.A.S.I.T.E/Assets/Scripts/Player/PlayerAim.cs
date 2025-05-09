@@ -10,10 +10,8 @@ public class PlayerAim : MonoBehaviour
     [SerializeField] public LayerMask floor;
     [SerializeField] private bool renderLine;
 
-    private GameObject lineRendererObject;
     private Transform characterTransform;
     private Camera mainCamera;
-    private LineRenderer lineRenderer;
     private PlayerStats player;
     public Vector3 mousePosition;
 
@@ -21,11 +19,7 @@ public class PlayerAim : MonoBehaviour
     {
         mainCamera=  Camera.main;
         characterTransform = GetComponent<Transform>();
-        lineRendererObject = GameObject.Find("Line Renderer");
-        lineRenderer = lineRendererObject.GetComponent<LineRenderer>();
         player = GetComponent<PlayerStats>();
-
-        lineRenderer.positionCount = 3;
     }
 
     // Update is called once per frame
