@@ -35,7 +35,7 @@ public class HUDController : MonoBehaviour
             if(gun.attachments.magazine != null)
             {
                 currentAmmo.text = gun.attachments.magazine.currentAmmo.ToString();
-                maxAmmo.text = gun.attachments.magazine.maxAmmo.ToString();
+                maxAmmo.text = gun.attachments.magazine.itemStats.GetByName("Max Ammo").statValue.ToString();
             }
             
             fireMode.text = gun.currentFireMode.ToString();

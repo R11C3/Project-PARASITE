@@ -318,7 +318,7 @@
 
 .item-description-label {
     font-size: 30px;
-    -unity-font-style: bold;
+    -unity-font-style: normal;
     max-width: 315px;
 }
 

@@ -47,6 +47,7 @@ public class BallisticGun : MonoBehaviour
 
     public void LoadStats()
     {
+        gun.CalculateWeaponStats();
         GetComponent<MeshFilter>().mesh = gun.model;
         transform.localPosition = gun.offset;
         transform.localRotation = gun.offsetRotation;

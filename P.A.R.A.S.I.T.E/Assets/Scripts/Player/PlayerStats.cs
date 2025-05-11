@@ -260,7 +260,8 @@ public class PlayerStats : MobStats
 
     private IEnumerator SingleReloadDelay()
     {
-        while (equipmentInventory.EquippedGun().attachments.magazine.currentAmmo < equipmentInventory.EquippedGun().attachments.magazine.maxAmmo)
+        int maxAmmo = (int)equipmentInventory.EquippedGun().attachments.magazine.itemStats.GetByName("Max Ammo").statValue;
+        while (equipmentInventory.EquippedGun().attachments.magazine.currentAmmo < maxAmmo)
         {
             yield return new WaitForSeconds(equipmentInventory.EquippedGun().stats.reloadTime);
             equipmentInventory.EquippedGun().attachments.magazine.currentAmmo++;
