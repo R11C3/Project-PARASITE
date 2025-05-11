@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemStatistic
 {
     public string statName;
+    [Tooltip("Set to -1 to not display")]
     public float statValue;
 
     public ItemStatistic(string name)

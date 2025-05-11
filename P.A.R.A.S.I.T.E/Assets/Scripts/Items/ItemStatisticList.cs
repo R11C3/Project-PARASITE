@@ -9,12 +9,9 @@ public class ItemStatisticList
     [SerializeField]
     public List<ItemStatistic> itemStatsList = new List<ItemStatistic>();
 
-    //Individual BASE stats
-    ItemStatistic weight = new ItemStatistic("Weight", 0);
-
     public ItemStatisticList()
     {
-        itemStatsList.Add(weight);
+        
     }
 
     public ItemStatistic GetByName(string name)

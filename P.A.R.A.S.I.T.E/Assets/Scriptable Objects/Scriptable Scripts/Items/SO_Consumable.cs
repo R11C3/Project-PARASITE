@@ -6,7 +6,14 @@ public class SO_Consumable : SO_Item
     public void Reset()
     {
         type = Type.Consumable;
-        itemStats.itemStatsList.Add(new ItemStatistic("Uses Left", 0));
+        AppendStats();
+    }
+
+    public override void AppendStats()
+    {
+        base.AppendStats();
+        itemStats.itemStatsList.Add(new ItemStatistic("Energy", 0));
+        itemStats.itemStatsList.Add(new ItemStatistic("Hydration", 0));
     }
 
     public float energy;

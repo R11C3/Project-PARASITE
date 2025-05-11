@@ -368,6 +368,11 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 174136164}
+    - target: {fileID: 6329113388683329203, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7086505844144453374, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: m_Radius

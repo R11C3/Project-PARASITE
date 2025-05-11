@@ -25,6 +25,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     private bool _isMovementPressed;
 
     private float _MovementAngle;
+    [SerializeField]
     private float _linearSpeed;
 
     // Start is called before the first frame update
@@ -59,7 +60,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     void UpdateValues()
     {
         _currentRotation = characterTransform.rotation;
-        _linearSpeed = playerController._speed;
+        _linearSpeed = playerController._speed * Time.deltaTime;
         _currentVelocity = playerController._currentVelocity;
 
         float _LookAngle = _currentRotation.eulerAngles.y;
@@ -71,8 +72,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
-        animator.SetFloat("linearSpeed", _linearSpeed * 10);
-        animator.SetFloat("crouchingSpeed", _linearSpeed * 50);
+        animator.SetFloat("linearSpeed", _linearSpeed * 286);
+        animator.SetFloat("crouchingSpeed", _linearSpeed * 1429);
     }
 
     void HandleAnimation()

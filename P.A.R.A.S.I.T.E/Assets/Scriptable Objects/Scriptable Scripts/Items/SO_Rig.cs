@@ -6,6 +6,12 @@ public class SO_Rig : SO_InventoryItem
     public void Reset()
     {
         type = Type.Rig;
+        AppendStats();
+    }
+
+    public override void AppendStats()
+    {
+        base.AppendStats();
         itemStats.itemStatsList.Add(new ItemStatistic("Total Size", 0));
     }
 

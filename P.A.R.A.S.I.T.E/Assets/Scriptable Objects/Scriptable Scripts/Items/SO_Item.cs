@@ -39,8 +39,13 @@ public abstract class SO_Item : ScriptableObject
         return itemName.Equals(other.itemName);
     }
 
+    public virtual void AppendStats()
+    {
+        itemStats.itemStatsList.Add(new ItemStatistic("Weight", 0));
+    }
+
     void Reset()
     {
-        
+        AppendStats();
     }
 }

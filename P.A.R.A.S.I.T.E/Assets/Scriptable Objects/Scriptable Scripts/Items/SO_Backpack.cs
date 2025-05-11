@@ -6,6 +6,12 @@ public class SO_Backpack : SO_InventoryItem
     public void Reset()
     {
         type = Type.Backpack;
+        AppendStats();
+    }
+
+    public override void AppendStats()
+    {
+        base.AppendStats();
         itemStats.itemStatsList.Add(new ItemStatistic("Total Size", 0));
     }
 

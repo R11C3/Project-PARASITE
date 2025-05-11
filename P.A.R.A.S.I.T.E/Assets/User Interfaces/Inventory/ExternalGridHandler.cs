@@ -501,6 +501,11 @@ public class ExternalGridHandler : MonoBehaviour
             itemStatsName.text = stat.statName;
             itemStatsValue.text = stat.statValue.ToString();
 
+            if(stat.statValue == -1)
+            {
+                itemStatsValue.text = " ";
+            }
+
             itemStatsHolder.Add(itemStatsBox);
         }
     }

@@ -61,6 +61,12 @@ public class SO_Gun : SO_Item
     void Reset()
     {
         type = Type.Weapon;
+        AppendStats();
+    }
+
+    public override void AppendStats()
+    {
+        base.AppendStats();
         itemStats.itemStatsList.Add(new ItemStatistic("Magnification", 0));
         itemStats.itemStatsList.Add(new ItemStatistic("Accuracy", 0.0f));
     }
