@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
 
         difference += offset + target.transform.position;
 
-        Vector3 smoothFollow = Vector3.Lerp(transform.position, difference, smoothSpeed);
+        Vector3 smoothFollow = Vector3.Lerp(transform.position, difference, smoothSpeed * Time.deltaTime);
 
         transform.position = smoothFollow;
     }
@@ -77,7 +77,7 @@ public class CameraController : MonoBehaviour
 
         difference += aimOffset + target.transform.position;
 
-        Vector3 smoothFollow = Vector3.Lerp(transform.position, difference, smoothSpeed);
+        Vector3 smoothFollow = Vector3.Lerp(transform.position, difference, smoothSpeed * Time.deltaTime);
 
         transform.position = smoothFollow;
     }

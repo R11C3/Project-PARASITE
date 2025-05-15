@@ -60,7 +60,7 @@ public class PlayerAnimationHandler : MonoBehaviour
     void UpdateValues()
     {
         _currentRotation = characterTransform.rotation;
-        _linearSpeed = playerController._speed * Time.deltaTime;
+        _linearSpeed = playerController._speed;
         _currentVelocity = playerController._currentVelocity;
 
         float _LookAngle = _currentRotation.eulerAngles.y;
@@ -72,8 +72,8 @@ public class PlayerAnimationHandler : MonoBehaviour
     {
         animator.SetFloat("walkingSpeed", playerController._speed - 1);
         animator.SetFloat("Angle", _MovementAngle);
-        animator.SetFloat("linearSpeed", _linearSpeed * 286);
-        animator.SetFloat("crouchingSpeed", _linearSpeed * 1429);
+        animator.SetFloat("linearSpeed", _linearSpeed * 15);
+        animator.SetFloat("crouchingSpeed", _linearSpeed * 50);
     }
 
     void HandleAnimation()

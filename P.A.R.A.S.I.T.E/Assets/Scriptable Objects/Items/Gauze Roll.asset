@@ -28,5 +28,7 @@ MonoBehaviour:
     itemStatsList:
     - statName: Weight
       statValue: 1
+      visible: 1
     - statName: Uses Left
       statValue: 4
+      visible: 1
