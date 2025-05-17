@@ -253,8 +253,20 @@
     height: 100%;
     width: 100%;
     -unity-background-scale-mode: scale-to-fit;
+    padding-right: 10px;
+    padding-bottom: 10px;
     max-width: 300px;
     max-height: 300px;
+}
+
+.visual-icon-numbers {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    align-self: center;
+    color: rgb(205,205,205);
 }
 
 .selected {

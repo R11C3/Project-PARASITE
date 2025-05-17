@@ -55,15 +55,24 @@ public class GridInventory
     public bool CheckNull(int row, int col, int width, int height)
     {
         bool success = true;
-        for(int i = row; i < row + height; i++)
+
+        try
         {
-            for(int j = col; j < col + width; j++)
+            for (int i = row; i < row + height; i++)
             {
-                if(grid[i,j] != null)
+                for (int j = col; j < col + width; j++)
                 {
-                    success = false;
+                    if (grid[i, j] != null)
+                    {
+                        success = false;
+                    }
                 }
             }
+        }
+        catch (Exception e)
+        {
+            success = false;
+            Debug.Log(e);
         }
 
         return success;

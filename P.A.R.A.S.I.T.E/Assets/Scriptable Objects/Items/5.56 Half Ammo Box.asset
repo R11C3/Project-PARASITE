@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e69b9ec04886948b1d50af37b264b2, type: 3}
+  m_Name: 5.56 Half Ammo Box
+  m_EditorClassIdentifier: 
+  ID: 6fa23196-e3e4-4de6-8b88-9899b1b70bef
+  itemName: 5.56 Ammo Box
+  type: 13
+  description: 
+  obj: {fileID: 0}
+  sprite: {fileID: -6090568113533005507, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
+  dimensions:
+    height: 1
+    width: 2
+  location:
+    height: 0
+    width: 0
+  itemStats:
+    itemStatsList:
+    - statName: Weight
+      statValue: 0
+      visible: 1
+  maxStack: 30
+  currentStack: 13

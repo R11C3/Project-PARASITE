@@ -5,9 +5,11 @@ public class SO_Magazine : SO_WeaponMod
 {
     public int currentAmmo;
 
+    public SO_Ammo compatibleAmmo;
+
     void Reset()
     {
-        type = Type.Mod;
+        type = Type.Magazine;
         AppendStats();
     }
 

@@ -16,4 +16,6 @@ MonoBehaviour:
   lootTable:
   - item: {fileID: 11400000, guid: 021ae8e7a79e0aa4e860cffbed805064, type: 2}
     chance: 10
+  - item: {fileID: 11400000, guid: 2ef710d2f7cc27949848643f777e3774, type: 2}
+    chance: 10
   table: []
