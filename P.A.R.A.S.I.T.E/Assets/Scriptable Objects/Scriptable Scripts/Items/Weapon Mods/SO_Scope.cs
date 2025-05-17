@@ -14,6 +14,7 @@ public class SO_Optic : SO_WeaponMod
     public override void AppendStats()
     {
         base.AppendStats();
+        itemStats.itemStatsList.Add(new ItemStatistic("Ergonomics", 0));
         itemStats.itemStatsList.Add(new ItemStatistic("Magnification", 0));
         itemStats.itemStatsList.Add(new ItemStatistic("Accuracy", 0.0f));
     }

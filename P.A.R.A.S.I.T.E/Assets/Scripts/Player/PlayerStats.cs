@@ -9,6 +9,7 @@ public class PlayerStats : MobStats
     [SerializeField]
     [Header("Input SO")]
     private SO_Input _input;
+    private PlayerShoot playerShoot;
 
     [Header("Equipment Inventory")]
     public EquipmentInventory equipmentInventory;
@@ -32,6 +33,7 @@ public class PlayerStats : MobStats
         playerUI.visible = true;
         gridHandler.visible = false;
         externalGridHandler.visible = false;
+        playerShoot = GetComponent<PlayerShoot>();
     }
 
     // Update is called once per frame
@@ -132,6 +134,8 @@ public class PlayerStats : MobStats
             gridHandler.visible = false;
             externalGridHandler.visible = false;
             canToggle = false;
+            if (playerShoot.gun.gun != null)
+                playerShoot.gun.gun.CalculateWeaponStats();
         }
         else if (!_input._isInventoryPressed)
         {
@@ -234,7 +238,7 @@ public class PlayerStats : MobStats
                     if (equipmentInventory.EquippedGun().attachments.magazine != null)
                     {
                         SO_Magazine oldMag = equipmentInventory.EquippedGun().attachments.magazine;
-                        if(!equipmentInventory.rig.inventories.Add(oldMag))
+                        if (!equipmentInventory.rig.inventories.Add(oldMag))
                         {
                             Instantiate(oldMag.obj, transform.position, Quaternion.identity);
                         }

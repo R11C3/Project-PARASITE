@@ -61,15 +61,18 @@ public class BallisticGun : MonoBehaviour
 
     public void Shoot()
     {
-        if (gun.attachments.magazine.currentAmmo > 0)
+        if (gun.attachments.magazine != null)
         {
-            if (gun.currentFireMode == FireMode.Automatic)
+            if (gun.attachments.magazine.currentAmmo > 0)
             {
-                ShootingSystem();
-            }
-            else if (gun.currentFireMode == FireMode.Single && !fireHeld)
-            {
-                ShootingSystem();
+                if (gun.currentFireMode == FireMode.Automatic)
+                {
+                    ShootingSystem();
+                }
+                else if (gun.currentFireMode == FireMode.Single && !fireHeld)
+                {
+                    ShootingSystem();
+                }
             }
         }
     }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField]
-    private BallisticGun gun;
+    public BallisticGun gun;
     [SerializeField]
     private SO_Input _input;
     private PlayerStats player;
@@ -20,7 +20,7 @@ public class PlayerShoot : MonoBehaviour
     {
         player = GetComponent<PlayerStats>();
         SO_Gun current = player.equipmentInventory.EquippedGun();
-        if(current != null)
+        if (current != null)
         {
             gun.gun = current;
             gun.LoadStats();
@@ -31,29 +31,29 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         player.equipmentInventory.CheckNone();
-        if(player.action == Action.None && player.stance != Stance.Running)
+        if (player.action == Action.None && player.stance != Stance.Running)
         {
-            if(_input._isFirePressed && gun.gun != null)
+            if (_input._isFirePressed && gun.gun != null)
             {
                 gun.Shoot();
                 gun.fireHeld = true;
             }
-            if(!_input._isFirePressed)
+            if (!_input._isFirePressed)
             {
                 gun.fireHeld = false;
             }
 
-            if(_input._isFireModePressed && gun.gun != null && !fireSelectHeld)
-          {
+            if (_input._isFireModePressed && gun.gun != null && !fireSelectHeld)
+            {
                 gun.gun.ChangeFireMode();
                 fireSelectHeld = true;
             }
-            if(!_input._isFireModePressed)
+            if (!_input._isFireModePressed)
             {
                 fireSelectHeld = false;
             }
 
-            if(_input._isAimPressed)
+            if (_input._isAimPressed)
             {
                 gun.aiming = true;
             }
@@ -63,37 +63,40 @@ public class PlayerShoot : MonoBehaviour
             }
 
             SwitchWeapons();
-            }
+        }
     }
 
     void SwitchWeapons()
     {
         SO_Gun swapTo;
-        if(_input._isOnePressed)
+        if (_input._isOnePressed)
         {
             swapTo = player.equipmentInventory.GetGun(WeaponSlot.Primary);
-            if(swapTo != null)
+            if (swapTo != null)
             {
                 player.changingWeapons = true;
                 StartCoroutine(DelaySwitch(0));
+                gun.gun.CalculateWeaponStats();
             }
         }
-        if(_input._isTwoPressed)
+        if (_input._isTwoPressed)
         {
             swapTo = player.equipmentInventory.GetGun(WeaponSlot.Sling);
-            if(swapTo != null)
+            if (swapTo != null)
             {
                 player.changingWeapons = true;
                 StartCoroutine(DelaySwitch(WeaponSlot.Sling));
+                gun.gun.CalculateWeaponStats();
             }
         }
-        if(_input._isThreePressed)
+        if (_input._isThreePressed)
         {
             swapTo = player.equipmentInventory.GetGun(WeaponSlot.Holster);
-            if(swapTo != null)
+            if (swapTo != null)
             {
                 player.changingWeapons = true;
                 StartCoroutine(DelaySwitch(WeaponSlot.Holster));
+                gun.gun.CalculateWeaponStats();
             }
         }
     }
