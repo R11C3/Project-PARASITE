@@ -165,16 +165,16 @@ public class BallisticGun : MonoBehaviour
 
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
 
-        bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
-        bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
+        // bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
+        // bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
 
-        while (bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
-        {
-            bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
-            yield return null;
-        }
+        // while (bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
+        // {
+        //     bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
+        //     yield return null;
+        // }
 
-        Destroy(bullet);
+        bullet.GetComponent<Bullet>().Fire(direction, distance, gun.stats.bullet, characterTransform.gameObject.tag);
 
         yield return null;
     }
