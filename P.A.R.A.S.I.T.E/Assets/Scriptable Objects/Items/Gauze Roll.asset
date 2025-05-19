@@ -24,6 +24,9 @@ MonoBehaviour:
   location:
     height: 0
     width: 0
+  hasDurability: 1
+  maxDurability: 3
+  currentDurability: 3
   itemStats:
     itemStatsList:
     - statName: Weight

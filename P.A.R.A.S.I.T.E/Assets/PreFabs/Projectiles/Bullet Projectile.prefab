@@ -86,14 +86,23 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.14404488
-        inSlope: 0
-        outSlope: 0
+        time: 0.0106382985
+        value: 0.07746967
+        inSlope: 0.2690008
+        outSlope: 0.2690008
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0.05960754
+      - serializedVersion: 3
+        time: 0.11009516
+        value: 0.10031862
+        inSlope: -0.89374745
+        outSlope: -0.89374745
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.50494695
+        outWeight: 0.14483887
       - serializedVersion: 3
         time: 1
         value: 0
@@ -108,8 +117,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.5943396, g: 0.019624433, b: 0.019624433, a: 1}
-      key1: {r: 0.29803923, g: 0.29803923, b: 0.29803923, a: 0}
+      key0: {r: 0.8616352, g: 0.41864997, b: 0.0081285, a: 1}
+      key1: {r: 0.7987421, g: 0.37425336, b: 0.37425336, a: 0}
       key2: {r: 0.38679248, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -303,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e8daeef23157443901d3e34de8851f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  bullet: {fileID: 0}
   source: 
 --- !u!54 &-8371594026016698666
 Rigidbody:

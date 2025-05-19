@@ -90,7 +90,7 @@
 
 .stamina-bar {
     max-width: none;
-    width: 150px;
+    width: 200px;
     height: auto;
     align-self: flex-start;
     align-items: stretch;

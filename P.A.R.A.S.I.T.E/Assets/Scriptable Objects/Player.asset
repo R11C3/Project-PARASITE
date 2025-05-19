@@ -26,4 +26,4 @@ MonoBehaviour:
   maxStamina: 100
   currentStamina: 0
   staminaRegen: 20
-  staminaDegen: 50
+  staminaDegen: 30

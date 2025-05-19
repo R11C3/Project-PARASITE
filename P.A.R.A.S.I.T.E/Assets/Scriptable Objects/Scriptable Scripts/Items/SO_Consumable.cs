@@ -6,6 +6,8 @@ public class SO_Consumable : SO_Item
     public void Reset()
     {
         type = Type.Consumable;
+        hasDurability = true;
+        maxDurability = 1;
         AppendStats();
     }
 

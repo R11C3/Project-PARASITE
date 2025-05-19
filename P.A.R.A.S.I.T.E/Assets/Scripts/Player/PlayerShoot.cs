@@ -39,9 +39,9 @@ public class PlayerShoot : MonoBehaviour
                 gun.fireHeld = true;
             }
             if (!_input._isFirePressed)
-            {
-                gun.fireHeld = false;
-            }
+                {
+                    gun.fireHeld = false;
+                }
 
             if (_input._isFireModePressed && gun.gun != null && !fireSelectHeld)
             {

@@ -9,6 +9,7 @@ using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class InventoryGridHandler : MonoBehaviour
 {
@@ -222,6 +223,15 @@ public class InventoryGridHandler : MonoBehaviour
                 visualIconContainer.Add(visualIconNumbers);
                 visualIconNumbers.BringToFront();
             }
+            else if (item.hasDurability)
+            {
+                Label visualIconNumbers = new Label();
+                visualIconNumbers.AddToClassList("visual-icon-numbers");
+                visualIconNumbers.text = item.currentDurability.ToString() + "/" + item.maxDurability.ToString();
+                visualIconNumbers.name = "visualIconNumbers";
+                visualIconContainer.Add(visualIconNumbers);
+                visualIconNumbers.BringToFront();
+            }
         }
     }
 
@@ -292,6 +302,15 @@ public class InventoryGridHandler : MonoBehaviour
                 Label visualIconNumbers = new Label();
                 visualIconNumbers.AddToClassList("visual-icon-numbers");
                 visualIconNumbers.text = ((SO_Magazine)item).currentAmmo.ToString() + "/" + ((SO_Magazine)item).itemStats.GetByName("Max Ammo").statValue.ToString();
+                visualIconNumbers.name = "visualIconNumbers";
+                visualIconContainer.Add(visualIconNumbers);
+                visualIconNumbers.BringToFront();
+            }
+            else if (item.hasDurability)
+            {
+                Label visualIconNumbers = new Label();
+                visualIconNumbers.AddToClassList("visual-icon-numbers");
+                visualIconNumbers.text = item.currentDurability.ToString() + "/" + item.maxDurability.ToString();
                 visualIconNumbers.name = "visualIconNumbers";
                 visualIconContainer.Add(visualIconNumbers);
                 visualIconNumbers.BringToFront();
@@ -453,6 +472,13 @@ public class InventoryGridHandler : MonoBehaviour
             }
             else
             {
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
+                if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
+                if (selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
+                selected.transform.position = originalPosition;
+
                 SO_Item tryStack = backpack.inventories.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
@@ -464,6 +490,11 @@ public class InventoryGridHandler : MonoBehaviour
                         {
                             ((SO_Ammo)item).currentStack = ((SO_Ammo)tryStack).currentStack - ((SO_Ammo)tryStack).maxStack;
                             ((SO_Ammo)tryStack).currentStack = ((SO_Ammo)tryStack).maxStack;
+                        }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            backpack.inventories.Remove(item);
                         }
                     }
                 }
@@ -478,15 +509,15 @@ public class InventoryGridHandler : MonoBehaviour
                             ((SO_Ammo)item).currentStack = ((SO_Magazine)tryStack).currentAmmo - (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                             ((SO_Magazine)tryStack).currentAmmo = (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                         }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            backpack.inventories.Remove(item);
+                        }
                     }
                 }
 
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
-                if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
-                if (selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
-                selected.transform.position = originalPosition;
+                
             }
         }
         else if (rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
@@ -517,6 +548,13 @@ public class InventoryGridHandler : MonoBehaviour
             }
             else
             {
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
+                if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
+                if (selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
+                selected.transform.position = originalPosition;
+
                 SO_Item tryStack = rig.inventories.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
@@ -528,6 +566,11 @@ public class InventoryGridHandler : MonoBehaviour
                         {
                             ((SO_Ammo)item).currentStack = ((SO_Ammo)tryStack).currentStack - ((SO_Ammo)tryStack).maxStack;
                             ((SO_Ammo)tryStack).currentStack = ((SO_Ammo)tryStack).maxStack;
+                        }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            rig.inventories.Remove(item);
                         }
                     }
                 }
@@ -542,15 +585,13 @@ public class InventoryGridHandler : MonoBehaviour
                             ((SO_Ammo)item).currentStack = ((SO_Magazine)tryStack).currentAmmo - (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                             ((SO_Magazine)tryStack).currentAmmo = (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                         }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            rig.inventories.Remove(item);
+                        }
                     }
                 }
-
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
-                if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
-                if (selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
-                selected.transform.position = originalPosition;
             }
         }
         else if (primaryBounds.Contains(selected.worldBound.center))

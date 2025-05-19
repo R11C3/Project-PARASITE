@@ -122,6 +122,15 @@ public class ExternalGridHandler : MonoBehaviour
                 visualIconContainer.Add(visualIconNumbers);
                 visualIconNumbers.BringToFront();
             }
+            else if (item.hasDurability)
+            {
+                Label visualIconNumbers = new Label();
+                visualIconNumbers.AddToClassList("visual-icon-numbers");
+                visualIconNumbers.text = item.currentDurability.ToString() + "/" + item.maxDurability.ToString();
+                visualIconNumbers.name = "visualIconNumbers";
+                visualIconContainer.Add(visualIconNumbers);
+                visualIconNumbers.BringToFront();
+            }
         }
     }
 
@@ -192,6 +201,15 @@ public class ExternalGridHandler : MonoBehaviour
                 Label visualIconNumbers = new Label();
                 visualIconNumbers.AddToClassList("visual-icon-numbers");
                 visualIconNumbers.text = ((SO_Magazine)item).currentAmmo.ToString() + "/" + ((SO_Magazine)item).itemStats.GetByName("Max Ammo").statValue.ToString();
+                visualIconNumbers.name = "visualIconNumbers";
+                visualIconContainer.Add(visualIconNumbers);
+                visualIconNumbers.BringToFront();
+            }
+            else if (item.hasDurability)
+            {
+                Label visualIconNumbers = new Label();
+                visualIconNumbers.AddToClassList("visual-icon-numbers");
+                visualIconNumbers.text = item.currentDurability.ToString() + "/" + item.maxDurability.ToString();
                 visualIconNumbers.name = "visualIconNumbers";
                 visualIconContainer.Add(visualIconNumbers);
                 visualIconNumbers.BringToFront();
@@ -270,6 +288,15 @@ public class ExternalGridHandler : MonoBehaviour
                 visualIconContainer.Add(visualIconNumbers);
                 visualIconNumbers.BringToFront();
             }
+            else if (item.hasDurability)
+            {
+                Label visualIconNumbers = new Label();
+                visualIconNumbers.AddToClassList("visual-icon-numbers");
+                visualIconNumbers.text = item.currentDurability.ToString() + "/" + item.maxDurability.ToString();
+                visualIconNumbers.name = "visualIconNumbers";
+                visualIconContainer.Add(visualIconNumbers);
+                visualIconNumbers.BringToFront();
+            }
         }
     }
 
@@ -295,6 +322,8 @@ public class ExternalGridHandler : MonoBehaviour
         if (!isDragging)
         {
             containerBounds = containerHolder.worldBound;
+            backpackBounds = backpackHolder.worldBound;
+            rigBounds = rigHolder.worldBound;
 
             Vector2 mousePosition = Input.mousePosition;
             mousePosition.y = Screen.height - mousePosition.y;
@@ -395,6 +424,11 @@ public class ExternalGridHandler : MonoBehaviour
             }
             else
             {
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                selected.transform.position = originalPosition;
+
                 SO_Item tryStack = container.inventory.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
@@ -406,6 +440,11 @@ public class ExternalGridHandler : MonoBehaviour
                         {
                             ((SO_Ammo)item).currentStack = ((SO_Ammo)tryStack).currentStack - ((SO_Ammo)tryStack).maxStack;
                             ((SO_Ammo)tryStack).currentStack = ((SO_Ammo)tryStack).maxStack;
+                        }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            container.inventory.Remove(item);
                         }
                     }
                 }
@@ -420,13 +459,13 @@ public class ExternalGridHandler : MonoBehaviour
                             ((SO_Ammo)item).currentStack = ((SO_Magazine)tryStack).currentAmmo - (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                             ((SO_Magazine)tryStack).currentAmmo = (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                         }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            container.inventory.Remove(item);
+                        }
                     }
                 }
-
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                selected.transform.position = originalPosition;
             }
         }
         else if (backpackBounds.Contains(selected.worldBound.center))
@@ -456,6 +495,11 @@ public class ExternalGridHandler : MonoBehaviour
             }
             else
             {
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                selected.transform.position = originalPosition;
+
                 SO_Item tryStack = backpack.inventories.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
@@ -467,6 +511,11 @@ public class ExternalGridHandler : MonoBehaviour
                         {
                             ((SO_Ammo)item).currentStack = ((SO_Ammo)tryStack).currentStack - ((SO_Ammo)tryStack).maxStack;
                             ((SO_Ammo)tryStack).currentStack = ((SO_Ammo)tryStack).maxStack;
+                        }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            backpack.inventories.Remove(item);
                         }
                     }
                 }
@@ -481,13 +530,13 @@ public class ExternalGridHandler : MonoBehaviour
                             ((SO_Ammo)item).currentStack = ((SO_Magazine)tryStack).currentAmmo - (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                             ((SO_Magazine)tryStack).currentAmmo = (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                         }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            backpack.inventories.Remove(item);
+                        }
                     }
                 }
-
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                selected.transform.position = originalPosition;
             }
         }
         else if (rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
@@ -517,6 +566,11 @@ public class ExternalGridHandler : MonoBehaviour
             }
             else
             {
+                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                selected.transform.position = originalPosition;
+
                 SO_Item tryStack = rig.inventories.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
@@ -528,6 +582,11 @@ public class ExternalGridHandler : MonoBehaviour
                         {
                             ((SO_Ammo)item).currentStack = ((SO_Ammo)tryStack).currentStack - ((SO_Ammo)tryStack).maxStack;
                             ((SO_Ammo)tryStack).currentStack = ((SO_Ammo)tryStack).maxStack;
+                        }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            rig.inventories.Remove(item);
                         }
                     }
                 }
@@ -542,13 +601,13 @@ public class ExternalGridHandler : MonoBehaviour
                             ((SO_Ammo)item).currentStack = ((SO_Magazine)tryStack).currentAmmo - (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                             ((SO_Magazine)tryStack).currentAmmo = (int)((SO_Magazine)tryStack).itemStats.GetByName("Max Ammo").statValue;
                         }
+
+                        if (((SO_Ammo)item).currentStack == 0)
+                        {
+                            rig.inventories.Remove(item);
+                        }
                     }
                 }
-
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                selected.transform.position = originalPosition;
             }
         }
         else
@@ -642,7 +701,7 @@ public class ExternalGridHandler : MonoBehaviour
             itemStatsName.text = stat.statName;
             itemStatsValue.text = stat.statValue.ToString();
 
-            if(stat.statValue == -1)
+            if (stat.statValue == -1)
             {
                 itemStatsValue.text = " ";
             }

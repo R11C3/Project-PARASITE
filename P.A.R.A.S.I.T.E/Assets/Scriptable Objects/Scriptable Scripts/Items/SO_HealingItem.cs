@@ -8,12 +8,18 @@ public class SO_HealingItem : SO_Item
     public void Reset()
     {
         type = Type.Medical;
+        hasDurability = true;
+        maxDurability = 1;
         AppendStats();
+    }
+
+    public void UpdateStats()
+    {
+        itemStats.UpdateByName("Uses Left", currentDurability);
     }
 
     public override void AppendStats()
     {
         base.AppendStats();
-        itemStats.itemStatsList.Add(new ItemStatistic("Uses Left", 0));
     }
 }

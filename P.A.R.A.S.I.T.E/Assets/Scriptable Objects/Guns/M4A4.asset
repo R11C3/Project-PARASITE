@@ -24,6 +24,11 @@ MonoBehaviour:
   location:
     height: 0
     width: 0
+  hasDurability: 0
+  maxDurability: 0
+  currentDurability: 0
+  itemStats:
+    itemStatsList: []
   gunType: 0
   model: {fileID: 4300000, guid: c7741850eebe1df4ea75a80275b16311, type: 3}
   offset: {x: 0.0338, y: 0.2328, z: -0.0422}
@@ -34,7 +39,13 @@ MonoBehaviour:
   leftHandHintPosition: {x: 0.152, y: -0.07, z: 0.144}
   leftHandHintRotation: {x: 0, y: 0, z: 0, w: 0}
   stats:
+    baseAccuracy: 0
     accuracy: 1
+    baseRecoil: 0
+    recoil: 0
+    baseErgonomics: 0
+    ergonomics: 0
+    ADSaccuracy: 0
     fireSpeed: 0.15
     reloadTime: 0.5
     magnification: 1
@@ -45,8 +56,18 @@ MonoBehaviour:
     magazine: {fileID: 0}
     compatibleMagazines:
     - {fileID: 11400000, guid: 021ae8e7a79e0aa4e860cffbed805064, type: 2}
-  firingParticle: {fileID: 0}
-  impactParticle: {fileID: 0}
+    optic: {fileID: 0}
+    compatibleScopes: []
+    foregrip: {fileID: 0}
+    compatibleForegrips: []
+    stock: {fileID: 0}
+    compatibleStocks: []
+    barrelMod: {fileID: 0}
+    compatibleBarrelMods: []
+  firingSystem: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
+  impactSystem: {fileID: 1920649429525584704, guid: 38f8dcf2e62504f48bbccb28ac0583b2,
+    type: 3}
   pelletCount: 0
   currentFireMode: 0
   fireModeIndex: 0

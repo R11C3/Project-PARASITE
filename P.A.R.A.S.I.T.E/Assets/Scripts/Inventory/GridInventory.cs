@@ -95,11 +95,11 @@ public class GridInventory
         int height = item.dimensions.height;
         bool success = false;
 
-        for(int i = 0; i < dimensions.height; i++)
+        for (int i = 0; i < dimensions.height; i++)
         {
-            for(int j = 0; j < dimensions.width; j++)
+            for (int j = 0; j < dimensions.width; j++)
             {
-                if(grid[i,j] == item)
+                if (grid[i, j] == item)
                 {
                     AddToGrid(i, j, width, height, null);
                     itemList.Remove(item);

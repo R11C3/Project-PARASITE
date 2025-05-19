@@ -1,6 +1,9 @@
 using System;
+using System.Numerics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public enum GunType{Rifle, Pistol, Shotgun}
 public enum FireMode{Automatic, Burst, Single}
@@ -60,8 +63,8 @@ public class SO_Gun : SO_Item
     [Header("Gun Statistics")]
     public Statistics stats;
     public Attachments attachments;
-    public GameObject firingParticle;
-    public GameObject impactParticle;
+    public GameObject firingSystem;
+    public GameObject impactSystem;
 
     [Header("Shotgun Statistics")]
     public int pelletCount;
@@ -88,7 +91,7 @@ public class SO_Gun : SO_Item
     {
         fireModeIndex++;
         currentFireMode = stats.fireModes[fireModeIndex % stats.fireModes.Length];
-        if(fireModeIndex >= stats.fireModes.Length)
+        if (fireModeIndex >= stats.fireModes.Length)
         {
             fireModeIndex = 0;
         }
@@ -162,10 +165,5 @@ public class SO_Gun : SO_Item
         stats.accuracy = stats.baseAccuracy - opticAccuracy - stockAccuracy - foregripAccuracy - barrelModAccuracy;
         stats.ergonomics = stats.baseErgonomics + opticErgo + stockErgo + foregripErgo + barrelModErgo + magazineErgo;
         stats.recoil = stats.baseRecoil + stockRecoil + foregripRecoil + barrelModRecoil;
-    }
-
-    public override bool Equals(SO_Item other)
-    {
-        return base.Equals(other);
     }
 }

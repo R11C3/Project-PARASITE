@@ -31,7 +31,7 @@ public class ItemStatisticList
         {
             if(name.Equals(stat.statName))
             {
-                stat.statValue += amount;
+                stat.statValue = amount;
                 return true;
             }
         }
