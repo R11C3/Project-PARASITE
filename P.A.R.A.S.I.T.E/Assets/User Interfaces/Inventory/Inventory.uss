@@ -281,12 +281,13 @@
 }
 
 .selected {
-    height: 120%;
-    width: 120%;
+    height: 150%;
+    width: 150%;
     border-width: 5px;
-    border-color: rgb(190, 0, 0);
+    border-color: rgb(180, 180, 180);
     transform-origin: center;
     position: absolute;
+    border-radius: 10px;
 }
 
 .telegraph {

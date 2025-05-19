@@ -413,7 +413,7 @@ public class InventoryGridHandler : MonoBehaviour
         }
         originalPosition = selected.transform.position;
         originalMousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
-        while (isDragging)
+        while (isDragging && selected != null)
         {
             if (!input._isFirePressed)
             {

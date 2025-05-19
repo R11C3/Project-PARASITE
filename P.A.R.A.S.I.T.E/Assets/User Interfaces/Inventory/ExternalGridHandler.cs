@@ -369,7 +369,7 @@ public class ExternalGridHandler : MonoBehaviour
     {
         originalPosition = selected.transform.position;
         originalMousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
-        while (isDragging)
+        while (isDragging && selected != null)
         {
             if (!input._isFirePressed)
             {
@@ -382,7 +382,6 @@ public class ExternalGridHandler : MonoBehaviour
             Vector2 change = originalMousePosition - mousePosition;
 
             selected.transform.position = originalPosition - change;
-
             // RotateItem();
 
             containerBounds = containerHolder.worldBound;
