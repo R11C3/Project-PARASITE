@@ -444,7 +444,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            container.inventory.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }
@@ -462,7 +464,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            container.inventory.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }
@@ -515,7 +519,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }
@@ -533,7 +539,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }
@@ -586,7 +594,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            rig.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }
@@ -604,7 +614,9 @@ public class ExternalGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            rig.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
+                            if (selection == Selection.Container) container.inventory.Remove(item);
                         }
                     }
                 }

@@ -460,7 +460,7 @@ public class InventoryGridHandler : MonoBehaviour
 
             if (finalPosition.y <= backpackHolder.resolvedStyle.width && finalPosition.y >= 0 && finalPosition.x <= backpackHolder.resolvedStyle.height && finalPosition.x >= 0)
                 success = backpack.inventories.CheckNull((int)coordinates.x, (int)coordinates.y, item.dimensions.width, item.dimensions.height);
-            
+
             if (success)
             {
                 if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
@@ -494,7 +494,8 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
                 }
@@ -512,12 +513,13 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
                 }
 
-                
+
             }
         }
         else if (rigBounds.Contains(selected.worldBound.center) && item.type != SO_Item.Type.Weapon)
@@ -570,7 +572,8 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            rig.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
                 }
@@ -588,7 +591,8 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            rig.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
                 }
