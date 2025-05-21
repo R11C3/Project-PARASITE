@@ -16,6 +16,7 @@ public class Bullet : MonoBehaviour
             MobStats target;
             other.gameObject.TryGetComponent<MobStats>(out target);
             if (target != null) target.DoDamage(CalculateDamage());
+            Camera.main.GetComponent<CameraShake>().Shake();
             Destroy(gameObject);
         }
         else if (!other.gameObject.tag.Equals(source))
@@ -33,12 +34,12 @@ public class Bullet : MonoBehaviour
         return (bullet.velocity / 10 + bullet.penetration) * bullet.bluntDamage;
     }
 
-    public void Fire(Vector3 direction, float distance, SO_Bullet bullet, string source)
+    public virtual void Fire(Vector3 direction, float distance, SO_Bullet bullet, string source)
     {
         StartCoroutine(FireRoutine(direction, distance, bullet, source));
     }
 
-    IEnumerator FireRoutine(Vector3 direction, float distance, SO_Bullet bullet, string source)
+    protected virtual IEnumerator FireRoutine(Vector3 direction, float distance, SO_Bullet bullet, string source)
     {
         this.bullet = bullet;
         this.source = source;

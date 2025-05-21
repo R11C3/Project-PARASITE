@@ -161,18 +161,7 @@ public class BallisticGun : MonoBehaviour
 
     private IEnumerator SpawnProjectile(Vector3 direction, float distance)
     {
-        Vector3 original = barrel.transform.position;
-
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
-
-        // bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
-        // bullet.GetComponent<Bullet>().source = characterTransform.gameObject.tag;
-
-        // while (bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
-        // {
-        //     bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
-        //     yield return null;
-        // }
 
         bullet.GetComponent<Bullet>().Fire(direction, distance, gun.stats.bullet, characterTransform.gameObject.tag);
 

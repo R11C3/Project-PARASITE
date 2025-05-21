@@ -21,6 +21,9 @@ public class AutomaticTurret : MonoBehaviour
     [SerializeField]
     private GameObject target;
 
+    [SerializeField]
+    private LayerMask mask;
+
     private float lastShootTime;
     private bool canShoot = true;
 
@@ -31,7 +34,7 @@ public class AutomaticTurret : MonoBehaviour
 
     void Update()
     {
-        if(Math.Abs(Vector3.Distance(transform.position, target.transform.position)) < sightDistance)
+        if (Math.Abs(Vector3.Distance(gameObject.transform.position, target.transform.position)) < 10f)
         {
             LookAt();
             Shoot();
@@ -50,26 +53,34 @@ public class AutomaticTurret : MonoBehaviour
         {
             canShoot = true;
         }
-        if(canShoot)
+        if (canShoot)
         {
-            shootingParticle.Play();
-            Camera.main.GetComponent<CameraShake>().Shake();
-            canShoot = false;
+            Vector3 direction = target.transform.position - gameObject.transform.position;
+            direction.y = target.transform.position.y + 0.5f;
 
-            Vector3 direction = AccuracyVariation();
-            
-            StartCoroutine(SpawnProjectile(direction, 50f));
+            RaycastHit hit;
+            if (Physics.Raycast(barrel.transform.position, direction, out hit, 100f))
+            {
+                if (hit.transform.gameObject.layer == 6)
+                {
+                    direction = AccuracyVariation(direction);
 
+                    shootingParticle.Play();
+                    Camera.main.GetComponent<CameraShake>().Shake();
+                    canShoot = false;
+
+                    StartCoroutine(SpawnProjectile(direction, 50f));
+
+                }
+            }
             lastShootTime = Time.time;
         }
     }
 
-    Vector3 AccuracyVariation()
+    Vector3 AccuracyVariation(Vector3 direction)
     {
-        Vector3 direction = target.transform.position - gameObject.transform.position;
-
         direction += new Vector3(
-            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy), 1.5f,
+            UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy), 0,
             UnityEngine.Random.Range(-gun.stats.accuracy, gun.stats.accuracy));
 
         direction.Normalize();
@@ -78,20 +89,9 @@ public class AutomaticTurret : MonoBehaviour
 
     IEnumerator SpawnProjectile(Vector3 direction, float distance)
     {
-        Vector3 original = barrel.transform.position;
-
         GameObject bullet = Instantiate(projectile, barrel.transform.position, Quaternion.identity);
 
-        bullet.GetComponent<Bullet>().bullet = gun.stats.bullet;
-        bullet.GetComponent<Bullet>().source = gameObject.tag;
-
-        while(bullet != null && Math.Abs(Vector3.Distance(bullet.transform.position, original)) < distance)
-        {
-            bullet.transform.localPosition += direction * gun.stats.bullet.velocity * Time.deltaTime;
-            yield return null;
-        }
-
-        Destroy(bullet);
+        bullet.GetComponent<Bullet>().Fire(direction, distance, gun.stats.bullet, transform.gameObject.tag);
 
         yield return null;
     }

@@ -24,6 +24,11 @@
     height: 0;
     justify-content: center;
     align-items: stretch;
+    background-color: rgb(130, 23, 23);
+}
+
+.health-bar .unity-progress-bar__progress {
+        background-color: rgb(159, 37, 37);
 }
 
 .ammo-label {
@@ -95,4 +100,8 @@
     align-self: flex-start;
     align-items: stretch;
     margin-top: 10px;
+}
+
+.stamina-bar .unity-progress-bar__progress {
+    background-color: rgb(9, 83, 152);
 }
