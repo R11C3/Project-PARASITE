@@ -19,6 +19,7 @@ public class InventoryGridHandler : MonoBehaviour
     private PlayerAim mouseAim;
 
     public bool visible;
+    private bool clickPressed;
 
     [SerializeField]
     private SO_Backpack backpack;
@@ -60,6 +61,28 @@ public class InventoryGridHandler : MonoBehaviour
         inventoryHealth = root.Q<Label>("health");
         ConfigureSlotDimensions();
         root.visible = false;
+    }
+
+    void OnEnable()
+    {
+        input.FireEvent += OnClick;
+        input.FireCanceledEvent += OnClickCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.FireEvent -= OnClick;
+        input.FireCanceledEvent -= OnClickCanceled;
+    }
+
+    void OnClick()
+    {
+        clickPressed = true;
+    }
+
+    void OnClickCanceled()
+    {
+        clickPressed = false;
     }
 
     // Update is called once per frame
@@ -162,8 +185,8 @@ public class InventoryGridHandler : MonoBehaviour
         VisualElement backpackIcon = root.Q<VisualElement>("backpack-icon");
         backpackIcon.style.backgroundImage = backpack.sprite;
 
-        backpackHolder.style.maxWidth = slotDimensions.width * width + 5;
-        backpackHolder.style.maxHeight = slotDimensions.height * height + 5;
+        backpackHolder.style.maxWidth = slotDimensions.width * width + 10;
+        backpackHolder.style.maxHeight = slotDimensions.height * height + 10;
 
         for (int i = 0; i < height * width; i++)
         {
@@ -246,8 +269,8 @@ public class InventoryGridHandler : MonoBehaviour
         VisualElement rigIcon = root.Q<VisualElement>("rig-icon");
         rigIcon.style.backgroundImage = rig.sprite;
 
-        rigHolder.style.maxWidth = slotDimensions.width * width + 5;
-        rigHolder.style.maxHeight = slotDimensions.height * height + 5;
+        rigHolder.style.maxWidth = slotDimensions.width * width + 10;
+        rigHolder.style.maxHeight = slotDimensions.height * height + 10;
 
         for (int i = 0; i < height * width; i++)
         {
@@ -415,7 +438,7 @@ public class InventoryGridHandler : MonoBehaviour
         originalMousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
         while (isDragging && selected != null)
         {
-            if (!input._isFirePressed)
+            if (!clickPressed)
             {
                 isDragging = false;
             }
@@ -768,25 +791,6 @@ public class InventoryGridHandler : MonoBehaviour
             }
 
             itemStatsHolder.Add(itemStatsBox);
-        }
-    }
-
-    private bool canRotate = true;
-
-    public void RotateItem()
-    {
-        if (input._isReloadPressed && item != null && canRotate)
-        {
-            canRotate = false;
-            int temp = item.dimensions.width;
-            item.dimensions.width = item.dimensions.height;
-            item.dimensions.height = temp;
-            selected.style.height = item.dimensions.height * slotDimensions.height;
-            selected.style.width = item.dimensions.width * slotDimensions.width;
-        }
-        if (!input._isReloadPressed)
-        {
-            canRotate = true;
         }
     }
 }

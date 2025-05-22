@@ -8,7 +8,7 @@ public class PlayerStats : MobStats
 {
     [SerializeField]
     [Header("Input SO")]
-    private SO_Input _input;
+    private SO_Input input;
     private PlayerShoot playerShoot;
 
     [Header("Equipment Inventory")]
@@ -27,13 +27,130 @@ public class PlayerStats : MobStats
     public bool canToggle = true;
     public bool canSprint = true;
 
+    [HideInInspector]
+    private bool isWalking, isSprinting, isCrouching, isAiming;
+
+    private Vector2 inputMovement;
+
     void Start()
     {
         Load();
         playerUI.visible = true;
         gridHandler.visible = false;
         externalGridHandler.visible = false;
+        canToggle = true;
         playerShoot = GetComponent<PlayerShoot>();
+    }
+
+    void OnEnable()
+    {
+        input.MoveEvent += OnMovement;
+        input.SprintEvent += OnSprint;
+        input.SprintCanceledEvent += OnSprintCanceled;
+        input.CrouchEvent += OnCrouch;
+        input.CrouchCanceledEvent += OnCrouchCanceled;
+        input.AimEvent += OnAim;
+        input.AimCanceledEvent += OnAimCanceled;
+        input.ReloadEvent += OnReload;
+        input.FireEvent += OnFire;
+        input.DragEvent += OnDrag;
+        input.InventoryEvent += OnInventory;
+        input.InventoryCanceledEvent += OnInventoryCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.MoveEvent -= OnMovement;
+        input.SprintEvent -= OnSprint;
+        input.SprintCanceledEvent -= OnSprintCanceled;
+        input.CrouchEvent -= OnCrouch;
+        input.CrouchCanceledEvent -= OnCrouchCanceled;
+        input.AimEvent -= OnAim;
+        input.AimCanceledEvent -= OnAimCanceled;
+        input.ReloadEvent -= OnReload;
+        input.FireEvent -= OnFire;
+        input.DragEvent -= OnDrag;
+        input.InventoryEvent -= OnInventory;
+        input.InventoryCanceledEvent -= OnInventoryCanceled;
+    }
+
+    void OnMovement(Vector2 input)
+    {
+        inputMovement = input;
+    }
+
+    void OnSprint()
+    {
+        if (canSprint)
+            SprintPressed();
+    }
+
+    void OnSprintCanceled()
+    {
+        MovementPressed();
+    }
+
+    void OnCrouch()
+    {
+        CrouchPressed();
+    }
+
+    void OnCrouchCanceled()
+    {
+        MovementPressed();
+    }
+
+    void OnAim()
+    {
+        AimPressed();
+    }
+
+    void OnAimCanceled()
+    {
+        MovementPressed();
+    }
+
+    void OnReload()
+    {
+        if (!reloading)
+        {
+            reloading = true;
+            Reload();
+        }
+    }
+
+    void OnFire()
+    {
+        if (action == Action.Inventory)
+        {
+            gridHandler.PassiveSelection();
+        }
+        if (action == Action.Looting)
+        {
+            externalGridHandler.PassiveSelection();
+        }
+    }
+
+    void OnDrag()
+    {
+        if (action == Action.Inventory)
+        {
+            gridHandler.SelectItem();
+        }
+        if (action == Action.Looting)
+        {
+            externalGridHandler.SelectItem();
+        }
+    }
+
+    void OnInventory()
+    {
+        UISwitch();
+    }
+
+    void OnInventoryCanceled()
+    {
+        canToggle = true;
     }
 
     // Update is called once per frame
@@ -41,48 +158,7 @@ public class PlayerStats : MobStats
     {
         UpdateBodyVisuals();
 
-        if (_input._isCrouchPressed)
-            CrouchPressed();
-        else if (_input._isSprintPressed && _input._isMovementPressed && canSprint)
-            SprintPressed();
-        else if (_input._isMovementPressed)
-            MovementPressed();
-        else if (_input._isAimPressed)
-            AimPressed();
-        else
-            stance = Stance.Walking;
-
-        UISwitch();
         Stamina();
-
-        if (_input._isReloadPressed && !reloading)
-        {
-            reloading = true;
-            Reload();
-        }
-
-        if (action == Action.Inventory)
-        {
-            if (_input._isFirePressed)
-            {
-                gridHandler.PassiveSelection();
-            }
-            if (_input._isDragPressed)
-            {
-                gridHandler.SelectItem();
-            }
-        }
-        if (action == Action.Looting)
-        {
-            if (_input._isFirePressed)
-            {
-                externalGridHandler.PassiveSelection();
-            }
-            if (_input._isDragPressed)
-            {
-                externalGridHandler.SelectItem();
-            }
-        }
     }
 
     protected override void Load()
@@ -113,36 +189,6 @@ public class PlayerStats : MobStats
         stance = Stance.Aiming;
     }
 
-    private void UISwitch()
-    {
-        if (_input._isInventoryPressed && canToggle && action == Action.None)
-        {
-            action = Action.Inventory;
-            playerUI.visible = false;
-            gridHandler.visible = true;
-            externalGridHandler.visible = false;
-            canToggle = false;
-            gridHandler.LoadWeaponImages();
-            if (equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
-            if (equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
-            if (equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
-        }
-        if (_input._isInventoryPressed && canToggle && (action == Action.Inventory || action == Action.Looting))
-        {
-            action = Action.None;
-            playerUI.visible = true;
-            gridHandler.visible = false;
-            externalGridHandler.visible = false;
-            canToggle = false;
-            if (playerShoot.gun.gun != null)
-                playerShoot.gun.gun.CalculateWeaponStats();
-        }
-        else if (!_input._isInventoryPressed)
-        {
-            canToggle = true;
-        }
-    }
-
     private void UpdateBodyVisuals()
     {
         if (equipmentInventory.backpack != null)
@@ -171,6 +217,32 @@ public class PlayerStats : MobStats
         }
     }
 
+    private void UISwitch()
+    {
+        if (canToggle && action == Action.None)
+        {
+            action = Action.Inventory;
+            playerUI.visible = false;
+            gridHandler.visible = true;
+            externalGridHandler.visible = false;
+            canToggle = false;
+            gridHandler.LoadWeaponImages();
+            if (equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
+            if (equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
+            if (equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
+        }
+        if (canToggle && (action == Action.Inventory || action == Action.Looting))
+        {
+            action = Action.None;
+            playerUI.visible = true;
+            gridHandler.visible = false;
+            externalGridHandler.visible = false;
+            canToggle = false;
+            if (playerShoot.gun.gun != null)
+                playerShoot.gun.gun.CalculateWeaponStats();
+        }
+    }
+
     /*
     This Section is responsible for STAMINA
     */
@@ -181,13 +253,14 @@ public class PlayerStats : MobStats
         {
             StaminaRegen(staminaRegen);
         }
-        else if (stance == Stance.Running)
+        else if (stance == Stance.Running && (inputMovement.x != 0 || inputMovement.y != 0))
         {
             StaminaDegen(staminaDegen);
         }
         if (currentStamina <= 0)
         {
             canSprint = false;
+            MovementPressed();
         }
     }
 

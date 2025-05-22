@@ -61,8 +61,6 @@ public class Container : Interactable
 
         if(stats.canToggle)
         {
-            stats.canToggle = false;
-
             stats.action = Action.Looting;
 
             stats.playerUI.visible = false;

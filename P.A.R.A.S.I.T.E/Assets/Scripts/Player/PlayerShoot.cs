@@ -10,7 +10,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     public BallisticGun gun;
     [SerializeField]
-    private SO_Input _input;
+    private SO_Input input;
     private PlayerStats player;
 
     private bool fireSelectHeld = false;
@@ -27,78 +27,135 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
+    {
+        input.FireEvent += OnFire;
+        input.FireCanceledEvent += OnFireCanceled;
+        input.FireModeEvent += OnFireSelect;
+        input.FireModeCanceledEvent += OnFireSelectCanceled;
+        input.AimEvent += OnAim;
+        input.AimCanceledEvent += OnAimCanceled;
+        input.OneEvent += OnOne;
+        input.OneCanceledEvent += OnOneCanceled;
+        input.TwoEvent += OnTwo;
+        input.TwoCanceledEvent += OnTwoCanceled;
+        input.ThreeEvent += OnThree;
+        input.ThreeCanceledEvent += OnThreeCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.FireEvent -= OnFire;
+        input.FireCanceledEvent -= OnFireCanceled;
+        input.FireModeEvent -= OnFireSelect;
+        input.FireModeCanceledEvent -= OnFireSelectCanceled;
+        input.AimEvent -= OnAim;
+        input.AimCanceledEvent -= OnAimCanceled;
+        input.OneEvent -= OnOne;
+        input.OneCanceledEvent -= OnOneCanceled;
+        input.TwoEvent -= OnTwo;
+        input.TwoCanceledEvent -= OnTwoCanceled;
+        input.ThreeEvent -= OnThree;
+        input.ThreeCanceledEvent -= OnThreeCanceled;
+    }
+
+    void OnFire()
     {
         player.equipmentInventory.CheckNone();
         if (player.action == Action.None && player.stance != Stance.Running)
         {
-            if (_input._isFirePressed && gun.gun != null)
+            if (gun.gun != null)
             {
-                gun.Shoot();
                 gun.fireHeld = true;
+                gun.Shoot();
             }
-            if (!_input._isFirePressed)
-                {
-                    gun.fireHeld = false;
-                }
-
-            if (_input._isFireModePressed && gun.gun != null && !fireSelectHeld)
-            {
-                gun.gun.ChangeFireMode();
-                fireSelectHeld = true;
-            }
-            if (!_input._isFireModePressed)
-            {
-                fireSelectHeld = false;
-            }
-
-            if (_input._isAimPressed)
-            {
-                gun.aiming = true;
-            }
-            else
-            {
-                gun.aiming = false;
-            }
-
-            SwitchWeapons();
         }
     }
 
-    void SwitchWeapons()
+    void OnFireCanceled()
+    {
+        gun.fireHeld = false;
+    }
+
+    void OnFireSelect()
+    {
+        player.equipmentInventory.CheckNone();
+        if (player.action == Action.None && player.stance != Stance.Running && !fireSelectHeld)
+        {
+            gun.gun.ChangeFireMode();
+            fireSelectHeld = true;
+        }
+    }
+
+    void OnFireSelectCanceled()
+    {
+        fireSelectHeld = false;
+    }
+
+    void OnAim()
+    {
+        player.equipmentInventory.CheckNone();
+        if (player.action == Action.None && player.stance != Stance.Running)
+        {
+            gun.aiming = true;
+        }
+
+    }
+
+    void OnAimCanceled()
+    {
+        gun.aiming = false;
+    }
+
+    void OnOne()
     {
         SO_Gun swapTo;
-        if (_input._isOnePressed)
+        swapTo = player.equipmentInventory.GetGun(WeaponSlot.Primary);
+        if (swapTo != null)
         {
-            swapTo = player.equipmentInventory.GetGun(WeaponSlot.Primary);
-            if (swapTo != null)
-            {
-                player.changingWeapons = true;
-                StartCoroutine(DelaySwitch(0));
-                gun.gun.CalculateWeaponStats();
-            }
+            player.changingWeapons = true;
+            StartCoroutine(DelaySwitch(WeaponSlot.Primary));
+            gun.gun.CalculateWeaponStats();
         }
-        if (_input._isTwoPressed)
+    }
+
+    void OnOneCanceled()
+    {
+
+    }
+
+    void OnTwo()
+    {
+        SO_Gun swapTo;
+        swapTo = player.equipmentInventory.GetGun(WeaponSlot.Sling);
+        if (swapTo != null)
         {
-            swapTo = player.equipmentInventory.GetGun(WeaponSlot.Sling);
-            if (swapTo != null)
-            {
-                player.changingWeapons = true;
-                StartCoroutine(DelaySwitch(WeaponSlot.Sling));
-                gun.gun.CalculateWeaponStats();
-            }
+            player.changingWeapons = true;
+            StartCoroutine(DelaySwitch(WeaponSlot.Sling));
+            gun.gun.CalculateWeaponStats();
         }
-        if (_input._isThreePressed)
+    }
+
+    void OnTwoCanceled()
+    {
+
+    }
+
+    void OnThree()
+    {
+        SO_Gun swapTo;
+        swapTo = player.equipmentInventory.GetGun(WeaponSlot.Holster);
+        if (swapTo != null)
         {
-            swapTo = player.equipmentInventory.GetGun(WeaponSlot.Holster);
-            if (swapTo != null)
-            {
-                player.changingWeapons = true;
-                StartCoroutine(DelaySwitch(WeaponSlot.Holster));
-                gun.gun.CalculateWeaponStats();
-            }
+            player.changingWeapons = true;
+            StartCoroutine(DelaySwitch(WeaponSlot.Holster));
+            gun.gun.CalculateWeaponStats();
         }
+    }
+
+    void OnThreeCanceled()
+    {
+
     }
 
     IEnumerator DelaySwitch(WeaponSlot slot)

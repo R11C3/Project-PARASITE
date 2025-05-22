@@ -7,9 +7,9 @@ public class Interact : MonoBehaviour
 {
 
     [SerializeField]
-    private SO_Input _input;
+    private SO_Input input;
     [SerializeField]
-    private PlayerAim _aim;
+    private PlayerAim aim;
     [SerializeField]
     private LayerMask mask;
     [SerializeField]
@@ -17,22 +17,40 @@ public class Interact : MonoBehaviour
 
     private PlayerStats player;
 
-    private Camera _camera;
+    private Camera mainCamera;
 
-    private bool _canInteract = true;
-    private bool _canDrop = true;
+    private bool canInteract = true;
 
     void Awake()
     {
         player = GetComponent<PlayerStats>();
-        _camera = Camera.main;
+        mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
-        InteractInput();
-        DropInput();
+        input.InteractEvent += OnInteract;
+        input.InteractCanceledEvent += OnInteractCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.InteractEvent -= OnInteract;
+        input.InteractCanceledEvent -= OnInteractCanceled;
+    }
+
+    void OnInteract()
+    {
+        if (canInteract)
+        {
+            InteractAction();
+            canInteract = false;
+        }
+    }
+
+    void OnInteractCanceled()
+    {
+        canInteract = true;
     }
 
     bool InRange(Vector3 position)
@@ -47,22 +65,9 @@ public class Interact : MonoBehaviour
         }
     }
 
-    void InteractInput()
-    {
-        if(_input._isInteractPressed && _canInteract)
-        {
-            InteractAction();
-            _canInteract = false;
-        }
-        if(!_input._isInteractPressed)
-        {
-            _canInteract = true;
-        }
-    }
-
     void InteractAction()
     {
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mask))
         {
@@ -79,27 +84,5 @@ public class Interact : MonoBehaviour
                 target.Interact(gameObject);
             }
         }
-    }
-
-    void DropInput()
-    {
-        if(_input._isDropPressed && _canDrop)
-        {
-            DropAction();
-            _canDrop = false;
-        }
-        if(!_input._isDropPressed && !_canDrop)
-        {
-            _canDrop = true;
-        }
-    }
-
-    void DropAction()
-    {
-        // SO_Item item = player.inventory.Get(0);
-        // if(item != null)
-        // {
-        //     player.inventory.DropItem(gameObject, item);
-        // }
     }
 }

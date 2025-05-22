@@ -1034,7 +1034,6 @@ GameObject:
   - component: {fileID: 5697971344168195618}
   - component: {fileID: 7648389221158071315}
   - component: {fileID: 7788661217132101810}
-  - component: {fileID: 2782775683567601179}
   - component: {fileID: 7584459976343944215}
   - component: {fileID: 8660370789467819582}
   - component: {fileID: 3474404575052133563}
@@ -1141,7 +1140,7 @@ MonoBehaviour:
   inHand: 2
   action: 0
   stance: 0
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
   equipmentInventory:
     primary: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
     sling: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
@@ -1171,17 +1170,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d5a2f62744e6743b14f153698650d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
-  player: {fileID: 0}
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
-  _lastMovement: {x: 0, y: 0, z: 0}
-  _currentVelocity: {x: 0, y: 0, z: 0}
-  _currentRotation: {x: 0, y: 0, z: 0, w: 0}
-  _forward: {x: 0, y: 0, z: 0}
-  _right: {x: 0, y: 0, z: 0}
-  _forwardMovement: {x: 0, y: 0, z: 0}
-  _rightMovement: {x: 0, y: 0, z: 0}
-  _initialMovement: {x: 0, y: 0, z: 0}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  speed: 0
+  player: {fileID: 3515050039642512570}
+  isCrouchPressed: 0
+  isSprintPressed: 0
+  lastMovement: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
+  currentRotation: {x: 0, y: 0, z: 0, w: 0}
+  forward: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
+  forwardMovement: {x: 0, y: 0, z: 0}
+  rightMovement: {x: 0, y: 0, z: 0}
+  initialMovement: {x: 0, y: 0, z: 0}
+  currentMovement: {x: 0, y: 0, z: 0}
   dampening: 5
   ladderTop:
     m_Center: {x: 0, y: 0, z: 0}
@@ -1222,7 +1224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783d763f9860c5f4ab856f47a939cc17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  _linearSpeed: 0
 --- !u!114 &7648389221158071315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,20 +1256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 7734437731834019194}
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
---- !u!114 &2782775683567601179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8667823253887843557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51d9fd91ebc8af44891c6c9fb2975281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
 --- !u!114 &7584459976343944215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,8 +1269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e80a14a29ca5594fa6ceeb55c12cdcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
-  _aim: {fileID: 4965131758044466079}
+  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  aim: {fileID: 4965131758044466079}
   mask:
     serializedVersion: 2
     m_Bits: 384

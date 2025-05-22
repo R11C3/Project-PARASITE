@@ -25,21 +25,45 @@ public class CameraController : MonoBehaviour
     public float aimDistance;
     private float baseDistance;
 
+    private bool aimPressed;
+
     // Start is called before the first frame update
     void Start()
     {
         baseDistance = maxDistance;
     }
 
+    void OnEnable()
+    {
+        input.AimEvent += OnAim;
+        input.AimCanceledEvent += OnAimCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.AimEvent -= OnAim;
+        input.AimCanceledEvent -= OnAimCanceled;
+    }
+
+    void OnAim()
+    {
+        aimPressed = true;
+    }
+
+    void OnAimCanceled()
+    {
+        aimPressed = false;
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        if(!input._isAimPressed)
+        if(!aimPressed)
         {
             maxDistance = baseDistance;
             SmoothFollow();
         }
-        if(input._isAimPressed)
+        if(aimPressed)
         {
             maxDistance = baseDistance * aimDistance;
             SmoothAim();

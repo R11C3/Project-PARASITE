@@ -4,23 +4,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public float _speed = 0.0f;
+    [SerializeField]
+    private SO_Input input;
+    public float speed = 0.0f;
 
     [SerializeField]
     private PlayerStats player;
-    [SerializeField]
-    private SO_Input _input;
     private CharacterController characterController;
 
-    private Camera _camera;
+    private Camera mainCamera;
 
+    public bool isCrouchPressed, isSprintPressed;
     [HideInInspector]
-    public Vector3 _lastMovement, _currentVelocity;
+    public Vector3 lastMovement, currentVelocity;
     [HideInInspector]
-    public Quaternion _currentRotation;
+    public Quaternion currentRotation;
     [HideInInspector]
-    public Vector3 _forward, _right, _forwardMovement, _rightMovement, _initialMovement;
+    public Vector3 forward, right, forwardMovement, rightMovement, initialMovement;
+    public Vector3 currentMovement, inputMovement;
 
     [Header("Movement Dampening")]
     public float dampening = 5.0f;
@@ -35,61 +36,72 @@ public class PlayerController : MonoBehaviour
     {
         player = GetComponent<PlayerStats>();
         characterController = GetComponent<CharacterController>();
-        _camera = Camera.main;
+        mainCamera = Camera.main;
 
-        _lastMovement = new Vector3(0.0f, -9.8f, 0.0f);
+        lastMovement = new Vector3(0.0f, -9.8f, 0.0f);
 
-        _camera = Camera.main;
+        mainCamera = Camera.main;
 
-        _forward = _camera.transform.forward;
-        _forward.y = 0;
-        _forward = Vector3.Normalize(_forward);
-        _right = Quaternion.Euler(new Vector3(0, 90, 0)) * _forward;
+        forward = mainCamera.transform.forward;
+        forward.y = 0;
+        forward = Vector3.Normalize(forward);
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
     }
 
-    void HandleMovement()
+    void OnEnable()
     {
-        _rightMovement = _right * _input._currentMovementInput.x;
-        _forwardMovement = _forward * _input._currentMovementInput.y;
-        _initialMovement = Vector3.Normalize(_rightMovement + _forwardMovement);
-        _input._currentMovement = Vector3.Lerp(_input._currentMovement, _initialMovement, dampening);
+        input.MoveEvent += OnMovement;
+        input.SprintEvent += OnSprint;
+        input.SprintCanceledEvent += OnSprintCanceled;
+        input.CrouchEvent += OnCrouch;
+        input.CrouchCanceledEvent += OnCrouchCanceled;
+    }
 
-        if (_input._isMovementPressed && _speed <= player.speed)
+    void OnDisable()
+    {
+        input.MoveEvent -= OnMovement;
+        input.SprintEvent -= OnSprint;
+        input.SprintCanceledEvent -= OnSprintCanceled;
+        input.CrouchEvent -= OnCrouch;
+        input.CrouchCanceledEvent -= OnCrouchCanceled;
+    }
+
+    private void OnMovement(Vector2 inputMovement)
+    {
+        rightMovement = right * inputMovement.x;
+        forwardMovement = forward * inputMovement.y;
+        initialMovement = Vector3.Normalize(rightMovement + forwardMovement);
+        currentMovement = Vector3.Lerp(currentMovement, initialMovement, dampening);
+        this.inputMovement = inputMovement;
+    }
+
+    void OnSprint()
+    {
+        isSprintPressed = true;
+    }
+
+    void OnSprintCanceled()
+    {
+        isSprintPressed = false;
+    }
+
+    void OnCrouch()
+    {
+        isCrouchPressed = true;
+    }
+
+    void OnCrouchCanceled()
+    {
+        isCrouchPressed = false;
+    }
+
+    void Update()
+    {
+        HandleMovement();
+        if (player.action == Action.Ladder)
         {
-            _speed += player.acceleration * Time.deltaTime;
+            HandleLadder();
         }
-
-        if (!_input._isMovementPressed && _speed > 0.0f)
-        {
-            _speed -= player.deceleration * Time.deltaTime;
-        }
-
-        if (_speed < 0.0f)
-        {
-            _speed = 0.0f;
-        }
-
-        if (_speed > player.speed)
-        {
-            _speed -= player.deceleration * Time.deltaTime;
-        }
-
-        if (!_input._isMovementPressed && !_input._isCrouchPressed && !_input._isSprintPressed)
-        {
-            _input._currentMovement = _lastMovement;
-            HandleGravity();
-            characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
-        }
-
-        if (_input._isMovementPressed)
-        {
-            HandleGravity();
-            characterController.Move(new Vector3(_input._currentMovement.x * _speed * Time.deltaTime, _input._currentMovement.y * Time.deltaTime, _input._currentMovement.z * _speed * Time.deltaTime));
-
-            _lastMovement = _input._currentMovement;
-        }
-
-        _currentVelocity = characterController.velocity;
     }
 
     void HandleGravity()
@@ -97,55 +109,80 @@ public class PlayerController : MonoBehaviour
         if (characterController.isGrounded)
         {
             float _groundedGravity = -0.5f;
-            _input._currentMovement.y = _groundedGravity;
+            currentMovement.y = _groundedGravity;
         }
         else
         {
             float _gravity = -9.8f;
-            _input._currentMovement.y = _gravity;
+            currentMovement.y = _gravity;
+        }
+    }
+
+    void HandleMovement()
+    {
+        if (player.action == Action.None)
+        {
+            if ((inputMovement.x != 0 || inputMovement.y != 0) && speed <= player.speed)
+            {
+                speed += player.acceleration * Time.deltaTime;
+            }
+
+            if (inputMovement.x == 0 && inputMovement.y == 0 && speed > 0.0f)
+            {
+                speed -= player.deceleration * Time.deltaTime;
+            }
+
+            if (speed < 0.0f)
+            {
+                speed = 0.0f;
+            }
+
+            if (speed > player.speed)
+            {
+                speed -= player.deceleration * Time.deltaTime;
+            }
+
+            if (inputMovement.x == 0 && inputMovement.y == 0 && !isCrouchPressed && !isSprintPressed)
+            {
+                currentMovement = lastMovement;
+                HandleGravity();
+                characterController.Move(new Vector3(currentMovement.x * speed * Time.deltaTime, currentMovement.y * Time.deltaTime, currentMovement.z * speed * Time.deltaTime));
+            }
+
+            if (inputMovement.x != 0 || inputMovement.y != 0)
+            {
+                HandleGravity();
+                characterController.Move(new Vector3(currentMovement.x * speed * Time.deltaTime, currentMovement.y * Time.deltaTime, currentMovement.z * speed * Time.deltaTime));
+
+                lastMovement = currentMovement;
+            }
+
+            currentVelocity = characterController.velocity;
         }
     }
 
     void HandleLadder()
     {
-        if (_input._currentMovementInput.y > 0.2f && _input._isMovementPressed)
-        {
-            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 1.5f * Time.deltaTime, 0);
-
-            if (ladderTop.Contains(gameObject.transform.position))
+        if (inputMovement.y > 0.2f || inputMovement.y < -0.2f)
             {
-                player.action = Action.None;
-                movement.x = ladderDirection.x * 6f * Time.deltaTime;
-                movement.y = movement.y * 2f;
-                movement.z = ladderDirection.z * 6f * Time.deltaTime;
+                Vector3 movement = new Vector3(0, inputMovement.y * 1.5f * Time.deltaTime, 0);
+
+                if (ladderTop.Contains(transform.position) && inputMovement.y > 0.2f)
+                {
+                    player.action = Action.None;
+                    movement.x = ladderDirection.x * 6f * Time.deltaTime;
+                    movement.y = movement.y * 2f;
+                    movement.z = ladderDirection.z * 6f * Time.deltaTime;
+                }
+
+                if (ladderBottom.Contains(transform.position) && inputMovement.y < -0.2f)
+                {
+                    player.action = Action.None;
+                }
+
+                characterController.Move(movement);
             }
 
-            characterController.Move(movement);            
-        }
-        else if (_input._currentMovementInput.y < 0.2f && _input._isMovementPressed)
-        {
-            Vector3 movement = new Vector3(0, _input._currentMovementInput.y * 1.5f * Time.deltaTime, 0);
-
-            if (ladderBottom.Contains(gameObject.transform.position))
-            {
-                player.action = Action.None;
-            }
-
-            characterController.Move(movement);
-        }
-
-        _speed = _input._currentMovementInput.y * 3f;
-    }
-
-    void Update()
-    {
-        if (player.action == Action.None)
-        {
-            HandleMovement();
-        }
-        if (player.action == Action.Ladder)
-        {
-            HandleLadder();
-        }
+            speed = inputMovement.y * 3f;
     }
 }

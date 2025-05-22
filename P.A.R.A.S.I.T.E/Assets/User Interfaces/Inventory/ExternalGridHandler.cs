@@ -12,6 +12,7 @@ public class ExternalGridHandler : MonoBehaviour
     private PlayerAim mouseAim;
 
     public bool visible;
+    private bool clickPressed;
 
     [SerializeField]
     public SO_Container container;
@@ -45,6 +46,28 @@ public class ExternalGridHandler : MonoBehaviour
         root.visible = false;
     }
 
+    void OnEnable()
+    {
+        input.FireEvent += OnClick;
+        input.FireCanceledEvent += OnClickCanceled;
+    }
+
+    void OnDisable()
+    {
+        input.FireEvent -= OnClick;
+        input.FireCanceledEvent -= OnClickCanceled;
+    }
+
+    void OnClick()
+    {
+        clickPressed = true;
+    }
+
+    void OnClickCanceled()
+    {
+        clickPressed = false;
+    }
+
     void Update()
     {
         root.visible = visible;
@@ -67,8 +90,8 @@ public class ExternalGridHandler : MonoBehaviour
         int width = inventory.dimensions.width;
         int height = inventory.dimensions.height;
 
-        containerHolder.style.maxWidth = slotDimensions.width * width + 5;
-        containerHolder.style.maxHeight = slotDimensions.height * height + 5;
+        containerHolder.style.maxWidth = slotDimensions.width * width + 10;
+        containerHolder.style.maxHeight = slotDimensions.height * height + 10;
 
         for (int i = 0; i < height * width; i++)
         {
@@ -145,8 +168,8 @@ public class ExternalGridHandler : MonoBehaviour
         VisualElement backpackIcon = root.Q<VisualElement>("backpack-icon");
         backpackIcon.style.backgroundImage = backpack.sprite;
 
-        backpackHolder.style.maxWidth = slotDimensions.width * width + 5;
-        backpackHolder.style.maxHeight = slotDimensions.height * height + 5;
+        backpackHolder.style.maxWidth = slotDimensions.width * width + 10;
+        backpackHolder.style.maxHeight = slotDimensions.height * height + 10;
 
         for (int i = 0; i < height * width; i++)
         {
@@ -228,8 +251,8 @@ public class ExternalGridHandler : MonoBehaviour
         VisualElement rigIcon = root.Q<VisualElement>("rig-icon");
         rigIcon.style.backgroundImage = rig.sprite;
 
-        rigHolder.style.maxWidth = slotDimensions.width * width + 5;
-        rigHolder.style.maxHeight = slotDimensions.height * height + 5;
+        rigHolder.style.maxWidth = slotDimensions.width * width + 10;
+        rigHolder.style.maxHeight = slotDimensions.height * height + 10;
 
         for (int i = 0; i < height * width; i++)
         {
@@ -371,7 +394,7 @@ public class ExternalGridHandler : MonoBehaviour
         originalMousePosition = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
         while (isDragging && selected != null)
         {
-            if (!input._isFirePressed)
+            if (!clickPressed)
             {
                 isDragging = false;
             }

@@ -23,25 +23,8 @@ public class SO_Input : ScriptableObject
     private InputAction _inventoryAction;
     private InputAction _dragAction;
 
-    [Header("Current Movement")]
-    public Vector3 _currentMovement;
-    public Vector2 _currentMovementInput;
-
     [Header("Booleans")]
     public bool _isMovementPressed;
-    public bool _isSprintPressed;
-    public bool _isCrouchPressed;
-    public bool _isVaultPressed;
-    public bool _isFirePressed;
-    public bool _isAimPressed;
-    public bool _isFireModePressed;
-    public bool _isReloadPressed;
-    public bool _isOnePressed;
-    public bool _isTwoPressed;
-    public bool _isThreePressed;
-    public bool _isInteractPressed;
-    public bool _isInventoryPressed;
-    public bool _isDragPressed;
 
     public event UnityAction<Vector2> MoveEvent;
     public event UnityAction SprintEvent;
@@ -223,9 +206,20 @@ public class SO_Input : ScriptableObject
         _dropAction.Disable();
     }
 
-    void OnMovementInput (InputAction.CallbackContext context)
+    void OnMovementInput(InputAction.CallbackContext context)
     {
-        MoveEvent?.Invoke(context.ReadValue<Vector2>());
+        if (MoveEvent != null && context.started)
+        {
+            MoveEvent.Invoke(context.ReadValue<Vector2>());
+        }
+        if (MoveEvent != null && context.performed)
+        {
+            MoveEvent.Invoke(context.ReadValue<Vector2>());
+        }
+        if (MoveEvent != null && context.canceled)
+        {
+            MoveEvent.Invoke(context.ReadValue<Vector2>());
+        }
     }
 
     void OnSprintInput (InputAction.CallbackContext context)

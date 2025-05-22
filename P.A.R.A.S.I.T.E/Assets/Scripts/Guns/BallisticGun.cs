@@ -66,14 +66,7 @@ public class BallisticGun : MonoBehaviour
         {
             if (gun.attachments.magazine.currentAmmo > 0)
             {
-                if (gun.currentFireMode == FireMode.Automatic)
-                {
-                    ShootingSystem();
-                }
-                else if (gun.currentFireMode == FireMode.Single && !fireHeld)
-                {
-                    ShootingSystem();
-                }
+                ShootingSystem();
             }
         }
     }
@@ -86,29 +79,39 @@ public class BallisticGun : MonoBehaviour
         }
         else
         {
-            SingleBulletSystem();
+            StartCoroutine(SingleBulletSystem());
         }
     }
 
-    public void SingleBulletSystem()
+    public IEnumerator SingleBulletSystem()
     {
         shootingSystem.transform.position = barrel.GetComponent<Transform>().position;
-        if (lastShootTime + gun.stats.fireSpeed < Time.time)
+        while (fireHeld)
         {
-            canShoot = true;
-        }
-        if (canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
-        {
-            shootingSystem.Play();
-            mainCamera.GetComponent<CameraShake>().Shake();
-            canShoot = false;
+            if (gun.currentFireMode == FireMode.Single)
+            {
+                fireHeld = false;
+            }
+            if (lastShootTime + gun.stats.fireSpeed < Time.time)
+                {
+                    canShoot = true;
+                }
+            if (canShoot && gun.attachments.magazine.currentAmmo > 0 && !stats.reloading && !switching)
+            {
+                shootingSystem.Play();
+                mainCamera.GetComponent<CameraShake>().Shake();
+                canShoot = false;
 
-            Vector3 direction = AccuracyVariation();
+                Vector3 direction = AccuracyVariation();
 
-            StartCoroutine(SpawnProjectile(direction, 50f));
-            lastShootTime = Time.time;
-            gun.attachments.magazine.currentAmmo--;
+                StartCoroutine(SpawnProjectile(direction, 50f));
+                lastShootTime = Time.time;
+                gun.attachments.magazine.currentAmmo--;
+            }
+            yield return null;
         }
+
+        yield return null;
     }
 
     public void MultiBulletSystem()
