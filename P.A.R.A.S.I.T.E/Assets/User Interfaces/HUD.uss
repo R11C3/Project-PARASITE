@@ -28,7 +28,37 @@
 }
 
 .health-bar .unity-progress-bar__progress {
-        background-color: rgb(159, 37, 37);
+    background-color: rgb(159, 37, 37);
+    border-radius: 7.5px;
+}
+
+.health-bar .unity-progress-bar__background {
+    background-color: rgba(159, 37, 37, 0.25);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 7.5px;
+}
+
+.stamina-bar {
+    max-width: none;
+    width: 200px;
+    height: auto;
+    align-self: flex-start;
+    align-items: stretch;
+    margin-top: 10px;
+}
+
+.stamina-bar .unity-progress-bar__progress {
+    background-color: rgb(9, 83, 152);
+    border-radius: 7.5px;
+    height: 12px;
+}
+
+.stamina-bar .unity-progress-bar__background {
+    background-color: rgba(9, 83, 152, 0.25);
+    border-color: rgba(0, 0, 0, 0);
+    border-radius: 7.5px;
+    height: 18px;
+    flex-grow: 0;
 }
 
 .ammo-label {
@@ -91,17 +121,4 @@
     font-size: 25px;
     border-bottom-width: 100px;
     border-left-width: 320px;
-}
-
-.stamina-bar {
-    max-width: none;
-    width: 200px;
-    height: auto;
-    align-self: flex-start;
-    align-items: stretch;
-    margin-top: 10px;
-}
-
-.stamina-bar .unity-progress-bar__progress {
-    background-color: rgb(9, 83, 152);
 }

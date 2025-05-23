@@ -471,7 +471,7 @@ public class InventoryGridHandler : MonoBehaviour
         {
             Vector3 finalPosition = selected.worldBound.position - backpackHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / (slotDimensions.width + 10)), (int)Math.Round(finalPosition.x / (slotDimensions.width + 5)));
 
             if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
@@ -549,7 +549,7 @@ public class InventoryGridHandler : MonoBehaviour
         {
             Vector3 finalPosition = selected.worldBound.position - rigHolder.worldBound.position;
 
-            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width));
+            Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / (slotDimensions.width + 10)), (int)Math.Round(finalPosition.x / (slotDimensions.width + 5)));
 
             if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
