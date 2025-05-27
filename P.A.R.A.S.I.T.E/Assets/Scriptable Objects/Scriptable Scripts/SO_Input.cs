@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "SO_Input", menuName = "Scriptable Objects/Input")]
+[CreateAssetMenu(fileName = "SO_Input", menuName = "Scriptable Objects/Input Schemes/Input")]
 public class SO_Input : ScriptableObject
 {
     [SerializeField]
@@ -21,7 +21,6 @@ public class SO_Input : ScriptableObject
     private InputAction _twoAction;
     private InputAction _threeAction;
     private InputAction _inventoryAction;
-    private InputAction _dragAction;
 
     [Header("Booleans")]
     public bool _isMovementPressed;
@@ -39,7 +38,6 @@ public class SO_Input : ScriptableObject
     public event UnityAction ThreeEvent;
     public event UnityAction InteractEvent;
     public event UnityAction InventoryEvent;
-    public event UnityAction DragEvent;
 
     public event UnityAction SprintCanceledEvent;
     public event UnityAction VaultCanceledEvent;
@@ -53,8 +51,7 @@ public class SO_Input : ScriptableObject
     public event UnityAction ThreeCanceledEvent;
     public event UnityAction InteractCanceledEvent;
     public event UnityAction InventoryCanceledEvent;
-    public event UnityAction DragCanceledEvent;
-    
+
     private InputAction _dropAction;
     public event UnityAction DropEvent;
     public event UnityAction DropCanceledEvent;
@@ -75,7 +72,6 @@ public class SO_Input : ScriptableObject
         _threeAction = _input.FindAction("WeaponSlotThree");
         _interactAction = _input.FindAction("Interact");
         _inventoryAction = _input.FindAction("Inventory");
-        _dragAction = _input.FindAction("ClickDrag");
 
         _moveAction.started += OnMovementInput;
         _moveAction.performed += OnMovementInput;
@@ -117,8 +113,6 @@ public class SO_Input : ScriptableObject
         _inventoryAction.started += OnInventoryInput;
         _inventoryAction.canceled += OnInventoryInput;
 
-        _dragAction.started += OnDragInput;
-        _dragAction.canceled += OnDragInput;
 
         _moveAction.Enable();
         _sprintAction.Enable();
@@ -133,7 +127,6 @@ public class SO_Input : ScriptableObject
         _threeAction.Enable();
         _interactAction.Enable();
         _inventoryAction.Enable();
-        _dragAction.Enable();
 
         _dropAction = _input.FindAction("Drop");
         _dropAction.started += OnDropInput;
@@ -183,9 +176,6 @@ public class SO_Input : ScriptableObject
         _inventoryAction.started -= OnInventoryInput;
         _inventoryAction.canceled -= OnInventoryInput;
 
-        _dragAction.started -= OnDragInput;
-        _dragAction.canceled -= OnDragInput;
-
         _moveAction.Disable();
         _sprintAction.Disable();
         _vaultAction.Disable();
@@ -199,7 +189,6 @@ public class SO_Input : ScriptableObject
         _threeAction.Disable();
         _interactAction.Disable();
         _inventoryAction.Disable();
-        _dragAction.Disable();
 
         _dropAction.started -= OnDropInput;
         _dropAction.canceled -= OnDropInput;
@@ -222,85 +211,85 @@ public class SO_Input : ScriptableObject
         }
     }
 
-    void OnSprintInput (InputAction.CallbackContext context)
+    void OnSprintInput(InputAction.CallbackContext context)
     {
-        if(SprintEvent != null && context.started)
+        if (SprintEvent != null && context.started)
         {
             SprintEvent.Invoke();
         }
-        if(SprintCanceledEvent != null && context.canceled)
+        if (SprintCanceledEvent != null && context.canceled)
         {
             SprintCanceledEvent.Invoke();
         }
     }
 
-    void OnCrouchInput (InputAction.CallbackContext context)
+    void OnCrouchInput(InputAction.CallbackContext context)
     {
-        if(CrouchEvent != null && context.started)
+        if (CrouchEvent != null && context.started)
         {
             CrouchEvent.Invoke();
         }
-        if(CrouchCanceledEvent != null && context.canceled)
+        if (CrouchCanceledEvent != null && context.canceled)
         {
             CrouchCanceledEvent.Invoke();
         }
     }
 
-    void OnVaultInput (InputAction.CallbackContext context)
+    void OnVaultInput(InputAction.CallbackContext context)
     {
-        if(VaultEvent != null && context.started)
+        if (VaultEvent != null && context.started)
         {
             VaultEvent.Invoke();
         }
-        if(VaultCanceledEvent != null && context.canceled)
+        if (VaultCanceledEvent != null && context.canceled)
         {
             VaultCanceledEvent.Invoke();
         }
     }
 
-    void OnFireInput (InputAction.CallbackContext context)
+    void OnFireInput(InputAction.CallbackContext context)
     {
-        if(FireEvent != null && context.started)
+        if (FireEvent != null && context.started)
         {
             FireEvent.Invoke();
         }
-        if(FireCanceledEvent != null && context.canceled)
+        if (FireCanceledEvent != null && context.canceled)
         {
             FireCanceledEvent.Invoke();
         }
     }
 
-    void OnAimInput (InputAction.CallbackContext context)
+    void OnAimInput(InputAction.CallbackContext context)
     {
-        if(AimEvent != null && context.started)
+        if (AimEvent != null && context.started)
         {
             AimEvent.Invoke();
         }
-        if(AimEvent != null && context.canceled)
+        if (AimEvent != null && context.canceled)
         {
             AimCanceledEvent.Invoke();
         }
     }
 
-    void OnFireModeInput (InputAction.CallbackContext context)
+    void OnFireModeInput(InputAction.CallbackContext context)
     {
-        if(FireModeEvent != null && context.started)
+        if (FireModeEvent != null && context.started)
         {
             FireModeEvent.Invoke();
         }
-        if(FireCanceledEvent != null && context.canceled)
+        if (FireCanceledEvent != null && context.canceled)
         {
             FireModeCanceledEvent.Invoke();
         }
     }
 
-    void OnReloadInput (InputAction.CallbackContext context)
+    void OnReloadInput(InputAction.CallbackContext context)
     {
-        if(ReloadEvent != null && context.started)
+        if (ReloadEvent != null && context.started)
         {
             ReloadEvent.Invoke();
         }
-        if(ReloadCanceledEvent != null && context.canceled)
+        if (ReloadCanceledEvent != null && context.canceled)
         {
             ReloadCanceledEvent.Invoke();
         }
@@ -308,11 +297,11 @@ public class SO_Input : ScriptableObject
 
     void OnWeaponSlotOneInput(InputAction.CallbackContext context)
     {
-        if(OneEvent != null && context.started)
+        if (OneEvent != null && context.started)
         {
             OneEvent.Invoke();
         }
-        if(OneCanceledEvent != null && context.canceled)
+        if (OneCanceledEvent != null && context.canceled)
         {
             OneCanceledEvent.Invoke();
         }
@@ -320,11 +309,11 @@ public class SO_Input : ScriptableObject
 
     void OnWeaponSlotTwoInput(InputAction.CallbackContext context)
     {
-        if(TwoEvent != null && context.started)
+        if (TwoEvent != null && context.started)
         {
             TwoEvent.Invoke();
         }
-        if(TwoCanceledEvent != null && context.canceled)
+        if (TwoCanceledEvent != null && context.canceled)
         {
             TwoCanceledEvent.Invoke();
         }
@@ -332,11 +321,11 @@ public class SO_Input : ScriptableObject
 
     void OnWeaponSlotThreeInput(InputAction.CallbackContext context)
     {
-        if(ThreeEvent != null && context.started)
+        if (ThreeEvent != null && context.started)
         {
             ThreeEvent.Invoke();
         }
-        if(ThreeCanceledEvent != null && context.canceled)
+        if (ThreeCanceledEvent != null && context.canceled)
         {
             ThreeCanceledEvent.Invoke();
         }
@@ -344,11 +333,11 @@ public class SO_Input : ScriptableObject
 
     void OnInteractInput(InputAction.CallbackContext context)
     {
-        if(InteractEvent != null && context.started)
+        if (InteractEvent != null && context.started)
         {
             InteractEvent.Invoke();
         }
-        if(InteractEvent != null && context.canceled)
+        if (InteractEvent != null && context.canceled)
         {
             InteractCanceledEvent.Invoke();
         }
@@ -356,11 +345,11 @@ public class SO_Input : ScriptableObject
 
     void OnDropInput(InputAction.CallbackContext context)
     {
-        if(DropEvent != null && context.started)
+        if (DropEvent != null && context.started)
         {
             DropEvent.Invoke();
         }
-        if(DropCanceledEvent != null && context.canceled)
+        if (DropCanceledEvent != null && context.canceled)
         {
             DropCanceledEvent.Invoke();
         }
@@ -368,25 +357,13 @@ public class SO_Input : ScriptableObject
 
     void OnInventoryInput(InputAction.CallbackContext context)
     {
-        if(InventoryEvent != null && context.started)
+        if (InventoryEvent != null && context.started)
         {
             InventoryEvent.Invoke();
         }
-        if(InventoryCanceledEvent != null && context.canceled)
+        if (InventoryCanceledEvent != null && context.canceled)
         {
             InventoryCanceledEvent.Invoke();
-        }
-    }
-
-    void OnDragInput(InputAction.CallbackContext context)
-    {
-        if(DragEvent != null && context.started)
-        {
-            DragEvent.Invoke();
-        }
-        if(DragCanceledEvent != null && context.canceled)
-        {
-            DragCanceledEvent.Invoke();
         }
     }
 }

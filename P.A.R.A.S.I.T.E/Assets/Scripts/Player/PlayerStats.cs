@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Dynamic;
-using NUnit.Framework.Constraints;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerStats : MobStats
 {
-    [SerializeField]
     [Header("Input SO")]
+    [SerializeField]
     private SO_Input input;
+    [SerializeField]
+    private SO_InventoryInput inventoryInput;
     private PlayerShoot playerShoot;
 
     [Header("Equipment Inventory")]
@@ -26,9 +25,6 @@ public class PlayerStats : MobStats
     public bool reloading = false;
     public bool canToggle = true;
     public bool canSprint = true;
-
-    [HideInInspector]
-    private bool isWalking, isSprinting, isCrouching, isAiming;
 
     private Vector2 inputMovement;
 
@@ -52,10 +48,11 @@ public class PlayerStats : MobStats
         input.AimEvent += OnAim;
         input.AimCanceledEvent += OnAimCanceled;
         input.ReloadEvent += OnReload;
-        input.FireEvent += OnFire;
-        input.DragEvent += OnDrag;
         input.InventoryEvent += OnInventory;
         input.InventoryCanceledEvent += OnInventoryCanceled;
+
+        inventoryInput.PrimaryClickEvent += OnPrimaryClick;
+        inventoryInput.PrimaryDragEvent += OnPrimaryDrag;
     }
 
     void OnDisable()
@@ -68,10 +65,11 @@ public class PlayerStats : MobStats
         input.AimEvent -= OnAim;
         input.AimCanceledEvent -= OnAimCanceled;
         input.ReloadEvent -= OnReload;
-        input.FireEvent -= OnFire;
-        input.DragEvent -= OnDrag;
         input.InventoryEvent -= OnInventory;
         input.InventoryCanceledEvent -= OnInventoryCanceled;
+
+        inventoryInput.PrimaryClickEvent -= OnPrimaryClick;
+        inventoryInput.PrimaryDragEvent -= OnPrimaryDrag;
     }
 
     void OnMovement(Vector2 input)
@@ -119,7 +117,7 @@ public class PlayerStats : MobStats
         }
     }
 
-    void OnFire()
+    void OnPrimaryClick()
     {
         if (action == Action.Inventory)
         {
@@ -131,7 +129,7 @@ public class PlayerStats : MobStats
         }
     }
 
-    void OnDrag()
+    void OnPrimaryDrag()
     {
         if (action == Action.Inventory)
         {

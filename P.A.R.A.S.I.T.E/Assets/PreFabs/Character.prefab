@@ -1141,6 +1141,7 @@ MonoBehaviour:
   action: 0
   stance: 0
   input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
+  inventoryInput: {fileID: 11400000, guid: 8aa52e0bac3ca4e4aae9815819f9d18e, type: 2}
   equipmentInventory:
     primary: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
     sling: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
@@ -1184,6 +1185,7 @@ MonoBehaviour:
   rightMovement: {x: 0, y: 0, z: 0}
   initialMovement: {x: 0, y: 0, z: 0}
   currentMovement: {x: 0, y: 0, z: 0}
+  inputMovement: {x: 0, y: 0, z: 0}
   dampening: 5
   ladderTop:
     m_Center: {x: 0, y: 0, z: 0}
