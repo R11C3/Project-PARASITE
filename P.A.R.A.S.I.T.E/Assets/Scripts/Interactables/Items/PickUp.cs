@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickUp : Interactable
 {
     [SerializeField]
-    private SO_Item itemData;
+    public SO_Item itemData;
 
     private SO_Item item;
 
