@@ -32,6 +32,7 @@ public class InventoryGridHandler : MonoBehaviour
     private VisualElement primaryHolder;
     private VisualElement slingHolder;
     private VisualElement holsterHolder;
+    private VisualElement dropArea;
 
     private VisualElement itemImageHolder;
     private VisualElement itemStatsHolder;
@@ -58,6 +59,7 @@ public class InventoryGridHandler : MonoBehaviour
         itemImageHolder = root.Q<VisualElement>("item-image");
         itemStatsHolder = root.Q<VisualElement>("item-stats");
         itemDescriptionLabel = root.Q<Label>("item-description-label");
+        dropArea = root.Q<VisualElement>("drop-space");
         inventoryHealth = root.Q<Label>("health");
         ConfigureSlotDimensions();
         root.visible = false;
@@ -353,6 +355,8 @@ public class InventoryGridHandler : MonoBehaviour
     private Rect slingBounds;
     private Rect holsterBounds;
 
+    private Rect dropBounds;
+
     public Vector2 layout;
 
     private SO_Item item;
@@ -455,6 +459,8 @@ public class InventoryGridHandler : MonoBehaviour
             backpackBounds = backpackHolder.worldBound;
             rigBounds = rigHolder.worldBound;
 
+            dropBounds = dropArea.worldBound;
+
             yield return null;
         }
         isDragging = false;
@@ -466,6 +472,8 @@ public class InventoryGridHandler : MonoBehaviour
         primaryBounds = primaryHolder.worldBound;
         slingBounds = slingHolder.worldBound;
         holsterBounds = holsterHolder.worldBound;
+
+        dropBounds = dropArea.worldBound;
 
         if (backpackBounds.Contains(selected.worldBound.center))
         {
@@ -677,6 +685,20 @@ public class InventoryGridHandler : MonoBehaviour
             {
                 selected.transform.position = originalPosition;
             }
+        }
+        else if (dropBounds.Contains(selected.worldBound.center) && item.obj != null)
+        {
+            Debug.Log(item.obj);
+            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
+            if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
+            if (selection == Selection.Holster) stats.equipmentInventory.holster = null;
+
+            if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+            if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+
+            stats.DropItem(item);
         }
         else
         {

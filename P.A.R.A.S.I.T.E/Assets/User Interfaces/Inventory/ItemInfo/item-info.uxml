@@ -1,12 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/User%20Interfaces/Inventory/Inventory.uss?fileID=7433441132597879392&amp;guid=273a1a6967d6d3143ae6a594cf92fad3&amp;type=3#Inventory" />
-    <ui:VisualElement name="item-info" class="inventory" style="flex-grow: 1; max-width: 330px; width: auto;">
-        <ui:VisualElement name="item-image-holder" style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; max-width: 300px; width: 300px; height: 300px; max-height: 300px;">
-            <ui:VisualElement name="item-image" class="visual-icon" style="flex-grow: 1;" />
+    <ui:VisualElement name="container" style="flex-grow: 1;">
+        <ui:VisualElement name="item-info" class="inventory" style="flex-grow: 1; max-width: 330px; width: auto; margin-right: 0;">
+            <ui:VisualElement name="item-image-holder" style="flex-grow: 1; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; max-width: 300px; width: 300px; height: 300px; max-height: 300px;">
+                <ui:VisualElement name="item-image" class="visual-icon" style="flex-grow: 1;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="item-stats" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 150px; max-height: 150px;" />
+            <ui:VisualElement name="item-description" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+                <ui:Label name="item-description-label" class="item-description-label" style="white-space: normal;" />
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="item-stats" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; height: 150px; max-height: 150px;" />
-        <ui:VisualElement name="item-description" style="flex-grow: 1; max-width: 315px; width: 315px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
-            <ui:Label name="item-description-label" class="item-description-label" style="white-space: normal;" />
+        <ui:VisualElement name="context-options" style="flex-grow: 1; max-width: 330px; width: 330px;">
+            <ui:VisualElement name="drop-space" class="drop-space" style="flex-grow: 1;">
+                <ui:Label text="Drop" name="drop-label" class="context-label" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -10,7 +10,6 @@ public class PickUp : Interactable
     public void Start()
     {
         item = Instantiate(itemData);
-        item.obj = gameObject;
     }
 
     public override void Interact(GameObject source)
@@ -21,6 +20,6 @@ public class PickUp : Interactable
 
         bool success = playerStats.equipmentInventory.AddItem(playerStats, item);
 
-        if(success) gameObject.SetActive(false);
+        if(success) Destroy(transform.gameObject);
     }
 }

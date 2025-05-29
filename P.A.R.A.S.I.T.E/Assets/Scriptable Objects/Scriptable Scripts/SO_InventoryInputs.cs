@@ -16,6 +16,8 @@ public class SO_InventoryInput : ScriptableObject
     public event UnityAction SecondaryClickEvent;
     public event UnityAction PrimaryDragEvent;
 
+    public event UnityAction PrimaryDragPerformedEvent;
+
     public event UnityAction PrimaryClickCanceledEvent;
     public event UnityAction SecondaryClickCanceledEvent;
     public event UnityAction PrimaryDragCanceledEvent;
@@ -33,6 +35,7 @@ public class SO_InventoryInput : ScriptableObject
         secondaryClick.canceled += OnSecondaryClick;
 
         primaryDrag.started += OnPrimaryDrag;
+        primaryDrag.performed += OnPrimaryDrag;
         primaryDrag.canceled += OnPrimaryDrag;
 
         primaryClick.Enable();
@@ -49,6 +52,7 @@ public class SO_InventoryInput : ScriptableObject
         secondaryClick.canceled -= OnSecondaryClick;
 
         primaryDrag.started -= OnPrimaryDrag;
+        primaryDrag.performed -= OnPrimaryDrag;
         primaryDrag.canceled -= OnPrimaryDrag;
 
         primaryClick.Disable();
@@ -86,9 +90,13 @@ public class SO_InventoryInput : ScriptableObject
         {
             PrimaryDragEvent.Invoke();
         }
-        if (PrimaryDragCanceledEvent != null && context.canceled)
+        if (PrimaryDragPerformedEvent != null && context.performed)
         {
-            PrimaryDragCanceledEvent.Invoke();
+            PrimaryDragPerformedEvent.Invoke();
         }
+        if (PrimaryDragCanceledEvent != null && context.canceled)
+            {
+                PrimaryDragCanceledEvent.Invoke();
+            }
     }
 }

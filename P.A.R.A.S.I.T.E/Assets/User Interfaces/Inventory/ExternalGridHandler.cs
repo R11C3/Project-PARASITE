@@ -26,6 +26,8 @@ public class ExternalGridHandler : MonoBehaviour
     private VisualElement rigHolder;
     private VisualElement containerHolder;
 
+    private VisualElement dropArea;
+
     private VisualElement itemImageHolder;
     private VisualElement itemStatsHolder;
     private Label itemDescriptionLabel;
@@ -42,6 +44,7 @@ public class ExternalGridHandler : MonoBehaviour
         containerHolder = root.Q<VisualElement>("container-items");
         itemImageHolder = root.Q<VisualElement>("item-image");
         itemStatsHolder = root.Q<VisualElement>("item-stats");
+        dropArea = root.Q<VisualElement>("drop-space");
         itemDescriptionLabel = root.Q<Label>("item-description-label");
         root.visible = false;
     }
@@ -333,6 +336,8 @@ public class ExternalGridHandler : MonoBehaviour
     private Rect backpackBounds;
     private Rect rigBounds;
 
+    private Rect dropBounds;
+
     public Vector2 layout;
 
     private SO_Item item;
@@ -409,6 +414,8 @@ public class ExternalGridHandler : MonoBehaviour
 
             containerBounds = containerHolder.worldBound;
 
+            dropBounds = dropArea.worldBound;
+
             yield return null;
         }
         isDragging = false;
@@ -418,6 +425,8 @@ public class ExternalGridHandler : MonoBehaviour
         containerBounds = containerHolder.worldBound;
         backpackBounds = backpackHolder.worldBound;
         rigBounds = rigHolder.worldBound;
+
+        dropBounds = dropArea.worldBound;
 
         if (containerBounds.Contains(selected.worldBound.center))
         {
@@ -643,6 +652,19 @@ public class ExternalGridHandler : MonoBehaviour
                     }
                 }
             }
+        }
+        else if (dropBounds.Contains(selected.worldBound.center) && item.obj != null)
+        {
+            Debug.Log(item.obj);
+            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Container) container.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+
+            if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+            if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
+            if (selection == Selection.Container) container.inventory.itemList.Remove(item);
+
+            stats.DropItem(item);
         }
         else
         {

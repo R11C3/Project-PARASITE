@@ -26,6 +26,8 @@ public class PlayerStats : MobStats
     public bool canToggle = true;
     public bool canSprint = true;
 
+    private bool isDragging = false;
+
     private Vector2 inputMovement;
 
     void Start()
@@ -53,6 +55,8 @@ public class PlayerStats : MobStats
 
         inventoryInput.PrimaryClickEvent += OnPrimaryClick;
         inventoryInput.PrimaryDragEvent += OnPrimaryDrag;
+        inventoryInput.PrimaryDragPerformedEvent += OnPrimaryDrag;
+        inventoryInput.PrimaryDragCanceledEvent += OnPrimaryDragCanceled;
     }
 
     void OnDisable()
@@ -70,6 +74,7 @@ public class PlayerStats : MobStats
 
         inventoryInput.PrimaryClickEvent -= OnPrimaryClick;
         inventoryInput.PrimaryDragEvent -= OnPrimaryDrag;
+        inventoryInput.PrimaryDragPerformedEvent -= OnPrimaryDrag;
     }
 
     void OnMovement(Vector2 input)
@@ -131,14 +136,12 @@ public class PlayerStats : MobStats
 
     void OnPrimaryDrag()
     {
-        if (action == Action.Inventory)
-        {
-            gridHandler.SelectItem();
-        }
-        if (action == Action.Looting)
-        {
-            externalGridHandler.SelectItem();
-        }
+        isDragging = true;
+    }
+
+    void OnPrimaryDragCanceled()
+    {
+        isDragging = false;
     }
 
     void OnInventory()
@@ -157,6 +160,15 @@ public class PlayerStats : MobStats
         UpdateBodyVisuals();
 
         Stamina();
+
+        if (action == Action.Inventory && isDragging)
+        {
+            gridHandler.SelectItem();
+        }
+        if (action == Action.Looting && isDragging)
+        {
+            externalGridHandler.SelectItem();
+        }
     }
 
     protected override void Load()
@@ -342,5 +354,13 @@ public class PlayerStats : MobStats
             equipmentInventory.EquippedGun().attachments.magazine.currentAmmo++;
         }
         reloading = false;
+    }
+
+    public void DropItem(SO_Item item)
+    {
+        Vector3 placement = transform.position + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+        GameObject droppedItem = GameObject.Instantiate(item.obj, placement, Quaternion.identity);
+
+        droppedItem.GetComponent<PickUp>().itemData = item;
     }
 }

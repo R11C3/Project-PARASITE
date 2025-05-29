@@ -20,7 +20,7 @@
         <ui:VisualElement name="body" class="body" style="flex-grow: 1; flex-direction: row;">
             <ui:Instance template="playerEquipment" name="playerEquipment" class="inventory-outer" style="max-width: 700px;" />
             <ui:Instance template="playerInventoryItems" name="playerInventoryItems" class="inventory-outer" style="max-width: 750px; flex-grow: 1; flex-shrink: 1; max-height: none; height: auto;" />
-            <ui:Instance template="item-info" name="item-info" class="inventory-outer" style="flex-grow: 0; height: auto; opacity: 1; background-size: 100% 100%;" />
+            <ui:Instance template="item-info" name="item-info" class="inventory-outer" style="flex-grow: 0; height: auto; opacity: 1; background-size: 100% 100%; margin-right: 0;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
