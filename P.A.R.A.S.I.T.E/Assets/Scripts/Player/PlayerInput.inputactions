@@ -15,33 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "PrimaryDrag",
-                    "type": "Button",
-                    "id": "cdd42cf6-beb3-4e33-918f-7ef9a3a9ced0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SecondaryClick",
-                    "type": "Button",
-                    "id": "38c8fd39-fbdd-4c3b-8f90-1be0c2e965a5",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "PrimaryClick",
-                    "type": "Button",
-                    "id": "bb47d377-634e-496a-97b8-cfd68df2237e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Vault",
                     "type": "Button",
                     "id": "62c85fa1-4667-4c73-bc1d-9c33ceca0bd1",
@@ -225,39 +198,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "e148cfd6-130d-4c0b-8033-fcc4da5384ca",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryDrag",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "904a9f03-a79c-417f-896a-d13ceaf56e6c",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SecondaryClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "27f10663-f984-472b-b6a8-6847cb6d50a4",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PrimaryClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -618,6 +558,74 @@
                     "processors": "",
                     "groups": "",
                     "action": "Tracked Device Orientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InventoryControls",
+            "id": "222a78b2-a092-4242-bfde-0a7150ac14da",
+            "actions": [
+                {
+                    "name": "PrimaryDrag",
+                    "type": "Button",
+                    "id": "f05835e8-cf0c-47a9-83ad-2c3f129c9541",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PrimaryClick",
+                    "type": "Button",
+                    "id": "c30c6c85-77ae-4194-a734-03dfdab5c610",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryClick",
+                    "type": "Button",
+                    "id": "9c844a94-1df2-4225-9ace-c1ce0e8a0811",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5272e5d2-1f1d-4449-8e44-d6f3e7675aab",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryDrag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f37d9e96-681f-452d-8ae1-b7e303f89f7a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "240dea73-ce55-479a-90c1-39492fc61983",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
