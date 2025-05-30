@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class ItemHoverText : MonoBehaviour
 {
@@ -31,7 +32,7 @@ public class ItemHoverText : MonoBehaviour
     {
         if (hoverText != null)
         {
-            hoverText.text = "";
+            hoverText.text = " ";
         }
     }
 }

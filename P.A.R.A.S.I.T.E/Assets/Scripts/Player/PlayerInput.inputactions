@@ -593,6 +593,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "QuickDrop",
+                    "type": "Button",
+                    "id": "73b6b58c-5560-4488-96a0-5caf96d641ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -626,6 +635,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SecondaryClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "95fcf879-0fda-46cc-9cee-4f6c69b3c82e",
+                    "path": "<Keyboard>/delete",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuickDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

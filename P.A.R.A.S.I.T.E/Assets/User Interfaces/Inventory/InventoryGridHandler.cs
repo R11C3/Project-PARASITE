@@ -688,7 +688,6 @@ public class InventoryGridHandler : MonoBehaviour
         }
         else if (dropBounds.Contains(selected.worldBound.center) && item.obj != null)
         {
-            Debug.Log(item.obj);
             if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
@@ -787,6 +786,90 @@ public class InventoryGridHandler : MonoBehaviour
                 Debug.Log("No pick");
             }
         }
+    }
+
+    public void QuickDrop()
+    {
+        SO_Item dropItem = null;
+
+        Selection dropSelection;
+
+        backpackBounds = backpackHolder.worldBound;
+        rigBounds = rigHolder.worldBound;
+        primaryBounds = primaryHolder.worldBound;
+        slingBounds = slingHolder.worldBound;
+        holsterBounds = holsterHolder.worldBound;
+
+        Vector2 mousePosition = Input.mousePosition;
+        mousePosition.y = Screen.height - mousePosition.y;
+
+        IPanel panel = root.panel;
+        Vector2 position = RuntimePanelUtils.ScreenToPanel(panel, mousePosition);
+
+        selected = panel.Pick(position);
+
+        if (backpackBounds.Contains(position))
+            dropSelection = Selection.Backpack;
+        else if (rigBounds.Contains(position))
+            dropSelection = Selection.Rig;
+        else if (primaryBounds.Contains(position))
+            dropSelection = Selection.Primary;
+        else if (slingBounds.Contains(position))
+            dropSelection = Selection.Sling;
+        else if (holsterBounds.Contains(position))
+            dropSelection = Selection.Holster;
+        else
+            dropSelection = Selection.None;
+
+        if (selected != null && selected.name.Equals("visualIcon"))
+        {
+            selected = selected.parent;
+        }
+
+        if (selected != null && selected.name.Equals("visualIconContainer"))
+        {
+            if (dropSelection == Selection.Backpack)
+                dropItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
+            else if (dropSelection == Selection.Rig)
+                dropItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
+            else if (dropSelection == Selection.Primary && stats.equipmentInventory.primary != null)
+            {
+                item = stats.equipmentInventory.primary;
+            }
+            else if (dropSelection == Selection.Sling && stats.equipmentInventory.sling != null)
+            {
+                dropItem = stats.equipmentInventory.sling;
+            }
+            else if (dropSelection == Selection.Holster && stats.equipmentInventory.holster != null)
+            {
+                dropItem = stats.equipmentInventory.holster;
+            }
+        }
+        else
+        {
+            Debug.Log("No pick");
+        }
+
+        if (dropItem != null)
+        {
+            if (dropItem.obj != null)
+            {
+                if (dropSelection == Selection.Backpack) backpack.inventories.AddToGrid(dropItem.location.height, dropItem.location.width, dropItem.dimensions.width, dropItem.dimensions.height, null);
+                if (dropSelection == Selection.Rig) rig.inventories.AddToGrid(dropItem.location.height, dropItem.location.width, dropItem.dimensions.width, dropItem.dimensions.height, null);
+                if (dropSelection == Selection.Primary) stats.equipmentInventory.primary = null;
+                if (dropSelection == Selection.Sling) stats.equipmentInventory.sling = null;
+                if (dropSelection == Selection.Holster) stats.equipmentInventory.holster = null;
+
+                if (dropSelection == Selection.Backpack) backpack.inventories.itemList.Remove(dropItem);
+                if (dropSelection == Selection.Rig) rig.inventories.itemList.Remove(dropItem);
+
+                stats.DropItem(dropItem);
+            }
+        }
+
+        if (stats.equipmentInventory.backpack != null) LoadBackpackInventoryItems();
+        if (stats.equipmentInventory.rig != null) LoadRigInventoryItems();
+        LoadWeaponImages();
     }
 
     public void LoadItemStats()

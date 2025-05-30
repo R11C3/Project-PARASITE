@@ -57,6 +57,7 @@ public class PlayerStats : MobStats
         inventoryInput.PrimaryDragEvent += OnPrimaryDrag;
         inventoryInput.PrimaryDragPerformedEvent += OnPrimaryDrag;
         inventoryInput.PrimaryDragCanceledEvent += OnPrimaryDragCanceled;
+        inventoryInput.quickDropEvent += OnQuickDrop;
     }
 
     void OnDisable()
@@ -75,6 +76,7 @@ public class PlayerStats : MobStats
         inventoryInput.PrimaryClickEvent -= OnPrimaryClick;
         inventoryInput.PrimaryDragEvent -= OnPrimaryDrag;
         inventoryInput.PrimaryDragPerformedEvent -= OnPrimaryDrag;
+        inventoryInput.quickDropEvent -= OnQuickDrop;
     }
 
     void OnMovement(Vector2 input)
@@ -142,6 +144,18 @@ public class PlayerStats : MobStats
     void OnPrimaryDragCanceled()
     {
         isDragging = false;
+    }
+
+    void OnQuickDrop()
+    {
+        if (action == Action.Inventory)
+        {
+            gridHandler.QuickDrop();
+        }
+        if (action == Action.Looting)
+        {
+            externalGridHandler.QuickDrop();
+        }
     }
 
     void OnInventory()

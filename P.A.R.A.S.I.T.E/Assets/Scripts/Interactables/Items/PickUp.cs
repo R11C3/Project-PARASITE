@@ -20,6 +20,10 @@ public class PickUp : Interactable
 
         bool success = playerStats.equipmentInventory.AddItem(playerStats, item);
 
-        if(success) Destroy(transform.gameObject);
+        if(success)
+        {
+            gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(gameObject);
+        }
     }
 }

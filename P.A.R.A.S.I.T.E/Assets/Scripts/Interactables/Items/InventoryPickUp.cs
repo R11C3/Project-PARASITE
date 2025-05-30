@@ -12,7 +12,6 @@ public class InventoryPickUp : Interactable
         item = Instantiate(itemData);
         item.InitializeInventories();
         item.InitializePhysical();
-        item.obj = gameObject;
     }
 
     public override void Interact(GameObject source)
@@ -23,6 +22,10 @@ public class InventoryPickUp : Interactable
 
         bool success = playerStats.equipmentInventory.AddItem(playerStats, item);
 
-        if(success) gameObject.SetActive(false);
+        if(success)
+        {
+            gameObject.GetComponent<Collider>().enabled = false;
+            Destroy(gameObject);
+        }
     }
 }
