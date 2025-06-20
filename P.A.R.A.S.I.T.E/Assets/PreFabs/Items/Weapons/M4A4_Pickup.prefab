@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3739111295575286500}
   - component: {fileID: 3513090172279955995}
   - component: {fileID: 3028982539831423349}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: M4A4_Pickup
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

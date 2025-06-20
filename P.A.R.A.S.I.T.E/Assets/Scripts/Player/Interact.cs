@@ -71,7 +71,7 @@ public class Interact : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, mask))
         {
-            if(InRange(hit.point))
+            if(InRange(hit.point) && hit.transform.gameObject.CompareTag("Interactable"))
             {
                 Interactable target;
                 GameObject hitObject = hit.transform.gameObject;

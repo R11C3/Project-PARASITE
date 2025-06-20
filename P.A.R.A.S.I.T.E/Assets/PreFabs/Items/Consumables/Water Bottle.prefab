@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8081786864863932745}
   - component: {fileID: 8081680583363854246}
   - component: {fileID: 2793314607369253050}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Water Bottle
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 023bbc47756f41a4ea2d2e969edc4495,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

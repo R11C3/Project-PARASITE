@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4317154791022842753}
   - component: {fileID: 2636406528292041122}
   - component: {fileID: 2102041229508537763}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 2681998962863902181}
   - component: {fileID: 5258823862697912946}
   - component: {fileID: 3987279116952902929}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Test Rig
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2011440487465022380}
   - component: {fileID: 8152784737652621350}
   - component: {fileID: 6907103704412201562}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Range Target
-  m_TagString: Untagged
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,10 @@ MonoBehaviour:
   crouchMult: 0
   acceleration: 0
   deceleration: 0
+  maxStamina: 0
+  currentStamina: 0
+  staminaRegen: 0
+  staminaDegen: 0
   inHand: 0
   action: 0
   stance: 0

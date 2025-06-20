@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7503878987684606828}
   - component: {fileID: 5787989324311918078}
   - component: {fileID: -1115223573801802865}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Gauze Item
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,7 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab8387878f1f2f4a9526e714871ac46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverText: {fileID: 0}
 --- !u!1001 &5275987428270975245
 PrefabInstance:
   m_ObjectHideFlags: 0

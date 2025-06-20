@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 8002509711204692656}
   - component: {fileID: 4163436927823738182}
   - component: {fileID: 6177905802448205068}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Test Backpack Pickup
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

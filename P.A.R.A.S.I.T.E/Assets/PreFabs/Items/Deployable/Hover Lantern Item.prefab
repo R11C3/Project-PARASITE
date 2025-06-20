@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 33417762836022645}
   - component: {fileID: 3271426902033746051}
   - component: {fileID: 4708550474477835032}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hover Lantern Item
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

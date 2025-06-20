@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5786725268599042169}
   - component: {fileID: 3862648976310804630}
   - component: {fileID: 8754339742141977202}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 10521161837938938}
   m_Layer: 0
   m_Name: Left Sliding Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

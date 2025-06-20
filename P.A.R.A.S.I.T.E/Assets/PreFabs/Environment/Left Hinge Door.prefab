@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1858932952727929321}
   - component: {fileID: 7082166532478040358}
   - component: {fileID: 4844085961314907523}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 7709405306664300969}
   m_Layer: 0
   m_Name: Left Hinge Door
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,11 +156,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open: 0
   door: {fileID: 1242928777530871636}
-  doorCollider: {fileID: 0}
   hinge: {fileID: 7821586174109210065}
   openAngle: 90
   closeAngle: -90
-  speed: 0.5
+  time: 0.25
 --- !u!1 &7821586174109210065
 GameObject:
   m_ObjectHideFlags: 0

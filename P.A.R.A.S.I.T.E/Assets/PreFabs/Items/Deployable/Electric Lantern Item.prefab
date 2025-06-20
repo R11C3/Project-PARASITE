@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6576947823163537415}
   - component: {fileID: 1362016811169794374}
   - component: {fileID: 518531886997991591}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Electric Lantern Item
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 6 && !other.gameObject.tag.Equals(source))
+        if (other.gameObject.CompareTag("Damageable") && !other.gameObject.tag.Equals(source))
         {
             MobStats target;
             other.gameObject.TryGetComponent<MobStats>(out target);

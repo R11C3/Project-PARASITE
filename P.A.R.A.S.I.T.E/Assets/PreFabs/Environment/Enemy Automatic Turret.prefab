@@ -100,9 +100,9 @@ GameObject:
   - component: {fileID: -5524770601494603084}
   - component: {fileID: 4597343731909124867}
   - component: {fileID: 8271729588562745191}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Enemy Automatic Turret
-  m_TagString: Hostile
+  m_TagString: Damageable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +144,9 @@ MonoBehaviour:
   impactParticle: {fileID: 0}
   sightDistance: 20
   target: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-5524770601494603084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,11 +351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1992675705445476, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_Layer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300533007854612, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
       propertyPath: m_LocalScale.x
