@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3739111295575286500}
   - component: {fileID: 3513090172279955995}
   - component: {fileID: 3028982539831423349}
-  m_Layer: 0
+  - component: {fileID: -188468717140579088}
+  m_Layer: 9
   m_Name: M4A4_Pickup
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -68,6 +69,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
+--- !u!54 &-188468717140579088
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2301754777053037087}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7313225752677123037
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +107,7 @@ GameObject:
   - component: {fileID: 5528265392112586862}
   - component: {fileID: 243907101072945773}
   - component: {fileID: 6616755682509761672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: M4_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

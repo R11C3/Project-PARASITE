@@ -7,9 +7,12 @@ public class PickUp : Interactable
 
     private SO_Item item;
 
+    private ItemHoverText hoverText;
+
     public void Start()
     {
         item = Instantiate(itemData);
+        TryGetComponent<ItemHoverText>(out hoverText);
     }
 
     public override void Interact(GameObject source)
@@ -20,6 +23,15 @@ public class PickUp : Interactable
 
         bool success = playerStats.equipmentInventory.AddItem(playerStats, item);
 
-        if(success) Destroy(transform.gameObject);
+        var hitbox = GetComponent<Collider>();
+
+        hitbox.enabled = false;
+
+        if (hoverText != null)
+        {
+            hoverText.hoverText.text = " ";
+        }
+
+        if (success) Destroy(transform.gameObject);
     }
 }

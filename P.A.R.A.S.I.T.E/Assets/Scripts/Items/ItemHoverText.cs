@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ItemHoverText : MonoBehaviour
 {
-    private TextMeshProUGUI hoverText;
+    public TextMeshProUGUI hoverText;
     private SO_Item item;
     private string itemName;
 
@@ -31,7 +31,7 @@ public class ItemHoverText : MonoBehaviour
     {
         if (hoverText != null)
         {
-            hoverText.text = "";
+            hoverText.text = " ";
         }
     }
 }

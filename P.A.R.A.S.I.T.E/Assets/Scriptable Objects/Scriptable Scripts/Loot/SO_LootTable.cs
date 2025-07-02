@@ -16,13 +16,18 @@ public class SO_LootTable : ScriptableObject
 
     public void GenerateTable()
     {
-        foreach(SpawnChance obj in lootTable)
+        foreach (SpawnChance obj in lootTable)
         {
-            for(int i = 0; i < obj.chance; i++)
+            for (int i = 0; i < obj.chance; i++)
             {
                 table.Add(obj.item);
             }
         }
+    }
+
+    public SO_Item GetRandomItem()
+    {
+        return Instantiate(table[UnityEngine.Random.Range(0, table.Count)]);
     }
 
     [Serializable]

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: M4A4
   type: 1
   description: 'pew '
-  obj: {fileID: 0}
+  obj: {fileID: 2301754777053037087, guid: c10c78b93e79d1944911cc87a4ebcd70, type: 3}
   sprite: {fileID: -1087164816274819069, guid: 9ed8cac6d6f48264ba9b9c168404f884, type: 3}
   dimensions:
     height: 2

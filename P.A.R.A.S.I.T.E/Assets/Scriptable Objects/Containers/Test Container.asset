@@ -12,11 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0f760b6be72b54187d77dec5caf75a, type: 3}
   m_Name: Test Container
   m_EditorClassIdentifier: 
-  dimensions:
-    height: 5
-    width: 5
-  inventory:
-    itemList: []
-    dimensions:
-      height: 0
-      width: 0
+  size: 9

@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 6675667543888209060}
   - component: {fileID: 8809476790480488271}
   - component: {fileID: 1737450047854548159}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Test Container
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,4 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   containerData: {fileID: 11400000, guid: 8a99cecffea32894f9626c9f8fd69615, type: 2}
   lootTableData: {fileID: 11400000, guid: 69c4fbad1e32e1a468c5fb0208b5a04d, type: 2}
+  inventory:
+    itemList: []
+    size: 1
   stats: {fileID: 0}
+  looted: 0

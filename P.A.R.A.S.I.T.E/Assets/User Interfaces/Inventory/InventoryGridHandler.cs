@@ -38,9 +38,6 @@ public class InventoryGridHandler : MonoBehaviour
     private VisualElement itemStatsHolder;
     private Label itemDescriptionLabel;
 
-    public VisualElement containerHolder;
-    public SO_Container container;
-
     private Dimensions slotDimensions;
 
     private Label inventoryHealth;

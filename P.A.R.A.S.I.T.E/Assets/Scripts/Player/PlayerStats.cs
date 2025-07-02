@@ -15,7 +15,6 @@ public class PlayerStats : MobStats
     [Header("UI's")]
     public InventoryGridHandler gridHandler;
     public HUDController playerUI;
-    public ExternalGridHandler externalGridHandler;
     [Header("GameObjects for Backpack/Rig")]
     public GameObject rig;
     public GameObject backpack;
@@ -35,7 +34,6 @@ public class PlayerStats : MobStats
         Load();
         playerUI.visible = true;
         gridHandler.visible = false;
-        externalGridHandler.visible = false;
         canToggle = true;
         playerShoot = GetComponent<PlayerShoot>();
     }
@@ -128,10 +126,6 @@ public class PlayerStats : MobStats
         {
             gridHandler.PassiveSelection();
         }
-        if (action == Action.Looting)
-        {
-            externalGridHandler.PassiveSelection();
-        }
     }
 
     void OnPrimaryDrag()
@@ -164,10 +158,6 @@ public class PlayerStats : MobStats
         if (action == Action.Inventory && isDragging)
         {
             gridHandler.SelectItem();
-        }
-        if (action == Action.Looting && isDragging)
-        {
-            externalGridHandler.SelectItem();
         }
     }
 
@@ -234,7 +224,6 @@ public class PlayerStats : MobStats
             action = Action.Inventory;
             playerUI.visible = false;
             gridHandler.visible = true;
-            externalGridHandler.visible = false;
             canToggle = false;
             gridHandler.LoadWeaponImages();
             if (equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
@@ -246,7 +235,6 @@ public class PlayerStats : MobStats
             action = Action.None;
             playerUI.visible = true;
             gridHandler.visible = false;
-            externalGridHandler.visible = false;
             canToggle = false;
             if (playerShoot.gun.gun != null)
                 playerShoot.gun.gun.CalculateWeaponStats();

@@ -18,8 +18,8 @@ MonoBehaviour:
     chance: 5
   - item: {fileID: 11400000, guid: c0de54d85cfcaba41a6ce6d4a2280265, type: 2}
     chance: 3
-  - item: {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1, type: 2}
-    chance: 1
-  - item: {fileID: 11400000, guid: 1301be6fb22a2fb4199105cf0aec14de, type: 2}
-    chance: 1
+  - item: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
+    chance: 3
+  - item: {fileID: 11400000, guid: 5dee2cfeb3124c74fafe2e43313029b3, type: 2}
+    chance: 4
   table: []
