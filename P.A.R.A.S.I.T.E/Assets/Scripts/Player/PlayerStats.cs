@@ -36,6 +36,8 @@ public class PlayerStats : MobStats
         gridHandler.visible = false;
         canToggle = true;
         playerShoot = GetComponent<PlayerShoot>();
+        equipmentInventory.backpack.InitializeInventories();
+        equipmentInventory.rig.InitializeInventories();
     }
 
     void OnEnable()

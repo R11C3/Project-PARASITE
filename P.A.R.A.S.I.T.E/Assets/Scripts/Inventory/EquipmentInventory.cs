@@ -121,18 +121,7 @@ public class EquipmentInventory
     public bool AddItem(PlayerStats source, SO_Item item)
     {
         bool success = false;
-        if(backpack == null && item.type == SO_Item.Type.Backpack)
-        {
-            backpack = (SO_Backpack)item;
-            source.gridHandler.LoadBackpackInventories();
-            success = true;
-        }
-        if(rig == null && item.type == SO_Item.Type.Rig && !success)
-        {
-            rig = (SO_Rig)item;
-            source.gridHandler.LoadRigInventories();
-            success = true;
-        }
+        
         if(primary == null && item.type == SO_Item.Type.Weapon && !success)
         {
             primary = (SO_Gun)item;

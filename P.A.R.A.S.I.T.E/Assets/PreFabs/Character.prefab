@@ -808,85 +808,6 @@ MonoBehaviour:
   visible: 0
   backpack: {fileID: 11400000, guid: 8925d1098cfb06443a686e14060e6b9d, type: 2}
   rig: {fileID: 0}
-  container: {fileID: 0}
-  layout: {x: 0, y: 0}
-  passiveItem: {fileID: 0}
---- !u!1 &5070956045546430417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2818149334573544644}
-  - component: {fileID: 3833891751264944537}
-  - component: {fileID: 5389002082188181702}
-  m_Layer: 0
-  m_Name: Looting
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2818149334573544644
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5070956045546430417}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2941337171247925528}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3833891751264944537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5070956045546430417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: 39060a7e71557c54089e83baf4afd303, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: e6d84fccb0960c1469a14f0cfcbbc82f,
-    type: 3}
-  m_SortingOrder: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
---- !u!114 &5389002082188181702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5070956045546430417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfb060b13b2ae9c4c88d0e53422d4367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 3bfaa8b7d8617db429d02c314484ec32, type: 2}
-  visible: 0
-  container: {fileID: 0}
-  backpack: {fileID: 0}
-  rig: {fileID: 0}
-  containerBounds:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
   layout: {x: 0, y: 0}
   passiveItem: {fileID: 0}
 --- !u!1 &5465968348282686102
@@ -1391,7 +1312,6 @@ Transform:
   - {fileID: 8517534150930227605}
   - {fileID: 4077988535837227707}
   - {fileID: 7220818389968829587}
-  - {fileID: 2818149334573544644}
   - {fileID: 8910041999672512850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1477,12 +1397,11 @@ MonoBehaviour:
     sling: {fileID: 11400000, guid: 24824a05d71020148a141e3ba5ae7e81, type: 2}
     holster: {fileID: 11400000, guid: 978afffae8f03c84fba263c7dd8216f1, type: 2}
     equipped: 0
-    rig: {fileID: 0}
-    backpack: {fileID: 0}
+    rig: {fileID: 11400000, guid: 4142d647b6a06a34f9c1596931ee5435, type: 2}
+    backpack: {fileID: 11400000, guid: 8925d1098cfb06443a686e14060e6b9d, type: 2}
     armor: {fileID: 0}
   gridHandler: {fileID: 2718655177287888378}
   playerUI: {fileID: 3520674929600380531}
-  externalGridHandler: {fileID: 5389002082188181702}
   rig: {fileID: 71274385820024314}
   backpack: {fileID: 650761890980764858}
   changingWeapons: 0
@@ -1538,7 +1457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 64
   floor:
     serializedVersion: 2
     m_Bits: 8
@@ -1605,7 +1524,7 @@ MonoBehaviour:
   aim: {fileID: 4965131758044466079}
   mask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
   interactDistance: 5
 --- !u!114 &8660370789467819582
 MonoBehaviour:
