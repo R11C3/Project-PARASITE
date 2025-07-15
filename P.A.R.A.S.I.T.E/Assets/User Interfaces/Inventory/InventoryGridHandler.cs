@@ -22,7 +22,7 @@ public class InventoryGridHandler : MonoBehaviour
     private bool clickPressed;
 
     [SerializeField]
-    private SO_Backpack backpack;
+    private Backpack backpack;
     [SerializeField]
     private SO_Rig rig;
 
@@ -178,8 +178,8 @@ public class InventoryGridHandler : MonoBehaviour
         RemoveBackpackItemSlots();
 
         backpack = stats.equipmentInventory.backpack;
-        int width = backpack.inventories.dimensions.width;
-        int height = backpack.inventories.dimensions.height;
+        int width = backpack.inventory.dimensions.width;
+        int height = backpack.inventory.dimensions.height;
 
         VisualElement backpackIcon = root.Q<VisualElement>("backpack-icon");
         backpackIcon.style.backgroundImage = backpack.sprite;
@@ -204,7 +204,7 @@ public class InventoryGridHandler : MonoBehaviour
     {
         RemoveBackpackItemSlots();
         LoadBackpackInventories();
-        foreach (SO_Item item in backpack.inventories.itemList)
+        foreach (SO_Item item in backpack.inventory.itemList)
         {
             VisualElement visualIconContainer = new VisualElement();
             visualIconContainer.AddToClassList("visual-icon-container");
@@ -399,7 +399,7 @@ public class InventoryGridHandler : MonoBehaviour
             if (selected != null && selected.name.Equals("visualIconContainer"))
             {
                 if (selection == Selection.Backpack)
-                    item = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
+                    item = backpack.inventory.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
                 else if (selection == Selection.Rig)
                     item = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + selected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + selected.worldBound.position.x) / slotDimensions.width)];
                 else if (selection == Selection.Primary && stats.equipmentInventory.primary != null)
@@ -478,7 +478,7 @@ public class InventoryGridHandler : MonoBehaviour
 
             Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / (slotDimensions.width + 10)), (int)Math.Round(finalPosition.x / (slotDimensions.width + 5)));
 
-            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
             if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
@@ -487,27 +487,27 @@ public class InventoryGridHandler : MonoBehaviour
             bool success = false;
 
             if (finalPosition.y <= backpackHolder.resolvedStyle.width && finalPosition.y >= 0 && finalPosition.x <= backpackHolder.resolvedStyle.height && finalPosition.x >= 0)
-                success = backpack.inventories.CheckNull((int)coordinates.x, (int)coordinates.y, item.dimensions.width, item.dimensions.height);
+                success = backpack.inventory.CheckNull((int)coordinates.x, (int)coordinates.y, item.dimensions.width, item.dimensions.height);
 
             if (success)
             {
-                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
                 if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
                 item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
-                backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
-                backpack.inventories.itemList.Add(item);
+                backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                backpack.inventory.itemList.Add(item);
             }
             else
             {
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
                 if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
                 if (selection == Selection.Holster) stats.equipmentInventory.holster = (SO_Gun)item;
                 selected.transform.position = originalPosition;
 
-                SO_Item tryStack = backpack.inventories.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
+                SO_Item tryStack = backpack.inventory.grid[(int)Math.Round(finalPosition.y / slotDimensions.width), (int)Math.Round(finalPosition.x / slotDimensions.width)];
                 if (tryStack != null && tryStack.type == SO_Item.Type.Ammo && item.type == SO_Item.Type.Ammo)
                 {
                     if (tryStack.Equals(item))
@@ -522,7 +522,7 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventory.Remove(item);
                             if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
@@ -541,7 +541,7 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventory.Remove(item);
                             if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
@@ -556,7 +556,7 @@ public class InventoryGridHandler : MonoBehaviour
 
             Vector2 coordinates = new Vector2((int)Math.Round(finalPosition.y / (slotDimensions.width + 10)), (int)Math.Round(finalPosition.x / (slotDimensions.width + 5)));
 
-            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
             if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
@@ -569,7 +569,7 @@ public class InventoryGridHandler : MonoBehaviour
 
             if (success)
             {
-                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
                 if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
                 Dimensions location = new Dimensions { height = item.location.height, width = item.location.width };
                 item.location = new Dimensions { height = (int)Math.Round(finalPosition.y / slotDimensions.width), width = (int)Math.Round(finalPosition.x / slotDimensions.width) };
@@ -578,7 +578,7 @@ public class InventoryGridHandler : MonoBehaviour
             }
             else
             {
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
+                if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, item);
                 if (selection == Selection.Primary) stats.equipmentInventory.primary = (SO_Gun)item;
                 if (selection == Selection.Sling) stats.equipmentInventory.sling = (SO_Gun)item;
@@ -600,7 +600,7 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventory.Remove(item);
                             if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
@@ -619,7 +619,7 @@ public class InventoryGridHandler : MonoBehaviour
 
                         if (((SO_Ammo)item).currentStack == 0)
                         {
-                            if (selection == Selection.Backpack) backpack.inventories.Remove(item);
+                            if (selection == Selection.Backpack) backpack.inventory.Remove(item);
                             if (selection == Selection.Rig) rig.inventories.Remove(item);
                         }
                     }
@@ -630,14 +630,14 @@ public class InventoryGridHandler : MonoBehaviour
         {
             if (item.type == SO_Item.Type.Weapon && stats.equipmentInventory.primary == null)
             {
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
                 if (selection == Selection.Holster) stats.equipmentInventory.holster = null;
 
                 stats.equipmentInventory.primary = (SO_Gun)item;
 
-                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
                 if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
             }
             else
@@ -649,14 +649,14 @@ public class InventoryGridHandler : MonoBehaviour
         {
             if (item.type == SO_Item.Type.Weapon && stats.equipmentInventory.sling == null)
             {
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
                 if (selection == Selection.Holster) stats.equipmentInventory.holster = null;
 
                 stats.equipmentInventory.sling = (SO_Gun)item;
 
-                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
                 if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
             }
             else
@@ -668,14 +668,14 @@ public class InventoryGridHandler : MonoBehaviour
         {
             if (item.type == SO_Item.Type.Pistol && stats.equipmentInventory.holster == null)
             {
-                if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+                if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
                 if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
                 if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
 
                 stats.equipmentInventory.holster = (SO_Gun)item;
 
-                if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+                if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
                 if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
             }
             else
@@ -686,13 +686,13 @@ public class InventoryGridHandler : MonoBehaviour
         else if (dropBounds.Contains(selected.worldBound.center) && item.obj != null)
         {
             Debug.Log(item.obj);
-            if (selection == Selection.Backpack) backpack.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
+            if (selection == Selection.Backpack) backpack.inventory.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Rig) rig.inventories.AddToGrid(item.location.height, item.location.width, item.dimensions.width, item.dimensions.height, null);
             if (selection == Selection.Primary) stats.equipmentInventory.primary = null;
             if (selection == Selection.Sling) stats.equipmentInventory.sling = null;
             if (selection == Selection.Holster) stats.equipmentInventory.holster = null;
 
-            if (selection == Selection.Backpack) backpack.inventories.itemList.Remove(item);
+            if (selection == Selection.Backpack) backpack.inventory.itemList.Remove(item);
             if (selection == Selection.Rig) rig.inventories.itemList.Remove(item);
 
             stats.DropItem(item);
@@ -760,7 +760,7 @@ public class InventoryGridHandler : MonoBehaviour
             if (passiveSelected != null && passiveSelected.name.Equals("visualIconContainer"))
             {
                 if (passiveSelection == Selection.Backpack)
-                    passiveItem = backpack.inventories.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
+                    passiveItem = backpack.inventory.grid[(int)Math.Round((-backpackHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-backpackHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
                 else if (passiveSelection == Selection.Rig)
                     passiveItem = rig.inventories.grid[(int)Math.Round((-rigHolder.worldBound.position.y + passiveSelected.worldBound.position.y) / slotDimensions.width), (int)Math.Round((-rigHolder.worldBound.position.x + passiveSelected.worldBound.position.x) / slotDimensions.width)];
                 else if (passiveSelection == Selection.Primary && stats.equipmentInventory.primary != null)

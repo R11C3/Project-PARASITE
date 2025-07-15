@@ -22,7 +22,7 @@ public class EquipmentInventory
     [SerializeField]
     public SO_Rig rig;
     [SerializeField]
-    public SO_Backpack backpack;
+    public Backpack backpack;
 
     [Header("Armors")]
     [SerializeField]
@@ -150,7 +150,7 @@ public class EquipmentInventory
 
     private bool AddItemToBackpack(SO_Item item)
     {
-        bool success = backpack.inventories.Add(item);
+        bool success = backpack.inventory.Add(item);
         Debug.Log(success);
         return success;
     }

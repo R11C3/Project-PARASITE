@@ -493,6 +493,21 @@ PrefabInstance:
       propertyPath: equipmentInventory.primary
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: equipmentInventory.backpack.mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: b21f7b4e34ed8d148851d291c8ed4662, type: 3}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: equipmentInventory.backpack.sprite
+      value: 
+      objectReference: {fileID: 2800000, guid: 5dae99025a543a84b98479a0ddb78331, type: 3}
+    - target: {fileID: 3515050039642512570, guid: 5ba560cf02eb8f243b21df54641a80fd,
+        type: 3}
+      propertyPath: equipmentInventory.backpack.material
+      value: 
+      objectReference: {fileID: 2100000, guid: bb742d83ed804da40afff0bb98de17b3, type: 2}
     - target: {fileID: 3520674929600380531, guid: 5ba560cf02eb8f243b21df54641a80fd,
         type: 3}
       propertyPath: inventory

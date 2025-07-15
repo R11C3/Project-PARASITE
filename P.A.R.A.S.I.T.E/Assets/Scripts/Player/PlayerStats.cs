@@ -36,8 +36,10 @@ public class PlayerStats : MobStats
         gridHandler.visible = false;
         canToggle = true;
         playerShoot = GetComponent<PlayerShoot>();
-        equipmentInventory.backpack.InitializeInventories();
         equipmentInventory.rig.InitializeInventories();
+
+        backpack.GetComponent<MeshFilter>().sharedMesh = equipmentInventory.backpack.mesh;
+        backpack.GetComponent<MeshRenderer>().sharedMaterial = equipmentInventory.backpack.material;
     }
 
     void OnEnable()
@@ -193,18 +195,6 @@ public class PlayerStats : MobStats
 
     private void UpdateBodyVisuals()
     {
-        if (equipmentInventory.backpack != null)
-        {
-            backpack.GetComponent<MeshFilter>().mesh = equipmentInventory.backpack.mesh;
-            backpack.GetComponent<MeshRenderer>().material = equipmentInventory.backpack.material;
-            backpack.GetComponent<Transform>().localScale = equipmentInventory.backpack.scale;
-            backpack.GetComponent<Transform>().localEulerAngles = equipmentInventory.backpack.rotation;
-        }
-        else
-        {
-            backpack.GetComponent<MeshFilter>().mesh = null;
-            backpack.GetComponent<MeshRenderer>().material = null;
-        }
         if (equipmentInventory.rig != null)
         {
             rig.GetComponent<MeshFilter>().mesh = equipmentInventory.rig.mesh;
@@ -230,7 +220,6 @@ public class PlayerStats : MobStats
             gridHandler.LoadWeaponImages();
             if (equipmentInventory.backpack != null) gridHandler.LoadBackpackInventoryItems();
             if (equipmentInventory.rig != null) gridHandler.LoadRigInventoryItems();
-            if (equipmentInventory.backpack != null) equipmentInventory.backpack.inventories.ExposeInventory();
         }
         if (canToggle && (action == Action.Inventory || action == Action.Looting))
         {
