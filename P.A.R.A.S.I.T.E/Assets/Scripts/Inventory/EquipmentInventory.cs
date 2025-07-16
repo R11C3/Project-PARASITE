@@ -20,7 +20,7 @@ public class EquipmentInventory
     
     [Header("Equipment")]
     [SerializeField]
-    public SO_Rig rig;
+    public Rig rig;
     [SerializeField]
     public Backpack backpack;
 
@@ -157,7 +157,7 @@ public class EquipmentInventory
 
     private bool AddItemToRig(SO_Item item)
     {
-        bool success = rig.inventories.Add(item);
+        bool success = rig.inventory.Add(item);
         Debug.Log(success);
         return success;
     }
@@ -169,7 +169,7 @@ public class EquipmentInventory
 
         bool success = false;
 
-        foreach(SO_Magazine magazine in rig.inventories.itemList)
+        foreach(SO_Magazine magazine in rig.inventory.itemList)
         {
             if(magazine.currentAmmo > mag.currentAmmo)
             {

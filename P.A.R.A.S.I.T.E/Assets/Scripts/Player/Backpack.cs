@@ -8,12 +8,12 @@ public class Backpack
     private int sizeLevel;
     private int weightLevel;
 
-    [SerializeField]
     public Mesh mesh;
-    [SerializeField]
     public Material material;
-    [SerializeField]
     public Texture2D sprite;
+    public Vector3 backpackScale;
+    public Vector3 backpackRotation;
+    public Vector3 backpackLocation;
 
     public GridInventory inventory = new GridInventory(5, 2);
 

@@ -15,9 +15,11 @@ public class PlayerStats : MobStats
     [Header("UI's")]
     public InventoryGridHandler gridHandler;
     public HUDController playerUI;
-    [Header("GameObjects for Backpack/Rig")]
+    [Header("Backpack and Rig")]
     public GameObject rig;
+    
     public GameObject backpack;
+    
 
     [HideInInspector]
     public bool changingWeapons = false;
@@ -36,10 +38,18 @@ public class PlayerStats : MobStats
         gridHandler.visible = false;
         canToggle = true;
         playerShoot = GetComponent<PlayerShoot>();
-        equipmentInventory.rig.InitializeInventories();
+
+        rig.GetComponent<MeshFilter>().sharedMesh = equipmentInventory.rig.mesh;
+        rig.GetComponent<MeshRenderer>().sharedMaterial = equipmentInventory.rig.material;
+        rig.GetComponent<Transform>().localEulerAngles = equipmentInventory.rig.rigRotation;
+        rig.GetComponent<Transform>().localScale = equipmentInventory.rig.rigScale;
+        rig.GetComponent<Transform>().localPosition = equipmentInventory.rig.rigLocation;
 
         backpack.GetComponent<MeshFilter>().sharedMesh = equipmentInventory.backpack.mesh;
         backpack.GetComponent<MeshRenderer>().sharedMaterial = equipmentInventory.backpack.material;
+        backpack.GetComponent<Transform>().localEulerAngles = equipmentInventory.backpack.backpackRotation;
+        backpack.GetComponent<Transform>().localScale = equipmentInventory.backpack.backpackScale;
+        backpack.GetComponent<Transform>().localPosition = equipmentInventory.backpack.backpackLocation;
     }
 
     void OnEnable()
@@ -155,14 +165,20 @@ public class PlayerStats : MobStats
     // Update is called once per frame
     void Update()
     {
-        UpdateBodyVisuals();
-
         Stamina();
 
         if (action == Action.Inventory && isDragging)
         {
             gridHandler.SelectItem();
         }
+
+        
+        rig.GetComponent<Transform>().localEulerAngles = equipmentInventory.rig.rigRotation;
+        rig.GetComponent<Transform>().localScale = equipmentInventory.rig.rigScale;
+        rig.GetComponent<Transform>().localPosition = equipmentInventory.rig.rigLocation;
+        backpack.GetComponent<Transform>().localEulerAngles = equipmentInventory.backpack.backpackRotation;
+        backpack.GetComponent<Transform>().localScale = equipmentInventory.backpack.backpackScale;
+        backpack.GetComponent<Transform>().localPosition = equipmentInventory.backpack.backpackLocation;
     }
 
     protected override void Load()
@@ -191,22 +207,6 @@ public class PlayerStats : MobStats
     {
         speed = ((SO_Mob)stats).speed;
         stance = Stance.Aiming;
-    }
-
-    private void UpdateBodyVisuals()
-    {
-        if (equipmentInventory.rig != null)
-        {
-            rig.GetComponent<MeshFilter>().mesh = equipmentInventory.rig.mesh;
-            rig.GetComponent<MeshRenderer>().material = equipmentInventory.rig.material;
-            rig.GetComponent<Transform>().localScale = equipmentInventory.rig.scale;
-            rig.GetComponent<Transform>().localEulerAngles = equipmentInventory.rig.rotation;
-        }
-        else
-        {
-            rig.GetComponent<MeshFilter>().mesh = null;
-            rig.GetComponent<MeshRenderer>().material = null;
-        }
     }
 
     private void UISwitch()
@@ -296,11 +296,11 @@ public class PlayerStats : MobStats
                 if (mag != null)
                 {
                     StartCoroutine(ReloadDelay());
-                    equipmentInventory.rig.inventories.Remove(mag);
+                    equipmentInventory.rig.inventory.Remove(mag);
                     if (equipmentInventory.EquippedGun().attachments.magazine != null)
                     {
                         SO_Magazine oldMag = equipmentInventory.EquippedGun().attachments.magazine;
-                        if (!equipmentInventory.rig.inventories.Add(oldMag))
+                        if (!equipmentInventory.rig.inventory.Add(oldMag))
                         {
                             Instantiate(oldMag.obj, transform.position, Quaternion.identity);
                         }
